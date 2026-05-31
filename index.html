@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIVA-MC 公式ポータルサイト | 本格国家運営マインクラフトサーバー</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #60a5fa;
+            --primary-dark: #1d4ed8;
+            --secondary: #10b981;
+            --secondary-light: #34d399;
+            --accent: #f59e0b;
+            --danger: #ef4444;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --bg-main: #f8fafc;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(255, 255, 255, 0.6);
+            --shadow-sm: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 10px 15px -3px rgba(15, 23, 42, 0.05);
+            --shadow-lg: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-main);
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        /* 背景のアニメーションオーブ */
+        .bg-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8fafc 0%, #f0fdf4 50%, #eff6ff 100%);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            animation: orbFloat 30s infinite alternate ease-in-out;
+        }
+
+        .orb-1 { width: 600px; height: 600px; background: #bfdbfe; top: -10%; left: -10%; }
+        .orb-2 { width: 700px; height: 700px; background: #bbf7d0; bottom: -15%; right: -10%; animation-delay: -7s; }
+        .orb-3 { width: 500px; height: 500px; background: #fed7aa; top: 40%; left: 70%; animation-delay: -15s; }
+
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(60px, 80px) scale(1.15); }
+            100% { transform: translate(-40px, -50px) scale(0.9); }
+        }
+
+        /* トースト通知 */
+        .toast {
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #0f172a;
+            color: #ffffff;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .toast.show { top: 40px; }
+        .toast i { color: var(--secondary-light); }
+
+        /* ナビゲーションバー */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 900;
+            font-size: 1.2rem;
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #1e3a8a 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            padding: 10px 20px;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .nav-links button:hover {
+            background: rgba(37, 99, 235, 0.05);
+            color: var(--primary);
+        }
+
+        .nav-links button.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+        }
+
+        /* 複数ページ（タブ型）の表示制御 */
+        .page-section {
+            display: none;
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        .page-section.active {
+            display: block;
+            animation: fadeInPage 0.6s ease forwards;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 共通：セクションヘッダー */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-tag {
+            color: var(--primary);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.06);
+            padding: 6px 16px;
+            border-radius: 50px;
+        }
+
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            margin-bottom: 15px;
+        }
+
+        .page-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* =====================================
+           PAGE: HOME
+        ===================================== */
+        .hero {
+            min-height: calc(100vh - 100px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4.8rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #1e3a8a 0%, var(--primary) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.35rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 45px;
+        }
+
+        /* コピーエリアUI */
+        .ip-wrapper {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 14px 14px 14px 35px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            box-shadow: var(--shadow-lg);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 35px;
+        }
+
+        .ip-wrapper:hover {
+            transform: translateY(-5px);
+            background: #ffffff;
+            box-shadow: 0 35px 60px -15px rgba(37, 99, 235, 0.18);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .ip-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
+
+        .ip-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .ip-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            border: none;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.25rem;
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .ip-wrapper:hover .ip-btn {
+            transform: scale(1.05) rotate(15deg);
+        }
+
+        .live-status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            background: rgba(255,255,255,0.6);
+            padding: 8px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #cbd5e1;
+            border-radius: 50%;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .status-dot.online::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: inherit;
+            border-radius: 50%;
+            animation: pulseRipple 1.6s infinite ease-out;
+        }
+
+        @keyframes pulseRipple {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(3.5); opacity: 0; }
+        }
+
+        /* 簡易お知らせボード */
+        .home-news {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 4%;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .news-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            background: #ffffff;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .news-date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .news-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .news-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* =====================================
+           PAGE: SYSTEM (国家システム)
+        ===================================== */
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 4%;
+        }
+
+        .system-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .system-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-xl);
+            padding: 50px 40px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .system-card:hover {
+            background: #ffffff;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-12px) rotate(1deg);
+        }
+
+        .sys-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(37, 99, 235, 0.06);
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.75rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            transition: all 0.3s;
+        }
+
+        .system-card:hover .sys-icon {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* =====================================
+           PAGE: NATIONS (国家一覧・ランキング)
+        ===================================== */
+        .nations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .nation-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s;
+        }
+
+        .nation-box:hover {
+            background: #ffffff;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .nation-banner {
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            padding: 30px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .nation-name {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .nation-body {
+            padding: 30px;
+        }
+
+        .nation-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* =====================================
+           PAGE: GUIDE & RULES
+        ===================================== */
+        .guide-section {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 50px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 40px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
+        }
+
+        .guide-section:hover { transform: scale(1.01); }
+
+        .rule-list {
+            list-style: none;
+        }
+
+        .rule-list li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 20px;
+            font-size: 0.98rem;
+        }
+
+        .rule-list li::before {
+            content: '\f00d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--danger);
+        }
+
+        .rule-list.permits li::before {
+            content: '\f00c';
+            color: var(--secondary);
+        }
+
+        /* =====================================
+           PAGE: FAQ
+        ===================================== */
+        .faq-wrapper {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-trigger {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 22px 30px;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+            color: var(--primary);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .faq-inner {
+            padding: 0 30px 25px 30px;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.open .faq-content {
+            max-height: 300px;
+        }
+
+        /* =====================================
+           FOOTER & COMMUNITY
+        ===================================== */
+        .discord-box {
+            background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-xl);
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 80px;
+            transition: transform 0.4s;
+        }
+
+        .discord-box:hover { transform: translateY(-10px); }
+
+        .discord-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #5865F2;
+            color: white;
+            text-decoration: none;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 25px rgba(88, 101, 242, 0.25);
+            transition: all 0.3s;
+            margin-top: 25px;
+        }
+
+        .discord-btn:hover {
+            background: #4752c4;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(88, 101, 242, 0.35);
+        }
+
+        footer {
+            background: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 120px;
+        }
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 968px) {
+            .hero-title { font-size: 3.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-check"></i> サーバーIPアドレスをコピーしました！
+    </div>
+
+    <nav>
+        <div class="logo-area" onclick="switchPage('home')">
+            <div class="logo-icon">V</div>
+            <div class="logo-text">VIVA-MC</div>
+        </div>
+        <ul class="nav-links">
+            <li><button class="nav-btn active" onclick="switchPage('home')">ホーム</button></li>
+            <li><button class="nav-btn" onclick="switchPage('system')">国家システム</button></li>
+            <li><button class="nav-btn" onclick="switchPage('nations')">国家一覧</button></li>
+            <li><button class="nav-btn" onclick="switchPage('guide')">ルール・参加方法</button></li>
+            <li><button class="nav-btn" onclick="switchPage('faq')">よくある質問</button></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="page-section active">
+        <div class="hero">
+            <div class="page-tag" data-aos="fade-down" data-aos-duration="1200">NATION-BUILDING SIMULATION</div>
+            <h1 class="hero-title" data-aos="zoom-out-up" data-aos-delay="200" data-aos-duration="1000">
+                広大な世界に<br>君だけの国家を。
+            </h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                経済・法律・外交・戦争のすべてがリアルに交錯する、国家運営マインクラフトサーバーへようこそ。
+            </p>
+            
+            <div class="ip-wrapper" id="ipCopyBtn" data-aos="flip-up" data-aos-delay="600" onclick="copyIP()">
+                <span class="ip-label">Server IP</span>
+                <div style="display: flex; flex-direction: column; text-align: left;">
+                    <span class="ip-text" id="ipAddress" style="line-height: 1.1;">viva-mc.net</span>
+                    <span style="font-size: 0.85rem; color: var(--primary); font-weight: 700; margin-top: 4px; letter-spacing: 0.5px;">Java / 統合版 共通 (Port: 19132)</span>
+                </div>
+                <button class="ip-btn"><i class="fa-regular fa-copy"></i></button>
+            </div>
+
+            <div class="live-status" data-aos="fade-in" data-aos-delay="800">
+                <div class="status-dot" id="statusDot"></div>
+                <span id="statusMessage">サーバーステータス取得中...</span>
+            </div>
+        </div>
+
+        <div class="home-news">
+            <div class="page-header" data-aos="fade-up">
+                <span class="page-tag">News & Updates</span>
+                <h2 class="page-title">最新のお知らせ</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="news-date">2026.05.28</div>
+                    <h3 class="news-title">公式ページの変更！！</h3>
+                    <p class="news-excerpt">サイトの自由性を求め、サイトの変更！！</p>
+                </div>
+                <div class="news-card" data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="news-date">2026.05.15</div>
+                    <h3 class="news-title">初夏の新興建国応援キャンペーン開催！</h3>
+                    <p class="news-excerpt">新規に建国を申請したチームを対象に、初期内政資金が1.5倍になる特別イベントを実施します。</p>
+                </div>
+                <div class="news-card" data-aos="zoom-in-up" data-aos-delay="500">
+                    <div class="news-date">2026.05.01</div>
+                    <h3 class="news-title">第3回 国際連合総会 議事録公開</h3>
+                    <p class="news-excerpt">サーバー内主要3大国による「安全保障条約」の締結にともなうルール改定について。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="system" class="page-section">
+        <div class="page-header">
+            <span class="page-tag">Core Mechanics</span>
+            <h2 class="page-title">洗練された国家運営システム</h2>
+        </div>
+        <div class="content-container">
+            <div class="system-grid">
+                <div class="system-card" data-aos="fade-right" data-aos-delay="100">
+                    <div class="sys-icon"><i class="fa-solid fa-landmark"></i></div>
+                    <h3 class="card-title">独自の法制度の制定</h3>
+                    <p class="card-desc">建国したプレイヤーは、自国の領土内において「憲法」や「法律」を自由に定める権利を持ちます。</p>
+                </div>
+                <div class="system-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="sys-icon"><i class="fa-solid fa-coins"></i></div>
+                    <h3 class="card-title">プレイヤー駆動型リアル経済</h3>
+                    <p class="card-desc">サーバー内独自の通貨制度とダイナミックに変動する市場システム。関税の設定や貿易ルートの確保が、国家の盛衰を左右します。</p>
+                </div>
+                <div class="system-card" data-aos="fade-left" data-aos-delay="500">
+                    <div class="sys-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="card-title">宣戦布告と外交条約</h3>
+                    <p class="card-desc">争いはルールに基づいて行われます。公式な「宣戦布告」手続きを経て、防衛側の同意またはシステム判定のもとで大規模な領土戦が勃発します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="nations" class="page-section">
+        <div class="page-header">
+            <span class="page-tag">World Politics</span>
+            <h2 class="page-title">覇権を握る主要な国家一覧</h2>
+        </div>
+        <div class="content-container">
+            <div class="nations-grid">
+                <div class="nation-box" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="nation-banner">
+                        <div class="nation-name">kot町</div>
+                    </div>
+                    <div class="nation-body">
+                        <div class="nation-meta">
+                            <span><i class="fa-solid fa-users"></i> 国民数: 7名</span>
+                            <span><i class="fa-solid fa-gavel"></i> 街</span>
+                        </div>
+                        <p class="nation-desc">資金力ではサーバー内最強</p>
+                    </div>
+                </div>
+                <div class="nation-box" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="nation-banner">
+                        <div class="nation-name">-----</div>
+                    </div>
+                    <div class="nation-body">
+                        <div class="nation-meta">
+                            <span><i class="fa-solid fa-users"></i> 国民数: --</span>
+                            <span><i class="fa-solid fa-gavel"></i> 政体: --</span>
+                        </div>
+                        <p class="nation-desc">----------------------------------</p>
+                    </div>
+                </div>
+                <div class="nation-box" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="nation-banner">
+                        <div class="nation-name">-------------</div>
+                    </div>
+                    <div class="nation-body">
+                        <div class="nation-meta">
+                            <span><i class="fa-solid fa-users"></i> 国民数: ---</span>
+                            <span><i class="fa-solid fa-gavel"></i>----------</span>
+                        </div>
+                        <p class="nation-desc">-----------</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="guide" class="page-section">
+        <div class="page-header">
+            <span class="page-tag">Rules & Constitution</span>
+            <h2 class="page-title">サーバーの規則と参加ステップ</h2>
+        </div>
+        <div class="content-container">
+            <div class="guide-section" data-aos="fade-up">
+                <h3><i class="fa-solid fa-ban"></i> 絶対に禁止されている行為</h3>
+                <ul class="rule-list">
+                    <li>不正クライアント・チート（Hackツール、X-Ray等）の使用</li>
+                    <li>他国の領土、または未保護地域における悪意ある荒らし行為・窃盗</li>
+                    <li>リアルマネートレード (RMT) およびそれに準ずる外部取引</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="page-section">
+        <div class="page-header">
+            <span class="page-tag">Questions & Answers</span>
+            <h2 class="page-title">よくある質問</h2>
+        </div>
+        <div class="content-container">
+            <div class="faq-wrapper">
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <button class="faq-trigger" onclick="toggleFaq(this)">
+                        <span>Q. サーバーへの参加に料金はかかりますか？</span>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-content"><div class="faq-inner">いいえ、完全無料で遊ぶことができます。</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-container" style="padding-top: 0;">
+        <div class="discord-box" data-aos="zoom-in-up" data-aos-duration="1200">
+            <span class="page-tag">Global Community</span>
+            <h2 class="page-title" style="margin-bottom: 15px;">公式Discordで世界の動きをチェック</h2>
+            <a href="https://discord.gg/DPcN4Wcma" class="discord-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-discord"></i> Discordサーバーに参加する
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">VIVA-MC</div>
+        <p>&copy; 2026 VIVA-MC Official. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 80 });
+        
+        function switchPage(pageId) {
+            // セクションの切り替え
+            document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            // ナビゲーションタブの更新
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('onclick').includes(pageId)) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            window.scrollTo(0, 0);
+            AOS.refresh();
+        }
+        
+        function copyIP() {
+            navigator.clipboard.writeText('viva-mc.net').then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3000);
+            });
+        }
+        function toggleFaq(button) { button.parentElement.classList.toggle('open'); }
+        async function fetchServerStatus() {
+            try {
+                const res = await fetch(`https://api.mcsrvstat.us/2/viva-mc.net`);
+                const data = await res.json();
+                const dot = document.getElementById('statusDot');
+                if (data.online) {
+                    dot.style.backgroundColor = 'var(--secondary)';
+                    dot.classList.add('online');
+                    document.getElementById('statusMessage').innerHTML = `サーバーオンライン | ${data.players.online}名が接続中`;
+                }
+            } catch (e) { console.error(e); }
+        }
+        document.addEventListener('DOMContentLoaded', () => { fetchServerStatus(); setInterval(fetchServerStatus, 60000); });
+    </script>
+</body>
+</html>
