@@ -730,6 +730,67 @@
                     <h3 class="news-title">第3回 国際連合総会 議事録公開</h3>
                     <p class="news-excerpt">サーバー内主要3大国による「安全保障条約」の締結にともなうルール改定について。</p>
                 </div>
+                <div class="timer-card" data-aos="fade-up" data-aos-delay="200">
+    <div class="timer-title">資源ワールドリセットまで</div>
+    <div class="timer-display">
+        <span id="total-hours">---</span><span class="timer-unit">時間</span>
+    </div>
+    <div id="sub-units" class="timer-sub">00分00秒</div>
+    <div class="timer-bar-bg">
+        <div id="exp-bar" class="timer-bar-fill"></div>
+    </div>
+</div>
+
+<style>
+    .timer-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 20px;
+        padding: 30px;
+        max-width: 500px;
+        margin: 40px auto;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-md);
+    }
+    .timer-title { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); margin-bottom: 10px; }
+    .timer-display { font-family: 'Poppins', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--text-dark); line-height: 1; }
+    .timer-unit { font-size: 1rem; color: var(--text-muted); margin-left: 5px; }
+    .timer-sub { margin-top: 10px; color: var(--primary); font-weight: 600; font-family: monospace; }
+    .timer-bar-bg { background: #e2e8f0; height: 8px; width: 100%; margin-top: 20px; border-radius: 4px; overflow: hidden; }
+    .timer-bar-fill { background: linear-gradient(90deg, var(--primary), var(--primary-light)); height: 100%; width: 0%; transition: width 2.5s cubic-bezier(0.22, 1, 0.36, 1); }
+</style>
+
+<script>
+    function updateTimer() {
+        const targetDate = new Date("2026-06-30T00:00:00").getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+            document.getElementById("total-hours").innerText = "0";
+            document.getElementById("sub-units").innerText = "リセット済み";
+            document.getElementById("exp-bar").style.width = "100%";
+            return;
+        }
+
+        const totalHoursNum = distance / (1000 * 60 * 60);
+        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("total-hours").innerText = Math.floor(totalHoursNum).toLocaleString();
+        document.getElementById("sub-units").innerText = `${String(m).padStart(2, '0')}分${String(s).padStart(2, '0')}秒`;
+
+        // 進捗バーの計算（例：1000時間を満タンとする）
+        const maxRange = 1000;
+        const percentage = Math.min(100, Math.max(0, (totalHoursNum / maxRange) * 100));
+        document.getElementById("exp-bar").style.width = percentage + "%";
+    }
+
+    // 読み込み時に更新開始
+    setInterval(updateTimer, 1000);
+    updateTimer();
+</script>
             </div>
         </div>
     </section>
