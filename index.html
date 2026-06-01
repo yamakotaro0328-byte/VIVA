@@ -793,6 +793,57 @@
 </script>
             </div>
         </div>
+        <section class="owner-section">
+    <div class="owner-container">
+        <div class="accent-block"></div>
+        
+        <div class="owner-image">
+            <img src="image_d8d1df26%203.png" alt="サーバー主" loading="lazy">
+        </div>
+        <div class="owner-content">
+            <span class="page-tag">Server Owner</span>
+            <h2 class="page-title">運営者紹介</h2>
+            <p class="owner-text">
+                VIVA-MCのサーバー管理者です。「誰もが楽しめる本格的な国家運営」をコンセプトに、日々環境の整備とイベント企画を行っています。
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .owner-section { padding: 80px 4%; }
+    .owner-container { 
+        position: relative;
+        max-width: 800px; margin: 0 auto; display: flex; align-items: center; gap: 40px;
+        background: var(--card-bg); padding: 40px; border-radius: 24px; 
+        border: 1px solid var(--card-border);
+        z-index: 1;
+    }
+    
+    .accent-block {
+        position: absolute;
+        top: -15px; left: -15px;
+        width: 100%; height: 100%;
+        background: var(--primary);
+        opacity: 0.1;
+        border-radius: 24px;
+        z-index: -1;
+    }
+
+    .owner-image { flex: 0 0 180px; }
+    .owner-image img { 
+        width: 100%; border-radius: 16px;
+        border: 3px solid var(--card-bg);
+        box-shadow: var(--shadow-md);
+        aspect-ratio: 1 / 1; object-fit: cover;
+    }
+    .owner-text { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
+
+    @media (max-width: 768px) {
+        .owner-container { flex-direction: column; text-align: center; }
+        .accent-block { display: none; }
+    }
+</style>
     </section>
 
     <section id="system" class="page-section">
@@ -928,7 +979,6 @@
     </div>
 </div>
     </section>
-    <img src="image_d8d1df26%203.png" alt="サーバー主" style="width:200px; border-radius:50%;">
     <div class="content-container" style="padding-top: 0;">
         <div class="discord-box" data-aos="zoom-in-up" data-aos-duration="1200">
             <span class="page-tag">Global Community</span>
