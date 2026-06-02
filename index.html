@@ -833,6 +833,81 @@
         to { transform: translateX(-50%); } /* 半分まで移動したら最初に戻る */
     }
 </style>
+        <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投票 | VIVA-MC 公式ポータル</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* index.html と共通のスタイル設定を読み込む想定 */
+        :root {
+            --primary: #2563eb;
+            --accent: #f59e0b;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(255, 255, 255, 0.6);
+        }
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #f8fafc; padding: 100px 20px; }
+        .vote-page-container { max-width: 800px; margin: 0 auto; text-align: center; }
+        
+        .vote-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 60px;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
+        }
+        
+        .vote-title { font-size: 2.5rem; font-weight: 900; margin-bottom: 20px; color: var(--text-dark); }
+        .vote-desc { color: var(--text-muted); margin-bottom: 40px; }
+        
+        .vote-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+        }
+        .vote-button:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(245, 158, 11, 0.4); }
+    </style>
+</head>
+<body>
+
+    <div class="vote-page-container">
+        <div class="vote-card" data-aos="fade-up">
+            <h2 class="vote-title">サーバーに投票する</h2>
+            <p class="vote-desc">
+                投票サイトからVIVA-MCを応援してください！<br>
+                皆様の1票がサーバーの成長に繋がります。
+            </p>
+            
+            <a href="https://mineportal.jp/servers/cmp2fhkzu0000125xdvf15hjv" class="vote-button" target="_blank">
+                <i class="fa-solid fa-star"></i> 投票サイトへ移動する
+            </a>
+            
+            <div style="margin-top: 40px; font-size: 0.9rem; color: var(--text-muted);">
+                <i class="fa-solid fa-circle-info"></i> 投票後、自動的に報酬が受け取れます
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 1000 });</script>
+</body>
+</html>
         <section class="owner-section">
     <div class="owner-container">
         <div class="accent-block"></div>
