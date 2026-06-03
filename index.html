@@ -681,7 +681,7 @@
             <li><button class="nav-btn" onclick="switchPage('nations')">国家一覧</button></li>
             <li><button class="nav-btn" onclick="switchPage('guide')">ルール・参加方法</button></li>
             <li><button class="nav-btn" onclick="switchPage('faq')">よくある質問</button></li>
-            <li><button class="nav-btn" onclick="switchpage('report')">通報機能について</button></li>
+            <li><button class="nav-btn" onclick="switchPage('report')">通報機能について</button></li>
         </ul>
     </nav>
 
@@ -963,13 +963,21 @@
     </section>
     <section id="report" class="page-section">
     <div class="content-container" style="padding: 100px 20px;">
-        <h2 data-aos="fade-up">通報機能について</h2>
-        <div class="card" data-aos="fade-up" data-aos-delay="200">
-            <p>ルール違反を発見した場合は、以下のフォームより通報をお願いします。</p>
+        <span class="page-tag">about report</span>
+        <h2 class="page-title">通報機能について</h2>
+    </div>
+        <div class="content-container">
+            <div class="system-grid">
+                <div class="system-card" data-aos="fade-right" data-aos-delay="100">
+                    <div class="sys-icon"><i class="fa-solid fa-landmark"></i></div>
+                    <h3 class="card-title">利用規約に反しているプレイヤーを見つけた時</h3>
+                    <p class="card-desc">コマンド/r または/reportにより、プレイヤー追放投票を開けます</p>
+                    <p class="card-desc">投票結果により、プレイヤーにはtmpban またはban を行います</p>
+        
             
         </div>
     </div>
-</section>
+    </section>
 
     <section id="system" class="page-section">
         <div class="page-header">
@@ -1166,5 +1174,21 @@
         }
         document.addEventListener('DOMContentLoaded', () => { fetchServerStatus(); setInterval(fetchServerStatus, 60000); });
     </script>
+    <script>
+function switchPage(pageId) {
+    // すべてのセクションを非表示に
+    document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+    });
+    // クリックされたセクションを表示
+    document.getElementById(pageId).classList.add('active');
+    
+    // ナビボタンのアクティブ状態更新
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.currentTarget.classList.add('active');
+}
+</script>
 </body>
 </html>
