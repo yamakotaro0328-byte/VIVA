@@ -680,8 +680,31 @@
             <li><button class="nav-btn" onclick="switchPage('system')">国家システム</button></li>
             <li><button class="nav-btn" onclick="switchPage('nations')">国家一覧</button></li>
             <li><button class="nav-btn" onclick="switchPage('guide')">ルール・参加方法</button></li>
-            <li><button class="nav-btn" onclick="switchPage('faq')">よくある質問</button></li>
-            <li><button class="nav-btn" onclick="switchPage('report')">通報機能について</button></li>
+
+<li class="dropdown" style="position: relative;">
+            <button class="nav-btn dropdown-btn" onclick="toggleDropdown()">その他 ▼</button>
+            <ul id="dropdownMenu" class="dropdown-menu" style="display: none; position: absolute; top: 100%; right: 0; background: white; list-style: none; padding: 10px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 150px; z-index: 100;">
+                <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('faq'); toggleDropdown();">よくある質問</button></li>
+                <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('report'); toggleDropdown();">通報機能</button></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<script>
+    // ドロップダウンの開閉
+    function toggleDropdown() {
+        const menu = document.getElementById('dropdownMenu');
+        menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+    }
+
+    // 画面の他の場所をクリックしたら閉じる処理（便利です）
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropdown-btn')) {
+            document.getElementById('dropdownMenu').style.display = "none";
+        }
+    }
+</script>
         </ul>
     </nav>
 
