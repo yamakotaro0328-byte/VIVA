@@ -656,6 +656,33 @@
         @media (max-width: 968px) {
             .hero-title { font-size: 3.2rem; }
         }
+        /* スマホ対応：メニューの縦並びと整理 */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* ロゴとメニューを縦並びに */
+        padding: 15px 20px;
+    }
+    .nav-links {
+        flex-direction: column; /* ボタンを縦に並べる */
+        gap: 5px;
+        margin-top: 15px;
+        width: 100%;
+    }
+    .nav-links li {
+        width: 100%;
+    }
+    .nav-links button {
+        width: 100%; /* ボタンを画面いっぱいに広げる */
+        text-align: center;
+    }
+    /* ドロップダウンの表示位置調整 */
+    .dropdown-menu {
+        position: static !important; /* 絶対配置を解除して自然な位置に */
+        width: 100% !important;
+        margin-top: 5px;
+        background: #f1f5f9 !important; /* 背景色で区別しやすく */
+    }
+}
     </style>
 </head>
 <body>
