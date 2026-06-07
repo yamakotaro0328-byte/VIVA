@@ -706,7 +706,17 @@
         background: #f1f5f9 !important;
     }
 }
-    </style>
+/* スマホでの通知表示を中央・調整する */
+@media (max-width: 768px) {
+    #toast {
+        bottom: 80px !important; /* ボタンに被らないよう少し上に */
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 80% !important;
+        text-align: center;
+    }
+}
+</style>
 </head>
 <body>
 
