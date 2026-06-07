@@ -656,31 +656,54 @@
         @media (max-width: 968px) {
             .hero-title { font-size: 3.2rem; }
         }
-        /* スマホ対応：メニューの縦並びと整理 */
+/* --- スマホ対応：メニューの縦並びと開閉制御 --- */
+
+/* 1. PC用設定（デフォルト：ボタンを隠す） */
+.menu-toggle {
+    display: none !important;
+}
+
+/* 2. スマホ用設定（画面幅768px以下） */
 @media (max-width: 768px) {
+    /* メニューボタンの見た目と表示 */
+    .menu-toggle {
+        display: block !important;
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        margin: 10px auto;
+    }
+
     nav {
-        flex-direction: column; /* ロゴとメニューを縦並びに */
+        flex-direction: column;
         padding: 15px 20px;
     }
+
     .nav-links {
-        flex-direction: column; /* ボタンを縦に並べる */
+        display: none; /* 初期は隠す */
+        flex-direction: column;
         gap: 5px;
+        width: 100%;
         margin-top: 15px;
-        width: 100%;
     }
-    .nav-links li {
-        width: 100%;
+
+    .nav-links.show {
+        display: flex; /* JavaScriptで「show」がついた時だけ表示 */
     }
-    .nav-links button {
-        width: 100%; /* ボタンを画面いっぱいに広げる */
+
+    .nav-links li, .nav-links button {
+        width: 100%;
         text-align: center;
     }
-    /* ドロップダウンの表示位置調整 */
+
     .dropdown-menu {
-        position: static !important; /* 絶対配置を解除して自然な位置に */
+        position: static !important;
         width: 100% !important;
         margin-top: 5px;
-        background: #f1f5f9 !important; /* 背景色で区別しやすく */
+        background: #f1f5f9 !important;
     }
 }
     </style>
@@ -1237,6 +1260,34 @@ function switchPage(pageId) {
     });
     event.currentTarget.classList.add('active');
 }
+</script> 
+
+    <script>
+        // ページ読み込み時に「メニュー」ボタンを自動生成
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.querySelector('nav');
+            if (!document.querySelector('.menu-toggle')) {
+                const menuBtn = document.createElement('button');
+                menuBtn.className = 'menu-toggle';
+                menuBtn.innerText = '☰ メニュー';
+                menuBtn.onclick = toggleMenu;
+                nav.insertBefore(menuBtn, nav.querySelector('.nav-links'));
+            }
+        });
+
+        let menuTimer;
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+
+            // 開いた時だけ5秒タイマーを開始
+            clearTimeout(menuTimer);
+            if (navLinks.classList.contains('show')) {
+                menuTimer = setTimeout(() => {
+                    navLinks.classList.remove('show');
+                }, 5000);
+            }
+        }
 </script>
 </body>
 </html>
