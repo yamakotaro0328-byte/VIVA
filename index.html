@@ -708,10 +708,29 @@
 }
 /* スマホでの通知表示を中央・調整する */
 @media (max-width: 768px) {
+    /* 基本設定：隠しておく */
+#toast {
+    display: none !important; /* これがないとずっと表示されます */
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 9999;
+}
+
+/* 表示するときの設定 */
+#toast.show {
+    display: block !important;
+}
+
+/* スマホ用：位置を上にずらす */
+@media (max-width: 768px) {
     #toast {
-        bottom: 80px !important; /* ボタンに被らないよう少し上に */
-        left: 50% !important;
-        transform: translateX(-50%) !important;
+        bottom: 80px !important;
         width: 80% !important;
         text-align: center;
     }
