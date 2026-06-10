@@ -767,6 +767,7 @@
                 <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('faq'); toggleDropdown();">よくある質問</button></li>
                 <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('report'); toggleDropdown();">通報機能</button></li>
                 <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('casino'); toggleDropdown();">カジノ</li>
+                <li><button class="nav-btn" onclick="switchPage('stats'); toggleDropdown();"><i class="fas fa-chart-line"></i> 統計検索</button></li>
             </ul>
         </li>
     </ul>
@@ -1241,6 +1242,31 @@
     </div>
 </div>
     </section>
+    <section id="stats" class="page-section">
+    <div class="content-container">
+        <div class="page-header" style="text-align: center; margin-bottom: 30px;">
+            <span class="page-tag">STATS</span>
+            <h2 class="page-title">プレイヤー統計検索</h2>
+            <p class="page-subtitle">IDを入力してサーバー内の実績を確認</p>
+        </div>
+
+        <div class="card" style="background: white; padding: 30px; border-radius: 24px; border: 1px solid var(--card-border); max-width: 400px; margin: 0 auto; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);">
+            <input type="text" id="username" placeholder="ゲーマーIDを入力" style="width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd; box-sizing: border-box;">
+            <button id="search-btn" class="nav-btn" style="width: 100%; padding: 12px;" onclick="search()">統計データを取得</button>
+            <div id="error-box" style="color: #ef4444; margin-top: 15px; display: none; font-weight: bold;"></div>
+
+            <div id="result" class="result" style="margin-top: 25px; display: none; text-align: left;">
+                <h3 id="res-name" style="border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 15px; color: var(--primary);">Name</h3>
+                <div class="item" style="display: flex; justify-content: space-between; padding: 10px 0;"><span>プレイヤーキル</span> <span id="pk" style="font-weight:bold;">0</span></div>
+                <div class="item" style="display: flex; justify-content: space-between; padding: 10px 0;"><span>モブキル</span> <span id="mk" style="font-weight:bold;">0</span></div>
+                <div class="item" style="display: flex; justify-content: space-between; padding: 10px 0;"><span>デス数</span> <span id="deaths" style="font-weight:bold;">0</span></div>
+                <div class="item" style="display: flex; justify-content: space-between; padding: 10px 0;"><span>所持金</span> <span id="money" style="font-weight:bold;">$0</span></div>
+                <div class="item" style="display: flex; justify-content: space-between; padding: 10px 0;"><span>所属町名</span> <span id="town-name" style="font-weight:bold;">未所属</span></div>
+                <div class="item" style="display: flex; justify-content: space-between; padding: 10px 0;"><span>合計滞在時間</span> <span id="playtime" style="font-weight:bold;">0時間0分</span></div>
+            </div>
+        </div>
+    </div>
+</section>
     <div class="content-container" style="padding-top: 0;">
         <div class="discord-box" data-aos="zoom-in-up" data-aos-duration="1200">
             <span class="page-tag">official discord</span>
@@ -1342,6 +1368,62 @@ function switchPage(pageId) {
                 }, 5000);
             }
         }
+    async function search() {
+    const name = document.getElementById('username').value.trim();
+    const resDiv = document.getElementById('result');
+    const errorBox = document.getElementById('error-box');
+    const btn = document.getElementById('search-btn');
+    if (!name) return;
+    
+    errorBox.style.display = 'none';
+    resDiv.style.display = 'none';
+    btn.disabled = true;
+    btn.innerText = "照会中...";
+    
+    try {
+        const apiUrl = `http://VIVA-mc.net:25566/v1/player?player=${name}`;
+        const sRes = await fetch(apiUrl);
+        if (!sRes.ok) throw new Error("データが見つかりません。");
+        
+        const rawText = await sRes.text();
+        const data = JSON.parse(rawText);
+
+        document.getElementById('res-name').innerText = name;
+        const killData = data.kill_data || {};
+        document.getElementById('pk').innerText = (killData.player_kills_total ?? 0).toLocaleString();
+        document.getElementById('mk').innerText = (killData.mob_kills_total ?? 0).toLocaleString();
+        document.getElementById('deaths').innerText = (killData.deaths_total ?? 0).toLocaleString();
+
+        // 抽出ロジック（所持金・町名・時間）
+        const balanceIdx = rawText.indexOf('"name":"balance"');
+        if (balanceIdx !== -1) {
+            const snippet = rawText.substring(balanceIdx, balanceIdx + 250);
+            const val = snippet.match(/"value"\s*:\s*([^,}]+)/);
+            document.getElementById('money').innerText = val ? `$${parseFloat(val[1].replace(/"/g, '')).toLocaleString()}` : "$0";
+        }
+
+        const landsIdx = rawText.indexOf('"tableName":"lands"');
+        if (landsIdx !== -1) {
+            const snippet = rawText.substring(landsIdx, landsIdx + 400);
+            const rowsMatch = snippet.match(/"value"\s*:\s*"([^"]+)"/);
+            document.getElementById('town-name').innerText = rowsMatch ? rowsMatch[1] : "未所属";
+        }
+
+        const timeMatch = rawText.match(/"active_playtime"\s*:\s*([0-9.]+)/);
+        if (timeMatch) {
+            const mins = Math.floor(parseInt(timeMatch[1]) / 60000);
+            document.getElementById('playtime').innerText = `${Math.floor(mins/60)}時間 ${mins%60}分`;
+        }
+
+        resDiv.style.display = 'block';
+    } catch (e) {
+        errorBox.innerText = "エラー: サーバーとの通信に失敗しました。";
+        errorBox.style.display = 'block';
+    } finally {
+        btn.disabled = false;
+        btn.innerText = "統計データを取得";
+    }
+}
 </script>
 </body>
 </html>
