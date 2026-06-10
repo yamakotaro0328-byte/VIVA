@@ -1381,7 +1381,7 @@ function switchPage(pageId) {
     btn.innerText = "照会中...";
     
     try {
-        const apiUrl = `http://VIVA-mc.net:25566/v1/player?player=${name}`;
+        const apiUrl = `/api/get-stats?player=${name}`;
         const sRes = await fetch(apiUrl);
         if (!sRes.ok) throw new Error("データが見つかりません。");
         
