@@ -758,7 +758,7 @@
             <li><button class="nav-btn active" onclick="switchPage('home')">ホーム</button></li>
             <li><button class="nav-btn" onclick="switchPage('system')">国家システム</button></li>
             <li><button class="nav-btn" onclick="switchPage('nations')">国家一覧</button></li>
-            <li><button class="nav-btn" onclick="switchPage('guide')">ルール・参加方法</button></li>
+            <li><button class="nav-btn" onclick="switchPage('guide')">ルール</button></li>
             
 
 <li class="dropdown" style="position: relative;">
@@ -769,6 +769,7 @@
                 <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('casino'); toggleDropdown();">カジノ</li>
                 <li><button class="nav-btn" stype="width: 100%; text-align: left;" onclick="switchPage('stats'); toggleDropdown();"><i class="fas fa-chart-line"></i> 統計検索</button></li>
                 <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('pack'); toggleDropdown();">リソースパック</li>
+                <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('join-guide'); toggleDropdown();">参加しよう!!</li>
             </ul>
         </li>
     </ul>
@@ -1266,6 +1267,44 @@
     </div>
 </div>
     </section>
+    <section id="join-guide" class="page-section">
+    <div class="content-container">
+        <div class="page-header">
+            <span class="page-tag">Getting Started</span>
+            <h2 class="page-title">参加方法・接続情報</h2>
+            <p class="page-subtitle">VIVA-MCの世界へようこそ。接続手順と仕様を記載しています。</p>
+        </div>
+
+        <div class="guide-wrapper" style="margin-bottom: 60px;">
+            <h3 style="margin-bottom: 25px;"><i class="fa-solid fa-play" style="color: var(--primary);"></i> サーバーへの参加手順</h3>
+            <div class="guide-step" style="background: #fff; padding: 20px; border-left: 5px solid var(--primary); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                <h4 style="margin: 0 0 10px 0;">STEP 1: バージョンの確認</h4>
+                <p>Minecraft Java版または統合版（Bedrock）で参加可能です。最新の安定版バージョンをご利用ください。</p>
+            </div>
+            <div class="guide-step" style="background: #fff; padding: 20px; border-left: 5px solid var(--primary); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); margin-bottom: 15px;">
+                <h4 style="margin: 0 0 10px 0;">STEP 2: サーバーアドレスの追加</h4>
+                <p>マルチプレイ画面で「サーバー追加」を選択し、以下の情報を入力してください。</p>
+            </div>
+        </div>
+
+        <div class="system-grid">
+            <div class="system-card" style="background: #f1f5f9; padding: 20px; border-radius: 12px;">
+                <h3 class="card-title"><i class="fa-solid fa-network-wired"></i> 接続先情報</h3>
+                <ul style="list-style: none; padding: 0; margin-top: 15px; color: var(--text-muted);">
+                    <li><strong>IP:</strong> viva-mc.net</li>
+                    <li><strong>Java Port:</strong> 25565</li>
+                    <li><strong>統合版(BE) Port:</strong> 19132</li>
+                </ul>
+            </div>
+            <div class="system-card" style="background: #f1f5f9; padding: 20px; border-radius: 12px;">
+                <h3 class="card-title"><i class="fa-solid fa-server"></i> 技術環境</h3>
+                <p class="card-desc" style="font-size: 0.9rem;">統合版クライアントからの接続は、専用のプロキシ経由で最適化されています。安定した接続のため、インターネット環境を確認してください。</p>
+            </div>
+        </div>
+
+      
+    </div>
+</section>
     <section id="stats" class="page-section">
     <div class="content-container">
         <div class="page-header" style="text-align: center; margin-bottom: 30px;">
