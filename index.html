@@ -735,6 +735,35 @@
         text-align: center;
     }
 }
+/* 接続履歴専用スタイル */
+.timeline {
+    margin-top: 15px;
+    position: relative;
+    padding-left: 20px;
+    border-left: 2px solid #e2e8f0;
+    max-height: 450px;
+    overflow-y: auto;
+    text-align: left;
+}
+.timeline-item { position: relative; margin-bottom: 20px; }
+.timeline-item::before {
+    content: ""; position: absolute; left: -27px; top: 4px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #2563eb; border: 2px solid white;
+}
+.timeline-item.online::before {
+    background: #10b981; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+.player-head { width: 24px; height: 24px; border-radius: 4px; vertical-align: middle; margin-right: 8px; }
+.player-name { font-weight: 700; color: #1e293b; }
+.status-badge { font-size: 10px; padding: 2px 8px; border-radius: 999px; font-weight: 700; margin-left: 6px; }
+.status-badge.in { background: #dbeafe; color: #1e40af; }
+.status-badge.out { background: #f1f5f9; color: #475569; }
+.time-text { font-size: 12px; color: #64748b; margin-top: 2px; }
+.duration { font-size: 11px; color: #94a3b8; margin-left: 8px; }
+.loading, .error { text-align: center; color: #64748b; font-size: 14px; padding: 20px; }
+.error { color: #ef4444; }
+
 </style>
 </head>
 <body>
@@ -769,6 +798,7 @@
                 <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('casino'); toggleDropdown();">カジノ</li>
                 <li><button class="nav-btn" stype="width: 100%; text-align: left;" onclick="switchPage('stats'); toggleDropdown();"><i class="fas fa-chart-line"></i> 統計検索</button></li>
                 <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('pack'); toggleDropdown();">リソースパック</li>
+                <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('history'); toggleDropdown();">接続履歴</li>
             </ul>
         </li>
     </ul>
@@ -790,7 +820,20 @@
 </script>
         </ul>
     </nav>
-
+    <section id="history" class="page-section">
+    <div class="page-header">
+        <span class="page-tag">Live Log</span>
+        <h2 class="page-title">接続履歴</h2>
+    </div>
+    <div class="card" style="max-width: 600px; margin: 0 auto;">
+        <div id="history-container">
+            <div class="loading">読み込み中...</div>
+        </div>
+        <div class="legend" style="text-align: center; margin-top: 15px; font-size: 11px; color: #64748b;">
+            ● 接続 (現在) / ○ 切断 (過去)
+        </div>
+    </div>
+</section>
     <section id="home" class="page-section active">
         <div class="hero">
             <div class="page-tag" data-aos="fade-down" data-aos-duration="1200">NATION-BUILDING SIMULATION</div>
@@ -1441,6 +1484,7 @@ function switchPage(pageId) {
         btn.innerText = "統計データを取得";
     }
 }
+
 </script>
 </body>
 </html>
