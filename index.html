@@ -407,6 +407,36 @@
             vertical-align: middle;
         }
 
+        .address-notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            margin-bottom: 30px;
+        }
+        .address-notice i { color: var(--danger); font-size: 1.3rem; margin-top: 2px; }
+        .address-list { display: flex; flex-direction: column; gap: 16px; }
+        .address-card {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: var(--radius-lg);
+            padding: 20px 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .address-date { font-weight: 800; color: var(--primary); min-width: 110px; }
+        .address-ip { font-family: monospace; font-size: 1.05rem; font-weight: 700; flex: 1; }
+        .address-status { padding: 4px 14px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; color: #fff; }
+        .address-status.open { background: #22c55e; }
+        .address-status.closed { background: #ef4444; }
+
+
         /* =====================================
            PAGE: SYSTEM (国家システム)
         ===================================== */
@@ -796,7 +826,7 @@
         </div>
         <ul class="nav-links">
             <li><button class="nav-btn active" onclick="switchPage('home')">ホーム</button></li>
-            <li><button class="nav-btn" onclick="switchPage('system')">国家システム</button></li>
+            <li><button class="nav-btn" onclick="switchPage('IP')">臨時アドレス</button></li>
             <li><button class="nav-btn" onclick="switchPage('join-guide')">参加しよう!!</button></li>
             <li><button class="nav-btn" onclick="switchPage('guide')">ルール</button></li>
             
@@ -806,7 +836,7 @@
             <ul id="dropdownMenu" class="dropdown-menu" style="display: none; position: absolute; top: 100%; right: 0; background: white; list-style: none; padding: 10px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 150px; z-index: 100;">
                 <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('faq'); toggleDropdown();">よくある質問</button></li>
                 <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('report'); toggleDropdown();">通報機能</button></li>
-        
+                <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('system'); toggleDropdown();">国家システム</button></li>
                 <li><button class="nav-btn" stype="width: 100%; text-align: left;" onclick="switchPage('stats'); toggleDropdown();"><i class="fas fa-chart-line"></i> 統計検索</button></li>
                 <li><button class="nav-btn" style="width: 100%; text-align: left;" onclick="switchPage('pack'); toggleDropdown();">リソースパック</li>
                 
@@ -1232,6 +1262,30 @@
                     <p class="card-desc">ダウンロードは<a href="https://modrinth.com/resourcepack/bjplayingcards">こちらをクリック！！</a></p>
     </div>
 </section>
+
+    <section id="temp-address" class="page-section">
+        <div class="content-container" style="text-align: center;">
+            <span class="page-tag">Temporary Address</span>
+            <h2 class="page-title">臨時アドレス</h2>
+        </div>
+        <div class="content-container">
+            <div class="address-notice">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p>ニュース欄にてアドレス変更とある場合、こちらの一覧の一番上(最新の日付)のアドレスからサーバーへ接続してください。こちらのアドレスは一時的なものであり、変更する場合があります。詳しくはDiscordをご覧ください</p>
+            </div>
+
+            <!-- 新しい日付を追加するときは、この address-card ブロックをコピーして一番上に追加してください -->
+            <div class="address-list">
+                <div class="address-card">
+                    <div class="address-date">2026.8/13</div>
+                    <div class="address-ip">準備中...</div>
+                    <span class="address-status closed">準備中...</span>
+                </div>
+            </div>
+            <!-- サーバーを閉じる時は class="address-status closed" にして文字も「閉鎖中」に変更 -->
+        </div>
+    </section>
+
     <section id="faq" class="page-section">
         <div class="page-header">
             <span class="page-tag">Questions & Answers</span>
