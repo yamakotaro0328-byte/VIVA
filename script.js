@@ -131,6 +131,38 @@
     setInterval(tick, 1000);
   }
 
+  /* ---------- スクロールで板をふわっと出す ----------
+     ここが動かなかった場合、html に .anim が付かないので
+     CSS側の指定も一切効かず、中身は最初から見えたままになります。 */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduce && 'IntersectionObserver' in window) {
+    var targets = document.querySelectorAll(
+      '.news li, .duo .col, .faq, .finder, .log, .reset, .table-wrap, .pillars > div, .row-item, .steps > li'
+    );
+    if (targets.length) {
+      document.documentElement.classList.add('anim');
+      targets.forEach(function (el) { el.classList.add('reveal'); });
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e, i) {
+          if (!e.isIntersecting) return;
+          // 少しずつ遅らせて、順に出す
+          var d = Math.min(i, 4) * 60;
+          setTimeout(function () { e.target.classList.add('shown'); }, d);
+          io.unobserve(e.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
+
+      targets.forEach(function (el) { io.observe(el); });
+
+      // 保険：3秒たっても出ていないものは、強制的に表示する
+      setTimeout(function () {
+        targets.forEach(function (el) { el.classList.add('shown'); });
+      }, 3000);
+    }
+  }
+
   /* ---------- プレイヤー統計 ---------- */
   var statBtn = document.getElementById('statBtn');
   if (statBtn) {
