@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>よくある質問 | VIVA-MC</title>
+<meta name="description" content="参加費、対応機種、初心者向けの案内など、VIVA-MCによく寄せられる質問と答え。">
+<meta name="theme-color" content="#2E1B0C">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VIVA-MC">
+<meta property="og:title" content="よくある質問 | VIVA-MC">
+<meta property="og:description" content="参加費、対応機種、初心者向けの案内など、VIVA-MCによく寄せられる質問と答え。">
+<meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="server-icon.png">
+<link rel="apple-touch-icon" href="server-icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=DotGothic16&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="server-icon.png" alt="">
+    <span class="brand-name mincho">VIVA-MC</span>
+  </a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="sidebar">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>メニュー
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <img src="server-icon.png" alt="">
+      <span>
+        <span class="brand-name mincho">VIVA-MC</span><br>
+        <span class="brand-sub dot">NATION BUILDING</span>
+      </span>
+    </a>
+
+    <nav class="side-nav" aria-label="サイト内">
+      <ul>
+        <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>ホーム</a></li>
+        <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>参加する</a></li>
+        <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
+        <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
+        <li><a href="faq.html" aria-current="page"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
+        <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>臨時アドレス</a></li>
+      </ul>
+    </nav>
+
+    <div class="side-server">
+      <button type="button" class="ip-copy" data-copy="viva-mc.net">
+        <span>
+          <span class="lab dot">SERVER ADDRESS</span>
+          <span class="val">viva-mc.net</span>
+        </span>
+        <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+        <span class="sr-only">サーバーアドレスをコピー</span>
+      </button>
+      <div class="ports dot">JAVA 25565 ／ BEDROCK 19132</div>
+      <div class="side-status">
+        <span class="dot-live" id="liveDot"></span>
+        <span id="liveMsg">状況を確認中...</span>
+      </div>
+      <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-discord" aria-hidden="true"></i>Discordに参加
+      </a>
+    </div>
+
+    <div class="side-foot">&copy; 2026 VIVA-MC</div>
+  </aside>
+
+  <main class="main" id="main" tabindex="-1">
+    <header class="page-head">
+      <div class="wrap">
+        <div class="num mincho">04</div>
+        <div>
+          <h1 class="mincho">よくある質問</h1>
+          <p>参加前によく聞かれることをまとめました。</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section>
+        <div class="faq">
+          <div>
+            <button type="button" aria-expanded="false">
+              <span>サーバーへの参加に料金はかかりますか？</span>
+              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="ans"><p>いいえ、完全無料で遊べます。課金要素はありません。</p></div>
+          </div>
+          <div>
+            <button type="button" aria-expanded="false">
+              <span>Switchやスマホ、iPadからでも入れますか？</span>
+              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="ans"><p>はい。クロスプレイに対応しているので、統合版が動く機種ならどれでも参加できます。統合版のポートは 19132 です。</p></div>
+          </div>
+          <div>
+            <button type="button" aria-expanded="false">
+              <span>初心者ですが大丈夫でしょうか？</span>
+              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="ans"><p>大丈夫です。いきなり国をつくらず、まずは既にある町に参加してみてください。分からないことはDiscordで聞けます。</p></div>
+          </div>
+          <div>
+            <button type="button" aria-expanded="false">
+              <span>Webマップはありますか？</span>
+              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="ans"><p>あります。<a href="http://viva-mc.net:80" target="_blank" rel="noopener noreferrer">viva-mc.net:80</a> から見られます。</p></div>
+          </div>
+          <div>
+            <button type="button" aria-expanded="false">
+              <span>町に保護機能はありますか？</span>
+              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="ans"><p>はい。町はプラグインによって常に保護されています。無断で壊されることはありません。</p></div>
+          </div>
+          <div>
+            <button type="button" aria-expanded="false">
+              <span>いつものアドレスで入れなくなりました。</span>
+              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </button>
+            <div class="ans"><p>運営の都合で一時的に接続先を変えている場合があります。<a href="address.html">臨時アドレス</a>の一番上（最新の日付）を確認してください。</p></div>
+          </div>
+        </div>
+        <p class="sec-note" style="margin-top:22px">ここに無いことは、Discordで気軽に聞いてください。</p>
+        <a class="btn fill" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" aria-hidden="true"></i>Discordで質問する</a>
+      </section>
+    </div>
+
+    <p class="foot">&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
+  </main>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>あそぶ | VIVA-MC</title>
+<meta name="description" content="カジノ、リソースパック、プレイヤー統計の検索、接続履歴。VIVA-MCの遊び方いろいろ。">
+<meta name="theme-color" content="#2E1B0C">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VIVA-MC">
+<meta property="og:title" content="あそぶ | VIVA-MC">
+<meta property="og:description" content="カジノ、リソースパック、プレイヤー統計の検索、接続履歴。VIVA-MCの遊び方いろいろ。">
+<meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="server-icon.png">
+<link rel="apple-touch-icon" href="server-icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=DotGothic16&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="server-icon.png" alt="">
+    <span class="brand-name mincho">VIVA-MC</span>
+  </a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="sidebar">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>メニュー
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <img src="server-icon.png" alt="">
+      <span>
+        <span class="brand-name mincho">VIVA-MC</span><br>
+        <span class="brand-sub dot">NATION BUILDING</span>
+      </span>
+    </a>
+
+    <nav class="side-nav" aria-label="サイト内">
+      <ul>
+        <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>ホーム</a></li>
+        <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>参加する</a></li>
+        <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
+        <li><a href="play.html" aria-current="page"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
+        <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
+        <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>臨時アドレス</a></li>
+      </ul>
+    </nav>
+
+    <div class="side-server">
+      <button type="button" class="ip-copy" data-copy="viva-mc.net">
+        <span>
+          <span class="lab dot">SERVER ADDRESS</span>
+          <span class="val">viva-mc.net</span>
+        </span>
+        <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+        <span class="sr-only">サーバーアドレスをコピー</span>
+      </button>
+      <div class="ports dot">JAVA 25565 ／ BEDROCK 19132</div>
+      <div class="side-status">
+        <span class="dot-live" id="liveDot"></span>
+        <span id="liveMsg">状況を確認中...</span>
+      </div>
+      <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-discord" aria-hidden="true"></i>Discordに参加
+      </a>
+    </div>
+
+    <div class="side-foot">&copy; 2026 VIVA-MC</div>
+  </aside>
+
+  <main class="main" id="main" tabindex="-1">
+    <header class="page-head">
+      <div class="wrap">
+        <div class="num mincho">03</div>
+        <div>
+          <h1 class="mincho">あそぶ</h1>
+          <p>国づくり以外の楽しみ方。カジノ、リソースパック、記録の確認まで。</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section>
+        <h2 class="sec mincho">カジノ</h2>
+        <p class="sec-note">ロビー中央のポータルから市場へ。少し歩くとカジノがあります。</p>
+        <div class="rows">
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-diamond" aria-hidden="true"></i></div>
+            <div>
+              <h3>ブラックジャック</h3>
+              <ol>
+                <li>ブラックジャックの机の近くで <code>/bj join</code></li>
+                <li><code>/bj bet 金額</code> でチップを賭ける</li>
+                <li><code>/bj hit</code> と <code>/bj stand</code> を駆使して、あとは勝つのみ</li>
+              </ol>
+              <p style="margin-top:8px">※ 遊ぶには推奨リソースパックが必要です（下記）。</p>
+            </div>
+          </div>
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-circle-notch" aria-hidden="true"></i></div>
+            <div>
+              <h3>ルーレット</h3>
+              <ol>
+                <li>ルーレット台をクリックして座る</li>
+                <li>チップを購入し、WASDで置き場所を移動（チップを見ていないと動きません）</li>
+                <li>スペースキーで追加購入。置き終わったらスペースキーで確定</li>
+                <li>全員が確定するとルーレットが回ります</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec mincho">リソースパック</h2>
+        <p class="sec-note">入れると遊べる幅が広がります。</p>
+        <div class="rows">
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-box" aria-hidden="true"></i></div>
+            <div>
+              <h3>公式リソースパック <span class="tag honey">準備中</span></h3>
+              <p>制作中です。完成したらお知らせでご案内します。</p>
+            </div>
+          </div>
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-clone" aria-hidden="true"></i></div>
+            <div>
+              <h3>推奨：Playing Cards <span class="tag moss">配布中</span></h3>
+              <p>トランプの見た目が変わり、ブラックジャックが遊べるようになります。</p>
+              <p><a href="https://modrinth.com/resourcepack/bjplayingcards" target="_blank" rel="noopener noreferrer">Modrinthからダウンロード</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec mincho">プレイヤー統計</h2>
+        <p class="sec-note">ゲーマーIDを入れると、サーバー内の記録を確認できます。</p>
+        <div class="finder">
+          <div class="field">
+            <label class="sr-only" for="statName">ゲーマーID</label>
+            <input type="text" id="statName" placeholder="ゲーマーIDを入力" autocomplete="off">
+            <button type="button" class="btn fill" id="statBtn">統計を取得</button>
+          </div>
+          <p id="statErr"></p>
+          <div id="statOut">
+            <h3 class="mincho" id="statWho">Name</h3>
+            <table class="spec">
+              <tbody>
+                <tr><th>プレイヤーキル</th><td id="statPk">0</td></tr>
+                <tr><th>モブキル</th><td id="statMk">0</td></tr>
+                <tr><th>デス数</th><td id="statDe">0</td></tr>
+                <tr><th>所持金</th><td id="statMoney">$0</td></tr>
+                <tr><th>所属町名</th><td id="statTown">未所属</td></tr>
+                <tr><th>合計滞在時間</th><td id="statTime">0時間0分</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec mincho">接続履歴 <span class="tag honey">準備中</span></h2>
+        <p class="sec-note">直近の出入りを表示する予定の場所です。</p>
+        <div class="log">
+          <p class="muted">この機能はまだ準備中です。<br>公開できるようになったら、お知らせでご案内します。</p>
+        </div>
+      </section>
+    </div>
+
+    <p class="foot">&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
+  </main>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>
