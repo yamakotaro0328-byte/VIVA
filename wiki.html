@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wiki | VIVA-MC</title>
-<meta name="description" content="VIVA-MCで使うプラグインの使い方。Landsによる土地保護、QuickShopのチェストショップ、村人ショップの開き方。">
+<meta name="description" content="VIVA-MCで使うプラグインの使い方。Jobs Rebornでの稼ぎ方、Landsによる土地保護、QuickShopのチェストショップ、村人ショップの開き方。">
 <meta name="theme-color" content="#2E1B0C">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="Wiki | VIVA-MC">
-<meta property="og:description" content="VIVA-MCで使うプラグインの使い方。Landsによる土地保護、QuickShopのチェストショップ、村人ショップの開き方。">
+<meta property="og:description" content="VIVA-MCで使うプラグインの使い方。Jobs Rebornでの稼ぎ方、Landsによる土地保護、QuickShopのチェストショップ、村人ショップの開き方。">
 <meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="server-icon.png">
@@ -94,23 +94,87 @@
     <div class="wrap">
       <section>
         <h2 class="sec disp">このページについて</h2>
-        <p class="sec-note">サーバーで使うプラグインの操作をまとめています。土地の守り方や、ショップの開き方はここを見てください。</p>
+        <p class="sec-note">サーバーで使うプラグインの操作をまとめています。お金の稼ぎ方、土地の守り方、お店の開き方はここを見てください。</p>
         <div class="pillars">
           <div>
-            <div class="k dot">01 / LAND</div>
+            <div class="k dot">01 / JOBS</div>
+            <h3><a href="#jobs">仕事に就いて稼ぐ</a></h3>
+            <p>Jobs Reborn。まずはここから。</p>
+          </div>
+          <div>
+            <div class="k dot">02 / LAND</div>
             <h3><a href="#lands">土地を守る・国をつくる</a></h3>
             <p>Lands。チャンクの保護から建国まで。</p>
           </div>
           <div>
-            <div class="k dot">02 / SHOP</div>
+            <div class="k dot">03 / SHOP</div>
             <h3><a href="#quickshop">チェストで店を開く</a></h3>
             <p>QuickShop-Hikari。自動販売・買取。</p>
           </div>
           <div>
-            <div class="k dot">03 / TRADE</div>
+            <div class="k dot">04 / TRADE</div>
             <h3><a href="#villager">村人と取引する</a></h3>
             <p>Shopkeepers と Villager Market。</p>
           </div>
+        </div>
+      </section>
+
+      <!-- ===================== Jobs Reborn ===================== -->
+      <section id="jobs">
+        <h2 class="sec disp">Jobs Reborn ― 仕事に就いて稼ぐ</h2>
+        <p class="sec-note">職業に就くと、いつもの行動がそのままお金になります。鉱石を掘る、木を切る、モブを倒す。稼いだ通貨は建国にも、ショップにも、カジノにも使えます。</p>
+
+        <h3 style="margin-bottom:10px">就職までの手順</h3>
+        <ol class="steps" style="margin-bottom:34px">
+          <li>
+            <span class="n disp">1</span>
+            <h3>就職メニューを開く</h3>
+            <p><code>/jobs browse</code> を実行すると、いま就ける職業の一覧が開きます。</p>
+          </li>
+          <li>
+            <span class="n disp">2</span>
+            <h3>職業を選ぶ</h3>
+            <p>自分の遊び方に合った職業をクリックすれば、その仕事に就けます。</p>
+          </li>
+          <li>
+            <span class="n disp">3</span>
+            <h3>働いて、レベルを上げる</h3>
+            <p>職業に応じた行動をすると、自動でお金と経験値が入ります。レベルが上がると、同じ行動でもらえる報酬が増えていきます。</p>
+          </li>
+        </ol>
+
+        <h3 style="margin-bottom:10px">職業の一覧</h3>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th>⛏️ 採掘師（Miner）</th><td>石、丸石、石炭、鉄、ダイヤモンドなどの鉱石を掘る</td></tr>
+              <tr><th>🪓 木こり（Woodcutter）</th><td>原木を切る、苗木を植えて育てる</td></tr>
+              <tr><th>🌾 農家（Farmer）</th><td>小麦や作物、サトウキビの収穫、苗の植え付け</td></tr>
+              <tr><th>⚔️ 狩人（Hunter）</th><td>ゾンビ、スケルトン、クリーパーなどの敵モブを倒す</td></tr>
+              <tr><th>🏗️ 建築家（Builder）</th><td>ブロックを設置する。建築好きにおすすめ</td></tr>
+              <tr><th>🎣 漁師（Fisherman）</th><td>釣竿で魚を釣る</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sec-note" style="margin-top:14px">同時に就ける職業の数には上限があります。</p>
+
+        <h3 style="margin:26px 0 10px">主なコマンド</h3>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/jobs browse</code></th><td>就ける職業の一覧を開く。ここから就職できる</td></tr>
+              <tr><th><code>/jobs join &lt;職業名&gt;</code></th><td>指定した職業に就く</td></tr>
+              <tr><th><code>/jobs leave &lt;職業名&gt;</code></th><td>その職業を辞める</td></tr>
+              <tr><th><code>/jobs stats</code></th><td>いまの職業、レベル、次のレベルまでの経験値を確認する</td></tr>
+              <tr><th><code>/jobs info &lt;職業名&gt;</code></th><td>その職業が「何をすると、いくら稼げるか」を調べる</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" style="margin-top:22px">
+          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+          <div><strong>辞めるときは慎重に。</strong><code>/jobs leave</code> で職業を辞めると、
+          積み上げたその職業のレベルがリセットされることがあります。</div>
         </div>
       </section>
 

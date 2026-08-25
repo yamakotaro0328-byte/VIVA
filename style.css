@@ -403,7 +403,7 @@ h2.sec::before {
 .facts dd { font-size: .72rem; color: var(--ink-2); }
 
 /* 柱（3本）：カードではなく罫線で区切る */
-.pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
 .pillars > div {
     padding: 22px 20px;
     border: 3px solid var(--ink); border-radius: 10px;
