@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wiki | VIVA-MC</title>
-<meta name="description" content="VIVA-MCの遊び方をまとめた案内。コマンド、町と国のつくりかた、経済、戦争と外交。">
+<meta name="description" content="VIVA-MCで使うプラグインの使い方。Landsによる土地保護、QuickShopのチェストショップ、村人ショップの開き方。">
 <meta name="theme-color" content="#2E1B0C">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="Wiki | VIVA-MC">
-<meta property="og:description" content="VIVA-MCの遊び方をまとめた案内。コマンド、町と国のつくりかた、経済、戦争と外交。">
+<meta property="og:description" content="VIVA-MCで使うプラグインの使い方。Landsによる土地保護、QuickShopのチェストショップ、村人ショップの開き方。">
 <meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="server-icon.png">
@@ -86,80 +86,176 @@
         <div class="num disp">07</div>
         <div>
           <h1 class="disp">Wiki</h1>
-          <p>サーバーの仕組みをまとめています。分からないことがあったら、まずここを見てください。</p>
+          <p>プラグインの使い方をまとめています。土地の守り方や、お店の開き方はここを見てください。</p>
         </div>
       </div>
     </header>
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">目次</h2>
-        <p class="sec-note">読みたいところから飛べます。</p>
+        <h2 class="sec disp">このページについて</h2>
+        <p class="sec-note">サーバーで使うプラグインの操作をまとめています。土地の守り方や、ショップの開き方はここを見てください。</p>
         <div class="pillars">
           <div>
-            <div class="k dot">01 / BASIC</div>
-            <h3><a href="#commands">コマンド一覧</a></h3>
-            <p>サーバーで使えるコマンド。</p>
+            <div class="k dot">01 / LAND</div>
+            <h3><a href="#lands">土地を守る・国をつくる</a></h3>
+            <p>Lands。チャンクの保護から建国まで。</p>
           </div>
           <div>
-            <div class="k dot">02 / TOWN</div>
-            <h3><a href="#town">町と国のつくりかた</a></h3>
-            <p>土地の確保から建国まで。</p>
+            <div class="k dot">02 / SHOP</div>
+            <h3><a href="#quickshop">チェストで店を開く</a></h3>
+            <p>QuickShop-Hikari。自動販売・買取。</p>
           </div>
           <div>
-            <div class="k dot">03 / MONEY</div>
-            <h3><a href="#economy">経済のしくみ</a></h3>
-            <p>通貨の稼ぎ方、売買、関税。</p>
+            <div class="k dot">03 / TRADE</div>
+            <h3><a href="#villager">村人と取引する</a></h3>
+            <p>Shopkeepers と Villager Market。</p>
           </div>
         </div>
       </section>
 
-      <section id="commands">
-        <h2 class="sec disp">コマンド一覧</h2>
-        <p class="sec-note">いま、このサイトで案内しているコマンドです。</p>
+      <!-- ===================== Lands ===================== -->
+      <section id="lands">
+        <h2 class="sec disp">Lands ― 土地保護・国システム</h2>
+        <p class="sec-note">自分の土地を守り、町や国を発展させるための、いちばん大事なプラグインです。</p>
+
+        <h3 style="margin-bottom:10px">土地を保護する（買う）</h3>
+        <ol class="steps" style="margin-bottom:34px">
+          <li>
+            <span class="n disp">1</span>
+            <h3>金のクワで地面を叩く</h3>
+            <p>いま自分が立っている<strong>チャンク（16×16マス）</strong>を保護エリアとして購入できます。コマンド <code>/lands claim</code> でも同じことができます。</p>
+          </li>
+          <li>
+            <span class="n disp">2</span>
+            <h3>少しずつ広げる</h3>
+            <p>最初は小さなエリアから始めて、サーバー通貨を払いながら保護エリアを広げていきます。</p>
+          </li>
+          <li>
+            <span class="n disp">3</span>
+            <h3>仲間を招き入れる</h3>
+            <p>他のプレイヤーを自分の土地に招待して、権限を渡せます。<code>/lands trust</code> を使います。</p>
+          </li>
+        </ol>
+
+        <h3 style="margin-bottom:10px">主なコマンド</h3>
         <div class="table-wrap">
           <table class="spec">
             <tbody>
-              <tr><th><code>/report</code>　<code>/r</code></th><td>迷惑なプレイヤーの追放投票を開く（<a href="rules.html">ルール</a>）</td></tr>
-              <tr><th><code>/bj join</code></th><td>ブラックジャックの席に着く</td></tr>
-              <tr><th><code>/bj bet 金額</code></th><td>ブラックジャックでチップを賭ける</td></tr>
-              <tr><th><code>/bj hit</code></th><td>カードをもう1枚引く</td></tr>
-              <tr><th><code>/bj stand</code></th><td>引くのをやめて勝負する</td></tr>
+              <tr><th><code>/lands</code></th><td>メインメニュー（UI画面）を開く。基本の操作はここから</td></tr>
+              <tr><th><code>/lands claim</code></th><td>いま立っているチャンクを自分の土地として保護（購入）する</td></tr>
+              <tr><th><code>/lands unclaim</code></th><td>いま立っているチャンクの保護を解除する</td></tr>
+              <tr><th><code>/lands trust &lt;プレイヤー名&gt;</code></th><td>指定したプレイヤーを自分の土地のメンバーとして追加する</td></tr>
+              <tr><th><code>/lands untrust &lt;プレイヤー名&gt;</code></th><td>指定したプレイヤーの権限を取り消す</td></tr>
+              <tr><th><code>/lands menu</code></th><td>権限設定（建築の可否、チェストを開けるか等）を細かく変える</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="sec-note" style="margin-top:16px">
-          <span class="tag honey">書きかけ</span>
-          ほかにも使えるコマンドがあれば教えてください。上の表に行を足していきます。
-        </p>
       </section>
 
-      <!-- ▼▼ ここから下は、まだ中身が入っていません ▼▼
-           いまの Wiki（viva-mc.playing.wiki）の文章をそのまま貼ってもらえれば、
-           このページの形に整えて入れます。 -->
+      <!-- ===================== QuickShop ===================== -->
+      <section id="quickshop">
+        <h2 class="sec disp">QuickShop-Hikari ― チェストショップ</h2>
+        <p class="sec-note">チェストを置くだけで、誰でも自動販売のお店を開けます。</p>
 
-      <section id="town">
-        <h2 class="sec disp">町と国のつくりかた <span class="tag honey">書きかけ</span></h2>
-        <p class="sec-note">（土地の確保のしかた、町の作り方、建国の条件などを書いてください）</p>
+        <div class="duo" style="margin-bottom:30px">
+          <div class="col step-a">
+            <h3><i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i>アイテムを売る</h3>
+            <ul>
+              <li>チェストを設置する</li>
+              <li>売りたいアイテムを手に持った状態で、チェストを<strong>左クリック</strong></li>
+              <li>チャット欄に「1個あたりの価格」を入力する</li>
+              <li>チェストに商品を入れておけば、他の人が自動で買えるようになる</li>
+            </ul>
+          </div>
+          <div class="col step-b">
+            <h3><i class="fa-solid fa-arrow-down-to-bracket" aria-hidden="true"></i>アイテムを買い取る</h3>
+            <ul>
+              <li>作ったショップのチェストを向いて <code>/qs mode buy</code></li>
+              <li>価格はそのままで「買い取るお店」に変わる</li>
+              <li><strong>チェストの中にお金を入れておく必要があります</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="margin-bottom:10px">主なコマンド</h3>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/qs price &lt;価格&gt;</code></th><td>チェストショップを向いて実行。商品の単価を変える</td></tr>
+              <tr><th><code>/qs mode buy</code></th><td>買取モードに変える</td></tr>
+              <tr><th><code>/qs mode sell</code></th><td>販売モードに変える</td></tr>
+              <tr><th><code>/qs remove</code></th><td>チェストショップを向いて実行。お店を撤去する</td></tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
-      <section id="economy">
-        <h2 class="sec disp">経済のしくみ <span class="tag honey">書きかけ</span></h2>
-        <p class="sec-note">（通貨の名前、稼ぎ方、ショップの使い方、関税の設定などを書いてください）</p>
+      <!-- ===================== 村人系 ===================== -->
+      <section id="villager">
+        <h2 class="sec disp">村人ショップ</h2>
+        <p class="sec-note">見た目が村人のお店です。2種類あります。</p>
+
+        <div class="callout">
+          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+          <div>どちらも<strong>専用のアイテムが必要です。</strong>ロビーで販売しているので、先に買っておいてください。</div>
+        </div>
+
+        <div class="rows">
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
+            <div>
+              <h3>Shopkeepers ― 物々交換のお店</h3>
+              <p>アイテムとアイテムを交換するお店を作れます。</p>
+              <ol>
+                <li>ロビーで買った専用アイテムを使って、村人を出現させる</li>
+                <li>その村人を<strong>スニーク（シフト）しながら右クリック</strong>して管理メニューを開く</li>
+                <li>「必要なアイテム（代金）」と「渡すアイテム（商品）」を設定すれば完成</li>
+              </ol>
+              <p style="margin-top:8px">撤去するときは <code>/shopkeeper remove</code> を使います。</p>
+            </div>
+          </div>
+
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-store" aria-hidden="true"></i></div>
+            <div>
+              <h3>Villager Market ― 村人市場</h3>
+              <p>自分専用の村人ショップを借りて出店できます。</p>
+              <ol>
+                <li>ロビーで買った専用アイテムで市場の村人を設置する（空いている村人を借りることもできます）</li>
+                <li>村人を右クリックして専用メニューを開く</li>
+                <li>売りたいアイテムと価格を設定して出店する</li>
+              </ol>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <section id="war">
-        <h2 class="sec disp">戦争と外交 <span class="tag honey">書きかけ</span></h2>
-        <p class="sec-note">（宣戦布告の手順、領土戦のルール、条約や同盟の結び方などを書いてください）</p>
+      <!-- ===================== 他ページへの案内 ===================== -->
+      <section>
+        <h2 class="sec disp">ほかの案内</h2>
+        <p class="sec-note">サーバーの規約や参加方法は、それぞれのページにまとめています。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><a href="join.html">参加する</a></th><td>接続先、参加の手順、国家運営システムの概要</td></tr>
+              <tr><th><a href="rules.html">ルール</a></th><td>禁止されている行為と、違反を見つけたときの通報のしかた</td></tr>
+              <tr><th><a href="play.html">あそぶ</a></th><td>カジノの遊び方、リソースパック、プレイヤー統計</td></tr>
+              <tr><th><a href="resource.html">資源ワールド</a></th><td>リセットの周期と、掘るときの注意</td></tr>
+              <tr><th><a href="faq.html">よくある質問</a></th><td>参加費、対応機種、初心者向けの案内</td></tr>
+              <tr><th>公式Webマップ（Dynmap）</th><td>領土や都市の様子をブラウザから見られます　<a href="http://viva-mc.net/" target="_blank" rel="noopener noreferrer">viva-mc.net</a></td></tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       <section>
-        <h2 class="sec disp">まだ載っていないこと</h2>
-        <div class="callout">
+        <h2 class="sec disp">載っていないことは</h2>
+        <div class="callout" style="background:#FDF0DC;border-left-color:var(--ember)">
           <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-          <div>このWikiは作りかけです。載っていないことは
+          <div>ここに無いことは
           <a href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">Discord</a>
-          で聞いてください。よく聞かれることは、こちらに追記していきます。</div>
+          で聞いてください。よく聞かれることは、このページに追記していきます。</div>
         </div>
       </section>
     </div>
