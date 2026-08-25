@@ -22,18 +22,79 @@
     --shadow:     4px 4px 0 rgba(46, 27, 12, 0.9);
     --shadow-sm:  3px 3px 0 rgba(46, 27, 12, 0.16);
 
-    /* 木の板の質感。色味を変えたいときはここだけ直せば全体に効きます */
-    --wood:
+    /* ===== 木の種類 =====
+       Minecraftの木材に合わせた6種類。使い方は下の「木を貼り替える」を参照。
+       --wood が既定（オーク）。要素に .oak / .birch / .spruce / .acacia /
+       .cherry / .dark-oak を付けると、その木に変わります。 */
+
+    /* オーク：明るい黄みの木。既定 */
+    --wood-oak:
         repeating-linear-gradient(90deg, rgba(120, 78, 40, .10) 0 1px, transparent 1px 6px),
         repeating-linear-gradient(90deg, rgba(120, 78, 40, .05) 0 3px, transparent 3px 23px),
         repeating-linear-gradient(0deg,  rgba(140, 96, 52, .05) 0 1px, transparent 1px 29px),
         linear-gradient(175deg, #FFEDCD 0%, #FBE0B7 55%, #F4D5A6 100%);
+
+    /* シラカバ：いちばん白っぽい。文字が多いところ向き */
+    --wood-birch:
+        repeating-linear-gradient(90deg, rgba(150, 118, 74, .08) 0 1px, transparent 1px 7px),
+        repeating-linear-gradient(90deg, rgba(150, 118, 74, .04) 0 2px, transparent 2px 25px),
+        repeating-linear-gradient(0deg,  rgba(160, 130, 88, .04) 0 1px, transparent 1px 31px),
+        linear-gradient(175deg, #FFF8E9 0%, #F8ECD5 60%, #F1E2C4 100%);
+
+    /* マツ：落ち着いた中間の茶 */
+    --wood-spruce:
+        repeating-linear-gradient(90deg, rgba(92, 58, 26, .13) 0 1px, transparent 1px 6px),
+        repeating-linear-gradient(90deg, rgba(92, 58, 26, .06) 0 3px, transparent 3px 21px),
+        repeating-linear-gradient(0deg,  rgba(110, 72, 36, .06) 0 1px, transparent 1px 27px),
+        linear-gradient(175deg, #EBCCA1 0%, #E0BB89 55%, #D6AC77 100%);
+
+    /* アカシア：赤みの強いオレンジ。目立たせたいところに */
+    --wood-acacia:
+        repeating-linear-gradient(90deg, rgba(150, 78, 26, .13) 0 1px, transparent 1px 6px),
+        repeating-linear-gradient(90deg, rgba(150, 78, 26, .06) 0 3px, transparent 3px 22px),
+        repeating-linear-gradient(0deg,  rgba(165, 92, 36, .05) 0 1px, transparent 1px 28px),
+        linear-gradient(175deg, #FCDCB2 0%, #F6C68C 55%, #EFB273 100%);
+
+    /* サクラ：淡いピンク */
+    --wood-cherry:
+        repeating-linear-gradient(90deg, rgba(150, 88, 84, .10) 0 1px, transparent 1px 6px),
+        repeating-linear-gradient(90deg, rgba(150, 88, 84, .05) 0 3px, transparent 3px 24px),
+        repeating-linear-gradient(0deg,  rgba(160, 100, 96, .04) 0 1px, transparent 1px 30px),
+        linear-gradient(175deg, #FDE4DE 0%, #F7CFC7 55%, #F0BDB4 100%);
+
+    /* ダークオーク：濃い茶。文字は自動で明るくなります */
+    --wood-dark-oak:
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, .20) 0 1px, transparent 1px 6px),
+        repeating-linear-gradient(90deg, rgba(0, 0, 0, .10) 0 3px, transparent 3px 22px),
+        repeating-linear-gradient(0deg,  rgba(0, 0, 0, .08) 0 1px, transparent 1px 28px),
+        linear-gradient(175deg, #7A5432 0%, #654227 55%, #543620 100%);
+
+    /* 既定の木（サイト全体で使われるもの） */
+    --wood: var(--wood-oak);
+
     /* 少し濃い板（見出し帯などに） */
     --wood-2:
         repeating-linear-gradient(90deg, rgba(104, 66, 32, .12) 0 1px, transparent 1px 6px),
         repeating-linear-gradient(0deg,  rgba(120, 80, 44, .06) 0 1px, transparent 1px 27px),
         linear-gradient(175deg, #F7DDB2 0%, #EFCF9C 100%);
 }
+
+/* ===== 木を貼り替える =====
+   板になっている要素（.news li / .duo .col / .faq / .finder / .log /
+   .reset / .table-wrap / .pillars > div など）に、下のどれかを足すだけです。
+   例）<div class="reset spruce">  <ul class="news birch">            */
+.oak,      .oak > *:not(h3)      { --wood: var(--wood-oak); }
+.birch,    .birch > *:not(h3)    { --wood: var(--wood-birch); }
+.spruce,   .spruce > *:not(h3)   { --wood: var(--wood-spruce); }
+.acacia,   .acacia > *:not(h3)   { --wood: var(--wood-acacia); }
+.cherry,   .cherry > *:not(h3)   { --wood: var(--wood-cherry); }
+.dark-oak, .dark-oak > *:not(h3) { --wood: var(--wood-dark-oak); }
+
+/* ダークオークだけ、上に乗る文字を明るくする */
+.dark-oak, .dark-oak p, .dark-oak td, .dark-oak li, .dark-oak h3,
+.dark-oak .when, .dark-oak .lab, .dark-oak .sub { color: #FBEBD2; }
+.dark-oak .spec th { color: #E8CFA8; }
+.dark-oak a { color: var(--honey-lt, #FFD98A); }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -502,10 +563,51 @@ h2.sec::before {
     section { padding: 34px 0; }
 }
 
+/* =========================================================
+   動き（控えめに）
+   ※ 保険：JSが動かないと html に .anim が付かないため、
+     その場合は下の指定が一切効かず、中身は最初から見えたままになります。
+   ========================================================= */
+
+/* 1. ページを開いたとき、本文がすっと上がってくる */
+.main { animation: pageIn .45s cubic-bezier(.2,.7,.3,1) both; }
+@keyframes pageIn { from { opacity: 0; transform: translateY(8px); } }
+
+/* 2. スクロールで、板がふわっと現れる */
+html.anim .reveal { opacity: 0; transform: translateY(14px); }
+html.anim .reveal.shown {
+    opacity: 1; transform: none;
+    transition: opacity .5s ease, transform .5s cubic-bezier(.2,.7,.3,1);
+}
+
+/* 3. サイドバーの項目に、指を置くと少し右へ */
+.side-nav a { transition: background-color .2s, color .2s, padding-left .2s; }
+.side-nav a:hover { padding-left: 17px; }
+
+/* 4. 釘を打った板を、指を置くと少し持ち上げる（お知らせは設定済み） */
+.duo .col, .faq, .finder, .reset, .table-wrap, .pillars > div {
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.pillars > div:hover, .reset:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 rgba(46, 27, 12, .85);
+}
+
+/* 5. サイドバーの旗を、たまにゆらす */
+.brand img { animation: flagSway 6s ease-in-out infinite; transform-origin: 50% 80%; }
+@keyframes flagSway {
+    0%, 88%, 100% { transform: rotate(0deg); }
+    92%           { transform: rotate(-4deg); }
+    96%           { transform: rotate(3deg); }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: .001ms !important; animation-iteration-count: 1 !important;
         transition-duration: .001ms !important; scroll-behavior: auto !important;
     }
     .strip .track { animation: none !important; }
+    .main { animation: none !important; }
+    .brand img { animation: none !important; }
+    html.anim .reveal { opacity: 1 !important; transform: none !important; }
 }
