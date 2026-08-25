@@ -1,8 +1,7 @@
 /* =========================================================
    VIVA-MC 公式サイト 共通スタイル
-   ・見出し  : Shippori Mincho（明朝）… 憲法・国家・歴史の重み
-   ・本文    : Zen Kaku Gothic New   … 読みやすさ
-   ・数値/札 : DotGothic16           … Minecraftのドット感
+   ・見出し : M PLUS Rounded 1c（丸ゴシック）
+   ・本文   : Zen Kaku Gothic New
    ========================================================= */
 
 :root {
@@ -36,8 +35,9 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.mincho { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif; font-weight: 600; }
-.dot    { font-family: 'DotGothic16', monospace; letter-spacing: .08em; }
+.disp { font-family: 'M PLUS Rounded 1c', 'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif; font-weight: 900; }
+/* 小さなラベル・日付：本文フォントのまま字間を空けて区別する */
+.dot  { letter-spacing: .12em; font-variant-numeric: tabular-nums; }
 
 a { color: var(--ember-dk); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -296,13 +296,42 @@ h2.sec::before {
 .faq .open button i { transform: rotate(180deg); }
 .faq .open .ans { max-height: 320px; }
 
-/* お知らせ（年表） */
-.news { list-style: none; }
-.news li { display: grid; grid-template-columns: 92px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--line); }
-.news li:first-child { padding-top: 0; }
-.news .when { font-size: .8rem; color: var(--ink-2); font-weight: 700; padding-top: 3px; }
-.news h3 { font-size: 1rem; margin-bottom: 5px; }
-.news p { color: var(--ink-2); font-size: .9rem; }
+/* お知らせ（木の板を釘で留めた掲示板） */
+.news { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.news li {
+    position: relative;
+    display: grid; grid-template-columns: 100px 1fr; gap: 18px;
+    padding: 26px 24px 20px;
+    border: 3px solid var(--ink);
+    border-radius: 7px;
+    box-shadow: 5px 5px 0 rgba(46, 27, 12, .85);
+    /* 木目：縦の板目と、うっすら横の年輪 */
+    background:
+        repeating-linear-gradient(90deg,
+            rgba(120, 78, 40, .10) 0 1px, transparent 1px 6px),
+        repeating-linear-gradient(90deg,
+            rgba(120, 78, 40, .05) 0 3px, transparent 3px 23px),
+        repeating-linear-gradient(0deg,
+            rgba(140, 96, 52, .05) 0 1px, transparent 1px 29px),
+        linear-gradient(175deg, #FFEDCD 0%, #FBE0B7 55%, #F4D5A6 100%);
+    transition: transform .15s, box-shadow .15s;
+}
+.news li:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 rgba(46, 27, 12, .85); }
+/* 板を留めている釘 */
+.news li::before, .news li::after {
+    content: ''; position: absolute; top: 9px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: radial-gradient(circle at 34% 30%, #FFDCA0, var(--ember) 60%, var(--ember-dk));
+    border: 2px solid var(--ink);
+}
+.news li::before { left: 11px; }
+.news li::after  { right: 11px; }
+
+.news .when {
+    font-size: .78rem; color: var(--ink-2); font-weight: 700; padding-top: 3px;
+}
+.news h3 { font-size: 1.02rem; margin-bottom: 5px; }
+.news p { color: #6B4623; font-size: .9rem; }
 
 /* 臨時アドレス */
 .addr { list-style: none; display: flex; flex-direction: column; gap: 12px; }
@@ -455,7 +484,7 @@ h2.sec::before {
     .pillars > div { border-right: none; border-bottom: 1px solid var(--line); }
     .pillars > div:last-child { border-bottom: none; }
     .facts { gap: 16px 12px; grid-template-columns: 1fr 1fr; }
-    .news li { grid-template-columns: 1fr; gap: 4px; }
+    .news li { grid-template-columns: 1fr; gap: 4px; padding: 24px 18px 18px; }
     .row-item { grid-template-columns: 44px 1fr; gap: 14px; }
     .row-item .ico { width: 44px; height: 44px; font-size: 1.1rem; }
     section { padding: 34px 0; }
