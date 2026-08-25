@@ -267,6 +267,11 @@ h2.sec::before {
 .duo .no li::before { content: '×'; color: var(--brick); }
 .duo .ok li::before { content: '○'; color: var(--moss); }
 
+/* 説明用の2列（可否ではなく、手順の対比に使う） */
+.duo .col.step-a > h3 { background: var(--ember); }
+.duo .col.step-b > h3 { background: #8A5A24; }
+.duo .step-a li::before, .duo .step-b li::before { content: '▸'; color: var(--ember-dk); }
+
 /* 交互に並ぶ紹介行（カード並びをやめる） */
 .rows { display: flex; flex-direction: column; gap: 26px; }
 .row-item {
@@ -398,7 +403,7 @@ h2.sec::before {
 .facts dd { font-size: .72rem; color: var(--ink-2); }
 
 /* 柱（3本）：カードではなく罫線で区切る */
-.pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; }
 .pillars > div {
     padding: 22px 20px;
     border: 3px solid var(--ink); border-radius: 10px;

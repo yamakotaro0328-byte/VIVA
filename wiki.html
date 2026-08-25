@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiki | VIVA-MC</title>
+<meta name="description" content="VIVA-MCで使うプラグインの使い方。Jobs Rebornでの稼ぎ方、Landsによる土地保護、QuickShopのチェストショップ、村人ショップの開き方。">
+<meta name="theme-color" content="#2E1B0C">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VIVA-MC">
+<meta property="og:title" content="Wiki | VIVA-MC">
+<meta property="og:description" content="VIVA-MCで使うプラグインの使い方。Jobs Rebornでの稼ぎ方、Landsによる土地保護、QuickShopのチェストショップ、村人ショップの開き方。">
+<meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="server-icon.png">
+<link rel="apple-touch-icon" href="server-icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="server-icon.png" alt="">
+    <span class="brand-name disp">VIVA-MC</span>
+  </a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="sidebar">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>メニュー
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <img src="server-icon.png" alt="">
+      <span>
+        <span class="brand-name disp">VIVA-MC</span><br>
+        <span class="brand-sub dot">NATION BUILDING</span>
+      </span>
+    </a>
+
+    <nav class="side-nav" aria-label="サイト内">
+      <ul>
+        <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>ホーム</a></li>
+        <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>参加する</a></li>
+        <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
+        <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
+        <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
+        <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>資源ワールド</a></li>
+        <li><a href="wiki.html" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+        <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>臨時アドレス</a></li>
+      </ul>
+    </nav>
+
+    <div class="side-server">
+      <button type="button" class="ip-copy" data-copy="viva-mc.net">
+        <span>
+          <span class="lab dot">SERVER ADDRESS</span>
+          <span class="val">viva-mc.net</span>
+        </span>
+        <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+        <span class="sr-only">サーバーアドレスをコピー</span>
+      </button>
+      <div class="ports dot">JAVA 25565 ／ BEDROCK 19132</div>
+      <div class="side-status">
+        <span class="dot-live" id="liveDot"></span>
+        <span id="liveMsg">状況を確認中...</span>
+      </div>
+      <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-discord" aria-hidden="true"></i>Discordに参加
+      </a>
+    </div>
+
+    <div class="side-foot">&copy; 2026 VIVA-MC</div>
+  </aside>
+
+  <main class="main" id="main" tabindex="-1">
+    <header class="page-head">
+      <div class="wrap">
+        <div class="num disp">07</div>
+        <div>
+          <h1 class="disp">Wiki</h1>
+          <p>プラグインの使い方をまとめています。土地の守り方や、お店の開き方はここを見てください。</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section>
+        <h2 class="sec disp">このページについて</h2>
+        <p class="sec-note">サーバーで使うプラグインの操作をまとめています。お金の稼ぎ方、土地の守り方、お店の開き方はここを見てください。</p>
+        <div class="pillars">
+          <div>
+            <div class="k dot">01 / JOBS</div>
+            <h3><a href="#jobs">仕事に就いて稼ぐ</a></h3>
+            <p>Jobs Reborn。まずはここから。</p>
+          </div>
+          <div>
+            <div class="k dot">02 / LAND</div>
+            <h3><a href="#lands">土地を守る・国をつくる</a></h3>
+            <p>Lands。チャンクの保護から建国まで。</p>
+          </div>
+          <div>
+            <div class="k dot">03 / SHOP</div>
+            <h3><a href="#quickshop">チェストで店を開く</a></h3>
+            <p>QuickShop-Hikari。自動販売・買取。</p>
+          </div>
+          <div>
+            <div class="k dot">04 / TRADE</div>
+            <h3><a href="#villager">村人と取引する</a></h3>
+            <p>Shopkeepers と Villager Market。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Jobs Reborn ===================== -->
+      <section id="jobs">
+        <h2 class="sec disp">Jobs Reborn ― 仕事に就いて稼ぐ</h2>
+        <p class="sec-note">職業に就くと、いつもの行動がそのままお金になります。鉱石を掘る、木を切る、モブを倒す。稼いだ通貨は建国にも、ショップにも、カジノにも使えます。</p>
+
+        <h3 style="margin-bottom:10px">就職までの手順</h3>
+        <ol class="steps" style="margin-bottom:34px">
+          <li>
+            <span class="n disp">1</span>
+            <h3>就職メニューを開く</h3>
+            <p><code>/jobs browse</code> を実行すると、いま就ける職業の一覧が開きます。</p>
+          </li>
+          <li>
+            <span class="n disp">2</span>
+            <h3>職業を選ぶ</h3>
+            <p>自分の遊び方に合った職業をクリックすれば、その仕事に就けます。</p>
+          </li>
+          <li>
+            <span class="n disp">3</span>
+            <h3>働いて、レベルを上げる</h3>
+            <p>職業に応じた行動をすると、自動でお金と経験値が入ります。レベルが上がると、同じ行動でもらえる報酬が増えていきます。</p>
+          </li>
+        </ol>
+
+        <h3 style="margin-bottom:10px">職業の一覧</h3>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th>⛏️ 採掘師（Miner）</th><td>石、丸石、石炭、鉄、ダイヤモンドなどの鉱石を掘る</td></tr>
+              <tr><th>🪓 木こり（Woodcutter）</th><td>原木を切る、苗木を植えて育てる</td></tr>
+              <tr><th>🌾 農家（Farmer）</th><td>小麦や作物、サトウキビの収穫、苗の植え付け</td></tr>
+              <tr><th>⚔️ 狩人（Hunter）</th><td>ゾンビ、スケルトン、クリーパーなどの敵モブを倒す</td></tr>
+              <tr><th>🏗️ 建築家（Builder）</th><td>ブロックを設置する。建築好きにおすすめ</td></tr>
+              <tr><th>🎣 漁師（Fisherman）</th><td>釣竿で魚を釣る</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sec-note" style="margin-top:14px">同時に就ける職業の数には上限があります。</p>
+
+        <h3 style="margin:26px 0 10px">主なコマンド</h3>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/jobs browse</code></th><td>就ける職業の一覧を開く。ここから就職できる</td></tr>
+              <tr><th><code>/jobs join &lt;職業名&gt;</code></th><td>指定した職業に就く</td></tr>
+              <tr><th><code>/jobs leave &lt;職業名&gt;</code></th><td>その職業を辞める</td></tr>
+              <tr><th><code>/jobs stats</code></th><td>いまの職業、レベル、次のレベルまでの経験値を確認する</td></tr>
+              <tr><th><code>/jobs info &lt;職業名&gt;</code></th><td>その職業が「何をすると、いくら稼げるか」を調べる</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout" style="margin-top:22px">
+          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+          <div><strong>辞めるときは慎重に。</strong><code>/jobs leave</code> で職業を辞めると、
+          積み上げたその職業のレベルがリセットされることがあります。</div>
+        </div>
+      </section>
+
+      <!-- ===================== Lands ===================== -->
+      <section id="lands">
+        <h2 class="sec disp">Lands ― 土地保護・国システム</h2>
+        <p class="sec-note">自分の土地を守り、町や国を発展させるための、いちばん大事なプラグインです。</p>
+
+        <h3 style="margin-bottom:10px">土地を保護する（買う）</h3>
+        <ol class="steps" style="margin-bottom:34px">
+          <li>
+            <span class="n disp">1</span>
+            <h3>金のクワで地面を叩く</h3>
+            <p>いま自分が立っている<strong>チャンク（16×16マス）</strong>を保護エリアとして購入できます。コマンド <code>/lands claim</code> でも同じことができます。</p>
+          </li>
+          <li>
+            <span class="n disp">2</span>
+            <h3>少しずつ広げる</h3>
+            <p>最初は小さなエリアから始めて、サーバー通貨を払いながら保護エリアを広げていきます。</p>
+          </li>
+          <li>
+            <span class="n disp">3</span>
+            <h3>仲間を招き入れる</h3>
+            <p>他のプレイヤーを自分の土地に招待して、権限を渡せます。<code>/lands trust</code> を使います。</p>
+          </li>
+        </ol>
+
+        <h3 style="margin-bottom:10px">主なコマンド</h3>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/lands</code></th><td>メインメニュー（UI画面）を開く。基本の操作はここから</td></tr>
+              <tr><th><code>/lands claim</code></th><td>いま立っているチャンクを自分の土地として保護（購入）する</td></tr>
+              <tr><th><code>/lands unclaim</code></th><td>いま立っているチャンクの保護を解除する</td></tr>
+              <tr><th><code>/lands trust &lt;プレイヤー名&gt;</code></th><td>指定したプレイヤーを自分の土地のメンバーとして追加する</td></tr>
+              <tr><th><code>/lands untrust &lt;プレイヤー名&gt;</code></th><td>指定したプレイヤーの権限を取り消す</td></tr>
+              <tr><th><code>/lands menu</code></th><td>権限設定（建築の可否、チェストを開けるか等）を細かく変える</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===================== QuickShop ===================== -->
+      <section id="quickshop">
+        <h2 class="sec disp">QuickShop-Hikari ― チェストショップ</h2>
+        <p class="sec-note">チェストを置くだけで、誰でも自動販売のお店を開けます。</p>
+
+        <div class="duo" style="margin-bottom:30px">
+          <div class="col step-a">
+            <h3><i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i>アイテムを売る</h3>
+            <ul>
+              <li>チェストを設置する</li>
+              <li>売りたいアイテムを手に持った状態で、チェストを<strong>左クリック</strong></li>
+              <li>チャット欄に「1個あたりの価格」を入力する</li>
+              <li>チェストに商品を入れておけば、他の人が自動で買えるようになる</li>
+            </ul>
+          </div>
+          <div class="col step-b">
+            <h3><i class="fa-solid fa-arrow-down-to-bracket" aria-hidden="true"></i>アイテムを買い取る</h3>
+            <ul>
+              <li>作ったショップのチェストを向いて <code>/qs mode buy</code></li>
+              <li>価格はそのままで「買い取るお店」に変わる</li>
+              <li><strong>チェストの中にお金を入れておく必要があります</strong></li>
+            </ul>
+          </div>
+        </div>
+
+        <h3 style="margin-bottom:10px">主なコマンド</h3>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/qs price &lt;価格&gt;</code></th><td>チェストショップを向いて実行。商品の単価を変える</td></tr>
+              <tr><th><code>/qs mode buy</code></th><td>買取モードに変える</td></tr>
+              <tr><th><code>/qs mode sell</code></th><td>販売モードに変える</td></tr>
+              <tr><th><code>/qs remove</code></th><td>チェストショップを向いて実行。お店を撤去する</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ===================== 村人系 ===================== -->
+      <section id="villager">
+        <h2 class="sec disp">村人ショップ</h2>
+        <p class="sec-note">見た目が村人のお店です。2種類あります。</p>
+
+        <div class="callout">
+          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+          <div>どちらも<strong>専用のアイテムが必要です。</strong>ロビーで販売しているので、先に買っておいてください。</div>
+        </div>
+
+        <div class="rows">
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
+            <div>
+              <h3>Shopkeepers ― 物々交換のお店</h3>
+              <p>アイテムとアイテムを交換するお店を作れます。</p>
+              <ol>
+                <li>ロビーで買った専用アイテムを使って、村人を出現させる</li>
+                <li>その村人を<strong>スニーク（シフト）しながら右クリック</strong>して管理メニューを開く</li>
+                <li>「必要なアイテム（代金）」と「渡すアイテム（商品）」を設定すれば完成</li>
+              </ol>
+              <p style="margin-top:8px">撤去するときは <code>/shopkeeper remove</code> を使います。</p>
+            </div>
+          </div>
+
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-store" aria-hidden="true"></i></div>
+            <div>
+              <h3>Villager Market ― 村人市場</h3>
+              <p>自分専用の村人ショップを借りて出店できます。</p>
+              <ol>
+                <li>ロビーで買った専用アイテムで市場の村人を設置する（空いている村人を借りることもできます）</li>
+                <li>村人を右クリックして専用メニューを開く</li>
+                <li>売りたいアイテムと価格を設定して出店する</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== 他ページへの案内 ===================== -->
+      <section>
+        <h2 class="sec disp">ほかの案内</h2>
+        <p class="sec-note">サーバーの規約や参加方法は、それぞれのページにまとめています。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><a href="join.html">参加する</a></th><td>接続先、参加の手順、国家運営システムの概要</td></tr>
+              <tr><th><a href="rules.html">ルール</a></th><td>禁止されている行為と、違反を見つけたときの通報のしかた</td></tr>
+              <tr><th><a href="play.html">あそぶ</a></th><td>カジノの遊び方、リソースパック、プレイヤー統計</td></tr>
+              <tr><th><a href="resource.html">資源ワールド</a></th><td>リセットの周期と、掘るときの注意</td></tr>
+              <tr><th><a href="faq.html">よくある質問</a></th><td>参加費、対応機種、初心者向けの案内</td></tr>
+              <tr><th>公式Webマップ（Dynmap）</th><td>領土や都市の様子をブラウザから見られます　<a href="http://viva-mc.net:80" target="_blank" rel="noopener noreferrer">http://viva-mc.net:80</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">載っていないことは</h2>
+        <div class="callout" style="background:#FDF0DC;border-left-color:var(--ember)">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+          <div>ここに無いことは
+          <a href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">Discord</a>
+          で聞いてください。よく聞かれることは、このページに追記していきます。</div>
+        </div>
+      </section>
+    </div>
+
+    <p class="foot">&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
+  </main>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>臨時アドレス | VIVA-MC</title>
-<meta name="description" content="運営都合でサーバーの接続先を一時的に変更しているときの、最新の臨時アドレス一覧。">
+<title>資源ワールド | VIVA-MC</title>
+<meta name="description" content="資源ワールドのリセット周期と、採掘するときの注意点。">
 <meta name="theme-color" content="#2E1B0C">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="VIVA-MC">
-<meta property="og:title" content="臨時アドレス | VIVA-MC">
-<meta property="og:description" content="運営都合でサーバーの接続先を一時的に変更しているときの、最新の臨時アドレス一覧。">
+<meta property="og:title" content="資源ワールド | VIVA-MC">
+<meta property="og:description" content="資源ワールドのリセット周期と、採掘するときの注意点。">
 <meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="server-icon.png">
@@ -52,9 +52,9 @@
         <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
         <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
         <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
-        <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>資源ワールド</a></li>
+        <li><a href="resource.html" aria-current="page"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>資源ワールド</a></li>
         <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
-        <li><a href="address.html" aria-current="page"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>臨時アドレス</a></li>
+        <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>臨時アドレス</a></li>
       </ul>
     </nav>
 
@@ -83,37 +83,55 @@
   <main class="main" id="main" tabindex="-1">
     <header class="page-head">
       <div class="wrap">
-        <div class="num disp">05</div>
+        <div class="num disp">06</div>
         <div>
-          <h1 class="disp">臨時アドレス</h1>
-          <p>接続先を一時的に変更しているときは、ここに最新のアドレスを掲載します。</p>
+          <h1 class="disp">資源ワールド</h1>
+          <p>みんなで掘るための共有ワールドです。定期的にまっさらな状態に戻ります。</p>
         </div>
       </div>
     </header>
 
     <div class="wrap">
       <section>
+        <h2 class="sec disp">行きかた</h2>
+        <p class="sec-note">ロビーにあるポータルから入れます。</p>
+        <div class="rows">
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-door-open" aria-hidden="true"></i></div>
+            <div>
+              <h3>ロビーのポータルへ</h3>
+              <p>ロビーに置いてあるポータルをくぐると、資源ワールドに移動します。</p>
+              <p>帰るときも同じようにポータルを使ってください。掘った資材は、自分の町や国まで運びましょう。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">次のリセットまで</h2>
+        <p class="sec-note">資源ワールドは<strong>毎月15日の0時</strong>にリセットされます。地形が作り直され、掘り尽くした場所も元に戻ります。</p>
+        <div class="reset">
+          <div class="lab">次のリセットまで</div>
+          <div class="big disp"><span id="resetHours">--</span><span style="font-size:.9rem"> 時間</span></div>
+          <div class="sub dot" id="resetSub">--分--秒</div>
+          <div class="bar"><i id="resetBar"></i></div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">気をつけること</h2>
+        <p class="sec-note">リセットの前に、必ず確認してください。</p>
         <div class="callout">
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
-          <div>お知らせで「アドレス変更」と告知されている場合は、この一覧の<strong>一番上（最新の日付）</strong>のアドレスから接続してください。ここのアドレスは一時的なもので、予告なく変わることがあります。詳しくはDiscordをご覧ください。</div>
+          <div><strong>資源ワールドに置いたものは、リセットで全部消えます。</strong>
+          チェストに入れた資材も、建てた拠点も残りません。持ち帰りたいものは、15日になる前に自分の町や国へ運んでください。</div>
         </div>
+        <p class="sec-note">拠点を構えるなら、リセットのない自分の土地に。土地の守り方は<a href="wiki.html#lands">Wikiの Lands の項目</a>にまとめています。</p>
+      </section>
 
-        <!-- 新しい日付を足すときは、この <li> をコピーして一番上に置いてください -->
-        <ul class="addr">
-          <li>
-            <span class="when dot">2026.08.14</span>
-            <span class="host">mauritania-exemption.tun.ply.gg</span>
-            <span class="tag brick">移動中</span>
-          </li>
-          <li>
-            <span class="when dot">2026.08.13</span>
-            <span class="host">準備中...</span>
-            <span class="tag brick">準備中</span>
-          </li>
-        </ul>
-        <!-- 開放したら class="tag brick" を class="tag moss" に、文字を「開放中」に変えてください -->
-
-        <p class="sec-note" style="margin-top:22px">通常時は <strong>viva-mc.net</strong> から接続できます。</p>
+      <section>
+        <h2 class="sec disp">ルールは通常どおり</h2>
+        <p class="sec-note">資源ワールドでも、<a href="rules.html">サーバーのルール</a>はそのまま適用されます。X-Ray などの不正クライアントは一発BANの対象です。</p>
       </section>
     </div>
 
