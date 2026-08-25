@@ -93,27 +93,45 @@
 
     <div class="wrap">
       <section>
-        <div class="callout">
-          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
-          <div>お知らせで「アドレス変更」と告知されている場合は、この一覧の<strong>一番上（最新の日付）</strong>のアドレスから接続してください。ここのアドレスは一時的なもので、予告なく変わることがあります。詳しくはDiscordをご覧ください。</div>
-        </div>
+        <h2 class="sec disp">いまの接続先</h2>
+        <p class="sec-note">臨時アドレスは終了しました。通常のアドレスで接続できます。</p>
 
-        <!-- 新しい日付を足すときは、この <li> をコピーして一番上に置いてください -->
+        <div class="reset birch" style="text-align:left">
+          <div class="lab">サーバーアドレス</div>
+          <div class="big disp" style="font-size:1.7rem;margin:2px 0 4px">viva-mc.net</div>
+          <div class="sub dot">JAVA 25565 ／ BEDROCK 19132</div>
+          <div style="margin-top:16px">
+            <button type="button" class="btn fill" data-copy="viva-mc.net">
+              <i class="fa-regular fa-copy" aria-hidden="true"></i>アドレスをコピー
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">臨時アドレスが出るとき</h2>
+        <p class="sec-note">運営の都合で接続先を一時的に変えることがあります。</p>
+        <div class="callout">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+          <div><a href="index.html">お知らせ</a>で「アドレス変更」と告知されている場合は、
+          このページの一覧の<strong>一番上（最新の日付）</strong>から接続してください。
+          告知が無いときは、通常の <strong>viva-mc.net</strong> で入れます。</div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">これまでの臨時アドレス</h2>
+        <p class="sec-note">過去の記録です。いまは使えません。</p>
+
+        <!-- 新しい臨時アドレスを出すときは、この <li> をコピーして一番上に置き、
+             class="tag brick" を class="tag moss" に、文字を「開放中」に変えてください -->
         <ul class="addr">
           <li>
             <span class="when dot">2026.08.14</span>
             <span class="host">mauritania-exemption.tun.ply.gg</span>
-            <span class="tag brick">移動中</span>
-          </li>
-          <li>
-            <span class="when dot">2026.08.13</span>
-            <span class="host">準備中...</span>
-            <span class="tag brick">準備中</span>
+            <span class="tag brick">終了</span>
           </li>
         </ul>
-        <!-- 開放したら class="tag brick" を class="tag moss" に、文字を「開放中」に変えてください -->
-
-        <p class="sec-note" style="margin-top:22px">通常時は <strong>viva-mc.net</strong> から接続できます。</p>
       </section>
     </div>
 
