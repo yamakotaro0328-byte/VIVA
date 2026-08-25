@@ -93,8 +93,23 @@
 
     <div class="wrap">
       <section>
+        <h2 class="sec disp">行きかた</h2>
+        <p class="sec-note">ロビーにあるポータルから入れます。</p>
+        <div class="rows">
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-door-open" aria-hidden="true"></i></div>
+            <div>
+              <h3>ロビーのポータルへ</h3>
+              <p>ロビーに置いてあるポータルをくぐると、資源ワールドに移動します。</p>
+              <p>帰るときも同じようにポータルを使ってください。掘った資材は、自分の町や国まで運びましょう。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
         <h2 class="sec disp">次のリセットまで</h2>
-        <p class="sec-note">リセットされると地形が作り直され、掘り尽くした場所も元に戻ります。</p>
+        <p class="sec-note">資源ワールドは<strong>毎月15日の0時</strong>にリセットされます。地形が作り直され、掘り尽くした場所も元に戻ります。</p>
         <div class="reset">
           <div class="lab">次のリセットまで</div>
           <div class="big disp"><span id="resetHours">--</span><span style="font-size:.9rem"> 時間</span></div>
@@ -109,27 +124,14 @@
         <div class="callout">
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
           <div><strong>資源ワールドに置いたものは、リセットで全部消えます。</strong>
-          チェストに入れた資材も、建てた拠点も残りません。持ち帰りたいものは、リセット前に自分の町や国へ運んでください。</div>
+          チェストに入れた資材も、建てた拠点も残りません。持ち帰りたいものは、15日になる前に自分の町や国へ運んでください。</div>
         </div>
-      </section>
-
-      <!-- ▼▼ ここから下は、まだ中身が入っていません ▼▼
-           下の <p class="sec-note"> の文章を、実際の内容に書き換えてください。
-           項目ごと不要なら <section> ... </section> をまるごと消してかまいません。 -->
-
-      <section>
-        <h2 class="sec disp">行きかた <span class="tag honey">書きかけ</span></h2>
-        <p class="sec-note">（ここに、資源ワールドへの行き方を書いてください。例：ロビーの◯◯のポータルから入る／コマンドで移動する など）</p>
+        <p class="sec-note">拠点を構えるなら、リセットのない自分の土地に。土地の守り方は<a href="wiki.html#lands">Wikiの Lands の項目</a>にまとめています。</p>
       </section>
 
       <section>
-        <h2 class="sec disp">リセットの周期 <span class="tag honey">要確認</span></h2>
-        <p class="sec-note">上のカウントダウンは、いまのところ<strong>毎月15日の0時</strong>を目安に動いています。実際の周期がこれと違う場合は教えてください。<code>script.js</code> の <code>RESET_DAY</code> を直せば変更できます。</p>
-      </section>
-
-      <section>
-        <h2 class="sec disp">してはいけないこと <span class="tag honey">書きかけ</span></h2>
-        <p class="sec-note">（資源ワールド特有の禁止事項があれば書いてください。無ければこの項目は消してかまいません。共通のルールは<a href="rules.html">ルール</a>にあります）</p>
+        <h2 class="sec disp">ルールは通常どおり</h2>
+        <p class="sec-note">資源ワールドでも、<a href="rules.html">サーバーのルール</a>はそのまま適用されます。X-Ray などの不正クライアントは一発BANの対象です。</p>
       </section>
     </div>
 
