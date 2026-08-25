@@ -498,6 +498,25 @@ h2.sec::before {
 
 .foot { padding: 26px 0 40px; font-size: .78rem; color: var(--ink-2); text-align: center; }
 
+/* 404のイラスト */
+.lost {
+    border: 3px solid var(--ink);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 6px 6px 0 rgba(46, 27, 12, .85);
+    background: #FFF3DC;
+    line-height: 0;
+    margin-bottom: 28px;
+}
+.lost img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* ドット絵なので、拡大してもぼかさない */
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
 /* トースト */
 .toast {
     position: fixed; left: 50%; bottom: -80px; transform: translateX(-50%);
