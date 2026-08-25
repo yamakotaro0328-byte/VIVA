@@ -1,8 +1,7 @@
 /* =========================================================
    VIVA-MC 公式サイト 共通スタイル
-   ・見出し  : Shippori Mincho（明朝）… 憲法・国家・歴史の重み
-   ・本文    : Zen Kaku Gothic New   … 読みやすさ
-   ・数値/札 : DotGothic16           … Minecraftのドット感
+   ・見出し : M PLUS Rounded 1c（丸ゴシック）
+   ・本文   : Zen Kaku Gothic New
    ========================================================= */
 
 :root {
@@ -22,6 +21,18 @@
     --sidebar-w:  266px;
     --shadow:     4px 4px 0 rgba(46, 27, 12, 0.9);
     --shadow-sm:  3px 3px 0 rgba(46, 27, 12, 0.16);
+
+    /* 木の板の質感。色味を変えたいときはここだけ直せば全体に効きます */
+    --wood:
+        repeating-linear-gradient(90deg, rgba(120, 78, 40, .10) 0 1px, transparent 1px 6px),
+        repeating-linear-gradient(90deg, rgba(120, 78, 40, .05) 0 3px, transparent 3px 23px),
+        repeating-linear-gradient(0deg,  rgba(140, 96, 52, .05) 0 1px, transparent 1px 29px),
+        linear-gradient(175deg, #FFEDCD 0%, #FBE0B7 55%, #F4D5A6 100%);
+    /* 少し濃い板（見出し帯などに） */
+    --wood-2:
+        repeating-linear-gradient(90deg, rgba(104, 66, 32, .12) 0 1px, transparent 1px 6px),
+        repeating-linear-gradient(0deg,  rgba(120, 80, 44, .06) 0 1px, transparent 1px 27px),
+        linear-gradient(175deg, #F7DDB2 0%, #EFCF9C 100%);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,8 +47,9 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.mincho { font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif; font-weight: 600; }
-.dot    { font-family: 'DotGothic16', monospace; letter-spacing: .08em; }
+.disp { font-family: 'M PLUS Rounded 1c', 'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif; font-weight: 900; }
+/* 小さなラベル・日付：本文フォントのまま字間を空けて区別する */
+.dot  { letter-spacing: .12em; font-variant-numeric: tabular-nums; }
 
 a { color: var(--ember-dk); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -234,15 +246,15 @@ h2.sec::before {
 
 /* 定義表 */
 .spec { width: 100%; border-collapse: collapse; font-size: .93rem; }
-.spec th, .spec td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: left; }
-.spec th { width: 38%; color: var(--ink-2); font-weight: 700; background: rgba(255,239,214,.5); }
+.spec th, .spec td { padding: 12px 14px; border-bottom: 2px solid rgba(120,78,40,.30); text-align: left; }
+.spec th { width: 38%; color: var(--ink-2); font-weight: 700; background: var(--wood-2); }
 .spec td { font-variant-numeric: tabular-nums; }
 .spec tr:last-child th, .spec tr:last-child td { border-bottom: none; }
-.table-wrap { overflow-x: auto; border: 2px solid var(--ink); border-radius: 12px; }
+.table-wrap { overflow-x: auto; border: 3px solid var(--ink); border-radius: 10px; background: var(--wood); box-shadow: 5px 5px 0 rgba(46,27,12,.85); }
 
 /* ○×の2列 */
 .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
-.duo .col { border: 2.5px solid var(--ink); border-radius: 14px; overflow: hidden; background: var(--paper-2); }
+.duo .col { border: 3px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--wood); box-shadow: 5px 5px 0 rgba(46,27,12,.85); }
 .duo .col > h3 {
     padding: 12px 18px; font-size: 1rem; color: #fff;
     display: flex; align-items: center; gap: 9px;
@@ -263,8 +275,8 @@ h2.sec::before {
 }
 .rows .row-item:last-child { border-bottom: none; padding-bottom: 0; }
 .row-item .ico {
-    width: 54px; height: 54px; border-radius: 13px;
-    background: var(--panel); border: 2.5px solid var(--ink);
+    width: 54px; height: 54px; border-radius: 10px;
+    background: var(--wood-2); border: 3px solid var(--ink);
     display: flex; align-items: center; justify-content: center;
     font-size: 1.3rem; color: var(--ember-dk);
 }
@@ -282,8 +294,8 @@ h2.sec::before {
 .callout i { color: var(--brick); font-size: 1.1rem; margin-top: 3px; }
 
 /* FAQ */
-.faq { border: 2.5px solid var(--ink); border-radius: 14px; overflow: hidden; background: var(--paper-2); }
-.faq > div + div { border-top: 1px solid var(--line); }
+.faq { border: 3px solid var(--ink); border-radius: 10px; overflow: hidden; background: var(--wood); box-shadow: 5px 5px 0 rgba(46,27,12,.85); }
+.faq > div + div { border-top: 2px solid rgba(120,78,40,.35); }
 .faq button {
     width: 100%; background: none; border: none; cursor: pointer; font-family: inherit;
     padding: 17px 20px; text-align: left; font-weight: 700; font-size: .98rem; color: var(--ink);
@@ -292,17 +304,39 @@ h2.sec::before {
 .faq button:hover { background: rgba(242,166,30,.10); }
 .faq button i { color: var(--ember); transition: transform .3s; flex: none; }
 .faq .ans { max-height: 0; overflow: hidden; transition: max-height .3s ease-out; }
-.faq .ans p { padding: 0 20px 18px; color: var(--ink-2); font-size: .93rem; }
+.faq .ans p { padding: 0 20px 18px; color: #6B4623; font-size: .93rem; }
 .faq .open button i { transform: rotate(180deg); }
 .faq .open .ans { max-height: 320px; }
 
-/* お知らせ（年表） */
-.news { list-style: none; }
-.news li { display: grid; grid-template-columns: 92px 1fr; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--line); }
-.news li:first-child { padding-top: 0; }
-.news .when { font-size: .8rem; color: var(--ink-2); font-weight: 700; padding-top: 3px; }
-.news h3 { font-size: 1rem; margin-bottom: 5px; }
-.news p { color: var(--ink-2); font-size: .9rem; }
+/* お知らせ（木の板を釘で留めた掲示板） */
+.news { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+.news li {
+    position: relative;
+    display: grid; grid-template-columns: 100px 1fr; gap: 18px;
+    padding: 26px 24px 20px;
+    border: 3px solid var(--ink);
+    border-radius: 7px;
+    box-shadow: 5px 5px 0 rgba(46, 27, 12, .85);
+    /* 木目：縦の板目と、うっすら横の年輪 */
+    background: var(--wood);
+    transition: transform .15s, box-shadow .15s;
+}
+.news li:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 rgba(46, 27, 12, .85); }
+/* 板を留めている釘 */
+.news li::before, .news li::after {
+    content: ''; position: absolute; top: 9px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: radial-gradient(circle at 34% 30%, #FFDCA0, var(--ember) 60%, var(--ember-dk));
+    border: 2px solid var(--ink);
+}
+.news li::before { left: 11px; }
+.news li::after  { right: 11px; }
+
+.news .when {
+    font-size: .78rem; color: var(--ink-2); font-weight: 700; padding-top: 3px;
+}
+.news h3 { font-size: 1.02rem; margin-bottom: 5px; }
+.news p { color: #6B4623; font-size: .9rem; }
 
 /* 臨時アドレス */
 .addr { list-style: none; display: flex; flex-direction: column; gap: 12px; }
@@ -315,7 +349,7 @@ h2.sec::before {
 .addr .host { flex: 1; font-size: 1rem; font-weight: 700; word-break: break-all; }
 
 /* 統計検索 */
-.finder { border: 2.5px solid var(--ink); border-radius: 14px; padding: 22px; background: var(--paper-2); box-shadow: var(--shadow-sm); }
+.finder { border: 3px solid var(--ink); border-radius: 10px; padding: 22px; background: var(--wood); box-shadow: 5px 5px 0 rgba(46,27,12,.85); }
 .finder .field { display: flex; gap: 10px; flex-wrap: wrap; }
 .finder input {
     flex: 1 1 200px; padding: 12px 14px; font-family: inherit; font-size: .95rem;
@@ -327,7 +361,7 @@ h2.sec::before {
 #statOut h3 { font-size: 1.05rem; padding-bottom: 9px; border-bottom: 2px solid var(--line); margin-bottom: 6px; }
 
 /* 接続履歴 */
-.log { max-height: 420px; overflow-y: auto; border: 2px solid var(--ink); border-radius: 12px; padding: 16px 18px; background: var(--paper-2); }
+.log { max-height: 420px; overflow-y: auto; border: 3px solid var(--ink); border-radius: 10px; padding: 16px 18px; background: var(--wood); box-shadow: 5px 5px 0 rgba(46,27,12,.85); }
 .log ul { list-style: none; position: relative; padding-left: 20px; border-left: 2px solid var(--line); }
 .log li { position: relative; margin-bottom: 16px; font-size: .88rem; }
 .log li::before {
@@ -364,15 +398,19 @@ h2.sec::before {
 .facts dd { font-size: .72rem; color: var(--ink-2); }
 
 /* 柱（3本）：カードではなく罫線で区切る */
-.pillars { display: grid; grid-template-columns: repeat(3,1fr); border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
-.pillars > div { padding: 24px 20px; border-right: 1px solid var(--line); }
-.pillars > div:last-child { border-right: none; }
+.pillars { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.pillars > div {
+    padding: 22px 20px;
+    border: 3px solid var(--ink); border-radius: 10px;
+    background: var(--wood);
+    box-shadow: 5px 5px 0 rgba(46,27,12,.85);
+}
 .pillars .k { font-size: .74rem; color: var(--ember); font-weight: 700; }
 .pillars h3 { font-size: 1.04rem; margin: 5px 0 6px; }
-.pillars p { font-size: .87rem; color: var(--ink-2); }
+.pillars p { font-size: .87rem; color: #6B4623; }
 
 /* 資源リセット */
-.reset { border: 2.5px solid var(--ink); border-radius: 14px; padding: 22px; text-align: center; background: var(--panel); box-shadow: var(--shadow-sm); }
+.reset { border: 3px solid var(--ink); border-radius: 10px; padding: 22px; text-align: center; background: var(--wood); box-shadow: 5px 5px 0 rgba(46,27,12,.85); }
 .reset .lab { font-size: .82rem; color: var(--ink-2); }
 .reset .big { font-size: 2.15rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .reset .sub { color: var(--ember-dk); font-weight: 700; font-size: .9rem; font-variant-numeric: tabular-nums; }
@@ -452,10 +490,8 @@ h2.sec::before {
     .page-head { padding: 30px 0 24px; }
     .page-head h1 { font-size: 1.6rem; }
     .duo, .facts, .pillars { grid-template-columns: 1fr; }
-    .pillars > div { border-right: none; border-bottom: 1px solid var(--line); }
-    .pillars > div:last-child { border-bottom: none; }
     .facts { gap: 16px 12px; grid-template-columns: 1fr 1fr; }
-    .news li { grid-template-columns: 1fr; gap: 4px; }
+    .news li { grid-template-columns: 1fr; gap: 4px; padding: 24px 18px 18px; }
     .row-item { grid-template-columns: 44px 1fr; gap: 14px; }
     .row-item .ico { width: 44px; height: 44px; font-size: 1.1rem; }
     section { padding: 34px 0; }
