@@ -579,8 +579,51 @@ h2.sec::before {
     .news li { grid-template-columns: 1fr; gap: 4px; padding: 24px 18px 18px; }
     .row-item { grid-template-columns: 44px 1fr; gap: 14px; }
     .row-item .ico { width: 44px; height: 44px; font-size: 1.1rem; }
+    .pager { grid-template-columns: 1fr; }
+    .pager .next { grid-column: 1; text-align: left; }
     section { padding: 34px 0; }
 }
+
+/* =========================================================
+   Wiki（サイドバーの中身が入れ替わるページ）
+   ========================================================= */
+
+/* サイドバーの「サイトに戻る」 */
+.side-back { color: var(--ink-3); font-size: .86rem; }
+.side-back i { color: var(--ink-3); }
+.side-back:hover, .side-back:hover i { color: var(--honey); }
+
+/* 見出しの上に出る、プラグイン名 */
+.page-head .kicker {
+    display: block;
+    font-size: .64rem; font-weight: 800;
+    color: var(--ember-dk);
+    margin-bottom: 3px;
+}
+.page-head .num i { font-size: 1.05rem; }
+
+/* 記事の前後へ移動する板 */
+.pager {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    padding: 30px 0 46px;
+    border-top: 1px dashed var(--line);
+}
+.pager a {
+    display: block;
+    padding: 15px 18px;
+    background: var(--wood);
+    border: 3px solid var(--ink); border-radius: 7px;
+    box-shadow: 4px 4px 0 rgba(46, 27, 12, .85);
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.pager a:hover {
+    text-decoration: none;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 rgba(46, 27, 12, .85);
+}
+.pager .lab { display: block; font-size: .6rem; color: var(--ink-2); margin-bottom: 3px; }
+.pager .ttl { display: block; font-size: 1rem; color: var(--ink); }
+.pager .next { grid-column: 2; text-align: right; }
 
 /* =========================================================
    動き（控えめに）
