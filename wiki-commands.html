@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>コマンド一覧 | VIVA-MC</title>
+<meta name="description" content="VIVA-MCで使うコマンドの一覧。Jobs Reborn、Lands、QuickShop-Hikari、Shopkeepers。">
+<meta name="theme-color" content="#2E1B0C">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="VIVA-MC">
+<meta property="og:title" content="コマンド一覧 | VIVA-MC">
+<meta property="og:description" content="VIVA-MCで使うコマンドの一覧。Jobs Reborn、Lands、QuickShop-Hikari、Shopkeepers。">
+<meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="server-icon.png">
+<link rel="apple-touch-icon" href="server-icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="server-icon.png" alt="">
+    <span class="brand-name disp">VIVA-MC</span>
+  </a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="sidebar">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>メニュー
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <img src="server-icon.png" alt="">
+      <span>
+        <span class="brand-name disp">VIVA-MC</span><br>
+        <span class="brand-sub dot">WIKI</span>
+      </span>
+    </a>
+
+    <nav class="side-nav" aria-label="Wiki内">
+      <div class="side-sep dot">WIKI</div>
+      <ul>
+          <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wikiトップ</a></li>
+          <li><a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a></li>
+          <li><a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a></li>
+          <li><a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>チェストショップ</a></li>
+          <li><a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a></li>
+          <li><a href="wiki-commands.html" aria-current="page"><i class="fa-solid fa-terminal" aria-hidden="true"></i>コマンド一覧</a></li>
+      </ul>
+
+      <div class="side-sep dot">SITE</div>
+      <ul>
+        <li><a class="side-back" href="index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>サイトに戻る</a></li>
+      </ul>
+    </nav>
+
+    <div class="side-server">
+      <button type="button" class="ip-copy" data-copy="viva-mc.net">
+        <span>
+          <span class="lab dot">SERVER ADDRESS</span>
+          <span class="val">viva-mc.net</span>
+        </span>
+        <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+        <span class="sr-only">サーバーアドレスをコピー</span>
+      </button>
+      <div class="ports dot">JAVA 25565 ／ BEDROCK 19132</div>
+      <div class="side-status">
+        <span class="dot-live" id="liveDot"></span>
+        <span id="liveMsg">状況を確認中...</span>
+      </div>
+      <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-discord" aria-hidden="true"></i>Discordに参加
+      </a>
+    </div>
+
+    <div class="side-foot">&copy; 2026 VIVA-MC</div>
+  </aside>
+
+  <main class="main" id="main" tabindex="-1">
+    <header class="page-head">
+      <div class="wrap">
+        <div class="num disp"><i class="fa-solid fa-terminal" aria-hidden="true"></i></div>
+        <div>
+          <span class="kicker dot">CHEAT SHEET</span><h1 class="disp">コマンド一覧</h1>
+          <p>このWikiに出てくるコマンドを、まとめて並べています。困ったらここを開いてください。</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section>
+        <h2 class="sec disp">Jobs Reborn ― 仕事</h2>
+        <p class="sec-note">くわしくは <a href="wiki-jobs.html">仕事で稼ぐ</a> を見てください。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/jobs browse</code></th><td>就ける職業の一覧を開く。ここから就職できる</td></tr>
+              <tr><th><code>/jobs join &lt;職業名&gt;</code></th><td>指定した職業に就く</td></tr>
+              <tr><th><code>/jobs leave &lt;職業名&gt;</code></th><td>その職業を辞める（レベルがリセットされることがあります）</td></tr>
+              <tr><th><code>/jobs stats</code></th><td>いまの職業、レベル、次のレベルまでの経験値を確認する</td></tr>
+              <tr><th><code>/jobs info &lt;職業名&gt;</code></th><td>その職業が「何をすると、いくら稼げるか」を調べる</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">Lands ― 土地・国</h2>
+        <p class="sec-note">くわしくは <a href="wiki-lands.html">土地を守る</a> を見てください。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/lands</code></th><td>メインメニュー（UI画面）を開く</td></tr>
+              <tr><th><code>/lands claim</code></th><td>いま立っているチャンクを保護（購入）する</td></tr>
+              <tr><th><code>/lands unclaim</code></th><td>いま立っているチャンクの保護を解除する</td></tr>
+              <tr><th><code>/lands trust &lt;プレイヤー名&gt;</code></th><td>メンバーとして追加する</td></tr>
+              <tr><th><code>/lands untrust &lt;プレイヤー名&gt;</code></th><td>権限を取り消す</td></tr>
+              <tr><th><code>/lands menu</code></th><td>権限設定を細かく変える</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">QuickShop-Hikari ― チェストショップ</h2>
+        <p class="sec-note">対象のチェストショップを向いた状態で実行します。くわしくは <a href="wiki-shop.html">チェストショップ</a> を見てください。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/qs price &lt;価格&gt;</code></th><td>商品の単価を変える</td></tr>
+              <tr><th><code>/qs mode buy</code></th><td>買取モードに変える（チェストにお金を入れる必要はありません）</td></tr>
+              <tr><th><code>/qs mode sell</code></th><td>販売モードに変える</td></tr>
+              <tr><th><code>/qs remove</code></th><td>お店を撤去する</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">村人ショップ</h2>
+        <p class="sec-note">くわしくは <a href="wiki-villager.html">村人ショップ</a> を見てください。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/shopkeeper remove</code></th><td>Shopkeepers の村人ショップを撤去する</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <nav class="pager" aria-label="記事の移動">
+        <a class="prev" href="wiki-villager.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">村人ショップ</span></a>
+        <a class="next" href="wiki.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">Wikiトップ</span></a>
+      </nav>
+    </div>
+
+    <p class="foot">&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
+  </main>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>
