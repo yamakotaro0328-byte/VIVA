@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外交・戦争のやり方 | VIVA-MC</title>
+<meta name="description" content="VIVA-MCの外交・戦争のやり方。Landsの同盟・敵対・宣戦布告・戦争モードとゴール。">
+<meta name="theme-color" content="#2E1B0C">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="VIVA-MC">
+<meta property="og:title" content="外交・戦争のやり方 | VIVA-MC">
+<meta property="og:description" content="VIVA-MCの外交・戦争のやり方。Landsの同盟・敵対・宣戦布告・戦争モードとゴール。">
+<meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="server-icon.png">
+<link rel="apple-touch-icon" href="server-icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="server-icon.png" alt="">
+    <span class="brand-name disp">VIVA-MC</span>
+  </a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="sidebar">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>メニュー
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <img src="server-icon.png" alt="">
+      <span>
+        <span class="brand-name disp">VIVA-MC</span><br>
+        <span class="brand-sub dot">WIKI</span>
+      </span>
+    </a>
+
+    <nav class="side-nav" aria-label="Wiki内">
+      <div class="side-sep dot">WIKI</div>
+      <ul>
+          <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wikiトップ</a></li>
+          <li><a href="wiki-start.html"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>はじめかたガイド</a></li>
+          <li><a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a></li>
+          <li><a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a></li>
+          <li><a href="wiki-diplomacy.html" aria-current="page"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>外交・戦争</a></li>
+          <li><a href="wiki-economy.html"><i class="fa-solid fa-coins" aria-hidden="true"></i>経済・お金</a></li>
+          <li><a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>チェストショップ</a></li>
+          <li><a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a></li>
+          <li><a href="wiki-casino.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>カジノ・遊び方</a></li>
+          <li><a href="wiki-commands.html"><i class="fa-solid fa-terminal" aria-hidden="true"></i>コマンド一覧</a></li>
+      </ul>
+
+      <div class="side-sep dot">SITE</div>
+      <ul>
+        <li><a class="side-back" href="index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>サイトに戻る</a></li>
+      </ul>
+    </nav>
+
+    <div class="side-server">
+      <button type="button" class="ip-copy" data-copy="viva-mc.net">
+        <span>
+          <span class="lab dot">SERVER ADDRESS</span>
+          <span class="val">viva-mc.net</span>
+        </span>
+        <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+        <span class="sr-only">サーバーアドレスをコピー</span>
+      </button>
+      <div class="ports dot">JAVA 25565 ／ BEDROCK 19132</div>
+      <div class="side-status">
+        <span class="dot-live" id="liveDot"></span>
+        <span id="liveMsg">状況を確認中...</span>
+      </div>
+      <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-discord" aria-hidden="true"></i>Discordに参加
+      </a>
+    </div>
+
+    <div class="side-foot">&copy; 2026 VIVA-MC</div>
+  </aside>
+
+  <main class="main" id="main" tabindex="-1">
+    <header class="page-head">
+      <div class="wrap">
+        <div class="num disp"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i></div>
+        <div>
+          <span class="kicker dot">RELATIONS & WARS</span><h1 class="disp">外交・戦争のやり方</h1>
+          <p>同盟・敵対の結び方から、宣戦布告、戦争の流れ、独立戦争まで。</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section>
+        <h2 class="sec disp">国をつくる</h2>
+        <p class="sec-note">複数の土地をまとめて、ひとつの国にできます。土地の保護のしかたは<a href="wiki-lands.html">土地を守る・国をつくる</a>を先に見てください。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/nations create &lt;首都にする土地名&gt; [国名]</code></th><td>国をつくる。指定した土地が首都になる（自分がその土地のオーナーである必要あり）</td></tr>
+              <tr><th><code>/nation &lt;国名&gt; members add &lt;土地名&gt;</code></th><td>その土地を国に招待する</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; nation accept &lt;国名&gt;</code></th><td>自分の土地が受け取った国への招待を承認する</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; nation decline &lt;国名&gt;</code></th><td>国への招待を断る</td></tr>
+              <tr><th><code>/nation &lt;国名&gt; chat</code></th><td>国のチャットモードをON/OFFにする</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">同盟・敵対（Relations）</h2>
+        <p class="sec-note">他の土地や国を「同盟」「敵対」に設定できます。戦争を仕掛けるには、まず相手を敵対にする必要があります。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/land &lt;土地名&gt; relation ally add &lt;相手&gt;</code></th><td>同盟を申請する（相手の承認が必要）</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; relation ally remove &lt;相手&gt;</code></th><td>同盟を解消する</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; relation enemy add &lt;相手&gt;</code></th><td>敵対にする</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; relation enemy remove &lt;相手&gt;</code></th><td>敵対を解除する（停戦の申し入れ）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sec-note" style="margin-top:14px">国として行うときは <code>/land</code> を <code>/nation &lt;国名&gt;</code> に置き換えるだけです。</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp">戦争の流れ</h2>
+        <p class="sec-note">宣戦布告から終戦までは、だいたいこの順番で進みます。</p>
+        <ol class="steps">
+          <li>
+            <span class="n disp">1</span>
+            <h3>相手を敵対にして、宣戦布告</h3>
+            <p><code>/land &lt;土地名&gt; war declare &lt;相手の土地名か国名&gt;</code>。戦い方（モード）と、勝ったときに何が起こるか（ゴール）をメニューで選びます。サーバーによっては相手の承諾が必要な場合もあります。</p>
+          </li>
+          <li>
+            <span class="n disp">2</span>
+            <h3>準備期間</h3>
+            <p>すぐには戦闘になりません。<code>/land &lt;土地名&gt; war info</code> で開始時刻や必要ポイントを確認できます。</p>
+          </li>
+          <li>
+            <span class="n disp">3</span>
+            <h3>開戦</h3>
+            <p>準備期間が終わると戦闘開始。キル数や、キャプチャーフラッグ（旗）の占領などでポイントを稼ぎます。<code>/land &lt;土地名&gt; war menu</code> で状況を確認できます。</p>
+          </li>
+          <li>
+            <span class="n disp">4</span>
+            <h3>決着</h3>
+            <p>先に必要ポイントに達するか、時間切れの時点で多い方が勝ちです。差がほぼ無いときは引き分けで、誰も何も得られません。</p>
+          </li>
+        </ol>
+        <p class="sec-note">途中で不利になったら <code>/land &lt;土地名&gt; war menu</code> から降伏もできます。負け戦より少し軽い条件で終わります。</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp">戦い方（モード）</h2>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th>スカーミッシュ</th><td>キル数と、キャプチャーフラッグでの土地の占領でポイントを稼ぐ、標準の戦い方</td></tr>
+              <tr><th>キング・オブ・ザ・ヒル（サーバー特設）</th><td>運営が用意した中立の会場を取り合う。キルは無関係で、地点を占領し続けた時間で決まる</td></tr>
+              <tr><th>キング・オブ・ザ・ヒル（自陣設置）</th><td>お互いの土地に自分たちの地点を置き、相手の地点を占領し合う</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">勝つと何が起こるか（ゴール）</h2>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th>スカーミッシュ（略奪）</th><td>負けた側の銀行からお金が奪われる。土地は減らない、いちばん軽いゴール</td></tr>
+              <tr><th>併合</th><td>負けた側の戦争対象の土地が保護解除される（所有権の移動ではなく、更地に戻る）</td></tr>
+              <tr><th>属国化</th><td>負けた国が、勝った国の属国になる。国どうしの戦争でのみ選べる</td></tr>
+              <tr><th>襲撃</th><td>勝った側に、一定時間だけ相手の土地でチェストを開けたり壁を壊せる権利が発生する</td></tr>
+              <tr><th>独立</th><td>属国が宗主国から独立するための、専用のゴール</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">属国からの独立</h2>
+        <p class="sec-note">属国化された土地は、戦って自由になることができます。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/land &lt;土地名&gt; war independence</code></th><td>宗主国に独立戦争をしかける。勝てば自由に、負ける（引き分けを含む）としばらく再挑戦できません</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">コマンド</h2>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/land &lt;土地名&gt; war menu</code></th><td>戦争メニューを開く（状況確認・降伏もここから）</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; war info</code></th><td>いまの戦争、または予定されている戦争の情報を見る</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; war declare &lt;相手&gt;</code></th><td>宣戦布告する（相手からの宣戦なら承諾になる）</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; war decline</code></th><td>相手からの宣戦布告を断る</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; war spawn</code></th><td>戦争中に、敵陣付近（または自陣の会場）へ移動する</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; war independence</code></th><td>属国が独立戦争をしかける</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sec-note" style="margin-top:14px">国として戦うときは、上のコマンドの <code>/land &lt;土地名&gt;</code> を <code>/nation &lt;国名&gt;</code> に置き換えるだけです。</p>
+      </section>
+
+      <nav class="pager" aria-label="記事の移動">
+        <a class="prev" href="wiki-lands.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">土地を守る</span></a>
+        <a class="next" href="wiki-economy.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">経済・お金</span></a>
+      </nav>
+    </div>
+
+    <p class="foot">&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
+  </main>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>

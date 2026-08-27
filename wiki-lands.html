@@ -49,10 +49,14 @@
       <div class="side-sep dot">WIKI</div>
       <ul>
           <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wikiトップ</a></li>
+          <li><a href="wiki-start.html"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>はじめかたガイド</a></li>
           <li><a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a></li>
           <li><a href="wiki-lands.html" aria-current="page"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a></li>
+          <li><a href="wiki-diplomacy.html"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>外交・戦争</a></li>
+          <li><a href="wiki-economy.html"><i class="fa-solid fa-coins" aria-hidden="true"></i>経済・お金</a></li>
           <li><a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>チェストショップ</a></li>
           <li><a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a></li>
+          <li><a href="wiki-casino.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>カジノ・遊び方</a></li>
           <li><a href="wiki-commands.html"><i class="fa-solid fa-terminal" aria-hidden="true"></i>コマンド一覧</a></li>
       </ul>
 
@@ -90,32 +94,54 @@
         <div class="num disp"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></div>
         <div>
           <span class="kicker dot">LANDS</span><h1 class="disp">土地を守る・国をつくる</h1>
-          <p>金のクワでチャンクを保護して、仲間を招いて、少しずつ国を広げていきます。</p>
+          <p>/claim でチャンクを保護して、仲間を招いて、少しずつ国を広げていきます。</p>
         </div>
       </div>
     </header>
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">土地を保護する（買う）</h2>
+        <h2 class="sec disp">土地を保護する</h2>
         <p class="sec-note">自分の土地を守り、町や国を発展させるための、いちばん大事なプラグインです。</p>
         <ol class="steps">
           <li>
             <span class="n disp">1</span>
-            <h3>金のクワで地面を叩く</h3>
-            <p>いま自分が立っている<strong>チャンク（16×16マス）</strong>を保護エリアとして購入できます。コマンド <code>/lands claim</code> でも同じことができます。</p>
+            <h3>チャンクを保護する</h3>
+            <p><code>/claim</code> を実行すると、自分の名前がついた土地ができて、いま立っている<strong>チャンク（16×16マス）</strong>が保護されます。名前を決めて作りたいときは <code>/lands create &lt;名前&gt;</code> のあと <code>/land &lt;土地名&gt; claim</code>。</p>
           </li>
           <li>
             <span class="n disp">2</span>
             <h3>少しずつ広げる</h3>
-            <p>最初は小さなエリアから始めて、サーバー通貨を払いながら保護エリアを広げていきます。</p>
+            <p><code>/land &lt;土地名&gt; claim radius &lt;半径&gt;</code> で周囲をまとめて保護したり、<code>/land &lt;土地名&gt; claim auto</code> をオンにして歩きながら保護を広げられます。</p>
           </li>
           <li>
             <span class="n disp">3</span>
             <h3>仲間を招き入れる</h3>
-            <p>他のプレイヤーを自分の土地に招待して、権限を渡せます。<code>/lands trust</code> を使います。</p>
+            <p><code>/land &lt;土地名&gt; member add &lt;プレイヤー名&gt;</code> で、他のプレイヤーを自分の土地のメンバーに追加できます。</p>
           </li>
         </ol>
+        <div class="callout" style="margin-top:22px">
+          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+          <div><strong>コマンドの形が前と変わりました。</strong>ほとんどのコマンドは <code>/land &lt;土地名&gt; ...</code> の形で、対象の土地名を毎回入力します。<code>&lt;土地名&gt;</code> は <code>/lands</code> のメニューや <code>/lands list</code> で確認できます。</div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">土地のチャット</h2>
+        <p class="sec-note">土地のメンバーだけに届く、専用のチャットがあります。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/land &lt;土地名&gt; chat</code></th><td>その土地のチャットモードをON/OFFにする（ONの間、通常の発言が全部そこに届く）</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; chat &lt;メッセージ&gt;</code></th><td>チャットモードを変えずに、1通だけ土地チャットへ送る</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">国をつくる・戦争をする</h2>
+        <p class="sec-note">複数の土地をまとめて国にしたり、他の土地・国と同盟や戦争をすることもできます。くわしくは<a href="wiki-diplomacy.html">外交・戦争のやり方</a>にまとめました。</p>
       </section>
 
       <section>
@@ -124,19 +150,25 @@
           <table class="spec">
             <tbody>
               <tr><th><code>/lands</code></th><td>メインメニュー（UI画面）を開く。基本の操作はここから</td></tr>
-              <tr><th><code>/lands claim</code></th><td>いま立っているチャンクを自分の土地として保護（購入）する</td></tr>
-              <tr><th><code>/lands unclaim</code></th><td>いま立っているチャンクの保護を解除する</td></tr>
-              <tr><th><code>/lands trust &lt;プレイヤー名&gt;</code></th><td>指定したプレイヤーを自分の土地のメンバーとして追加する</td></tr>
-              <tr><th><code>/lands untrust &lt;プレイヤー名&gt;</code></th><td>指定したプレイヤーの権限を取り消す</td></tr>
-              <tr><th><code>/lands menu</code></th><td>権限設定（建築の可否、チェストを開けるか等）を細かく変える</td></tr>
+              <tr><th><code>/claim</code></th><td>自分の名前の土地をつくり、いま立っているチャンクを保護する</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; unclaim</code></th><td>いま立っているチャンクの保護を解除する</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; unclaim all</code></th><td>その土地の保護をすべて解除する（確認あり）</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; member add &lt;プレイヤー名&gt;</code></th><td>プレイヤーをメンバーとして追加する</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; member remove &lt;プレイヤー名&gt;</code></th><td>プレイヤーをメンバーから外す</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; member setrole &lt;プレイヤー名&gt; &lt;役職&gt;</code></th><td>メンバーの役職（権限）を設定する</td></tr>
+              <tr><th><code>/lands map</code></th><td>保護エリアの地図を開く</td></tr>
+              <tr><th><code>/lands view</code></th><td>近くの土地の境界線をパーティクルで表示する</td></tr>
+              <tr><th><code>/lands unstuck</code></th><td>保護エリアに閉じ込められたとき、近くの未保護地へ移動する</td></tr>
+              <tr><th><code>/lands list</code></th><td>サーバー内の土地の一覧を見る</td></tr>
             </tbody>
           </table>
         </div>
+        <p class="sec-note" style="margin-top:14px">サーバーのバージョンによっては、先に <code>/lands edit &lt;土地名&gt;</code> でその土地を選んでから、<code>&lt;土地名&gt;</code> を省略して同じコマンドを打てる場合もあります。うまく通らないときはDiscordで聞いてください。</p>
       </section>
 
       <nav class="pager" aria-label="記事の移動">
         <a class="prev" href="wiki-jobs.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">仕事で稼ぐ</span></a>
-        <a class="next" href="wiki-shop.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">チェストショップ</span></a>
+        <a class="next" href="wiki-diplomacy.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">外交・戦争のやり方</span></a>
       </nav>
     </div>
 
