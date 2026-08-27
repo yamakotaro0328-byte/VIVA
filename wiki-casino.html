@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>村人ショップ | VIVA-MC</title>
-<meta name="description" content="VIVA-MCの村人ショップの開き方。Shopkeepersでの物々交換と、Villager Marketでの出店。">
+<title>カジノで遊ぶ | VIVA-MC</title>
+<meta name="description" content="VIVA-MCのカジノの遊び方。ブラックジャック、ルーレット、推奨リソースパック。">
 <meta name="theme-color" content="#2E1B0C">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
-<meta property="og:title" content="村人ショップ | VIVA-MC">
-<meta property="og:description" content="VIVA-MCの村人ショップの開き方。Shopkeepersでの物々交換と、Villager Marketでの出店。">
+<meta property="og:title" content="カジノで遊ぶ | VIVA-MC">
+<meta property="og:description" content="VIVA-MCのカジノの遊び方。ブラックジャック、ルーレット、推奨リソースパック。">
 <meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="server-icon.png">
@@ -53,8 +53,8 @@
           <li><a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a></li>
           <li><a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a></li>
           <li><a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>チェストショップ</a></li>
-          <li><a href="wiki-villager.html" aria-current="page"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a></li>
-          <li><a href="wiki-casino.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>カジノ・遊び方</a></li>
+          <li><a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a></li>
+          <li><a href="wiki-casino.html" aria-current="page"><i class="fa-solid fa-dice" aria-hidden="true"></i>カジノ・遊び方</a></li>
           <li><a href="wiki-commands.html"><i class="fa-solid fa-terminal" aria-hidden="true"></i>コマンド一覧</a></li>
       </ul>
 
@@ -89,48 +89,48 @@
   <main class="main" id="main" tabindex="-1">
     <header class="page-head">
       <div class="wrap">
-        <div class="num disp"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
+        <div class="num disp"><i class="fa-solid fa-dice" aria-hidden="true"></i></div>
         <div>
-          <span class="kicker dot">SHOPKEEPERS / VILLAGER MARKET</span><h1 class="disp">村人と取引する</h1>
-          <p>見た目が村人のお店です。物々交換の Shopkeepers と、市場に出店する Villager Market の2種類。</p>
+          <span class="kicker dot">PLAY</span><h1 class="disp">カジノで遊ぶ</h1>
+          <p>ブラックジャックとルーレット。国づくりの息抜きに。</p>
         </div>
       </div>
     </header>
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">2種類あります</h2>
-        <p class="sec-note">どちらも見た目が村人のお店です。作り方がすこし違います。</p>
+        <h2 class="sec disp">遊べる場所</h2>
+        <p class="sec-note">ロビー中央のポータルから市場へ。少し歩くとカジノがあります。</p>
+      </section>
 
-        <div class="callout">
-          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
-          <div>どちらも<strong>専用のアイテムが必要です。</strong>ロビーで販売しているので、先に買っておいてください。</div>
-        </div>
-
+      <section>
+        <h2 class="sec disp">ブラックジャック</h2>
         <div class="rows">
           <div class="row-item">
-            <div class="ico"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
+            <div class="ico"><i class="fa-solid fa-diamond" aria-hidden="true"></i></div>
             <div>
-              <h3>Shopkeepers ― 物々交換のお店</h3>
-              <p>アイテムとアイテムを交換するお店を作れます。</p>
               <ol>
-                <li>ロビーで買った専用アイテムを使って、村人を出現させる</li>
-                <li>その村人を<strong>スニーク（シフト）しながら右クリック</strong>して管理メニューを開く</li>
-                <li>「必要なアイテム（代金）」と「渡すアイテム（商品）」を設定すれば完成</li>
+                <li>ブラックジャックの机の近くで <code>/bj join</code></li>
+                <li><code>/bj bet 金額</code> でチップを賭ける</li>
+                <li><code>/bj hit</code> と <code>/bj stand</code> を駆使して、あとは勝つのみ</li>
               </ol>
-              <p style="margin-top:8px">撤去するときは <code>/shopkeeper remove</code> を使います。</p>
+              <p style="margin-top:8px">※ 遊ぶには推奨リソースパック「Playing Cards」が必要です（下記）。</p>
             </div>
           </div>
+        </div>
+      </section>
 
+      <section>
+        <h2 class="sec disp">ルーレット</h2>
+        <div class="rows">
           <div class="row-item">
-            <div class="ico"><i class="fa-solid fa-store" aria-hidden="true"></i></div>
+            <div class="ico"><i class="fa-solid fa-circle-notch" aria-hidden="true"></i></div>
             <div>
-              <h3>Villager Market ― 村人市場</h3>
-              <p>自分専用の村人ショップを借りて出店できます。</p>
               <ol>
-                <li>ロビーで買った専用アイテムで市場の村人を設置する（空いている村人を借りることもできます）</li>
-                <li>村人を右クリックして専用メニューを開く</li>
-                <li>売りたいアイテムと価格を設定して出店する</li>
+                <li>ルーレット台をクリックして座る</li>
+                <li>チップを購入し、WASDで置き場所を移動（チップを見ていないと動きません）</li>
+                <li>スペースキーで追加購入。置き終わったらスペースキーで確定</li>
+                <li>全員が確定するとルーレットが回ります</li>
               </ol>
             </div>
           </div>
@@ -138,21 +138,28 @@
       </section>
 
       <section>
-        <h2 class="sec disp">チェストショップとの違い</h2>
+        <h2 class="sec disp">推奨リソースパック</h2>
+        <p class="sec-note">入れると遊べる幅が広がります。</p>
         <div class="table-wrap">
           <table class="spec">
             <tbody>
-              <tr><th><a href="wiki-shop.html">チェストショップ</a></th><td>チェストだけで作れる。お金でのやり取り（販売・買取）</td></tr>
-              <tr><th>Shopkeepers</th><td>専用アイテムが必要。アイテムとアイテムの物々交換</td></tr>
-              <tr><th>Villager Market</th><td>専用アイテムが必要。市場に区画を借りて出店する形</td></tr>
+              <tr><th>Playing Cards <span class="tag moss">配布中</span></th>
+                  <td>トランプの見た目が変わり、ブラックジャックが遊べるようになります。
+                  <a href="https://modrinth.com/resourcepack/bjplayingcards" target="_blank" rel="noopener noreferrer">Modrinthからダウンロード</a></td></tr>
+              <tr><th>公式リソースパック <span class="tag honey">準備中</span></th><td>制作中です。完成したら<a href="index.html">お知らせ</a>でご案内します。</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
+      <section>
+        <h2 class="sec disp">プレイヤー統計</h2>
+        <p class="sec-note">ゲーマーIDを入れると、サーバー内の記録を確認できます。<a href="play.html">あそぶ</a>のページから検索できます。</p>
+      </section>
+
       <nav class="pager" aria-label="記事の移動">
-        <a class="prev" href="wiki-shop.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">チェストショップ</span></a>
-        <a class="next" href="wiki-casino.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">カジノで遊ぶ</span></a>
+        <a class="prev" href="wiki-villager.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">村人ショップ</span></a>
+        <a class="next" href="wiki-commands.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">コマンド一覧</span></a>
       </nav>
     </div>
 
