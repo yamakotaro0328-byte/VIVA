@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>はじめかたガイド | VIVA-MC</title>
-<meta name="description" content="VIVA-MCの初心者向けガイド。入ってから建国するまでの流れをまとめています。">
+<title>Discord連携 | VIVA-MC</title>
+<meta name="description" content="VIVA-MCのDiscord連携（DiscordSRV）について。チャット連携、入退場・死亡メッセージ、アカウントのリンク方法。">
 <meta name="theme-color" content="#2E1B0C">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
-<meta property="og:title" content="はじめかたガイド | VIVA-MC">
-<meta property="og:description" content="VIVA-MCの初心者向けガイド。入ってから建国するまでの流れをまとめています。">
+<meta property="og:title" content="Discord連携 | VIVA-MC">
+<meta property="og:description" content="VIVA-MCのDiscord連携（DiscordSRV）について。チャット連携、入退場・死亡メッセージ、アカウントのリンク方法。">
 <meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="server-icon.png">
@@ -49,7 +49,7 @@
       <div class="side-sep dot">WIKI</div>
       <ul>
           <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wikiトップ</a></li>
-          <li><a href="wiki-start.html" aria-current="page"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>はじめかたガイド</a></li>
+          <li><a href="wiki-start.html"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>はじめかたガイド</a></li>
           <li><a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a></li>
           <li><a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a></li>
           <li><a href="wiki-diplomacy.html"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>外交・戦争</a></li>
@@ -58,7 +58,7 @@
           <li><a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a></li>
           <li><a href="wiki-casino.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>カジノ・遊び方</a></li>
           <li><a href="wiki-farmersdelight.html"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i>料理・農業</a></li>
-          <li><a href="wiki-discord.html"><i class="fa-solid fa-comments" aria-hidden="true"></i>Discord連携</a></li>
+          <li><a href="wiki-discord.html" aria-current="page"><i class="fa-solid fa-comments" aria-hidden="true"></i>Discord連携</a></li>
           <li><a href="wiki-commands.html"><i class="fa-solid fa-terminal" aria-hidden="true"></i>コマンド一覧</a></li>
       </ul>
 
@@ -93,73 +93,74 @@
   <main class="main" id="main" tabindex="-1">
     <header class="page-head">
       <div class="wrap">
-        <div class="num disp"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i></div>
+        <div class="num disp"><i class="fa-brands fa-discord" aria-hidden="true"></i></div>
         <div>
-          <span class="kicker dot">GETTING STARTED</span><h1 class="disp">はじめかたガイド</h1>
-          <p>入ったあと、最初の一週間に何をすればいいか。迷ったらまずここから。</p>
+          <span class="kicker dot">DISCORDSRV</span><h1 class="disp">Discord連携</h1>
+          <p>チャット連携と、アカウントのリンクのしかた。</p>
         </div>
       </div>
     </header>
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">入るまで</h2>
-        <p class="sec-note">VIVA-MCの世界へようこそ。まずは接続から。くわしい手順は<a href="join.html">参加する</a>のページにまとめています。</p>
-        <div class="table-wrap">
-          <table class="spec">
-            <tbody>
-              <tr><th>サーバーアドレス</th><td>viva-mc.net</td></tr>
-              <tr><th>Java版 ポート</th><td>25565</td></tr>
-              <tr><th>統合版（BE）ポート</th><td>19132</td></tr>
-              <tr><th>参加費</th><td>無料</td></tr>
-            </tbody>
-          </table>
+        <h2 class="sec disp">できること</h2>
+        <p class="sec-note">VIVA-MCのDiscordは、DiscordSRVというプラグインでゲームと連携しています。</p>
+        <div class="rows">
+          <div class="row-item">
+            <div class="ico"><i class="fa-brands fa-discord" aria-hidden="true"></i></div>
+            <div>
+              <h3>チャット連携</h3>
+              <p>ゲーム内のチャットとDiscordの特定チャンネルが繋がっていて、お互いの発言がリアルタイムに届きます。Discordから発言すれば、ゲーム内のプレイヤーにも見えます。</p>
+            </div>
+          </div>
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-door-open" aria-hidden="true"></i></div>
+            <div>
+              <h3>入退場・死亡メッセージ</h3>
+              <p>誰かがサーバーに入った・抜けた、何で死んだか、といったメッセージがDiscordに自動で投稿されます。</p>
+            </div>
+          </div>
         </div>
       </section>
 
       <section>
-        <h2 class="sec disp">最初の一週間、何をすればいい？</h2>
-        <p class="sec-note">いきなり建国しなくて大丈夫です。順番に慣れていきましょう。</p>
+        <h2 class="sec disp">アカウントを連携する</h2>
+        <p class="sec-note">連携は<strong>任意</strong>です。やらなくてもサーバーには参加できます。連携すると、Discord側の名前とゲーム内の名前が紐付きます。</p>
         <ol class="steps">
           <li>
             <span class="n disp">1</span>
-            <h3>職業に就く</h3>
-            <p><code>/jobs browse</code> で職業を選びます。いつもの行動がそのままお金になります。くわしくは<a href="wiki-jobs.html">仕事に就いて稼ぐ</a>。</p>
+            <h3>ゲーム内でコマンドを実行</h3>
+            <p><code>/discord link</code> を実行すると、4桁のコードが表示されます。</p>
           </li>
           <li>
             <span class="n disp">2</span>
-            <h3>既にある町に入る</h3>
-            <p>自分の国を作る前に、まずは既存の町に参加して、通貨の稼ぎ方と土地の仕組みに慣れましょう。</p>
+            <h3>Discordのbotにコードを送る</h3>
+            <p><a href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">Discord</a>を開き、bot宛てにDM（ダイレクトメッセージ）で、そのコードだけを送信します。チャンネルに書き込む必要はありません。</p>
           </li>
           <li>
             <span class="n disp">3</span>
-            <h3>自分の土地を確保する</h3>
-            <p><code>/claim</code> で、寝床の周りを保護しておくと安心です。くわしくは<a href="wiki-lands.html">土地を守る・国をつくる</a>。</p>
-          </li>
-          <li>
-            <span class="n disp">4</span>
-            <h3>お店をのぞいてみる</h3>
-            <p>チェストショップや村人ショップで、必要な資材を買ったり売ったりできます。くわしくは<a href="wiki-shop.html">チェストで店を開く</a>。</p>
-          </li>
-          <li>
-            <span class="n disp">5</span>
-            <h3>資金と仲間が集まったら建国</h3>
-            <p>憲法や法律を定め、外交や貿易を始められます。あせらず、自分のペースで大丈夫です。</p>
+            <h3>連携完了</h3>
+            <p>botから連携完了の返信が届きます。以降、<code>/discord status</code> で連携状況を確認できます。</p>
           </li>
         </ol>
       </section>
 
       <section>
-        <h2 class="sec disp">困ったときは</h2>
-        <div class="callout" style="background:#FDF0DC;border-left-color:var(--ember)">
-          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
-          <div>わからないことは<a href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">Discord</a>で気軽に聞いてください。トラブルを見かけたら <code>/report</code> で通報できます。ルール全体は<a href="rules.html">ルール</a>のページに載っています。</div>
+        <h2 class="sec disp">コマンド</h2>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/discord link</code></th><td>連携用のコードを発行する</td></tr>
+              <tr><th><code>/discord status</code></th><td>いま連携されているか確認する</td></tr>
+              <tr><th><code>/discord unlink</code></th><td>連携を解除する</td></tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
       <nav class="pager" aria-label="記事の移動">
-        <a class="prev" href="wiki.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">Wikiトップ</span></a>
-        <a class="next" href="wiki-jobs.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">仕事で稼ぐ</span></a>
+        <a class="prev" href="wiki-farmersdelight.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">料理と農業</span></a>
+        <a class="next" href="wiki-commands.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">コマンド一覧</span></a>
       </nav>
     </div>
 
