@@ -404,6 +404,8 @@ h2.sec::before {
 .news h3 { font-size: 1.02rem; margin-bottom: 5px; }
 .news p { color: #6B4623; font-size: .9rem; }
 .news .more { display: inline-block; margin-top: 8px; font-size: .84rem; font-weight: 700; }
+.news-all { margin-top: 18px; text-align: right; }
+.news-all a { font-weight: 700; font-size: .92rem; }
 
 /* お知らせの個別ページ */
 .news-article p { color: var(--ink-2); font-size: .96rem; max-width: 62ch; }
