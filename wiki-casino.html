@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>カジノで遊ぶ | VIVA-MC</title>
-<meta name="description" content="VIVA-MCのカジノの遊び方。ブラックジャック、ルーレット、推奨リソースパック。">
+<meta name="description" content="VIVA-MCのカジノ（GambleGate）の遊び方。スロット、ハイ＆ロー、クラッシュ、物理ルーレット、入場方法。">
 <meta name="theme-color" content="#2E1B0C">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="カジノで遊ぶ | VIVA-MC">
-<meta property="og:description" content="VIVA-MCのカジノの遊び方。ブラックジャック、ルーレット、推奨リソースパック。">
+<meta property="og:description" content="VIVA-MCのカジノ（GambleGate）の遊び方。スロット、ハイ＆ロー、クラッシュ、物理ルーレット、入場方法。">
 <meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="server-icon.png">
@@ -94,7 +94,7 @@
         <div class="num disp"><i class="fa-solid fa-dice" aria-hidden="true"></i></div>
         <div>
           <span class="kicker dot">PLAY</span><h1 class="disp">カジノで遊ぶ</h1>
-          <p>ブラックジャックとルーレット。国づくりの息抜きに。</p>
+          <p>スロット、ハイ＆ロー、クラッシュ、物理ルーレット。国づくりの息抜きに。</p>
         </div>
       </div>
     </header>
@@ -102,56 +102,92 @@
     <div class="wrap">
       <section>
         <h2 class="sec disp">遊べる場所</h2>
-        <p class="sec-note">ロビー中央のポータルから市場へ。少し歩くとカジノがあります。</p>
+        <p class="sec-note">ロビー中央のポータルから市場へ。少し歩くとカジノがあります。コマンドを覚える必要はなく、椅子に座ったりボタンを押したりするだけで遊べます。</p>
       </section>
 
       <section>
-        <h2 class="sec disp">ブラックジャック</h2>
+        <h2 class="sec disp">入場について</h2>
+        <p class="sec-note">入口に乗るとGUIが開き、入場料を払うと中に入れます。遊べるのは、正規に入場している間だけです。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th>買い切りパス</th><td>購入から現実時間で30日間、入場料なしで入れる</td></tr>
+              <tr><th>自動更新パス</th><td>30日ごとに自動で支払われて更新される</td></tr>
+              <tr><th>お試しパス</th><td>7日間。1人1回だけ</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sec-note" style="margin-top:14px">パスは会場内のパス自販機（ボタン）から購入できます。VIP専用のエリアがある会場もあります。</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp">スロット</h2>
         <div class="rows">
           <div class="row-item">
-            <div class="ico"><i class="fa-solid fa-diamond" aria-hidden="true"></i></div>
+            <div class="ico"><i class="fa-solid fa-dice" aria-hidden="true"></i></div>
             <div>
               <ol>
-                <li>ブラックジャックの机の近くで <code>/bj join</code></li>
-                <li><code>/bj bet 金額</code> でチップを賭ける</li>
-                <li><code>/bj hit</code> と <code>/bj stand</code> を駆使して、あとは勝つのみ</li>
+                <li>スロット台のそばの椅子に座る</li>
+                <li>レバーを引くと、決められた賭け金でスタート</li>
+                <li>絵柄が揃うと配当。金3つで「ゴールドラッシュ」に突入し、無料スピンが連鎖することも</li>
               </ol>
-              <p style="margin-top:8px">※ 遊ぶには推奨リソースパック「Playing Cards」が必要です（下記）。</p>
             </div>
           </div>
         </div>
       </section>
 
       <section>
-        <h2 class="sec disp">ルーレット</h2>
+        <h2 class="sec disp">ハイ＆ロー</h2>
+        <div class="rows">
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-arrow-up-9-1" aria-hidden="true"></i></div>
+            <div>
+              <ol>
+                <li>椅子に座り、中央のボタンで賭け金を選ぶ</li>
+                <li>次の数字が今より大きいか小さいかを、LOW／HIGHのボタンで予想する</li>
+                <li>当たるほど獲得額が伸びる。中央ボタンでいつでも換金できる</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">クラッシュ</h2>
+        <div class="rows">
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+            <div>
+              <ol>
+                <li>椅子に座り、ボタンで賭け金を選ぶ</li>
+                <li>倍率がどんどん上がっていく</li>
+                <li>クラッシュ（暴落）する前に、もう一度ボタンを押して換金する（1.20倍から換金可能）</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">物理ルーレット</h2>
         <div class="rows">
           <div class="row-item">
             <div class="ico"><i class="fa-solid fa-circle-notch" aria-hidden="true"></i></div>
             <div>
               <ol>
-                <li>ルーレット台をクリックして座る</li>
-                <li>チップを購入し、WASDで置き場所を移動（チップを見ていないと動きません）</li>
-                <li>スペースキーで追加購入。置き終わったらスペースキーで確定</li>
-                <li>全員が確定するとルーレットが回ります</li>
+                <li>開始ボタンを押すと、観戦位置へ移動する</li>
+                <li>GUIで賭け金（1,000／10,000／50,000）と、賭け先を選ぶ</li>
+                <li>赤黒・奇偶・LOW/HIGHは2倍、4マス区画は4倍、数字1点は16倍</li>
               </ol>
+              <p style="margin-top:8px">使用中の台は待機列に入り、順番が来たらGUIが開きます。1分間操作しないと順番が次の人に回ります。</p>
             </div>
           </div>
         </div>
       </section>
 
       <section>
-        <h2 class="sec disp">推奨リソースパック</h2>
-        <p class="sec-note">入れると遊べる幅が広がります。</p>
-        <div class="table-wrap">
-          <table class="spec">
-            <tbody>
-              <tr><th>Playing Cards <span class="tag moss">配布中</span></th>
-                  <td>トランプの見た目が変わり、ブラックジャックが遊べるようになります。
-                  <a href="https://modrinth.com/resourcepack/bjplayingcards" target="_blank" rel="noopener noreferrer">Modrinthからダウンロード</a></td></tr>
-              <tr><th>公式リソースパック <span class="tag honey">準備中</span></th><td>制作中です。完成したら<a href="index.html">お知らせ</a>でご案内します。</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <h2 class="sec disp">ルールを忘れたら</h2>
+        <p class="sec-note">各ゲーム台のそばに説明の看板があります。クリックすると、そのゲームのルールを確認できます。</p>
       </section>
 
       <section>
