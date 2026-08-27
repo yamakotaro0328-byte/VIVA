@@ -403,6 +403,13 @@ h2.sec::before {
 }
 .news h3 { font-size: 1.02rem; margin-bottom: 5px; }
 .news p { color: #6B4623; font-size: .9rem; }
+.news .more { display: inline-block; margin-top: 8px; font-size: .84rem; font-weight: 700; }
+
+/* お知らせの個別ページ */
+.news-article p { color: var(--ink-2); font-size: .96rem; max-width: 62ch; }
+.news-article p + p { margin-top: 16px; }
+.news-back { margin-top: 34px; padding-top: 22px; border-top: 1px dashed var(--line); }
+.news-back a { font-weight: 700; }
 
 /* 臨時アドレス */
 .addr { list-style: none; display: flex; flex-direction: column; gap: 12px; }
