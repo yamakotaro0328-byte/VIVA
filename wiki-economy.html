@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>仕事で稼ぐ | VIVA-MC</title>
-<meta name="description" content="VIVA-MCのJobs Rebornの使い方。就職の手順、職業の一覧、コマンド。">
+<title>経済・お金の稼ぎ方まとめ | VIVA-MC</title>
+<meta name="description" content="VIVA-MCの経済まわりのまとめ。稼ぎ方、土地の銀行、税金と維持費、レンタル。">
 <meta name="theme-color" content="#2E1B0C">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
-<meta property="og:title" content="仕事で稼ぐ | VIVA-MC">
-<meta property="og:description" content="VIVA-MCのJobs Rebornの使い方。就職の手順、職業の一覧、コマンド。">
+<meta property="og:title" content="経済・お金の稼ぎ方まとめ | VIVA-MC">
+<meta property="og:description" content="VIVA-MCの経済まわりのまとめ。稼ぎ方、土地の銀行、税金と維持費、レンタル。">
 <meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="server-icon.png">
@@ -50,10 +50,10 @@
       <ul>
           <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wikiトップ</a></li>
           <li><a href="wiki-start.html"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>はじめかたガイド</a></li>
-          <li><a href="wiki-jobs.html" aria-current="page"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a></li>
+          <li><a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a></li>
           <li><a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a></li>
           <li><a href="wiki-diplomacy.html"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>外交・戦争</a></li>
-          <li><a href="wiki-economy.html"><i class="fa-solid fa-coins" aria-hidden="true"></i>経済・お金</a></li>
+          <li><a href="wiki-economy.html" aria-current="page"><i class="fa-solid fa-coins" aria-hidden="true"></i>経済・お金</a></li>
           <li><a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>チェストショップ</a></li>
           <li><a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a></li>
           <li><a href="wiki-casino.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>カジノ・遊び方</a></li>
@@ -91,78 +91,83 @@
   <main class="main" id="main" tabindex="-1">
     <header class="page-head">
       <div class="wrap">
-        <div class="num disp"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></div>
+        <div class="num disp"><i class="fa-solid fa-coins" aria-hidden="true"></i></div>
         <div>
-          <span class="kicker dot">JOBS REBORN</span><h1 class="disp">仕事に就いて稼ぐ</h1>
-          <p>鉱石を掘る、木を切る、モブを倒す。いつもの行動が、そのままお金になります。</p>
+          <span class="kicker dot">ECONOMY</span><h1 class="disp">経済・お金の稼ぎ方まとめ</h1>
+          <p>稼ぎ方の入り口と、土地の銀行・税金・維持費・貸し借りの仕組み。</p>
         </div>
       </div>
     </header>
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">就職までの手順</h2>
-        <p class="sec-note">職業に就くと、いつもの行動がそのままお金になります。稼いだ通貨は建国にも、ショップにも、カジノにも使えます。</p>
-        <ol class="steps">
-          <li>
-            <span class="n disp">1</span>
-            <h3>就職メニューを開く</h3>
-            <p><code>/jobs browse</code> を実行すると、いま就ける職業の一覧が開きます。</p>
-          </li>
-          <li>
-            <span class="n disp">2</span>
-            <h3>職業を選ぶ</h3>
-            <p>自分の遊び方に合った職業をクリックすれば、その仕事に就けます。</p>
-          </li>
-          <li>
-            <span class="n disp">3</span>
-            <h3>働いて、レベルを上げる</h3>
-            <p>職業に応じた行動をすると、自動でお金と経験値が入ります。レベルが上がると、同じ行動でもらえる報酬が増えていきます。</p>
-          </li>
-        </ol>
-      </section>
-
-      <section>
-        <h2 class="sec disp">職業の一覧</h2>
-        <p class="sec-note">同時に就ける職業の数には上限があります。</p>
+        <h2 class="sec disp">お金の稼ぎ方</h2>
+        <p class="sec-note">主な稼ぎ方は3つです。それぞれ専用のページにまとめています。</p>
         <div class="table-wrap">
           <table class="spec">
             <tbody>
-              <tr><th>⛏️ 採掘師（Miner）</th><td>石、丸石、石炭、鉄、ダイヤモンドなどの鉱石を掘る</td></tr>
-              <tr><th>🪓 木こり（Woodcutter）</th><td>原木を切る、苗木を植えて育てる</td></tr>
-              <tr><th>🌾 農家（Farmer）</th><td>小麦や作物、サトウキビの収穫、苗の植え付け</td></tr>
-              <tr><th>⚔️ 狩人（Hunter）</th><td>ゾンビ、スケルトン、クリーパーなどの敵モブを倒す</td></tr>
-              <tr><th>🏗️ 建築家（Builder）</th><td>ブロックを設置する。建築好きにおすすめ</td></tr>
-              <tr><th>🎣 漁師（Fisherman）</th><td>釣竿で魚を釣る</td></tr>
+              <tr><th><a href="wiki-jobs.html">仕事に就いて稼ぐ</a></th><td>Jobs Reborn。掘る・切る・倒すが、そのままお金になる</td></tr>
+              <tr><th><a href="wiki-shop.html">チェストで店を開く</a></th><td>QuickShop-Hikari。売買どちらもできる</td></tr>
+              <tr><th><a href="wiki-villager.html">村人と取引する</a></th><td>Shopkeepers と Villager Market</td></tr>
             </tbody>
           </table>
         </div>
       </section>
 
       <section>
-        <h2 class="sec disp">コマンド</h2>
+        <h2 class="sec disp">土地の銀行</h2>
+        <p class="sec-note">土地ごとに、お金を貯めておける銀行があります。税金や維持費は、まずここから支払われます。</p>
         <div class="table-wrap">
           <table class="spec">
             <tbody>
-              <tr><th><code>/jobs browse</code></th><td>就ける職業の一覧を開く。ここから就職できる</td></tr>
-              <tr><th><code>/jobs join &lt;職業名&gt;</code></th><td>指定した職業に就く</td></tr>
-              <tr><th><code>/jobs leave &lt;職業名&gt;</code></th><td>その職業を辞める</td></tr>
-              <tr><th><code>/jobs stats</code></th><td>いまの職業、レベル、次のレベルまでの経験値を確認する</td></tr>
-              <tr><th><code>/jobs info &lt;職業名&gt;</code></th><td>その職業が「何をすると、いくら稼げるか」を調べる</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; bank balance</code></th><td>銀行の残高を見る</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; bank deposit &lt;金額&gt;</code></th><td>銀行にお金を入れる</td></tr>
+              <tr><th><code>/land &lt;土地名&gt; bank withdraw &lt;金額&gt;</code></th><td>銀行からお金を引き出す（権限が必要）</td></tr>
             </tbody>
           </table>
         </div>
+      </section>
 
+      <section>
+        <h2 class="sec disp">税金と維持費</h2>
+        <p class="sec-note">土地に住んでいると税金、土地を持っていると維持費がかかる場合があります。銀行の残高が足りないと、保護が解除されることがあるので注意してください。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/lands eco taxes</code></th><td>これから払う予定の税金を確認する</td></tr>
+              <tr><th><code>/lands eco upkeep</code></th><td>これから払う予定の維持費を確認する</td></tr>
+            </tbody>
+          </table>
+        </div>
         <div class="callout" style="margin-top:22px">
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
-          <div><strong>辞めるときは慎重に。</strong><code>/jobs leave</code> で職業を辞めると、
-          積み上げたその職業のレベルがリセットされることがあります。</div>
+          <div>維持費が払えないと、保護が一部解除されることがあります。土地の銀行に、余裕をもってお金を入れておいてください。</div>
         </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">保護にかかるお金</h2>
+        <p class="sec-note">チャンクを保護（<code>/claim</code>）するときにお金がかかることがあります。保護を解除（<code>/land &lt;土地名&gt; unclaim</code>）すると、一部が戻ってくる場合もあります。</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp">貸す・売る</h2>
+        <p class="sec-note">自分の土地の一部を、他のプレイヤーに貸したり売ったりできます。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/lands rental list</code></th><td>貸し出し中・販売中の土地の一覧を見る</td></tr>
+              <tr><th><code>/lands rental info</code></th><td>いま立っている場所の貸し出し・販売情報を見る</td></tr>
+              <tr><th><code>/lands rental cancel</code></th><td>借りている土地の契約を、自分から解約する</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sec-note" style="margin-top:14px">貸し出す側になるときは、看板を置くか <code>/lands menu here</code> から設定できます。くわしくはDiscordで聞いてください。</p>
       </section>
 
       <nav class="pager" aria-label="記事の移動">
-        <a class="prev" href="wiki-start.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">はじめかたガイド</span></a>
-        <a class="next" href="wiki-lands.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">土地を守る</span></a>
+        <a class="prev" href="wiki-diplomacy.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">外交・戦争のやり方</span></a>
+        <a class="next" href="wiki-shop.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">チェストショップ</span></a>
       </nav>
     </div>
 
