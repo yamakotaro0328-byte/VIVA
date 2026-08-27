@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>料理と農業を楽しむ | VIVA-MC</title>
+<meta name="description" content="VIVA-MCに追加予定のNova-FarmersDelightについて。料理システム、専用道具、装飾ブロック。">
+<meta name="theme-color" content="#2E1B0C">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="VIVA-MC">
+<meta property="og:title" content="料理と農業を楽しむ | VIVA-MC">
+<meta property="og:description" content="VIVA-MCに追加予定のNova-FarmersDelightについて。料理システム、専用道具、装飾ブロック。">
+<meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="server-icon.png">
+<link rel="apple-touch-icon" href="server-icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="server-icon.png" alt="">
+    <span class="brand-name disp">VIVA-MC</span>
+  </a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="sidebar">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>メニュー
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <img src="server-icon.png" alt="">
+      <span>
+        <span class="brand-name disp">VIVA-MC</span><br>
+        <span class="brand-sub dot">WIKI</span>
+      </span>
+    </a>
+
+    <nav class="side-nav" aria-label="Wiki内">
+      <div class="side-sep dot">WIKI</div>
+      <ul>
+          <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wikiトップ</a></li>
+          <li><a href="wiki-start.html"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>はじめかたガイド</a></li>
+          <li><a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a></li>
+          <li><a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a></li>
+          <li><a href="wiki-diplomacy.html"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>外交・戦争</a></li>
+          <li><a href="wiki-economy.html"><i class="fa-solid fa-coins" aria-hidden="true"></i>経済・お金</a></li>
+          <li><a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>チェストショップ</a></li>
+          <li><a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a></li>
+          <li><a href="wiki-casino.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>カジノ・遊び方</a></li>
+          <li><a href="wiki-farmersdelight.html" aria-current="page"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i>料理・農業</a></li>
+          <li><a href="wiki-commands.html"><i class="fa-solid fa-terminal" aria-hidden="true"></i>コマンド一覧</a></li>
+      </ul>
+
+      <div class="side-sep dot">SITE</div>
+      <ul>
+        <li><a class="side-back" href="index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>サイトに戻る</a></li>
+      </ul>
+    </nav>
+
+    <div class="side-server">
+      <button type="button" class="ip-copy" data-copy="viva-mc.net">
+        <span>
+          <span class="lab dot">SERVER ADDRESS</span>
+          <span class="val">viva-mc.net</span>
+        </span>
+        <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+        <span class="sr-only">サーバーアドレスをコピー</span>
+      </button>
+      <div class="ports dot">JAVA 25565 ／ BEDROCK 19132</div>
+      <div class="side-status">
+        <span class="dot-live" id="liveDot"></span>
+        <span id="liveMsg">状況を確認中...</span>
+      </div>
+      <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-discord" aria-hidden="true"></i>Discordに参加
+      </a>
+    </div>
+
+    <div class="side-foot">&copy; 2026 VIVA-MC</div>
+  </aside>
+
+  <main class="main" id="main" tabindex="-1">
+    <header class="page-head">
+      <div class="wrap">
+        <div class="num disp"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i></div>
+        <div>
+          <span class="kicker dot">NOVA-FARMERSDELIGHT</span><h1 class="disp">料理と農業を楽しむ</h1>
+          <p>Nova-FarmersDelight。追加予定の料理・農業コンテンツです。</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section>
+        <div class="callout" style="background:#FDF0DC;border-left-color:var(--honey)">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+          <div><strong>これは追加予定のコンテンツです。</strong>まだ導入されていません。
+          実際に入るタイミングは<a href="index.html">お知らせ</a>で告知します。</div>
+        </div>
+        <h2 class="sec disp">Nova-FarmersDelightとは</h2>
+        <p class="sec-note">人気の料理・農業MOD「Farmer's Delight」を、Paperサーバー向けのプラグイン基盤「Nova」に移植したコンテンツです。専用のクライアントMod（改造した公式ランチャー等）は不要で、通常のマインクラフトのまま遊べます。</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp">追加される予定のもの</h2>
+        <div class="rows">
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-bowl-food" aria-hidden="true"></i></div>
+            <div>
+              <h3>料理システム</h3>
+              <p>サンドイッチ、サラダ、シチュー、デザートなど、効果つきの料理を作れるようになります。鍋やフライパンで、複数人分の料理を一度に仕込めます。</p>
+            </div>
+          </div>
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i></div>
+            <div>
+              <h3>食材を集める・保存する道具</h3>
+              <p>収穫や下ごしらえを効率化する専用の道具が増えます。食材を上手に保存する手段も用意される予定です。</p>
+            </div>
+          </div>
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></div>
+            <div>
+              <h3>キッチン・農場の装飾ブロック</h3>
+              <p>台所や農場まわりを飾るための、雰囲気づくり用のブロックも入ります。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">新しい作物</h2>
+        <p class="sec-note">トマト・タマネギ・キャベツ・イネの4種類が増えます。イネは水辺に植えて育てる作物です。畑に植えて、育ったら収穫して料理に使います。</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp">カッティングボード（まな板）</h2>
+        <p class="sec-note">食材を切り分けるための作業台です。</p>
+        <ol class="steps">
+          <li>
+            <span class="n disp">1</span>
+            <h3>ナイフを用意する</h3>
+            <p>専用の「ナイフ」を作ります。まな板の上で使うほか、そのまま持って作物を右クリックすると、種を減らさずに素早く収穫できます。</p>
+          </li>
+          <li>
+            <span class="n disp">2</span>
+            <h3>まな板に食材を置く</h3>
+            <p>まな板を設置し、生肉や野菜などを右クリックで乗せます。</p>
+          </li>
+          <li>
+            <span class="n disp">3</span>
+            <h3>ナイフで切る</h3>
+            <p>ナイフで右クリックすると、食材が切り分けられます（例：牛肉から牛肉の切り身、パンとハムでサンドイッチなど）。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2 class="sec disp">クッキングポット（鍋）</h2>
+        <p class="sec-note">複数人分のシチューやスープを一度に仕込める鍋です。</p>
+        <ol class="steps">
+          <li>
+            <span class="n disp">1</span>
+            <h3>鍋を設置し、材料を入れる</h3>
+            <p>肉・野菜・水入りバケツなどを右クリックで入れていきます。組み合わせによって、ビーフシチューやチキンスープなど、できあがる料理が変わります。</p>
+          </li>
+          <li>
+            <span class="n disp">2</span>
+            <h3>下から火であぶる</h3>
+            <p>焚き火などで鍋の下から加熱すると調理が始まります。</p>
+          </li>
+          <li>
+            <span class="n disp">3</span>
+            <h3>お椀でよそう</h3>
+            <p>空のお椀を右クリックすると、1人分だけよそえます。鍋ごと持ち帰ることもできます。</p>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2 class="sec disp">その他の道具・ブロック</h2>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th>スキレット（フライパン）</th><td>焚き火の上で使う、1人分をその場で焼く調理器具。目玉焼きなどが作れます</td></tr>
+              <tr><th>ストーブ</th><td>かまどより早く調理できる、複数枠のコンロ。明かりとしても使えます</td></tr>
+              <tr><th>バスケット</th><td>収穫した食材を効率よくしまえる、専用の収納ブロック</td></tr>
+              <tr><th>ロープ／キャンバス</th><td>登れる縄と、キッチンや農場を彩る布のブロック。装飾用です</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">遊び方のまとめ</h2>
+        <p class="sec-note">専用のコマンドはありません。素材を集めて、クラフトしたり道具・ブロックを設置したりする、いつも通りのサバイバル操作で遊べます。</p>
+        <div class="callout" style="margin-top:10px">
+          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+          <div>ここに書いた内容は、本家「Farmer's Delight」の仕組みをもとにした先行案内です。<strong>VIVA-MCへの実際の導入時に、レシピやバランスが変わる場合があります。</strong>最新の情報は実装後にこのページで更新します。</div>
+        </div>
+      </section>
+
+      <nav class="pager" aria-label="記事の移動">
+        <a class="prev" href="wiki-casino.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">カジノで遊ぶ</span></a>
+        <a class="next" href="wiki-commands.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">コマンド一覧</span></a>
+      </nav>
+    </div>
+
+    <p class="foot">&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
+  </main>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>
