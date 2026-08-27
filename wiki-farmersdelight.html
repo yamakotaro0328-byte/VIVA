@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>チェストショップ | VIVA-MC</title>
-<meta name="description" content="VIVA-MCのQuickShop-Hikariの使い方。チェストショップの作り方、買取モード、コマンド。">
+<title>料理と農業を楽しむ | VIVA-MC</title>
+<meta name="description" content="VIVA-MCに追加予定のNova-FarmersDelightについて。料理システム、専用道具、装飾ブロック。">
 <meta name="theme-color" content="#2E1B0C">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
-<meta property="og:title" content="チェストショップ | VIVA-MC">
-<meta property="og:description" content="VIVA-MCのQuickShop-Hikariの使い方。チェストショップの作り方、買取モード、コマンド。">
+<meta property="og:title" content="料理と農業を楽しむ | VIVA-MC">
+<meta property="og:description" content="VIVA-MCに追加予定のNova-FarmersDelightについて。料理システム、専用道具、装飾ブロック。">
 <meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="server-icon.png">
@@ -54,10 +54,10 @@
           <li><a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a></li>
           <li><a href="wiki-diplomacy.html"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>外交・戦争</a></li>
           <li><a href="wiki-economy.html"><i class="fa-solid fa-coins" aria-hidden="true"></i>経済・お金</a></li>
-          <li><a href="wiki-shop.html" aria-current="page"><i class="fa-solid fa-box-open" aria-hidden="true"></i>チェストショップ</a></li>
+          <li><a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>チェストショップ</a></li>
           <li><a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a></li>
           <li><a href="wiki-casino.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>カジノ・遊び方</a></li>
-          <li><a href="wiki-farmersdelight.html"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i>料理・農業</a></li>
+          <li><a href="wiki-farmersdelight.html" aria-current="page"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i>料理・農業</a></li>
           <li><a href="wiki-commands.html"><i class="fa-solid fa-terminal" aria-hidden="true"></i>コマンド一覧</a></li>
       </ul>
 
@@ -92,69 +92,60 @@
   <main class="main" id="main" tabindex="-1">
     <header class="page-head">
       <div class="wrap">
-        <div class="num disp"><i class="fa-solid fa-box-open" aria-hidden="true"></i></div>
+        <div class="num disp"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i></div>
         <div>
-          <span class="kicker dot">QUICKSHOP-HIKARI</span><h1 class="disp">チェストで店を開く</h1>
-          <p>チェストを置くだけで、誰でも自動販売のお店を開けます。買い取るお店にもできます。</p>
+          <span class="kicker dot">NOVA-FARMERSDELIGHT</span><h1 class="disp">料理と農業を楽しむ</h1>
+          <p>Nova-FarmersDelight。追加予定の料理・農業コンテンツです。</p>
         </div>
       </div>
     </header>
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">売る／買い取る</h2>
-        <p class="sec-note">チェストを置くだけで、誰でも自動販売のお店を開けます。</p>
+        <div class="callout" style="background:#FDF0DC;border-left-color:var(--honey)">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+          <div><strong>これは追加予定のコンテンツです。</strong>まだ導入されていません。
+          実際に入るタイミングは<a href="index.html">お知らせ</a>で告知します。</div>
+        </div>
+        <h2 class="sec disp">Nova-FarmersDelightとは</h2>
+        <p class="sec-note">人気の料理・農業MOD「Farmer's Delight」を、Paperサーバー向けのプラグイン基盤「Nova」に移植したコンテンツです。専用のクライアントMod（改造した公式ランチャー等）は不要で、通常のマインクラフトのまま遊べます。</p>
+      </section>
 
-        <div class="duo">
-          <div class="col step-a">
-            <h3><i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i>アイテムを売る</h3>
-            <ul>
-              <li>チェストを設置する</li>
-              <li>売りたいアイテムを手に持った状態で、チェストを<strong>左クリック</strong></li>
-              <li>チャット欄に「1個あたりの価格」を入力する</li>
-              <li>チェストに商品を入れておけば、他の人が自動で買えるようになる</li>
-            </ul>
+      <section>
+        <h2 class="sec disp">追加される予定のもの</h2>
+        <div class="rows">
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-bowl-food" aria-hidden="true"></i></div>
+            <div>
+              <h3>料理システム</h3>
+              <p>サンドイッチ、サラダ、シチュー、デザートなど、効果つきの料理を作れるようになります。鍋やフライパンで、複数人分の料理を一度に仕込めます。</p>
+            </div>
           </div>
-          <div class="col step-b">
-            <h3><i class="fa-solid fa-arrow-down-to-bracket" aria-hidden="true"></i>アイテムを買い取る</h3>
-            <ul>
-              <li>作ったショップのチェストを向いて <code>/qs mode buy</code></li>
-              <li>価格はそのままで「買い取るお店」に変わる</li>
-              <li><strong>チェストにお金を入れる必要はありません。</strong>代金は自分の所持金から支払われます</li>
-              <li>買い取ったアイテムはチェストに入るので、空きを残しておく</li>
-            </ul>
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i></div>
+            <div>
+              <h3>食材を集める・保存する道具</h3>
+              <p>収穫や下ごしらえを効率化する専用の道具が増えます。食材を上手に保存する手段も用意される予定です。</p>
+            </div>
+          </div>
+          <div class="row-item">
+            <div class="ico"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></div>
+            <div>
+              <h3>キッチン・農場の装飾ブロック</h3>
+              <p>台所や農場まわりを飾るための、雰囲気づくり用のブロックも入ります。</p>
+            </div>
           </div>
         </div>
       </section>
 
       <section>
-        <h2 class="sec disp">気をつけること</h2>
-        <div class="callout">
-          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
-          <div><strong>買取のお店は、所持金がなくなると止まります。</strong>
-          代金はチェストではなく自分の所持金から出るので、残高が足りなくなると買い取れなくなります。
-          チェストが満杯になったときも同じです。</div>
-        </div>
-      </section>
-
-      <section>
-        <h2 class="sec disp">コマンド</h2>
-        <p class="sec-note">どれも、対象のチェストショップを向いた状態で実行します。</p>
-        <div class="table-wrap">
-          <table class="spec">
-            <tbody>
-              <tr><th><code>/qs price &lt;価格&gt;</code></th><td>商品の単価を変える</td></tr>
-              <tr><th><code>/qs mode buy</code></th><td>買取モードに変える</td></tr>
-              <tr><th><code>/qs mode sell</code></th><td>販売モードに変える</td></tr>
-              <tr><th><code>/qs remove</code></th><td>お店を撤去する</td></tr>
-            </tbody>
-          </table>
-        </div>
+        <h2 class="sec disp">遊び方</h2>
+        <p class="sec-note">専用のコマンドはありません。素材を集めて、クラフトしたり道具・ブロックを設置したりする、いつも通りのサバイバル操作で遊べます。くわしい入手方法やレシピは、実装後にこのページへ追記します。</p>
       </section>
 
       <nav class="pager" aria-label="記事の移動">
-        <a class="prev" href="wiki-economy.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">経済・お金</span></a>
-        <a class="next" href="wiki-villager.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">村人ショップ</span></a>
+        <a class="prev" href="wiki-casino.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">カジノで遊ぶ</span></a>
+        <a class="next" href="wiki-commands.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">コマンド一覧</span></a>
       </nav>
     </div>
 
