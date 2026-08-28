@@ -50,6 +50,7 @@
       <ul>
           <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wikiトップ</a></li>
           <li><a href="wiki-start.html"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>はじめかたガイド</a></li>
+          <li><a href="wiki-teleport.html"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i>ホーム・テレポート</a></li>
           <li><a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a></li>
           <li><a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a></li>
           <li><a href="wiki-diplomacy.html"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>外交・戦争</a></li>
@@ -158,10 +159,34 @@
         <div class="table-wrap">
           <table class="spec">
             <tbody>
+              <tr><th><code>/balance</code></th><td>所持金を確認する（EcoTP）</td></tr>
+              <tr><th><code>/pay &lt;プレイヤー名&gt; &lt;金額&gt;</code></th><td>送金する（EcoTP）</td></tr>
+              <tr><th><code>/baltop</code></th><td>所持金ランキングを見る（EcoTP）</td></tr>
               <tr><th><code>/land &lt;土地名&gt; bank balance</code></th><td>土地の銀行残高を見る</td></tr>
               <tr><th><code>/land &lt;土地名&gt; bank deposit &lt;金額&gt;</code></th><td>銀行にお金を入れる</td></tr>
               <tr><th><code>/lands eco taxes</code></th><td>これから払う税金を確認する</td></tr>
               <tr><th><code>/lands eco upkeep</code></th><td>これから払う維持費を確認する</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">ホーム・テレポート</h2>
+        <p class="sec-note">くわしくは <a href="wiki-teleport.html">ホームとテレポート</a> を見てください。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/sethome &lt;名前&gt;</code></th><td>ホームを登録する</td></tr>
+              <tr><th><code>/home &lt;名前&gt;</code></th><td>ホームへテレポートする</td></tr>
+              <tr><th><code>/homes</code></th><td>ホームの一覧を見る</td></tr>
+              <tr><th><code>/delhome &lt;名前&gt;</code></th><td>ホームを削除する</td></tr>
+              <tr><th><code>/spawn</code></th><td>スポーンへテレポートする</td></tr>
+              <tr><th><code>/tpa &lt;プレイヤー名&gt;</code></th><td>相手のもとへ行く申請をする（自分が支払う）</td></tr>
+              <tr><th><code>/tphere &lt;プレイヤー名&gt;</code></th><td>相手を呼ぶ申請をする（相手が支払う）</td></tr>
+              <tr><th><code>/accept</code> / <code>/ok</code></th><td>申請を承認する</td></tr>
+              <tr><th><code>/tpdeny</code></th><td>申請を断る</td></tr>
+              <tr><th><code>/menu</code></th><td>クリック操作のメニューを開く</td></tr>
             </tbody>
           </table>
         </div>

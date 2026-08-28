@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ホームとテレポート | VIVA-MC</title>
+<meta name="description" content="VIVA-MCのEcoTPの使い方。ホーム、スポーン、tpa/tphere、距離制の料金について。">
+<meta name="theme-color" content="#2E1B0C">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="VIVA-MC">
+<meta property="og:title" content="ホームとテレポート | VIVA-MC">
+<meta property="og:description" content="VIVA-MCのEcoTPの使い方。ホーム、スポーン、tpa/tphere、距離制の料金について。">
+<meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="server-icon.png">
+<link rel="apple-touch-icon" href="server-icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="server-icon.png" alt="">
+    <span class="brand-name disp">VIVA-MC</span>
+  </a>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="sidebar">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>メニュー
+  </button>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="index.html">
+      <img src="server-icon.png" alt="">
+      <span>
+        <span class="brand-name disp">VIVA-MC</span><br>
+        <span class="brand-sub dot">WIKI</span>
+      </span>
+    </a>
+
+    <nav class="side-nav" aria-label="Wiki内">
+      <div class="side-sep dot">WIKI</div>
+      <ul>
+          <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wikiトップ</a></li>
+          <li><a href="wiki-start.html"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>はじめかたガイド</a></li>
+          <li><a href="wiki-teleport.html" aria-current="page"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i>ホーム・テレポート</a></li>
+          <li><a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a></li>
+          <li><a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a></li>
+          <li><a href="wiki-diplomacy.html"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>外交・戦争</a></li>
+          <li><a href="wiki-economy.html"><i class="fa-solid fa-coins" aria-hidden="true"></i>経済・お金</a></li>
+          <li><a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>チェストショップ</a></li>
+          <li><a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a></li>
+          <li><a href="wiki-casino.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>カジノ・遊び方</a></li>
+          <li><a href="wiki-farmersdelight.html"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i>料理・農業</a></li>
+          <li><a href="wiki-discord.html"><i class="fa-solid fa-comments" aria-hidden="true"></i>Discord連携</a></li>
+          <li><a href="wiki-commands.html"><i class="fa-solid fa-terminal" aria-hidden="true"></i>コマンド一覧</a></li>
+      </ul>
+
+      <div class="side-sep dot">SITE</div>
+      <ul>
+        <li><a class="side-back" href="index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>サイトに戻る</a></li>
+      </ul>
+    </nav>
+
+    <div class="side-server">
+      <button type="button" class="ip-copy" data-copy="viva-mc.net">
+        <span>
+          <span class="lab dot">SERVER ADDRESS</span>
+          <span class="val">viva-mc.net</span>
+        </span>
+        <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+        <span class="sr-only">サーバーアドレスをコピー</span>
+      </button>
+      <div class="ports dot">JAVA 25565 ／ BEDROCK 19132</div>
+      <div class="side-status">
+        <span class="dot-live" id="liveDot"></span>
+        <span id="liveMsg">状況を確認中...</span>
+      </div>
+      <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+        <i class="fa-brands fa-discord" aria-hidden="true"></i>Discordに参加
+      </a>
+    </div>
+
+    <div class="side-foot">&copy; 2026 VIVA-MC</div>
+  </aside>
+
+  <main class="main" id="main" tabindex="-1">
+    <header class="page-head">
+      <div class="wrap">
+        <div class="num disp"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></div>
+        <div>
+          <span class="kicker dot">ECOTP</span><h1 class="disp">ホームとテレポート</h1>
+          <p>ホームの設定、スポーンへの帰り方、他プレイヤーへのテレポート。</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section>
+        <h2 class="sec disp">ホームを設定する</h2>
+        <p class="sec-note">拠点まで一瞬で戻れる、自分だけの帰還ポイントです。名前をつければ複数登録できます。</p>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/sethome &lt;名前&gt;</code></th><td>いまいる場所をホームとして登録する</td></tr>
+              <tr><th><code>/home &lt;名前&gt;</code></th><td>そのホームへテレポートする（お金がかかります）</td></tr>
+              <tr><th><code>/homes</code></th><td>登録しているホームの一覧を見る</td></tr>
+              <tr><th><code>/delhome &lt;名前&gt;</code></th><td>ホームを削除する</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">スポーンに戻る</h2>
+        <p class="sec-note"><code>/spawn</code> で、サーバーの初期地点まで戻れます。こちらもお金がかかります。</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp">他プレイヤーのところへ行く</h2>
+        <p class="sec-note">2種類あります。<strong>どちらが移動するかで、お金を払う側が変わります。</strong></p>
+        <div class="duo">
+          <div class="col step-a">
+            <h3><i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i>/tpa ― 自分が行く</h3>
+            <ul>
+              <li><code>/tpa &lt;プレイヤー名&gt;</code> で申請する</li>
+              <li>相手が承認すると、自分が相手のもとへ移動する</li>
+              <li>移動するのは自分なので、料金は<strong>自分が払う</strong></li>
+            </ul>
+          </div>
+          <div class="col step-b">
+            <h3><i class="fa-solid fa-arrow-down-to-bracket" aria-hidden="true"></i>/tphere ― 相手を呼ぶ</h3>
+            <ul>
+              <li><code>/tphere &lt;プレイヤー名&gt;</code> で申請する</li>
+              <li>相手が承認すると、相手が自分のもとへ移動する</li>
+              <li>移動するのは相手なので、料金は<strong>相手が払う</strong>（着払い）</li>
+            </ul>
+          </div>
+        </div>
+        <p class="sec-note" style="margin-top:14px">申請の承認は、チャットに出るボタンをクリックするか、同じコマンドをもう一度打つか、<code>/accept</code>（<code>/ok</code>でも可。統合版でも使いやすいコマンドです）でできます。</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp">料金について</h2>
+        <p class="sec-note"><code>/home</code>・<code>/spawn</code>・<code>/tpa</code>・<code>/tphere</code> はすべて、<strong>実際の距離が遠いほど高くなる</strong>料金制です。近い移動なら安く、最低料金も設定されています。</p>
+        <div class="callout">
+          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+          <div><strong>テレポート開始後、少しの間その場でじっとする必要があります。</strong>
+          視点を動かすだけなら大丈夫ですが、歩いたり、近くに敵対Mobがいたり、直前に他のプレイヤーと戦っていたりすると中断されます。中断された場合、料金は<strong>かかりません</strong>。</div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp">メニューから操作する</h2>
+        <p class="sec-note">コマンドを覚えなくても、<code>/menu</code> でクリック操作のメニューが開きます。</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp">コマンド</h2>
+        <div class="table-wrap">
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/sethome &lt;名前&gt;</code></th><td>ホームを登録する</td></tr>
+              <tr><th><code>/home &lt;名前&gt;</code></th><td>ホームへテレポートする</td></tr>
+              <tr><th><code>/homes</code></th><td>ホームの一覧を見る</td></tr>
+              <tr><th><code>/delhome &lt;名前&gt;</code></th><td>ホームを削除する</td></tr>
+              <tr><th><code>/spawn</code></th><td>スポーンへテレポートする</td></tr>
+              <tr><th><code>/tpa &lt;プレイヤー名&gt;</code></th><td>相手のもとへ行く申請をする（自分が支払う）</td></tr>
+              <tr><th><code>/tphere &lt;プレイヤー名&gt;</code></th><td>相手を呼ぶ申請をする（相手が支払う）</td></tr>
+              <tr><th><code>/tpaccept</code> / <code>/accept</code> / <code>/ok</code></th><td>申請を承認する</td></tr>
+              <tr><th><code>/tpdeny</code></th><td>申請を断る</td></tr>
+              <tr><th><code>/tpacancel</code></th><td>自分が送った申請を取り消す</td></tr>
+              <tr><th><code>/menu</code></th><td>クリック操作のメニューを開く</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <nav class="pager" aria-label="記事の移動">
+        <a class="prev" href="wiki-start.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> 前のページ</span><span class="ttl disp">はじめかたガイド</span></a>
+        <a class="next" href="wiki-jobs.html"><span class="lab dot">次のページ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">仕事で稼ぐ</span></a>
+      </nav>
+    </div>
+
+    <p class="foot">&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
+  </main>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>
