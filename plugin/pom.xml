@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.vivamc</groupId>
+    <artifactId>vivastatsapi</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>VivaStatsAPI</name>
+    <description>VIVA-MC公式サイト向けに、プレイヤー統計と接続履歴をHTTPで公開するPaperプラグイン</description>
+
+    <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!--
+          Paper API本体。サーバーには最初から入っているので、実行時には同梱しない（provided）。
+          もしビルドが「could not resolve dependency」で失敗する場合は、
+          このversionを、実際のサーバーのバージョンに近いものへ書き換えてください
+          （例: 1.21.5-R0.1-SNAPSHOT）。番号がぴったり一致していなくても、
+          1.21系のAPIはほぼ互換なので動作します。
+        -->
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.21.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>VivaStatsAPI</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

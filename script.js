@@ -224,4 +224,50 @@
         });
     });
   }
+
+  /* ---------- 接続履歴 ---------- */
+  var historyList = document.getElementById('historyList');
+  var historyMsg = document.getElementById('historyMsg');
+  if (historyList && historyMsg) {
+    var relTime = function (ms) {
+      var diff = Math.max(0, Date.now() - ms);
+      var min = Math.floor(diff / 60000);
+      if (min < 1) return 'たった今';
+      if (min < 60) return min + '分前';
+      var hr = Math.floor(min / 60);
+      if (hr < 24) return hr + '時間前';
+      return Math.floor(hr / 24) + '日前';
+    };
+
+    fetch('/api/get-history')
+      .then(function (r) {
+        if (!r.ok) throw new Error('SERVER');
+        return r.json();
+      })
+      .then(function (data) {
+        var events = data.events || [];
+        if (!events.length) {
+          historyMsg.textContent = 'まだ記録がありません。';
+          return;
+        }
+        events.forEach(function (ev) {
+          var li = document.createElement('li');
+          if (ev.type === 'join') li.className = 'on';
+          var who = document.createElement('span');
+          who.className = 'who';
+          who.textContent = ev.player;
+          var at = document.createElement('span');
+          at.className = 'at';
+          at.textContent = (ev.type === 'join' ? ' が参加 · ' : ' が退出 · ') + relTime(ev.time);
+          li.appendChild(who);
+          li.appendChild(at);
+          historyList.appendChild(li);
+        });
+        historyMsg.hidden = true;
+        historyList.hidden = false;
+      })
+      .catch(function () {
+        historyMsg.textContent = '接続履歴を取得できませんでした。時間をおいて試してください。';
+      });
+  }
 })();
