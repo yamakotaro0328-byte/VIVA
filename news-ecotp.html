@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>お知らせ一覧 | VIVA-MC</title>
-<meta name="description" content="VIVA-MCのお知らせを、新しい順にすべて掲載しています。">
+<title>テレポート・経済プラグインをEcoTPに変更しました | お知らせ | VIVA-MC</title>
+<meta name="description" content="EssentialsXからEcoTPへの切り替えについて。ホーム・テレポート・所持金の使い方が一部変わります。">
 <meta name="theme-color" content="#2E1B0C">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
-<meta property="og:title" content="お知らせ一覧 | VIVA-MC">
-<meta property="og:description" content="VIVA-MCのお知らせを、新しい順にすべて掲載しています。">
+<meta property="og:title" content="テレポート・経済プラグインをEcoTPに変更しました | VIVA-MC">
+<meta property="og:description" content="EssentialsXからEcoTPへの切り替えについて。ホーム・テレポート・所持金の使い方が一部変わります。">
 <meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="server-icon.png">
@@ -85,73 +85,20 @@
       <div class="wrap">
         <div class="num disp"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></div>
         <div>
-          <h1 class="disp">お知らせ一覧</h1>
-          <p>これまでのお知らせを、新しい順にすべて掲載しています。タイトルをクリックすると詳しく見られます。</p>
+          <span class="kicker dot">2026.08.28</span><h1 class="disp">テレポート・経済プラグインをEcoTPに変更しました <span class="tag honey">告知</span></h1>
         </div>
       </div>
     </header>
 
     <div class="wrap">
-      <section>
-        <ul class="news">
-          <li>
-            <div class="when dot">2026.08.28</div>
-            <div>
-              <h3><a href="news-ecotp.html">テレポート・経済プラグインをEcoTPに変更しました</a> <span class="tag honey">告知</span></h3>
-              <p>ホーム・テレポート・所持金まわりを、EssentialsXから専用プラグイン「EcoTP」に切り替えました。</p>
-            </div>
-          </li>
-          <li>
-            <div class="when dot">2026.08.27</div>
-            <div>
-              <h3><a href="news-farmersdelight-live.html">Nova-FarmersDelightを導入しました</a> <span class="tag moss">配信中</span></h3>
-              <p>料理・農業を拡張するNova-FarmersDelightが遊べるようになりました。統合版（Bedrock）はいまのところ非対応です。</p>
-            </div>
-          </li>
-          <li>
-            <div class="when dot">2026.08.27</div>
-            <div>
-              <h3><a href="news-farmersdelight.html">Nova-FarmersDelightを追加予定</a> <span class="tag honey">告知</span></h3>
-              <p>料理・農業を拡張するNova-FarmersDelightの導入を予定しています。（このお知らせの時点では未導入でした）</p>
-            </div>
-          </li>
-          <li>
-            <div class="when dot">2026.08.27</div>
-            <div>
-              <h3><a href="news-velocity.html">サーバーをVelocity化しました</a> <span class="tag honey">告知</span></h3>
-              <p>接続方式をVelocity経由に切り替えました。通常の接続方法に変更はありません。</p>
-            </div>
-          </li>
-          <li>
-            <div class="when dot">2026.08.25</div>
-            <div>
-              <h3><a href="news-address-restored.html">通常のアドレスに戻りました</a> <span class="tag moss">解決</span></h3>
-              <p>旅行にともなう臨時アドレスの運用は終了しました。いまは viva-mc.net で接続できます。</p>
-            </div>
-          </li>
-          <li>
-            <div class="when dot">2026.08.21</div>
-            <div>
-              <h3><a href="news-rules-update.html">ルールの改訂について</a> <span class="tag brick">ルール</span></h3>
-              <p>追加のルールとして、他サーバー・ワールドの勧誘を固く禁じます。</p>
-            </div>
-          </li>
-          <li>
-            <div class="when dot">2026.08.12</div>
-            <div>
-              <h3><a href="news-travel-ip.html">旅行のためIPをPlayit経由に変更します</a> <span class="tag honey">告知</span></h3>
-              <p>旅行に出るあいだ、接続先を一時的にPlayit経由にします。</p>
-            </div>
-          </li>
-          <li>
-            <div class="when dot">2026.07.13</div>
-            <div>
-              <h3><a href="news-maintenance-0713.html">緊急メンテナンス 7/13〜</a> <span class="tag moss">完了</span></h3>
-              <p>重大なバグ解消のための緊急メンテナンスが完了しました。</p>
-            </div>
-          </li>
-        </ul>
-      </section>
+      <article class="news-article">
+        <p>ホーム・テレポート・所持金まわりを、EssentialsXから専用プラグイン「EcoTP」に切り替えました。</p>
+        <p><code>/sethome</code> <code>/home</code> <code>/spawn</code> といった基本コマンドはそのまま使えます。テレポートには、<strong>自分が移動して自分が払う<code>/tpa</code></strong>と、<strong>相手を呼んで相手が払う（着払い）<code>/tphere</code></strong>の2種類があり、料金は距離が遠いほど高くなります。移動中に歩いたり、敵対Mobが近づいたり、直前に戦闘していたりすると中断され、その場合は料金がかかりません。</p>
+        <p>所持金は<code>/balance</code>で確認できます。これまでEssentialsで貯めていた分はそのままEcoTPに引き継がれているので、あらためて確認し直す必要はありません。</p>
+        <p>くわしい使い方は<a href="wiki-teleport.html">Wikiの「ホームとテレポート」</a>にまとめています。</p>
+      </article>
+
+      <p class="news-back"><a href="news.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> お知らせ一覧に戻る</a></p>
     </div>
 
     <p class="foot">&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
