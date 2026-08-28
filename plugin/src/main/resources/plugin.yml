@@ -1,0 +1,7 @@
+name: VivaStatsAPI
+version: '1.0.0'
+main: net.vivamc.statsapi.VivaStatsAPI
+api-version: '1.21'
+author: VIVA-MC
+description: VIVA-MC公式サイト向けに、プレイヤー統計と接続履歴をHTTPで公開する
+website: https://viva-mc.net
