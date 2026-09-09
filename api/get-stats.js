@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
     // Vercelのサーバーから内部的にHTTPのAPIを叩く
     const response = await fetch(
-      `http://viva-mc.net:25566/v1/player?player=${encodeURIComponent(player || "")}`,
+      `http://viva-mc.net:45678/v1/player?player=${encodeURIComponent(player || "")}`,
       { headers }
     );
     const data = await response.json();
