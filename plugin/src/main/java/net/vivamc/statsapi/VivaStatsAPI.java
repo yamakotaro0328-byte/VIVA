@@ -23,7 +23,7 @@ public class VivaStatsAPI extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new StatsListener(store), this);
 
         String bindAddress = getConfig().getString("bind-address", "0.0.0.0");
-        int port = getConfig().getInt("port", 25566);
+        int port = getConfig().getInt("port", 45678);
         String token = getConfig().getString("token", "");
 
         apiServer = new ApiServer(store, getLogger(), token, historyLimit);

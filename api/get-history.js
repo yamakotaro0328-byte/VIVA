@@ -6,7 +6,7 @@ export default async function handler(req, res) {
       headers.Authorization = `Bearer ${process.env.VIVA_STATS_API_TOKEN}`;
     }
 
-    const response = await fetch("http://viva-mc.net:25566/v1/history?limit=20", { headers });
+    const response = await fetch("http://viva-mc.net:45678/v1/history?limit=20", { headers });
     const data = await response.json();
 
     res.status(response.status).json(data);

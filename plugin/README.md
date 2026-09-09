@@ -2,7 +2,7 @@
 
 VIVA-MC公式サイトの「プレイヤー統計」「接続履歴」を、実際に動くようにするための
 Paperプラグインです。サイト側のコード（`api/get-stats.js` / `api/get-history.js`）は
-このプラグインが `viva-mc.net:25566` でHTTP APIを公開している前提で書かれています。
+このプラグインが `viva-mc.net:45678` でHTTP APIを公開している前提で書かれています。
 
 ## できること
 
@@ -33,7 +33,7 @@ Paperプラグインです。サイト側のコード（`api/get-stats.js` / `ap
 2. サーバーの `plugins/` フォルダに置く
 3. サーバーを再起動（またはプラグインをリロード）する
 4. 初回起動時に `plugins/VivaStatsAPI/config.yml` が自動生成されます
-5. ポート `25566` への接続が、外部（Vercel）から届くことを確認してください
+5. ポート `45678` への接続が、外部（Vercel）から届くことを確認してください
    （ファイアウォール・ルーターのポート開放が必要な場合があります）
 
 ### 動作確認
@@ -41,8 +41,8 @@ Paperプラグインです。サイト側のコード（`api/get-stats.js` / `ap
 サーバーと同じマシン、または外部から次のように叩いて、JSONが返ってくれば成功です。
 
 ```
-curl "http://localhost:25566/v1/player?player=あなたのゲーマーID"
-curl "http://localhost:25566/v1/history"
+curl "http://localhost:45678/v1/player?player=あなたのゲーマーID"
+curl "http://localhost:45678/v1/history"
 ```
 
 ## 設定（config.yml）
