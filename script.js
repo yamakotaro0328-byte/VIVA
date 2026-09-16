@@ -7,24 +7,25 @@
 
   var SERVER_IP = 'viva-mc.net';
 
-  /* ---------- サイドバーの開閉（スマホ） ---------- */
-  var sidebar = document.querySelector('.sidebar');
-  var scrim   = document.querySelector('.scrim');
+  /* ---------- モバイルナビの開閉 ---------- */
+  var mobileNav = document.querySelector('.mobile-nav');
   var menuBtn = document.querySelector('.menu-btn');
 
   function setMenu(open) {
-    if (!sidebar) return;
-    sidebar.classList.toggle('open', open);
-    if (scrim) scrim.classList.toggle('show', open);
+    if (!mobileNav) return;
+    mobileNav.classList.toggle('open', open);
     if (menuBtn) menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.body.style.overflow = open ? 'hidden' : '';
   }
   if (menuBtn) menuBtn.addEventListener('click', function () {
-    setMenu(!sidebar.classList.contains('open'));
+    setMenu(!mobileNav.classList.contains('open'));
   });
-  if (scrim) scrim.addEventListener('click', function () { setMenu(false); });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') setMenu(false);
+  });
+  document.addEventListener('click', function (e) {
+    if (!mobileNav || !mobileNav.classList.contains('open')) return;
+    if (mobileNav.contains(e.target) || (menuBtn && menuBtn.contains(e.target))) return;
+    setMenu(false);
   });
 
   /* ---------- IPをコピー ---------- */
