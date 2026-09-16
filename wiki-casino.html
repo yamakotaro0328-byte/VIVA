@@ -29,68 +29,71 @@
     <img src="server-icon.png" alt="">
     <span class="brand-name disp">VIVA-MC</span>
   </a>
-  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="sidebar">
+  <nav class="site-nav" aria-label="サイト内">
+    <ul>
+        <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>ホーム</a></li>
+        <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>参加する</a></li>
+        <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
+        <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
+        <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
+        <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>資源ワールド</a></li>
+        <li><a href="wiki.html" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+        <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>臨時アドレス</a></li>
+    </ul>
+  </nav>
+  <div class="topbar-cta">
+    <button type="button" class="ip-copy" data-copy="viva-mc.net">
+      <i class="fa-regular fa-copy" aria-hidden="true"></i>viva-mc.net
+    </button>
+    <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-discord" aria-hidden="true"></i>Discord
+    </a>
+  </div>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobileNav">
     <i class="fa-solid fa-bars" aria-hidden="true"></i>メニュー
   </button>
 </header>
 
-<div class="scrim" id="scrim"></div>
-
-  <aside class="sidebar" id="sidebar">
-    <a class="brand" href="index.html">
-      <img src="server-icon.png" alt="">
-      <span>
-        <span class="brand-name disp">VIVA-MC</span><br>
-        <span class="brand-sub dot">WIKI</span>
-      </span>
+<nav class="mobile-nav" id="mobileNav" aria-label="サイト内（モバイル）">
+  <ul>
+    <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>ホーム</a></li>
+    <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>参加する</a></li>
+    <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
+    <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
+    <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
+    <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>資源ワールド</a></li>
+    <li><a href="wiki.html" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+    <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>臨時アドレス</a></li>
+  </ul>
+  <div class="m-server">
+    <button type="button" class="ip-copy" data-copy="viva-mc.net">
+      <span><span class="lab dot">SERVER ADDRESS</span><span class="val">viva-mc.net</span></span>
+      <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+    </button>
+    <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-discord" aria-hidden="true"></i>Discordに参加
     </a>
+  </div>
+</nav>
 
-    <nav class="side-nav" aria-label="Wiki内">
-      <div class="side-sep dot">WIKI</div>
-      <ul>
-          <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wikiトップ</a></li>
-          <li><a href="wiki-start.html"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>はじめかたガイド</a></li>
-          <li><a href="wiki-teleport.html"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i>ホーム・テレポート</a></li>
-          <li><a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a></li>
-          <li><a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a></li>
-          <li><a href="wiki-build.html"><i class="fa-solid fa-city" aria-hidden="true"></i>建築サーバー</a></li>
-          <li><a href="wiki-diplomacy.html"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>外交・戦争</a></li>
-          <li><a href="wiki-economy.html"><i class="fa-solid fa-coins" aria-hidden="true"></i>経済・お金</a></li>
-          <li><a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>チェストショップ</a></li>
-          <li><a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a></li>
-          <li><a href="wiki-casino.html" aria-current="page"><i class="fa-solid fa-dice" aria-hidden="true"></i>カジノ・遊び方</a></li>
-          <li><a href="wiki-farmersdelight.html"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i>料理・農業</a></li>
-          <li><a href="wiki-discord.html"><i class="fa-solid fa-comments" aria-hidden="true"></i>Discord連携</a></li>
-          <li><a href="wiki-commands.html"><i class="fa-solid fa-terminal" aria-hidden="true"></i>コマンド一覧</a></li>
-      </ul>
-
-      <div class="side-sep dot">SITE</div>
-      <ul>
-        <li><a class="side-back" href="index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>サイトに戻る</a></li>
-      </ul>
-    </nav>
-
-    <div class="side-server">
-      <button type="button" class="ip-copy" data-copy="viva-mc.net">
-        <span>
-          <span class="lab dot">SERVER ADDRESS</span>
-          <span class="val">viva-mc.net</span>
-        </span>
-        <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
-        <span class="sr-only">サーバーアドレスをコピー</span>
-      </button>
-      <div class="ports dot">JAVA 25565 ／ BEDROCK 19132</div>
-      <div class="side-status">
-        <span class="dot-live" id="liveDot"></span>
-        <span id="liveMsg">状況を確認中...</span>
-      </div>
-      <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
-        <i class="fa-brands fa-discord" aria-hidden="true"></i>Discordに参加
-      </a>
-    </div>
-
-    <div class="side-foot">&copy; 2026 VIVA-MC</div>
-  </aside>
+<nav class="wiki-subnav" aria-label="Wiki記事">
+  <div class="wrap">
+    <a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wikiトップ</a>
+    <a href="wiki-start.html"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>はじめかたガイド</a>
+    <a href="wiki-teleport.html"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i>ホーム・テレポート</a>
+    <a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>仕事で稼ぐ</a>
+    <a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>土地を守る</a>
+    <a href="wiki-build.html"><i class="fa-solid fa-city" aria-hidden="true"></i>建築サーバー</a>
+    <a href="wiki-diplomacy.html"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>外交・戦争</a>
+    <a href="wiki-economy.html"><i class="fa-solid fa-coins" aria-hidden="true"></i>経済・お金</a>
+    <a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>チェストショップ</a>
+    <a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>村人ショップ</a>
+    <a href="wiki-casino.html" aria-current="page"><i class="fa-solid fa-dice" aria-hidden="true"></i>カジノ・遊び方</a>
+    <a href="wiki-farmersdelight.html"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i>料理・農業</a>
+    <a href="wiki-discord.html"><i class="fa-solid fa-comments" aria-hidden="true"></i>Discord連携</a>
+    <a href="wiki-commands.html"><i class="fa-solid fa-terminal" aria-hidden="true"></i>コマンド一覧</a>
+  </div>
+</nav>
 
   <main class="main" id="main" tabindex="-1">
     <header class="page-head">
