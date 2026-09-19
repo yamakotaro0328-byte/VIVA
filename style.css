@@ -85,6 +85,7 @@ code{font-family:'SFMono-Regular',Consolas,monospace;font-size:.92em;background:
 
 .mobile-nav{display:none;position:fixed;left:0;right:0;top:var(--topbar-h);z-index:290;background:var(--paper-2);
     border-bottom:4px double var(--rule);max-height:calc(100vh - var(--topbar-h));overflow-y:auto;padding:10px 16px 20px;
+    max-height:calc(100dvh - var(--topbar-h));
     box-shadow:0 18px 30px -20px rgba(59,42,20,.5)}
 .mobile-nav.open{display:block}
 .mobile-nav ul{list-style:none}
@@ -289,9 +290,11 @@ h2.sec::before{content:'';width:10px;height:10px;flex:none;background:var(--embe
 /* =========================================================
    ホームの海図ヒーロー
    ========================================================= */
-.chartzone{position:relative;isolation:isolate;overflow:hidden;min-height:880px;display:flex;align-items:stretch;
+.chartzone{position:relative;isolation:isolate;overflow:hidden;min-height:880px;background:#E5DDBE;display:flex;align-items:stretch;
     border-bottom:4px double var(--rule)}
-.chartzone .chart{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.chartzone .chartmap{position:absolute;inset:0;z-index:0;will-change:transform;transform:translateZ(0)}
+.chartzone .chart{position:absolute;inset:0;width:100%;height:100%;will-change:transform;transform:translateZ(0);backface-visibility:hidden}
+.chartzone .chart-fx{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E"),radial-gradient(ellipse 96% 112% at 50% 46%,rgba(58,42,20,0) 58%,rgba(58,42,20,.42) 100%),radial-gradient(ellipse 6.5% 12.4% at 38.2% 74.0%,rgba(122,90,44,0.070) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 8.9% 10.8% at 27.7% 51.4%,rgba(122,90,44,0.130) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 5.8% 9.3% at 9.1% 23.2%,rgba(122,90,44,0.096) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 6.4% 8.9% at 81.8% 44.0%,rgba(122,90,44,0.076) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 8.8% 10.7% at 15.2% 30.3%,rgba(122,90,44,0.093) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 7.1% 10.6% at 80.7% 48.6%,rgba(122,90,44,0.116) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 8.7% 7.1% at 78.9% 61.7%,rgba(122,90,44,0.161) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 5.3% 8.3% at 27.1% 78.0%,rgba(122,90,44,0.166) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 5.6% 7.3% at 81.9% 35.0%,rgba(122,90,44,0.147) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 9.6% 12.9% at 74.6% 29.0%,rgba(122,90,44,0.109) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 4.8% 9.1% at 65.5% 75.3%,rgba(122,90,44,0.073) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 8.2% 8.0% at 17.7% 11.0%,rgba(122,90,44,0.093) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 6.1% 9.1% at 93.9% 51.2%,rgba(122,90,44,0.157) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 6.4% 9.9% at 80.1% 62.4%,rgba(122,90,44,0.086) 0%,rgba(122,90,44,0) 72%);background-size:220px 220px,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto;background-repeat:repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat}
 .chartzone .overlay{position:absolute;inset:0;z-index:1;
     background:radial-gradient(120% 90% at 50% 15%, rgba(233,214,163,.08), rgba(233,214,163,.32) 75%)}
 .opening{position:relative;z-index:3;width:100%;padding:52px 0 40px;display:flex;align-items:center;background:transparent}
@@ -448,18 +451,21 @@ h2.sec::before{content:'';width:10px;height:10px;flex:none;background:var(--embe
 @keyframes drawln{to{stroke-dashoffset:0}}
 @keyframes fadeIn{to{opacity:var(--o,1)}}
 @keyframes unfurl{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:none}}
-.chart{animation:unfurl 1.1s cubic-bezier(.2,.8,.2,1) both}
+.chartmap{opacity:0;animation:fadeIn .7s ease-out both}
+/* 最初の描画が落ち着いてから走らせる（出だしのカクつき防止） */
+.has-chart:not(.go) .chartmap,.has-chart:not(.go) .chart .draw,.has-chart:not(.go) .chart .fade,
+.has-chart:not(.go) .cartouche,.has-chart:not(.go) .cartouche .cnr,
+.has-chart:not(.go) .logbook,.has-chart:not(.go) .scroll-cue,
+.has-chart:not(.go) .inkbar{animation-play-state:paused}
 .chart .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:drawln var(--dur,1s) cubic-bezier(.3,.7,.35,1) var(--d,0s) forwards}
 .chart .fade{opacity:0;animation:fadeIn var(--dur,.7s) ease-out var(--d,0s) forwards}
 @keyframes waveShift{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-.chart .waves{animation:waveShift 7s ease-in-out infinite}
+.chart .waves{animation:waveShift 7s ease-in-out 5s infinite}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-4px) rotate(2deg)}}
-.chart .ship-inner{animation:bob 3.4s ease-in-out infinite}
+.chart .ship-inner{animation:bob 3.4s ease-in-out 6s infinite}
 @keyframes roseSpin{from{transform:rotate(-26deg) scale(.9)}to{transform:rotate(0) scale(1)}}
 .chart .rose-star{transform-origin:0 0;animation:roseSpin 1.4s cubic-bezier(.2,.9,.25,1) 3.1s backwards;
     transition:transform .9s cubic-bezier(.2,.8,.2,1)}
-@keyframes twinkle{0%,100%{opacity:.55}50%{opacity:.25}}
-.chart .sound{animation:twinkle 5s ease-in-out infinite}
 .chart .town{transition:transform .3s cubic-bezier(.3,1.5,.4,1);transform-origin:center}
 .chart .town:hover{transform:scale(1.18)}
 
@@ -523,6 +529,53 @@ h2.sec::before{content:'';width:10px;height:10px;flex:none;background:var(--embe
     .wiki-subnav .wrap{padding:10px 20px}
     .cartouche{padding:28px 24px 24px;margin-top:0}
     .opening h1{font-size:1.75rem}
+}
+
+/* --- スマホ --- */
+@media (max-width:700px){
+    /* 上のバー：IP表示を省いてメニューが必ず入るように */
+    .topbar{padding:0 14px;gap:10px}
+    .topbar-cta .ip-copy{display:none}
+    .brand-name{font-size:1.05rem}
+    .brand img{width:32px;height:32px}
+    .menu-btn{padding:9px 13px;font-size:.88rem}
+
+    /* 地図は切り取らず全体を見せる */
+    .chartzone{min-height:0;padding:0;display:block}
+    .chartzone .chartmap{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:16/11;
+        will-change:auto;transform:none;animation-duration:.9s;
+        border-bottom:1px solid var(--rule)}
+    .chartzone .chart{will-change:auto;transform:none}
+    .chartzone .chart-fx{background-size:140px 140px,auto}
+    .chartzone .overlay{position:relative;padding:0}
+    .chartzone .opening{padding:22px 0 30px}
+    .chartzone .opening .grid{gap:0}
+
+    /* 端末が重いので1本ずつ描くのはやめ、完成した地図を出す */
+    .chart .draw{stroke-dashoffset:0;animation:none}
+    .chart .fade{opacity:var(--o,1);animation:none}
+    .chart .waves,.chart .ship-inner{animation:none}
+    .has-chart .inkbar{animation:inkbar 1s cubic-bezier(.3,.7,.35,1) forwards,inkfade .4s 1.1s forwards}
+    .has-chart .cartouche{animation-delay:.5s}
+    .has-chart .logbook{animation-delay:.72s}
+    .has-chart .cartouche .cnr{animation-delay:.95s}
+    .has-chart .scroll-cue{animation-delay:1.1s}
+
+    /* 余白と文字を詰める */
+    .cartouche{padding:20px 16px 18px;margin:0}
+    .opening h1{font-size:1.42rem;line-height:1.5}
+    .opening .lead{font-size:.9rem;line-height:1.85}
+    .opening .eyebrow{font-size:.62rem;letter-spacing:.14em}
+    .logbook{margin:16px 0 0}
+    .opening .cta{display:grid;gap:10px}
+    .opening .cta>*{width:100%;justify-content:center;text-align:center}
+    .rail{display:none}
+
+    .page-head .wrap{gap:13px}
+    .page-head .num{width:42px;height:42px;margin-top:2px}
+    .spec{font-size:.88rem}
+    .spec th,.spec td{padding:11px 12px}
+    .spec th{width:46%}
 }
 
 @media (prefers-reduced-motion:reduce){

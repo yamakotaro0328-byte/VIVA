@@ -286,8 +286,8 @@
   if (rail) {
     var line = rail.querySelector('.rail-line');
     var railShip = rail.querySelector('.rail-ship');
-    var chartEl = document.querySelector('.chartzone .chart');
-    var ticking = false;
+    var chartEl = document.querySelector('.chartzone .chartmap');
+    var ticking = false, lastY = -1;
     var onScroll = function () {
       var max = document.body.scrollHeight - window.innerHeight;
       var p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
@@ -297,8 +297,12 @@
         railShip.style.transform = 'rotate(' + (Math.sin(p * 10) * 14).toFixed(1) + 'deg)';
       }
       rail.classList.toggle('show', window.scrollY > 240);
-      if (chartEl && window.scrollY < 1200) {
-        chartEl.style.transform = 'translateY(' + (window.scrollY * 0.18).toFixed(1) + 'px) scale(1.02)';
+      if (chartEl && window.scrollY < 1000) {
+        var y = Math.round(window.scrollY * 0.14);
+        if (y !== lastY) {
+          lastY = y;
+          chartEl.style.transform = 'translate3d(0,' + y + 'px,0)';
+        }
       }
       ticking = false;
     };
