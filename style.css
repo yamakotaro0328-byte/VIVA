@@ -289,9 +289,10 @@ h2.sec::before{content:'';width:10px;height:10px;flex:none;background:var(--embe
 /* =========================================================
    ホームの海図ヒーロー
    ========================================================= */
-.chartzone{position:relative;isolation:isolate;overflow:hidden;min-height:880px;display:flex;align-items:stretch;
+.chartzone{position:relative;isolation:isolate;overflow:hidden;min-height:880px;background:#E5DDBE;display:flex;align-items:stretch;
     border-bottom:4px double var(--rule)}
-.chartzone .chart{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.chartzone .chart{position:absolute;inset:0;width:100%;height:100%;z-index:0;will-change:transform;transform:translateZ(0);backface-visibility:hidden}
+.chartzone .chart-fx{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E"),radial-gradient(ellipse 96% 112% at 50% 46%,rgba(58,42,20,0) 58%,rgba(58,42,20,.42) 100%),radial-gradient(ellipse 6.5% 12.4% at 38.2% 74.0%,rgba(122,90,44,0.070) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 8.9% 10.8% at 27.7% 51.4%,rgba(122,90,44,0.130) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 5.8% 9.3% at 9.1% 23.2%,rgba(122,90,44,0.096) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 6.4% 8.9% at 81.8% 44.0%,rgba(122,90,44,0.076) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 8.8% 10.7% at 15.2% 30.3%,rgba(122,90,44,0.093) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 7.1% 10.6% at 80.7% 48.6%,rgba(122,90,44,0.116) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 8.7% 7.1% at 78.9% 61.7%,rgba(122,90,44,0.161) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 5.3% 8.3% at 27.1% 78.0%,rgba(122,90,44,0.166) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 5.6% 7.3% at 81.9% 35.0%,rgba(122,90,44,0.147) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 9.6% 12.9% at 74.6% 29.0%,rgba(122,90,44,0.109) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 4.8% 9.1% at 65.5% 75.3%,rgba(122,90,44,0.073) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 8.2% 8.0% at 17.7% 11.0%,rgba(122,90,44,0.093) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 6.1% 9.1% at 93.9% 51.2%,rgba(122,90,44,0.157) 0%,rgba(122,90,44,0) 72%),radial-gradient(ellipse 6.4% 9.9% at 80.1% 62.4%,rgba(122,90,44,0.086) 0%,rgba(122,90,44,0) 72%);background-size:220px 220px,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto;background-repeat:repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat,no-repeat}
 .chartzone .overlay{position:absolute;inset:0;z-index:1;
     background:radial-gradient(120% 90% at 50% 15%, rgba(233,214,163,.08), rgba(233,214,163,.32) 75%)}
 .opening{position:relative;z-index:3;width:100%;padding:52px 0 40px;display:flex;align-items:center;background:transparent}
@@ -448,18 +449,21 @@ h2.sec::before{content:'';width:10px;height:10px;flex:none;background:var(--embe
 @keyframes drawln{to{stroke-dashoffset:0}}
 @keyframes fadeIn{to{opacity:var(--o,1)}}
 @keyframes unfurl{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:none}}
-.chart{animation:unfurl 1.1s cubic-bezier(.2,.8,.2,1) both}
+.chart{opacity:0;animation:fadeIn .7s ease-out both}
+/* 最初の描画が落ち着いてから走らせる（出だしのカクつき防止） */
+.has-chart:not(.go) .chart,.has-chart:not(.go) .chart .draw,.has-chart:not(.go) .chart .fade,
+.has-chart:not(.go) .cartouche,.has-chart:not(.go) .cartouche .cnr,
+.has-chart:not(.go) .logbook,.has-chart:not(.go) .scroll-cue,
+.has-chart:not(.go) .inkbar{animation-play-state:paused}
 .chart .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:drawln var(--dur,1s) cubic-bezier(.3,.7,.35,1) var(--d,0s) forwards}
 .chart .fade{opacity:0;animation:fadeIn var(--dur,.7s) ease-out var(--d,0s) forwards}
 @keyframes waveShift{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-.chart .waves{animation:waveShift 7s ease-in-out infinite}
+.chart .waves{animation:waveShift 7s ease-in-out 5s infinite}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-4px) rotate(2deg)}}
-.chart .ship-inner{animation:bob 3.4s ease-in-out infinite}
+.chart .ship-inner{animation:bob 3.4s ease-in-out 6s infinite}
 @keyframes roseSpin{from{transform:rotate(-26deg) scale(.9)}to{transform:rotate(0) scale(1)}}
 .chart .rose-star{transform-origin:0 0;animation:roseSpin 1.4s cubic-bezier(.2,.9,.25,1) 3.1s backwards;
     transition:transform .9s cubic-bezier(.2,.8,.2,1)}
-@keyframes twinkle{0%,100%{opacity:.55}50%{opacity:.25}}
-.chart .sound{animation:twinkle 5s ease-in-out infinite}
 .chart .town{transition:transform .3s cubic-bezier(.3,1.5,.4,1);transform-origin:center}
 .chart .town:hover{transform:scale(1.18)}
 
