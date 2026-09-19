@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>経済・お金の稼ぎ方まとめ | VIVA-MC</title>
 <meta name="description" content="VIVA-MCの経済まわりのまとめ。稼ぎ方、土地の銀行、税金と維持費、レンタル。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="経済・お金の稼ぎ方まとめ | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -108,9 +117,9 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">お金の稼ぎ方</h2>
+        <h2 class="sec disp sec-underline" data-rv>お金の稼ぎ方</h2>
         <p class="sec-note">主な稼ぎ方は3つです。それぞれ専用のページにまとめています。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><a href="wiki-jobs.html">仕事に就いて稼ぐ</a></th><td>Jobs Reborn。掘る・切る・倒すが、そのままお金になる</td></tr>
@@ -122,9 +131,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">所持金（ウォレット）</h2>
+        <h2 class="sec disp sec-underline" data-rv>所持金（ウォレット）</h2>
         <p class="sec-note">サーバー通貨は、EcoTPというプラグインが管理しています。稼いだお金はここに貯まり、お店での売買や、ホーム・テレポートの料金の支払いに使われます。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/balance</code></th><td>いまの所持金を確認する</td></tr>
@@ -137,9 +146,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">土地の銀行</h2>
+        <h2 class="sec disp sec-underline" data-rv>土地の銀行</h2>
         <p class="sec-note">土地ごとに、お金を貯めておける銀行があります。税金や維持費は、まずここから支払われます。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/land &lt;土地名&gt; bank balance</code></th><td>銀行の残高を見る</td></tr>
@@ -151,9 +160,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">税金と維持費</h2>
+        <h2 class="sec disp sec-underline" data-rv>税金と維持費</h2>
         <p class="sec-note">土地に住んでいると税金、土地を持っていると維持費がかかる場合があります。銀行の残高が足りないと、保護が解除されることがあるので注意してください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/lands eco taxes</code></th><td>これから払う予定の税金を確認する</td></tr>
@@ -161,21 +170,21 @@
             </tbody>
           </table>
         </div>
-        <div class="callout" style="margin-top:22px">
+        <div class="callout" data-rv style="margin-top:22px">
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
           <div>維持費が払えないと、保護が一部解除されることがあります。土地の銀行に、余裕をもってお金を入れておいてください。</div>
         </div>
       </section>
 
       <section>
-        <h2 class="sec disp">保護にかかるお金</h2>
+        <h2 class="sec disp sec-underline" data-rv>保護にかかるお金</h2>
         <p class="sec-note">チャンクを保護（<code>/claim</code>）するときにお金がかかることがあります。保護を解除（<code>/land &lt;土地名&gt; unclaim</code>）すると、一部が戻ってくる場合もあります。</p>
       </section>
 
       <section>
-        <h2 class="sec disp">貸す・売る</h2>
+        <h2 class="sec disp sec-underline" data-rv>貸す・売る</h2>
         <p class="sec-note">自分の土地の一部を、他のプレイヤーに貸したり売ったりできます。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/lands rental list</code></th><td>貸し出し中・販売中の土地の一覧を見る</td></tr>

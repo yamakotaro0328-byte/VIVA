@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>臨時アドレス | VIVA-MC</title>
 <meta name="description" content="運営都合でサーバーの接続先を一時的に変更しているときの、最新の臨時アドレス一覧。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="臨時アドレス | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -89,7 +98,7 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">いまの接続先</h2>
+        <h2 class="sec disp sec-underline" data-rv>いまの接続先</h2>
         <p class="sec-note">臨時アドレスは終了しました。通常のアドレスで接続できます。</p>
 
         <div class="reset birch" style="text-align:left">
@@ -105,9 +114,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">臨時アドレスが出るとき</h2>
+        <h2 class="sec disp sec-underline" data-rv>臨時アドレスが出るとき</h2>
         <p class="sec-note">運営の都合で接続先を一時的に変えることがあります。</p>
-        <div class="callout">
+        <div class="callout" data-rv>
           <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
           <div><a href="index.html">お知らせ</a>で「アドレス変更」と告知されている場合は、
           このページの一覧の<strong>一番上（最新の日付）</strong>から接続してください。
@@ -116,12 +125,12 @@
       </section>
 
       <section>
-        <h2 class="sec disp">これまでの臨時アドレス</h2>
+        <h2 class="sec disp sec-underline" data-rv>これまでの臨時アドレス</h2>
         <p class="sec-note">過去の記録です。いまは使えません。</p>
 
         <!-- 新しい臨時アドレスを出すときは、この <li> をコピーして一番上に置き、
              class="tag brick" を class="tag moss" に、文字を「開放中」に変えてください -->
-        <ul class="addr">
+        <ul class="addr" data-rv>
           <li>
             <span class="when dot">2026.08.14</span>
             <span class="host">mauritania-exemption.tun.ply.gg</span>

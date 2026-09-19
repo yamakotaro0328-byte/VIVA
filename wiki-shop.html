@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>チェストショップ | VIVA-MC</title>
 <meta name="description" content="VIVA-MCのQuickShop-Hikariの使い方。チェストショップの作り方、買取モード、コマンド。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="チェストショップ | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -108,10 +117,10 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">売る／買い取る</h2>
+        <h2 class="sec disp sec-underline" data-rv>売る／買い取る</h2>
         <p class="sec-note">チェストを置くだけで、誰でも自動販売のお店を開けます。</p>
 
-        <div class="duo">
+        <div class="duo" data-rv>
           <div class="col step-a">
             <h3><i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i>アイテムを売る</h3>
             <ul>
@@ -134,8 +143,8 @@
       </section>
 
       <section>
-        <h2 class="sec disp">気をつけること</h2>
-        <div class="callout">
+        <h2 class="sec disp sec-underline" data-rv>気をつけること</h2>
+        <div class="callout" data-rv>
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
           <div><strong>買取のお店は、所持金がなくなると止まります。</strong>
           代金はチェストではなく自分の所持金から出るので、残高が足りなくなると買い取れなくなります。
@@ -144,9 +153,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">コマンド</h2>
+        <h2 class="sec disp sec-underline" data-rv>コマンド</h2>
         <p class="sec-note">どれも、対象のチェストショップを向いた状態で実行します。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/qs price &lt;価格&gt;</code></th><td>商品の単価を変える</td></tr>

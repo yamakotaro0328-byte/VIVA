@@ -132,38 +132,6 @@
     setInterval(tick, 1000);
   }
 
-  /* ---------- スクロールで板をふわっと出す ----------
-     ここが動かなかった場合、html に .anim が付かないので
-     CSS側の指定も一切効かず、中身は最初から見えたままになります。 */
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (!reduce && 'IntersectionObserver' in window) {
-    var targets = document.querySelectorAll(
-      '.news li, .duo .col, .faq, .finder, .log, .reset, .table-wrap, .pillars > div, .row-item, .steps > li'
-    );
-    if (targets.length) {
-      document.documentElement.classList.add('anim');
-      targets.forEach(function (el) { el.classList.add('reveal'); });
-
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e, i) {
-          if (!e.isIntersecting) return;
-          // 少しずつ遅らせて、順に出す
-          var d = Math.min(i, 4) * 60;
-          setTimeout(function () { e.target.classList.add('shown'); }, d);
-          io.unobserve(e.target);
-        });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.06 });
-
-      targets.forEach(function (el) { io.observe(el); });
-
-      // 保険：3秒たっても出ていないものは、強制的に表示する
-      setTimeout(function () {
-        targets.forEach(function (el) { el.classList.add('shown'); });
-      }, 3000);
-    }
-  }
-
   /* ---------- プレイヤー統計 ---------- */
   var statBtn = document.getElementById('statBtn');
   if (statBtn) {
@@ -270,5 +238,73 @@
       .catch(function () {
         historyMsg.textContent = '接続履歴を取得できませんでした。時間をおいて試してください。';
       });
+  }
+
+  /* ---------- スクロールで出す / 数字のカウントアップ ---------- */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+        e.target.querySelectorAll('.cnt').forEach(function (el) {
+          var to = parseFloat(el.dataset.to) || 0, t0 = performance.now(), dur = 1400;
+          (function step(now) {
+            var p = Math.min(1, (now - t0) / dur);
+            el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))).toLocaleString();
+            if (p < 1) requestAnimationFrame(step);
+          })(t0);
+        });
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('[data-rv]').forEach(function (el, i) {
+      el.style.setProperty('--i', i % 4);
+      io.observe(el);
+    });
+  }
+
+  /* ---------- 羅針図がカーソルの方角を向く ---------- */
+  var rose = document.querySelector('.chart .rose-star');
+  if (rose) {
+    var rrect = null;
+    var updRect = function () {
+      var r = document.querySelector('.chart .rose');
+      if (r) rrect = r.getBoundingClientRect();
+    };
+    updRect();
+    window.addEventListener('resize', updRect, { passive: true });
+    window.addEventListener('mousemove', function (e) {
+      if (!rrect) return;
+      var a = Math.atan2(e.clientY - (rrect.top + rrect.height / 2),
+                         e.clientX - (rrect.left + rrect.width / 2)) * 180 / Math.PI + 90;
+      rose.style.transform = 'rotate(' + (a * 0.06).toFixed(2) + 'deg)';
+    }, { passive: true });
+  }
+
+  /* ---------- 航路レール：スクロールで伸びて船が進む ---------- */
+  var rail = document.querySelector('.rail');
+  if (rail) {
+    var line = rail.querySelector('.rail-line');
+    var railShip = rail.querySelector('.rail-ship');
+    var chartEl = document.querySelector('.chartzone .chart');
+    var ticking = false;
+    var onScroll = function () {
+      var max = document.body.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+      if (line) line.style.setProperty('--p', p.toFixed(3));
+      if (railShip) {
+        railShip.style.top = (p * 100).toFixed(2) + '%';
+        railShip.style.transform = 'rotate(' + (Math.sin(p * 10) * 14).toFixed(1) + 'deg)';
+      }
+      rail.classList.toggle('show', window.scrollY > 240);
+      if (chartEl && window.scrollY < 1200) {
+        chartEl.style.transform = 'translateY(' + (window.scrollY * 0.18).toFixed(1) + 'px) scale(1.02)';
+      }
+      ticking = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+    }, { passive: true });
+    onScroll();
   }
 })();

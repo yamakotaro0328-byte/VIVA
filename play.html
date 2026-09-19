@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>あそぶ | VIVA-MC</title>
 <meta name="description" content="カジノ、リソースパック、プレイヤー統計の検索、接続履歴。VIVA-MCの遊び方いろいろ。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="あそぶ | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -89,15 +98,15 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">カジノ</h2>
+        <h2 class="sec disp sec-underline" data-rv>カジノ</h2>
         <p class="sec-note">ロビー中央のポータルから市場へ。少し歩くとカジノがあります。コマンドは不要で、椅子に座ったりボタンを押したりするだけで遊べます。スロット、ハイ＆ロー、クラッシュ、物理ルーレットの4種類。くわしい遊び方は<a href="wiki-casino.html">Wikiのカジノで遊ぶ</a>にまとめています。</p>
       </section>
 
       <section>
-        <h2 class="sec disp">リソースパック</h2>
+        <h2 class="sec disp sec-underline" data-rv>リソースパック</h2>
         <p class="sec-note">入れると遊べる幅が広がります。</p>
         <div class="rows">
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-box" aria-hidden="true"></i></div>
             <div>
               <h3>公式リソースパック <span class="tag moss">配布中</span></h3>
@@ -109,9 +118,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">プレイヤー統計</h2>
+        <h2 class="sec disp sec-underline" data-rv>プレイヤー統計</h2>
         <p class="sec-note">ゲーマーIDを入れると、サーバー内の記録を確認できます。</p>
-        <div class="finder">
+        <div class="finder" data-rv>
           <div class="field">
             <label class="sr-only" for="statName">ゲーマーID</label>
             <input type="text" id="statName" placeholder="ゲーマーIDを入力" autocomplete="off">
@@ -135,9 +144,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">接続履歴</h2>
+        <h2 class="sec disp sec-underline" data-rv>接続履歴</h2>
         <p class="sec-note">直近の出入りを表示しています。</p>
-        <div class="log" id="historyLog">
+        <div class="log" data-rv id="historyLog">
           <p class="muted" id="historyMsg">読み込み中...</p>
           <ul id="historyList" hidden></ul>
         </div>

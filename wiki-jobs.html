@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>仕事で稼ぐ | VIVA-MC</title>
 <meta name="description" content="VIVA-MCのJobs Rebornの使い方。就職の手順、職業の一覧、コマンド。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="仕事で稼ぐ | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -108,9 +117,9 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">就職までの手順</h2>
+        <h2 class="sec disp sec-underline" data-rv>就職までの手順</h2>
         <p class="sec-note">職業に就くと、いつもの行動がそのままお金になります。稼いだ通貨は建国にも、ショップにも、カジノにも使えます。</p>
-        <ol class="steps">
+        <ol class="steps" data-rv>
           <li>
             <span class="n disp">1</span>
             <h3>就職メニューを開く</h3>
@@ -130,9 +139,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">職業の一覧</h2>
+        <h2 class="sec disp sec-underline" data-rv>職業の一覧</h2>
         <p class="sec-note">同時に就ける職業の数には上限があります。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th>⛏️ 採掘師（Miner）</th><td>石、丸石、石炭、鉄、ダイヤモンドなどの鉱石を掘る</td></tr>
@@ -147,8 +156,8 @@
       </section>
 
       <section>
-        <h2 class="sec disp">コマンド</h2>
-        <div class="table-wrap">
+        <h2 class="sec disp sec-underline" data-rv>コマンド</h2>
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/jobs browse</code></th><td>就ける職業の一覧を開く。ここから就職できる</td></tr>
@@ -160,7 +169,7 @@
           </table>
         </div>
 
-        <div class="callout" style="margin-top:22px">
+        <div class="callout" data-rv style="margin-top:22px">
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
           <div><strong>辞めるときは慎重に。</strong><code>/jobs leave</code> で職業を辞めると、
           積み上げたその職業のレベルがリセットされることがあります。</div>

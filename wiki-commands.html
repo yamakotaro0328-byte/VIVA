@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>コマンド一覧 | VIVA-MC</title>
 <meta name="description" content="VIVA-MCで使うコマンドの一覧。Jobs Reborn、Lands、QuickShop-Hikari、Shopkeepers。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="コマンド一覧 | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -108,9 +117,9 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">Jobs Reborn ― 仕事</h2>
+        <h2 class="sec disp sec-underline" data-rv>Jobs Reborn ― 仕事</h2>
         <p class="sec-note">くわしくは <a href="wiki-jobs.html">仕事で稼ぐ</a> を見てください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/jobs browse</code></th><td>就ける職業の一覧を開く。ここから就職できる</td></tr>
@@ -124,9 +133,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">Lands ― 土地・国</h2>
+        <h2 class="sec disp sec-underline" data-rv>Lands ― 土地・国</h2>
         <p class="sec-note">くわしくは <a href="wiki-lands.html">土地を守る</a> を見てください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/lands</code></th><td>メインメニュー（UI画面）を開く</td></tr>
@@ -142,9 +151,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">建築サーバー（WorldGuard）</h2>
+        <h2 class="sec disp sec-underline" data-rv>建築サーバー（WorldGuard）</h2>
         <p class="sec-note">くわしくは <a href="wiki-build.html">建築サーバー</a> を見てください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/server build</code></th><td>建築サーバーへ移動する</td></tr>
@@ -161,9 +170,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">外交・戦争</h2>
+        <h2 class="sec disp sec-underline" data-rv>外交・戦争</h2>
         <p class="sec-note">くわしくは <a href="wiki-diplomacy.html">外交・戦争のやり方</a> を見てください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/nations create &lt;土地名&gt; [国名]</code></th><td>その土地を首都にして国をつくる</td></tr>
@@ -177,9 +186,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">経済</h2>
+        <h2 class="sec disp sec-underline" data-rv>経済</h2>
         <p class="sec-note">くわしくは <a href="wiki-economy.html">経済・お金の稼ぎ方まとめ</a> を見てください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/balance</code></th><td>所持金を確認する（EcoTP）</td></tr>
@@ -195,9 +204,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">ホーム・テレポート</h2>
+        <h2 class="sec disp sec-underline" data-rv>ホーム・テレポート</h2>
         <p class="sec-note">くわしくは <a href="wiki-teleport.html">ホームとテレポート</a> を見てください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/sethome &lt;名前&gt;</code></th><td>ホームを登録する</td></tr>
@@ -216,9 +225,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">QuickShop-Hikari ― チェストショップ</h2>
+        <h2 class="sec disp sec-underline" data-rv>QuickShop-Hikari ― チェストショップ</h2>
         <p class="sec-note">対象のチェストショップを向いた状態で実行します。くわしくは <a href="wiki-shop.html">チェストショップ</a> を見てください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/qs price &lt;価格&gt;</code></th><td>商品の単価を変える</td></tr>
@@ -231,9 +240,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">村人ショップ</h2>
+        <h2 class="sec disp sec-underline" data-rv>村人ショップ</h2>
         <p class="sec-note">くわしくは <a href="wiki-villager.html">村人ショップ</a> を見てください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/shopkeeper remove</code></th><td>Shopkeepers の村人ショップを撤去する</td></tr>
@@ -243,14 +252,14 @@
       </section>
 
       <section>
-        <h2 class="sec disp">カジノ</h2>
+        <h2 class="sec disp sec-underline" data-rv>カジノ</h2>
         <p class="sec-note">カジノ（GambleGate）はコマンド不要で、椅子に座ったりボタンを押したりするだけで遊べます。くわしくは <a href="wiki-casino.html">カジノで遊ぶ</a> を見てください。</p>
       </section>
 
       <section>
-        <h2 class="sec disp">資源ワールド</h2>
+        <h2 class="sec disp sec-underline" data-rv>資源ワールド</h2>
         <p class="sec-note">くわしくは <a href="resource.html">資源ワールド</a> を見てください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/server hub</code></th><td>ロビーに戻る</td></tr>
@@ -260,9 +269,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">Discord連携</h2>
+        <h2 class="sec disp sec-underline" data-rv>Discord連携</h2>
         <p class="sec-note">くわしくは <a href="wiki-discord.html">Discord連携</a> を見てください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/discord link</code></th><td>連携用のコードを発行する</td></tr>
