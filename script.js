@@ -286,7 +286,7 @@
   if (rail) {
     var line = rail.querySelector('.rail-line');
     var railShip = rail.querySelector('.rail-ship');
-    var chartEl = document.querySelector('.chartzone .chart');
+    var chartEl = document.querySelector('.chartzone .chartmap');
     var ticking = false, lastY = -1;
     var onScroll = function () {
       var max = document.body.scrollHeight - window.innerHeight;
