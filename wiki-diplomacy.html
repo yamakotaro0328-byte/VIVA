@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>外交・戦争のやり方 | VIVA-MC</title>
 <meta name="description" content="VIVA-MCの外交・戦争のやり方。Landsの同盟・敵対・宣戦布告・戦争モードとゴール。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="外交・戦争のやり方 | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -108,9 +117,9 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">国をつくる</h2>
+        <h2 class="sec disp sec-underline" data-rv>国をつくる</h2>
         <p class="sec-note">複数の土地をまとめて、ひとつの国にできます。土地の保護のしかたは<a href="wiki-lands.html">土地を守る・国をつくる</a>を先に見てください。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/nations create &lt;首都にする土地名&gt; [国名]</code></th><td>国をつくる。指定した土地が首都になる（自分がその土地のオーナーである必要あり）</td></tr>
@@ -124,9 +133,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">同盟・敵対（Relations）</h2>
+        <h2 class="sec disp sec-underline" data-rv>同盟・敵対（Relations）</h2>
         <p class="sec-note">他の土地や国を「同盟」「敵対」に設定できます。戦争を仕掛けるには、まず相手を敵対にする必要があります。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/land &lt;土地名&gt; relation ally add &lt;相手&gt;</code></th><td>同盟を申請する（相手の承認が必要）</td></tr>
@@ -140,9 +149,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">戦争の流れ</h2>
+        <h2 class="sec disp sec-underline" data-rv>戦争の流れ</h2>
         <p class="sec-note">宣戦布告から終戦までは、だいたいこの順番で進みます。</p>
-        <ol class="steps">
+        <ol class="steps" data-rv>
           <li>
             <span class="n disp">1</span>
             <h3>相手を敵対にして、宣戦布告</h3>
@@ -168,8 +177,8 @@
       </section>
 
       <section>
-        <h2 class="sec disp">戦い方（モード）</h2>
-        <div class="table-wrap">
+        <h2 class="sec disp sec-underline" data-rv>戦い方（モード）</h2>
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th>スカーミッシュ</th><td>キル数と、キャプチャーフラッグでの土地の占領でポイントを稼ぐ、標準の戦い方</td></tr>
@@ -181,8 +190,8 @@
       </section>
 
       <section>
-        <h2 class="sec disp">勝つと何が起こるか（ゴール）</h2>
-        <div class="table-wrap">
+        <h2 class="sec disp sec-underline" data-rv>勝つと何が起こるか（ゴール）</h2>
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th>スカーミッシュ（略奪）</th><td>負けた側の銀行からお金が奪われる。土地は減らない、いちばん軽いゴール</td></tr>
@@ -196,9 +205,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">属国からの独立</h2>
+        <h2 class="sec disp sec-underline" data-rv>属国からの独立</h2>
         <p class="sec-note">属国化された土地は、戦って自由になることができます。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/land &lt;土地名&gt; war independence</code></th><td>宗主国に独立戦争をしかける。勝てば自由に、負ける（引き分けを含む）としばらく再挑戦できません</td></tr>
@@ -208,8 +217,8 @@
       </section>
 
       <section>
-        <h2 class="sec disp">コマンド</h2>
-        <div class="table-wrap">
+        <h2 class="sec disp sec-underline" data-rv>コマンド</h2>
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/land &lt;土地名&gt; war menu</code></th><td>戦争メニューを開く（状況確認・降伏もここから）</td></tr>

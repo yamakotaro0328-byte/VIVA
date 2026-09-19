@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>建築サーバー | VIVA-MC</title>
 <meta name="description" content="VIVA-MCの建築サーバーの行き方と、WorldGuardによる建築保護のしかた。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="建築サーバー | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -108,14 +117,14 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">建築サーバーへ行く</h2>
+        <h2 class="sec disp sec-underline" data-rv>建築サーバーへ行く</h2>
         <p class="sec-note"><code>/server build</code> を実行すると、建築専用のサーバーへ移動します。メインサーバーとは別のワールドなので、Lands（土地保護）やJobsなどの仕組みはここでは働きません。行き来はいつでも <code>/server</code> コマンドで自由にできます。</p>
       </section>
 
       <section>
-        <h2 class="sec disp">WorldGuardで保護する</h2>
+        <h2 class="sec disp sec-underline" data-rv>WorldGuardで保護する</h2>
         <p class="sec-note">自分の建築を、他の人に荒らされないように保護できます。</p>
-        <ol class="steps">
+        <ol class="steps" data-rv>
           <li>
             <span class="n disp">1</span>
             <h3>選択ツールを持つ</h3>
@@ -132,16 +141,16 @@
             <p><code>/rg define &lt;保護名&gt;</code> を実行すると、選んだ範囲がまるごと保護されます。名前は自分で自由につけられます。</p>
           </li>
         </ol>
-        <div class="callout" style="margin-top:22px">
+        <div class="callout" data-rv style="margin-top:22px">
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
           <div>範囲が大きすぎたり、他の人の保護と重なっていたりすると、保護に失敗する場合があります。<code>/rg define</code>で通らないときは<code>/rg claim</code>も試してみてください。うまく通らないときはDiscordで聞いてください。</div>
         </div>
       </section>
 
       <section>
-        <h2 class="sec disp">仲間を招き入れる</h2>
+        <h2 class="sec disp sec-underline" data-rv>仲間を招き入れる</h2>
         <p class="sec-note">一緒に建築したい相手を、メンバーやオーナーとして追加できます。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/rg addmember &lt;保護名&gt; &lt;プレイヤー名&gt;</code></th><td>メンバーとして追加する（一緒に建築できる）</td></tr>
@@ -154,9 +163,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">保護を確認する</h2>
+        <h2 class="sec disp sec-underline" data-rv>保護を確認する</h2>
         <p class="sec-note">自分の保護の状況は、いつでも確認できます。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/rg info &lt;保護名&gt;</code></th><td>その保護の詳しい情報（メンバー・範囲など）を見る</td></tr>
@@ -168,8 +177,8 @@
       </section>
 
       <section>
-        <h2 class="sec disp">コマンド</h2>
-        <div class="table-wrap">
+        <h2 class="sec disp sec-underline" data-rv>コマンド</h2>
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>//wand</code></th><td>範囲選択ツール（木の斧）を入手する</td></tr>

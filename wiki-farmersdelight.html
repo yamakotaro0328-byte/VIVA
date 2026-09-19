@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>料理と農業を楽しむ | VIVA-MC</title>
 <meta name="description" content="VIVA-MCのNova-FarmersDelightについて。料理システム、専用道具、装飾ブロック。統合版は非対応。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="料理と農業を楽しむ | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -108,33 +117,33 @@
 
     <div class="wrap">
       <section>
-        <div class="callout">
+        <div class="callout" data-rv>
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
           <div><strong>統合版（Bedrock）は、いまのところ対応していません。</strong>
           専用のリソースパックの容量が大きく、統合版での配布に対応できていないためです。今後、統合版も順次対応していく予定です。それまではJava版のみでお楽しみください。対応でき次第、<a href="index.html">お知らせ</a>で告知します。</div>
         </div>
-        <h2 class="sec disp">Nova-FarmersDelightとは</h2>
+        <h2 class="sec disp sec-underline" data-rv>Nova-FarmersDelightとは</h2>
         <p class="sec-note">人気の料理・農業MOD「Farmer's Delight」を、Paperサーバー向けのプラグイン基盤「Nova」に移植したコンテンツです。専用のクライアントMod（改造した公式ランチャー等）は不要で、通常のマインクラフト（Java版）のまま遊べます。</p>
       </section>
 
       <section>
-        <h2 class="sec disp">追加されたもの</h2>
+        <h2 class="sec disp sec-underline" data-rv>追加されたもの</h2>
         <div class="rows">
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-bowl-food" aria-hidden="true"></i></div>
             <div>
               <h3>料理システム</h3>
               <p>サンドイッチ、サラダ、シチュー、デザートなど、効果つきの料理を作れます。鍋やフライパンで、複数人分の料理を一度に仕込めます。</p>
             </div>
           </div>
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i></div>
             <div>
               <h3>食材を集める・保存する道具</h3>
               <p>収穫や下ごしらえを効率化する専用の道具が増えました。食材を上手に保存する手段も用意されています。</p>
             </div>
           </div>
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></div>
             <div>
               <h3>キッチン・農場の装飾ブロック</h3>
@@ -145,14 +154,14 @@
       </section>
 
       <section>
-        <h2 class="sec disp">新しい作物</h2>
+        <h2 class="sec disp sec-underline" data-rv>新しい作物</h2>
         <p class="sec-note">トマト・タマネギ・キャベツ・イネの4種類が増えました。イネは水辺に植えて育てる作物です。畑に植えて、育ったら収穫して料理に使います。</p>
       </section>
 
       <section>
-        <h2 class="sec disp">カッティングボード（まな板）</h2>
+        <h2 class="sec disp sec-underline" data-rv>カッティングボード（まな板）</h2>
         <p class="sec-note">食材を切り分けるための作業台です。</p>
-        <ol class="steps">
+        <ol class="steps" data-rv>
           <li>
             <span class="n disp">1</span>
             <h3>ナイフを用意する</h3>
@@ -172,9 +181,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">クッキングポット（鍋）</h2>
+        <h2 class="sec disp sec-underline" data-rv>クッキングポット（鍋）</h2>
         <p class="sec-note">複数人分のシチューやスープを一度に仕込める鍋です。</p>
-        <ol class="steps">
+        <ol class="steps" data-rv>
           <li>
             <span class="n disp">1</span>
             <h3>鍋を設置し、材料を入れる</h3>
@@ -194,8 +203,8 @@
       </section>
 
       <section>
-        <h2 class="sec disp">その他の道具・ブロック</h2>
-        <div class="table-wrap">
+        <h2 class="sec disp sec-underline" data-rv>その他の道具・ブロック</h2>
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th>スキレット（フライパン）</th><td>焚き火の上で使う、1人分をその場で焼く調理器具。目玉焼きなどが作れます</td></tr>
@@ -208,9 +217,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">遊び方のまとめ</h2>
+        <h2 class="sec disp sec-underline" data-rv>遊び方のまとめ</h2>
         <p class="sec-note">専用のコマンドはありません。素材を集めて、クラフトしたり道具・ブロックを設置したりする、いつも通りのサバイバル操作で遊べます。</p>
-        <div class="callout" style="margin-top:10px;background:#FDF0DC;border-left-color:var(--honey)">
+        <div class="callout" data-rv style="margin-top:10px;background:#FDF0DC;border-left-color:var(--honey)">
           <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
           <div>ここに書いた内容は、本家「Farmer's Delight」の仕組みをもとにしています。サーバーの設定により、レシピや細かい仕様が本家と異なる場合があります。実際に遊んでみて気づいた点があれば、Discordで教えてください。</div>
         </div>

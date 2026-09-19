@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VIVA-MC 公式サイト | 国家運営マインクラフトサーバー</title>
 <meta name="description" content="憲法を定め、経済を回し、外交と戦争まで。すべてがプレイヤーの手で動く国家運営マインクラフトサーバー。Java版・統合版クロスプレイ対応、参加は無料。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="VIVA-MC 公式サイト | 国家運営マインクラフトサーバー">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="has-chart">
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -77,33 +86,531 @@
 </nav>
 
   <main class="main" id="main" tabindex="-1">
-    <section class="opening">
-      <div class="wrap grid">
-        <div>
-          <span class="eyebrow dot">NATION-BUILDING SIMULATION</span>
-          <h1 class="disp">広大な世界に、<br><em>君だけの国家</em>を。</h1>
-          <p class="lead">憲法をつくり、経済を回し、時に戦い、時に手を結ぶ。すべてがプレイヤーの手で動く、国家運営マインクラフトサーバー。</p>
-          <div class="cta">
-            <a class="btn fill" href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>はじめかたを見る</a>
-            <button type="button" class="btn plain" data-copy="viva-mc.net"><i class="fa-regular fa-copy" aria-hidden="true"></i>IPをコピー</button>
+    <div class="chartzone">
+<svg class="chart" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<filter id="parch"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+<filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".02" numOctaves="3" seed="9" result="n"/>
+  <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="blr"><feGaussianBlur stdDeviation="26"/></filter>
+<radialGradient id="vig" cx="50%" cy="46%" r="80%">
+  <stop offset="58%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#3a2a14" stop-opacity=".42"/></radialGradient>
+</defs>
+<rect width="1600" height="900" fill="#EBDCB6"/>
+<rect width="1600" height="900" fill="#CFE0DC" opacity=".22"/>
+<rect x="14" y="14" width="1572" height="872" fill="none" stroke="#3B2A14" stroke-width="5" class="draw" pathLength="1" style="--d:0.00s;--dur:0.66s"/>
+<rect x="29" y="29" width="1542" height="842" fill="none" stroke="#3B2A14" stroke-width="1.5" class="draw" pathLength="1" style="--d:0.15s;--dur:0.60s"/>
+<g stroke="#3B2A14" stroke-width="1.5">
+<line x1="29" y1="14" x2="29" y2="29" class="draw" pathLength="1" style="--d:0.30s;--dur:0.12s"/>
+<line x1="29" y1="871" x2="29" y2="886" class="draw" pathLength="1" style="--d:0.30s;--dur:0.12s"/>
+<line x1="54" y1="14" x2="54" y2="29" class="draw" pathLength="1" style="--d:0.30s;--dur:0.12s"/>
+<line x1="54" y1="871" x2="54" y2="886" class="draw" pathLength="1" style="--d:0.30s;--dur:0.12s"/>
+<line x1="79" y1="14" x2="79" y2="29" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="79" y1="871" x2="79" y2="886" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="104" y1="14" x2="104" y2="29" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="104" y1="871" x2="104" y2="886" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="129" y1="14" x2="129" y2="29" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="129" y1="871" x2="129" y2="886" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="154" y1="14" x2="154" y2="29" class="draw" pathLength="1" style="--d:0.32s;--dur:0.12s"/>
+<line x1="154" y1="871" x2="154" y2="886" class="draw" pathLength="1" style="--d:0.32s;--dur:0.12s"/>
+<line x1="179" y1="14" x2="179" y2="29" class="draw" pathLength="1" style="--d:0.32s;--dur:0.12s"/>
+<line x1="179" y1="871" x2="179" y2="886" class="draw" pathLength="1" style="--d:0.32s;--dur:0.12s"/>
+<line x1="204" y1="14" x2="204" y2="29" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="204" y1="871" x2="204" y2="886" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="229" y1="14" x2="229" y2="29" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="229" y1="871" x2="229" y2="886" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="254" y1="14" x2="254" y2="29" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="254" y1="871" x2="254" y2="886" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="279" y1="14" x2="279" y2="29" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="279" y1="871" x2="279" y2="886" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="304" y1="14" x2="304" y2="29" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="304" y1="871" x2="304" y2="886" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="329" y1="14" x2="329" y2="29" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="329" y1="871" x2="329" y2="886" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="354" y1="14" x2="354" y2="29" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="354" y1="871" x2="354" y2="886" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="379" y1="14" x2="379" y2="29" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="379" y1="871" x2="379" y2="886" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="404" y1="14" x2="404" y2="29" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="404" y1="871" x2="404" y2="886" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="429" y1="14" x2="429" y2="29" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="429" y1="871" x2="429" y2="886" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="454" y1="14" x2="454" y2="29" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="454" y1="871" x2="454" y2="886" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="479" y1="14" x2="479" y2="29" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="479" y1="871" x2="479" y2="886" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="504" y1="14" x2="504" y2="29" class="draw" pathLength="1" style="--d:0.37s;--dur:0.12s"/>
+<line x1="504" y1="871" x2="504" y2="886" class="draw" pathLength="1" style="--d:0.37s;--dur:0.12s"/>
+<line x1="529" y1="14" x2="529" y2="29" class="draw" pathLength="1" style="--d:0.37s;--dur:0.12s"/>
+<line x1="529" y1="871" x2="529" y2="886" class="draw" pathLength="1" style="--d:0.37s;--dur:0.12s"/>
+<line x1="554" y1="14" x2="554" y2="29" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="554" y1="871" x2="554" y2="886" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="579" y1="14" x2="579" y2="29" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="579" y1="871" x2="579" y2="886" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="604" y1="14" x2="604" y2="29" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="604" y1="871" x2="604" y2="886" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="629" y1="14" x2="629" y2="29" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="629" y1="871" x2="629" y2="886" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="654" y1="14" x2="654" y2="29" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="654" y1="871" x2="654" y2="886" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="679" y1="14" x2="679" y2="29" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="679" y1="871" x2="679" y2="886" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="704" y1="14" x2="704" y2="29" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="704" y1="871" x2="704" y2="886" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="729" y1="14" x2="729" y2="29" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="729" y1="871" x2="729" y2="886" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="754" y1="14" x2="754" y2="29" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="754" y1="871" x2="754" y2="886" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="779" y1="14" x2="779" y2="29" class="draw" pathLength="1" style="--d:0.41s;--dur:0.12s"/>
+<line x1="779" y1="871" x2="779" y2="886" class="draw" pathLength="1" style="--d:0.41s;--dur:0.12s"/>
+<line x1="804" y1="14" x2="804" y2="29" class="draw" pathLength="1" style="--d:0.41s;--dur:0.12s"/>
+<line x1="804" y1="871" x2="804" y2="886" class="draw" pathLength="1" style="--d:0.41s;--dur:0.12s"/>
+<line x1="829" y1="14" x2="829" y2="29" class="draw" pathLength="1" style="--d:0.42s;--dur:0.12s"/>
+<line x1="829" y1="871" x2="829" y2="886" class="draw" pathLength="1" style="--d:0.42s;--dur:0.12s"/>
+<line x1="854" y1="14" x2="854" y2="29" class="draw" pathLength="1" style="--d:0.42s;--dur:0.12s"/>
+<line x1="854" y1="871" x2="854" y2="886" class="draw" pathLength="1" style="--d:0.42s;--dur:0.12s"/>
+<line x1="879" y1="14" x2="879" y2="29" class="draw" pathLength="1" style="--d:0.42s;--dur:0.12s"/>
+<line x1="879" y1="871" x2="879" y2="886" class="draw" pathLength="1" style="--d:0.42s;--dur:0.12s"/>
+<line x1="904" y1="14" x2="904" y2="29" class="draw" pathLength="1" style="--d:0.43s;--dur:0.12s"/>
+<line x1="904" y1="871" x2="904" y2="886" class="draw" pathLength="1" style="--d:0.43s;--dur:0.12s"/>
+<line x1="929" y1="14" x2="929" y2="29" class="draw" pathLength="1" style="--d:0.43s;--dur:0.12s"/>
+<line x1="929" y1="871" x2="929" y2="886" class="draw" pathLength="1" style="--d:0.43s;--dur:0.12s"/>
+<line x1="954" y1="14" x2="954" y2="29" class="draw" pathLength="1" style="--d:0.43s;--dur:0.12s"/>
+<line x1="954" y1="871" x2="954" y2="886" class="draw" pathLength="1" style="--d:0.43s;--dur:0.12s"/>
+<line x1="979" y1="14" x2="979" y2="29" class="draw" pathLength="1" style="--d:0.44s;--dur:0.12s"/>
+<line x1="979" y1="871" x2="979" y2="886" class="draw" pathLength="1" style="--d:0.44s;--dur:0.12s"/>
+<line x1="1004" y1="14" x2="1004" y2="29" class="draw" pathLength="1" style="--d:0.44s;--dur:0.12s"/>
+<line x1="1004" y1="871" x2="1004" y2="886" class="draw" pathLength="1" style="--d:0.44s;--dur:0.12s"/>
+<line x1="1029" y1="14" x2="1029" y2="29" class="draw" pathLength="1" style="--d:0.44s;--dur:0.12s"/>
+<line x1="1029" y1="871" x2="1029" y2="886" class="draw" pathLength="1" style="--d:0.44s;--dur:0.12s"/>
+<line x1="1054" y1="14" x2="1054" y2="29" class="draw" pathLength="1" style="--d:0.45s;--dur:0.12s"/>
+<line x1="1054" y1="871" x2="1054" y2="886" class="draw" pathLength="1" style="--d:0.45s;--dur:0.12s"/>
+<line x1="1079" y1="14" x2="1079" y2="29" class="draw" pathLength="1" style="--d:0.45s;--dur:0.12s"/>
+<line x1="1079" y1="871" x2="1079" y2="886" class="draw" pathLength="1" style="--d:0.45s;--dur:0.12s"/>
+<line x1="1104" y1="14" x2="1104" y2="29" class="draw" pathLength="1" style="--d:0.45s;--dur:0.12s"/>
+<line x1="1104" y1="871" x2="1104" y2="886" class="draw" pathLength="1" style="--d:0.45s;--dur:0.12s"/>
+<line x1="1129" y1="14" x2="1129" y2="29" class="draw" pathLength="1" style="--d:0.46s;--dur:0.12s"/>
+<line x1="1129" y1="871" x2="1129" y2="886" class="draw" pathLength="1" style="--d:0.46s;--dur:0.12s"/>
+<line x1="1154" y1="14" x2="1154" y2="29" class="draw" pathLength="1" style="--d:0.46s;--dur:0.12s"/>
+<line x1="1154" y1="871" x2="1154" y2="886" class="draw" pathLength="1" style="--d:0.46s;--dur:0.12s"/>
+<line x1="1179" y1="14" x2="1179" y2="29" class="draw" pathLength="1" style="--d:0.47s;--dur:0.12s"/>
+<line x1="1179" y1="871" x2="1179" y2="886" class="draw" pathLength="1" style="--d:0.47s;--dur:0.12s"/>
+<line x1="1204" y1="14" x2="1204" y2="29" class="draw" pathLength="1" style="--d:0.47s;--dur:0.12s"/>
+<line x1="1204" y1="871" x2="1204" y2="886" class="draw" pathLength="1" style="--d:0.47s;--dur:0.12s"/>
+<line x1="1229" y1="14" x2="1229" y2="29" class="draw" pathLength="1" style="--d:0.47s;--dur:0.12s"/>
+<line x1="1229" y1="871" x2="1229" y2="886" class="draw" pathLength="1" style="--d:0.47s;--dur:0.12s"/>
+<line x1="1254" y1="14" x2="1254" y2="29" class="draw" pathLength="1" style="--d:0.48s;--dur:0.12s"/>
+<line x1="1254" y1="871" x2="1254" y2="886" class="draw" pathLength="1" style="--d:0.48s;--dur:0.12s"/>
+<line x1="1279" y1="14" x2="1279" y2="29" class="draw" pathLength="1" style="--d:0.48s;--dur:0.12s"/>
+<line x1="1279" y1="871" x2="1279" y2="886" class="draw" pathLength="1" style="--d:0.48s;--dur:0.12s"/>
+<line x1="1304" y1="14" x2="1304" y2="29" class="draw" pathLength="1" style="--d:0.48s;--dur:0.12s"/>
+<line x1="1304" y1="871" x2="1304" y2="886" class="draw" pathLength="1" style="--d:0.48s;--dur:0.12s"/>
+<line x1="1329" y1="14" x2="1329" y2="29" class="draw" pathLength="1" style="--d:0.49s;--dur:0.12s"/>
+<line x1="1329" y1="871" x2="1329" y2="886" class="draw" pathLength="1" style="--d:0.49s;--dur:0.12s"/>
+<line x1="1354" y1="14" x2="1354" y2="29" class="draw" pathLength="1" style="--d:0.49s;--dur:0.12s"/>
+<line x1="1354" y1="871" x2="1354" y2="886" class="draw" pathLength="1" style="--d:0.49s;--dur:0.12s"/>
+<line x1="1379" y1="14" x2="1379" y2="29" class="draw" pathLength="1" style="--d:0.49s;--dur:0.12s"/>
+<line x1="1379" y1="871" x2="1379" y2="886" class="draw" pathLength="1" style="--d:0.49s;--dur:0.12s"/>
+<line x1="1404" y1="14" x2="1404" y2="29" class="draw" pathLength="1" style="--d:0.50s;--dur:0.12s"/>
+<line x1="1404" y1="871" x2="1404" y2="886" class="draw" pathLength="1" style="--d:0.50s;--dur:0.12s"/>
+<line x1="1429" y1="14" x2="1429" y2="29" class="draw" pathLength="1" style="--d:0.50s;--dur:0.12s"/>
+<line x1="1429" y1="871" x2="1429" y2="886" class="draw" pathLength="1" style="--d:0.50s;--dur:0.12s"/>
+<line x1="1454" y1="14" x2="1454" y2="29" class="draw" pathLength="1" style="--d:0.51s;--dur:0.12s"/>
+<line x1="1454" y1="871" x2="1454" y2="886" class="draw" pathLength="1" style="--d:0.51s;--dur:0.12s"/>
+<line x1="1479" y1="14" x2="1479" y2="29" class="draw" pathLength="1" style="--d:0.51s;--dur:0.12s"/>
+<line x1="1479" y1="871" x2="1479" y2="886" class="draw" pathLength="1" style="--d:0.51s;--dur:0.12s"/>
+<line x1="1504" y1="14" x2="1504" y2="29" class="draw" pathLength="1" style="--d:0.51s;--dur:0.12s"/>
+<line x1="1504" y1="871" x2="1504" y2="886" class="draw" pathLength="1" style="--d:0.51s;--dur:0.12s"/>
+<line x1="1529" y1="14" x2="1529" y2="29" class="draw" pathLength="1" style="--d:0.52s;--dur:0.12s"/>
+<line x1="1529" y1="871" x2="1529" y2="886" class="draw" pathLength="1" style="--d:0.52s;--dur:0.12s"/>
+<line x1="1554" y1="14" x2="1554" y2="29" class="draw" pathLength="1" style="--d:0.52s;--dur:0.12s"/>
+<line x1="1554" y1="871" x2="1554" y2="886" class="draw" pathLength="1" style="--d:0.52s;--dur:0.12s"/>
+<line x1="14" y1="29" x2="29" y2="29" class="draw" pathLength="1" style="--d:0.30s;--dur:0.12s"/>
+<line x1="1571" y1="29" x2="1586" y2="29" class="draw" pathLength="1" style="--d:0.30s;--dur:0.12s"/>
+<line x1="14" y1="54" x2="29" y2="54" class="draw" pathLength="1" style="--d:0.30s;--dur:0.12s"/>
+<line x1="1571" y1="54" x2="1586" y2="54" class="draw" pathLength="1" style="--d:0.30s;--dur:0.12s"/>
+<line x1="14" y1="79" x2="29" y2="79" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="1571" y1="79" x2="1586" y2="79" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="14" y1="104" x2="29" y2="104" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="1571" y1="104" x2="1586" y2="104" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="14" y1="129" x2="29" y2="129" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="1571" y1="129" x2="1586" y2="129" class="draw" pathLength="1" style="--d:0.31s;--dur:0.12s"/>
+<line x1="14" y1="154" x2="29" y2="154" class="draw" pathLength="1" style="--d:0.32s;--dur:0.12s"/>
+<line x1="1571" y1="154" x2="1586" y2="154" class="draw" pathLength="1" style="--d:0.32s;--dur:0.12s"/>
+<line x1="14" y1="179" x2="29" y2="179" class="draw" pathLength="1" style="--d:0.32s;--dur:0.12s"/>
+<line x1="1571" y1="179" x2="1586" y2="179" class="draw" pathLength="1" style="--d:0.32s;--dur:0.12s"/>
+<line x1="14" y1="204" x2="29" y2="204" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="1571" y1="204" x2="1586" y2="204" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="14" y1="229" x2="29" y2="229" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="1571" y1="229" x2="1586" y2="229" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="14" y1="254" x2="29" y2="254" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="1571" y1="254" x2="1586" y2="254" class="draw" pathLength="1" style="--d:0.33s;--dur:0.12s"/>
+<line x1="14" y1="279" x2="29" y2="279" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="1571" y1="279" x2="1586" y2="279" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="14" y1="304" x2="29" y2="304" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="1571" y1="304" x2="1586" y2="304" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="14" y1="329" x2="29" y2="329" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="1571" y1="329" x2="1586" y2="329" class="draw" pathLength="1" style="--d:0.34s;--dur:0.12s"/>
+<line x1="14" y1="354" x2="29" y2="354" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="1571" y1="354" x2="1586" y2="354" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="14" y1="379" x2="29" y2="379" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="1571" y1="379" x2="1586" y2="379" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="14" y1="404" x2="29" y2="404" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="1571" y1="404" x2="1586" y2="404" class="draw" pathLength="1" style="--d:0.35s;--dur:0.12s"/>
+<line x1="14" y1="429" x2="29" y2="429" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="1571" y1="429" x2="1586" y2="429" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="14" y1="454" x2="29" y2="454" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="1571" y1="454" x2="1586" y2="454" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="14" y1="479" x2="29" y2="479" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="1571" y1="479" x2="1586" y2="479" class="draw" pathLength="1" style="--d:0.36s;--dur:0.12s"/>
+<line x1="14" y1="504" x2="29" y2="504" class="draw" pathLength="1" style="--d:0.37s;--dur:0.12s"/>
+<line x1="1571" y1="504" x2="1586" y2="504" class="draw" pathLength="1" style="--d:0.37s;--dur:0.12s"/>
+<line x1="14" y1="529" x2="29" y2="529" class="draw" pathLength="1" style="--d:0.37s;--dur:0.12s"/>
+<line x1="1571" y1="529" x2="1586" y2="529" class="draw" pathLength="1" style="--d:0.37s;--dur:0.12s"/>
+<line x1="14" y1="554" x2="29" y2="554" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="1571" y1="554" x2="1586" y2="554" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="14" y1="579" x2="29" y2="579" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="1571" y1="579" x2="1586" y2="579" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="14" y1="604" x2="29" y2="604" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="1571" y1="604" x2="1586" y2="604" class="draw" pathLength="1" style="--d:0.38s;--dur:0.12s"/>
+<line x1="14" y1="629" x2="29" y2="629" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="1571" y1="629" x2="1586" y2="629" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="14" y1="654" x2="29" y2="654" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="1571" y1="654" x2="1586" y2="654" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="14" y1="679" x2="29" y2="679" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="1571" y1="679" x2="1586" y2="679" class="draw" pathLength="1" style="--d:0.39s;--dur:0.12s"/>
+<line x1="14" y1="704" x2="29" y2="704" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="1571" y1="704" x2="1586" y2="704" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="14" y1="729" x2="29" y2="729" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="1571" y1="729" x2="1586" y2="729" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="14" y1="754" x2="29" y2="754" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="1571" y1="754" x2="1586" y2="754" class="draw" pathLength="1" style="--d:0.40s;--dur:0.12s"/>
+<line x1="14" y1="779" x2="29" y2="779" class="draw" pathLength="1" style="--d:0.41s;--dur:0.12s"/>
+<line x1="1571" y1="779" x2="1586" y2="779" class="draw" pathLength="1" style="--d:0.41s;--dur:0.12s"/>
+<line x1="14" y1="804" x2="29" y2="804" class="draw" pathLength="1" style="--d:0.41s;--dur:0.12s"/>
+<line x1="1571" y1="804" x2="1586" y2="804" class="draw" pathLength="1" style="--d:0.41s;--dur:0.12s"/>
+<line x1="14" y1="829" x2="29" y2="829" class="draw" pathLength="1" style="--d:0.42s;--dur:0.12s"/>
+<line x1="1571" y1="829" x2="1586" y2="829" class="draw" pathLength="1" style="--d:0.42s;--dur:0.12s"/>
+<line x1="14" y1="854" x2="29" y2="854" class="draw" pathLength="1" style="--d:0.42s;--dur:0.12s"/>
+<line x1="1571" y1="854" x2="1586" y2="854" class="draw" pathLength="1" style="--d:0.42s;--dur:0.12s"/>
+</g>
+<text x="100" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3B2A14" opacity=".75" class="fade" style="--d:0.60s;--o:0.75;--dur:0.30s">10°</text>
+<text x="300" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3B2A14" opacity=".75" class="fade" style="--d:0.60s;--o:0.75;--dur:0.30s">20°</text>
+<text x="500" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3B2A14" opacity=".75" class="fade" style="--d:0.60s;--o:0.75;--dur:0.30s">30°</text>
+<text x="700" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3B2A14" opacity=".75" class="fade" style="--d:0.60s;--o:0.75;--dur:0.30s">40°</text>
+<text x="900" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3B2A14" opacity=".75" class="fade" style="--d:0.60s;--o:0.75;--dur:0.30s">50°</text>
+<text x="1100" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3B2A14" opacity=".75" class="fade" style="--d:0.60s;--o:0.75;--dur:0.30s">60°</text>
+<text x="1300" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3B2A14" opacity=".75" class="fade" style="--d:0.60s;--o:0.75;--dur:0.30s">70°</text>
+<text x="1500" y="52" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#3B2A14" opacity=".75" class="fade" style="--d:0.60s;--o:0.75;--dur:0.30s">80°</text>
+<g stroke="#8A6A38" stroke-width=".8" opacity=".3">
+<line x1="0" y1="0" x2="0" y2="900" class="draw" pathLength="1" style="--d:0.42s;--dur:0.30s"/>
+<line x1="100" y1="0" x2="100" y2="900" class="draw" pathLength="1" style="--d:0.44s;--dur:0.30s"/>
+<line x1="200" y1="0" x2="200" y2="900" class="draw" pathLength="1" style="--d:0.46s;--dur:0.30s"/>
+<line x1="300" y1="0" x2="300" y2="900" class="draw" pathLength="1" style="--d:0.48s;--dur:0.30s"/>
+<line x1="400" y1="0" x2="400" y2="900" class="draw" pathLength="1" style="--d:0.50s;--dur:0.30s"/>
+<line x1="500" y1="0" x2="500" y2="900" class="draw" pathLength="1" style="--d:0.53s;--dur:0.30s"/>
+<line x1="600" y1="0" x2="600" y2="900" class="draw" pathLength="1" style="--d:0.55s;--dur:0.30s"/>
+<line x1="700" y1="0" x2="700" y2="900" class="draw" pathLength="1" style="--d:0.57s;--dur:0.30s"/>
+<line x1="800" y1="0" x2="800" y2="900" class="draw" pathLength="1" style="--d:0.59s;--dur:0.30s"/>
+<line x1="900" y1="0" x2="900" y2="900" class="draw" pathLength="1" style="--d:0.61s;--dur:0.30s"/>
+<line x1="1000" y1="0" x2="1000" y2="900" class="draw" pathLength="1" style="--d:0.63s;--dur:0.30s"/>
+<line x1="1100" y1="0" x2="1100" y2="900" class="draw" pathLength="1" style="--d:0.65s;--dur:0.30s"/>
+<line x1="1200" y1="0" x2="1200" y2="900" class="draw" pathLength="1" style="--d:0.67s;--dur:0.30s"/>
+<line x1="1300" y1="0" x2="1300" y2="900" class="draw" pathLength="1" style="--d:0.69s;--dur:0.30s"/>
+<line x1="1400" y1="0" x2="1400" y2="900" class="draw" pathLength="1" style="--d:0.71s;--dur:0.30s"/>
+<line x1="1500" y1="0" x2="1500" y2="900" class="draw" pathLength="1" style="--d:0.73s;--dur:0.30s"/>
+<line x1="1600" y1="0" x2="1600" y2="900" class="draw" pathLength="1" style="--d:0.76s;--dur:0.30s"/>
+<line x1="0" y1="0" x2="1600" y2="0" class="draw" pathLength="1" style="--d:0.45s;--dur:0.30s"/>
+<line x1="0" y1="100" x2="1600" y2="100" class="draw" pathLength="1" style="--d:0.47s;--dur:0.30s"/>
+<line x1="0" y1="200" x2="1600" y2="200" class="draw" pathLength="1" style="--d:0.49s;--dur:0.30s"/>
+<line x1="0" y1="300" x2="1600" y2="300" class="draw" pathLength="1" style="--d:0.51s;--dur:0.30s"/>
+<line x1="0" y1="400" x2="1600" y2="400" class="draw" pathLength="1" style="--d:0.53s;--dur:0.30s"/>
+<line x1="0" y1="500" x2="1600" y2="500" class="draw" pathLength="1" style="--d:0.56s;--dur:0.30s"/>
+<line x1="0" y1="600" x2="1600" y2="600" class="draw" pathLength="1" style="--d:0.58s;--dur:0.30s"/>
+<line x1="0" y1="700" x2="1600" y2="700" class="draw" pathLength="1" style="--d:0.60s;--dur:0.30s"/>
+<line x1="0" y1="800" x2="1600" y2="800" class="draw" pathLength="1" style="--d:0.62s;--dur:0.30s"/>
+<line x1="0" y1="900" x2="1600" y2="900" class="draw" pathLength="1" style="--d:0.64s;--dur:0.30s"/>
+</g>
+<g stroke="#9A6B3A" stroke-width=".75" opacity=".42">
+<line x1="1150" y1="250" x2="3350" y2="250" class="draw" pathLength="1" style="--d:0.69s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="3183" y2="1092" class="draw" pathLength="1" style="--d:0.70s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="2706" y2="1806" class="draw" pathLength="1" style="--d:0.71s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="1992" y2="2283" class="draw" pathLength="1" style="--d:0.72s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="1150" y2="2450" class="draw" pathLength="1" style="--d:0.73s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="308" y2="2283" class="draw" pathLength="1" style="--d:0.74s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="-406" y2="1806" class="draw" pathLength="1" style="--d:0.75s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="-883" y2="1092" class="draw" pathLength="1" style="--d:0.77s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="-1050" y2="250" class="draw" pathLength="1" style="--d:0.78s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="-883" y2="-592" class="draw" pathLength="1" style="--d:0.79s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="-406" y2="-1306" class="draw" pathLength="1" style="--d:0.80s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="308" y2="-1783" class="draw" pathLength="1" style="--d:0.81s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="1150" y2="-1950" class="draw" pathLength="1" style="--d:0.82s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="1992" y2="-1783" class="draw" pathLength="1" style="--d:0.83s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="2706" y2="-1306" class="draw" pathLength="1" style="--d:0.84s;--dur:0.33s"/>
+<line x1="1150" y1="250" x2="3183" y2="-592" class="draw" pathLength="1" style="--d:0.85s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="2630" y2="210" class="draw" pathLength="1" style="--d:0.86s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="2463" y2="1052" class="draw" pathLength="1" style="--d:0.87s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="1986" y2="1766" class="draw" pathLength="1" style="--d:0.88s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="1272" y2="2243" class="draw" pathLength="1" style="--d:0.90s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="430" y2="2410" class="draw" pathLength="1" style="--d:0.91s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="-412" y2="2243" class="draw" pathLength="1" style="--d:0.92s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="-1126" y2="1766" class="draw" pathLength="1" style="--d:0.93s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="-1603" y2="1052" class="draw" pathLength="1" style="--d:0.94s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="-1770" y2="210" class="draw" pathLength="1" style="--d:0.95s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="-1603" y2="-632" class="draw" pathLength="1" style="--d:0.96s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="-1126" y2="-1346" class="draw" pathLength="1" style="--d:0.97s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="-412" y2="-1823" class="draw" pathLength="1" style="--d:0.98s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="430" y2="-1990" class="draw" pathLength="1" style="--d:0.99s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="1272" y2="-1823" class="draw" pathLength="1" style="--d:1.00s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="1986" y2="-1346" class="draw" pathLength="1" style="--d:1.01s;--dur:0.33s"/>
+<line x1="430" y1="210" x2="2463" y2="-632" class="draw" pathLength="1" style="--d:1.02s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="3080" y2="560" class="draw" pathLength="1" style="--d:1.04s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="2913" y2="1402" class="draw" pathLength="1" style="--d:1.05s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="2436" y2="2116" class="draw" pathLength="1" style="--d:1.06s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="1722" y2="2593" class="draw" pathLength="1" style="--d:1.07s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="880" y2="2760" class="draw" pathLength="1" style="--d:1.08s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="38" y2="2593" class="draw" pathLength="1" style="--d:1.09s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="-676" y2="2116" class="draw" pathLength="1" style="--d:1.10s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="-1153" y2="1402" class="draw" pathLength="1" style="--d:1.11s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="-1320" y2="560" class="draw" pathLength="1" style="--d:1.12s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="-1153" y2="-282" class="draw" pathLength="1" style="--d:1.13s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="-676" y2="-996" class="draw" pathLength="1" style="--d:1.14s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="38" y2="-1473" class="draw" pathLength="1" style="--d:1.15s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="880" y2="-1640" class="draw" pathLength="1" style="--d:1.17s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="1722" y2="-1473" class="draw" pathLength="1" style="--d:1.18s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="2436" y2="-996" class="draw" pathLength="1" style="--d:1.19s;--dur:0.33s"/>
+<line x1="880" y1="560" x2="2913" y2="-282" class="draw" pathLength="1" style="--d:1.20s;--dur:0.33s"/>
+</g>
+<g stroke="#8E2E1C" stroke-width=".9" opacity=".26">
+<line x1="430" y1="210" x2="2588" y2="639" class="draw" pathLength="1" style="--d:0.90s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="2259" y2="1432" class="draw" pathLength="1" style="--d:0.91s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="1652" y2="2039" class="draw" pathLength="1" style="--d:0.92s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="859" y2="2368" class="draw" pathLength="1" style="--d:0.94s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="1" y2="2368" class="draw" pathLength="1" style="--d:0.95s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="-792" y2="2039" class="draw" pathLength="1" style="--d:0.96s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="-1399" y2="1432" class="draw" pathLength="1" style="--d:0.97s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="-1728" y2="639" class="draw" pathLength="1" style="--d:0.98s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="-1728" y2="-219" class="draw" pathLength="1" style="--d:1.00s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="-1399" y2="-1012" class="draw" pathLength="1" style="--d:1.01s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="-792" y2="-1619" class="draw" pathLength="1" style="--d:1.02s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="1" y2="-1948" class="draw" pathLength="1" style="--d:1.03s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="859" y2="-1948" class="draw" pathLength="1" style="--d:1.04s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="1652" y2="-1619" class="draw" pathLength="1" style="--d:1.06s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="2259" y2="-1012" class="draw" pathLength="1" style="--d:1.07s;--dur:0.30s"/>
+<line x1="430" y1="210" x2="2588" y2="-219" class="draw" pathLength="1" style="--d:1.08s;--dur:0.30s"/>
+</g>
+<circle cx="1150" cy="250" r="46" fill="none" stroke="#8A6A38" stroke-width="1" opacity=".55" class="draw" pathLength="1" style="--d:1.14s;--dur:0.36s"/>
+<circle cx="1150" cy="250" r="3.5" fill="#6B4A22" opacity=".7" class="fade" style="--d:1.26s;--o:0.7;--dur:0.18s"/>
+<circle cx="430" cy="210" r="46" fill="none" stroke="#8A6A38" stroke-width="1" opacity=".55" class="draw" pathLength="1" style="--d:1.20s;--dur:0.36s"/>
+<circle cx="430" cy="210" r="3.5" fill="#6B4A22" opacity=".7" class="fade" style="--d:1.32s;--o:0.7;--dur:0.18s"/>
+<circle cx="880" cy="560" r="46" fill="none" stroke="#8A6A38" stroke-width="1" opacity=".55" class="draw" pathLength="1" style="--d:1.26s;--dur:0.36s"/>
+<circle cx="880" cy="560" r="3.5" fill="#6B4A22" opacity=".7" class="fade" style="--d:1.38s;--o:0.7;--dur:0.18s"/>
+<g class="waves" stroke="#4E7280" stroke-width="1.2" fill="none" opacity=".34">
+<path d="M1186,523 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.20s;--dur:0.30s"/>
+<path d="M965,536 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.22s;--dur:0.30s"/>
+<path d="M1242,580 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.24s;--dur:0.30s"/>
+<path d="M418,254 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.25s;--dur:0.30s"/>
+<path d="M1014,584 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.27s;--dur:0.30s"/>
+<path d="M232,250 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.29s;--dur:0.30s"/>
+<path d="M661,517 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.31s;--dur:0.30s"/>
+<path d="M225,205 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.33s;--dur:0.30s"/>
+<path d="M1259,102 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.34s;--dur:0.30s"/>
+<path d="M967,465 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.36s;--dur:0.30s"/>
+<path d="M70,221 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.38s;--dur:0.30s"/>
+<path d="M161,124 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.40s;--dur:0.30s"/>
+<path d="M429,96 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.42s;--dur:0.30s"/>
+<path d="M1268,307 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.43s;--dur:0.30s"/>
+<path d="M990,90 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.45s;--dur:0.30s"/>
+<path d="M942,394 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.47s;--dur:0.30s"/>
+<path d="M1103,260 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.49s;--dur:0.30s"/>
+<path d="M642,299 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.51s;--dur:0.30s"/>
+<path d="M49,571 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.52s;--dur:0.30s"/>
+<path d="M976,147 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.54s;--dur:0.30s"/>
+<path d="M873,344 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.56s;--dur:0.30s"/>
+<path d="M560,145 q13,-7 26,0 t26,0 t26,0 t26,0 t26,0" class="draw" pathLength="1" style="--d:1.58s;--dur:0.30s"/>
+</g>
+<path d="M-40,742 C60,736 120,700 208,702 C286,704 318,742 398,736 C470,730 496,690 572,690 C640,690 668,726 740,724 C806,722 832,686 900,692 C962,698 984,730 1050,726 C1114,722 1140,688 1206,694 C1268,700 1300,734 1366,730 C1428,726 1472,700 1540,706 C1580,709 1614,716 1640,722 L1640,940 L-40,940 Z" fill="none" stroke="#3E6070" stroke-width="15" opacity="0.1" filter="url(#rough)" class="fade" style="--d:2.16s;--o:0.1;--dur:0.48s"/>
+<path d="M-40,742 C60,736 120,700 208,702 C286,704 318,742 398,736 C470,730 496,690 572,690 C640,690 668,726 740,724 C806,722 832,686 900,692 C962,698 984,730 1050,726 C1114,722 1140,688 1206,694 C1268,700 1300,734 1366,730 C1428,726 1472,700 1540,706 C1580,709 1614,716 1640,722 L1640,940 L-40,940 Z" fill="none" stroke="#3E6070" stroke-width="9" opacity="0.14" filter="url(#rough)" class="fade" style="--d:2.16s;--o:0.14;--dur:0.48s"/>
+<path d="M-40,742 C60,736 120,700 208,702 C286,704 318,742 398,736 C470,730 496,690 572,690 C640,690 668,726 740,724 C806,722 832,686 900,692 C962,698 984,730 1050,726 C1114,722 1140,688 1206,694 C1268,700 1300,734 1366,730 C1428,726 1472,700 1540,706 C1580,709 1614,716 1640,722 L1640,940 L-40,940 Z" fill="none" stroke="#3E6070" stroke-width="4.5" opacity="0.2" filter="url(#rough)" class="fade" style="--d:2.16s;--o:0.2;--dur:0.48s"/>
+<path d="M-40,742 C60,736 120,700 208,702 C286,704 318,742 398,736 C470,730 496,690 572,690 C640,690 668,726 740,724 C806,722 832,686 900,692 C962,698 984,730 1050,726 C1114,722 1140,688 1206,694 C1268,700 1300,734 1366,730 C1428,726 1472,700 1540,706 C1580,709 1614,716 1640,722 L1640,940 L-40,940 Z" fill="#C29C57" filter="url(#rough)" class="fade" style="--d:2.04s;--o:1;--dur:0.54s"/>
+<path d="M-40,742 C60,736 120,700 208,702 C286,704 318,742 398,736 C470,730 496,690 572,690 C640,690 668,726 740,724 C806,722 832,686 900,692 C962,698 984,730 1050,726 C1114,722 1140,688 1206,694 C1268,700 1300,734 1366,730 C1428,726 1472,700 1540,706 C1580,709 1614,716 1640,722 L1640,940 L-40,940 Z" fill="none" stroke="#3E2A12" stroke-width="11" opacity=".13" stroke-dasharray="2 9" filter="url(#rough)" class="fade" style="--d:2.22s;--o:0.13;--dur:0.42s"/>
+<path d="M-40,742 C60,736 120,700 208,702 C286,704 318,742 398,736 C470,730 496,690 572,690 C640,690 668,726 740,724 C806,722 832,686 900,692 C962,698 984,730 1050,726 C1114,722 1140,688 1206,694 C1268,700 1300,734 1366,730 C1428,726 1472,700 1540,706 C1580,709 1614,716 1640,722 L1640,940 L-40,940 Z" fill="none" stroke="#3E2A12" stroke-width="2.6" filter="url(#rough)" class="draw" pathLength="1" style="--d:1.50s;--dur:0.90s"/>
+<path d="M1284,60 C1348,44 1420,70 1478,58 C1540,45 1592,68 1640,78 L1640,250 C1586,262 1540,236 1488,246 C1428,258 1386,232 1340,200 C1298,171 1256,120 1284,60 Z" fill="none" stroke="#3E6070" stroke-width="15" opacity="0.1" filter="url(#rough)" class="fade" style="--d:2.37s;--o:0.1;--dur:0.48s"/>
+<path d="M1284,60 C1348,44 1420,70 1478,58 C1540,45 1592,68 1640,78 L1640,250 C1586,262 1540,236 1488,246 C1428,258 1386,232 1340,200 C1298,171 1256,120 1284,60 Z" fill="none" stroke="#3E6070" stroke-width="9" opacity="0.14" filter="url(#rough)" class="fade" style="--d:2.37s;--o:0.14;--dur:0.48s"/>
+<path d="M1284,60 C1348,44 1420,70 1478,58 C1540,45 1592,68 1640,78 L1640,250 C1586,262 1540,236 1488,246 C1428,258 1386,232 1340,200 C1298,171 1256,120 1284,60 Z" fill="none" stroke="#3E6070" stroke-width="4.5" opacity="0.2" filter="url(#rough)" class="fade" style="--d:2.37s;--o:0.2;--dur:0.48s"/>
+<path d="M1284,60 C1348,44 1420,70 1478,58 C1540,45 1592,68 1640,78 L1640,250 C1586,262 1540,236 1488,246 C1428,258 1386,232 1340,200 C1298,171 1256,120 1284,60 Z" fill="#C29C57" filter="url(#rough)" class="fade" style="--d:2.25s;--o:1;--dur:0.54s"/>
+<path d="M1284,60 C1348,44 1420,70 1478,58 C1540,45 1592,68 1640,78 L1640,250 C1586,262 1540,236 1488,246 C1428,258 1386,232 1340,200 C1298,171 1256,120 1284,60 Z" fill="none" stroke="#3E2A12" stroke-width="11" opacity=".13" stroke-dasharray="2 9" filter="url(#rough)" class="fade" style="--d:2.43s;--o:0.13;--dur:0.42s"/>
+<path d="M1284,60 C1348,44 1420,70 1478,58 C1540,45 1592,68 1640,78 L1640,250 C1586,262 1540,236 1488,246 C1428,258 1386,232 1340,200 C1298,171 1256,120 1284,60 Z" fill="none" stroke="#3E2A12" stroke-width="2.6" filter="url(#rough)" class="draw" pathLength="1" style="--d:1.71s;--dur:0.90s"/>
+<path d="M636,470 C672,452 716,464 734,494 C752,524 738,560 704,572 C668,584 628,570 614,540 C600,511 608,484 636,470 Z" fill="none" stroke="#3E6070" stroke-width="15" opacity="0.1" filter="url(#rough)" class="fade" style="--d:2.58s;--o:0.1;--dur:0.48s"/>
+<path d="M636,470 C672,452 716,464 734,494 C752,524 738,560 704,572 C668,584 628,570 614,540 C600,511 608,484 636,470 Z" fill="none" stroke="#3E6070" stroke-width="9" opacity="0.14" filter="url(#rough)" class="fade" style="--d:2.58s;--o:0.14;--dur:0.48s"/>
+<path d="M636,470 C672,452 716,464 734,494 C752,524 738,560 704,572 C668,584 628,570 614,540 C600,511 608,484 636,470 Z" fill="none" stroke="#3E6070" stroke-width="4.5" opacity="0.2" filter="url(#rough)" class="fade" style="--d:2.58s;--o:0.2;--dur:0.48s"/>
+<path d="M636,470 C672,452 716,464 734,494 C752,524 738,560 704,572 C668,584 628,570 614,540 C600,511 608,484 636,470 Z" fill="#C29C57" filter="url(#rough)" class="fade" style="--d:2.46s;--o:1;--dur:0.54s"/>
+<path d="M636,470 C672,452 716,464 734,494 C752,524 738,560 704,572 C668,584 628,570 614,540 C600,511 608,484 636,470 Z" fill="none" stroke="#3E2A12" stroke-width="11" opacity=".13" stroke-dasharray="2 9" filter="url(#rough)" class="fade" style="--d:2.64s;--o:0.13;--dur:0.42s"/>
+<path d="M636,470 C672,452 716,464 734,494 C752,524 738,560 704,572 C668,584 628,570 614,540 C600,511 608,484 636,470 Z" fill="none" stroke="#3E2A12" stroke-width="2.6" filter="url(#rough)" class="draw" pathLength="1" style="--d:1.92s;--dur:0.90s"/>
+<path d="M300,470 C322,458 350,466 360,486 C370,506 360,528 338,534 C314,540 294,528 290,508 C286,489 288,477 300,470 Z" fill="none" stroke="#3E6070" stroke-width="15" opacity="0.1" filter="url(#rough)" class="fade" style="--d:2.79s;--o:0.1;--dur:0.48s"/>
+<path d="M300,470 C322,458 350,466 360,486 C370,506 360,528 338,534 C314,540 294,528 290,508 C286,489 288,477 300,470 Z" fill="none" stroke="#3E6070" stroke-width="9" opacity="0.14" filter="url(#rough)" class="fade" style="--d:2.79s;--o:0.14;--dur:0.48s"/>
+<path d="M300,470 C322,458 350,466 360,486 C370,506 360,528 338,534 C314,540 294,528 290,508 C286,489 288,477 300,470 Z" fill="none" stroke="#3E6070" stroke-width="4.5" opacity="0.2" filter="url(#rough)" class="fade" style="--d:2.79s;--o:0.2;--dur:0.48s"/>
+<path d="M300,470 C322,458 350,466 360,486 C370,506 360,528 338,534 C314,540 294,528 290,508 C286,489 288,477 300,470 Z" fill="#C29C57" filter="url(#rough)" class="fade" style="--d:2.67s;--o:1;--dur:0.54s"/>
+<path d="M300,470 C322,458 350,466 360,486 C370,506 360,528 338,534 C314,540 294,528 290,508 C286,489 288,477 300,470 Z" fill="none" stroke="#3E2A12" stroke-width="11" opacity=".13" stroke-dasharray="2 9" filter="url(#rough)" class="fade" style="--d:2.85s;--o:0.13;--dur:0.42s"/>
+<path d="M300,470 C322,458 350,466 360,486 C370,506 360,528 338,534 C314,540 294,528 290,508 C286,489 288,477 300,470 Z" fill="none" stroke="#3E2A12" stroke-width="2.6" filter="url(#rough)" class="draw" pathLength="1" style="--d:2.13s;--dur:0.90s"/>
+<g fill="#B08C51" stroke="#3E2A12" stroke-width="1.5"><g class="fade" style="--d:2.52s;--o:1;--dur:0.25s"><path d="M283.0,836 l9,-21 l8,9 l7,-17 l10,21 Z"/><path d="M283.0,836 l9,-21 l3,5 Z" fill="#3E2A12" opacity=".28" stroke="none"/></g><g class="fade" style="--d:2.56s;--o:1;--dur:0.25s"><path d="M327.0,830 l9,-21 l8,9 l7,-17 l10,21 Z"/><path d="M327.0,830 l9,-21 l3,5 Z" fill="#3E2A12" opacity=".28" stroke="none"/></g><g class="fade" style="--d:2.60s;--o:1;--dur:0.25s"><path d="M371.0,840 l9,-21 l8,9 l7,-17 l10,21 Z"/><path d="M371.0,840 l9,-21 l3,5 Z" fill="#3E2A12" opacity=".28" stroke="none"/></g><g class="fade" style="--d:2.65s;--o:1;--dur:0.25s"><path d="M415.0,832 l9,-21 l8,9 l7,-17 l10,21 Z"/><path d="M415.0,832 l9,-21 l3,5 Z" fill="#3E2A12" opacity=".28" stroke="none"/></g><g class="fade" style="--d:2.69s;--o:1;--dur:0.25s"><path d="M459.0,842 l9,-21 l8,9 l7,-17 l10,21 Z"/><path d="M459.0,842 l9,-21 l3,5 Z" fill="#3E2A12" opacity=".28" stroke="none"/></g></g>
+<g fill="#B08C51" stroke="#3E2A12" stroke-width="1.5"><g class="fade" style="--d:2.70s;--o:1;--dur:0.25s"><path d="M964.7,828 l8,-19 l7,9 l6,-15 l9,19 Z"/><path d="M964.7,828 l8,-19 l3,5 Z" fill="#3E2A12" opacity=".28" stroke="none"/></g><g class="fade" style="--d:2.74s;--o:1;--dur:0.25s"><path d="M1008.7,820 l8,-19 l7,9 l6,-15 l9,19 Z"/><path d="M1008.7,820 l8,-19 l3,5 Z" fill="#3E2A12" opacity=".28" stroke="none"/></g><g class="fade" style="--d:2.78s;--o:1;--dur:0.25s"><path d="M1052.7,832 l8,-19 l7,9 l6,-15 l9,19 Z"/><path d="M1052.7,832 l8,-19 l3,5 Z" fill="#3E2A12" opacity=".28" stroke="none"/></g></g>
+<g fill="#B08C51" stroke="#3E2A12" stroke-width="1.5"><g class="fade" style="--d:2.76s;--o:1;--dur:0.25s"><path d="M1384.7,170 l8,-19 l7,9 l6,-15 l9,19 Z"/><path d="M1384.7,170 l8,-19 l3,5 Z" fill="#3E2A12" opacity=".28" stroke="none"/></g><g class="fade" style="--d:2.80s;--o:1;--dur:0.25s"><path d="M1428.7,162 l8,-19 l7,9 l6,-15 l9,19 Z"/><path d="M1428.7,162 l8,-19 l3,5 Z" fill="#3E2A12" opacity=".28" stroke="none"/></g><g class="fade" style="--d:2.84s;--o:1;--dur:0.25s"><path d="M1472.7,174 l8,-19 l7,9 l6,-15 l9,19 Z"/><path d="M1472.7,174 l8,-19 l3,5 Z" fill="#3E2A12" opacity=".28" stroke="none"/></g></g>
+<g stroke="#3F5A2C" stroke-width="1.3" fill="#8FA06A"><g class="fade" style="--d:2.82s;--o:1;--dur:0.22s"><path d="M652,798 l-6,11 l12,0 Z"/><line x1="652" y1="809" x2="652" y2="813"/></g><g class="fade" style="--d:2.85s;--o:1;--dur:0.22s"><path d="M677,802 l-6,11 l12,0 Z"/><line x1="677" y1="813" x2="677" y2="817"/></g><g class="fade" style="--d:2.88s;--o:1;--dur:0.22s"><path d="M615,788 l-6,11 l12,0 Z"/><line x1="615" y1="799" x2="615" y2="803"/></g><g class="fade" style="--d:2.91s;--o:1;--dur:0.22s"><path d="M684,790 l-6,11 l12,0 Z"/><line x1="684" y1="801" x2="684" y2="805"/></g><g class="fade" style="--d:2.94s;--o:1;--dur:0.22s"><path d="M663,790 l-6,11 l12,0 Z"/><line x1="663" y1="801" x2="663" y2="805"/></g><g class="fade" style="--d:2.97s;--o:1;--dur:0.22s"><path d="M649,808 l-6,11 l12,0 Z"/><line x1="649" y1="819" x2="649" y2="823"/></g><g class="fade" style="--d:3.00s;--o:1;--dur:0.22s"><path d="M620,785 l-6,11 l12,0 Z"/><line x1="620" y1="796" x2="620" y2="800"/></g><g class="fade" style="--d:3.03s;--o:1;--dur:0.22s"><path d="M699,784 l-6,11 l12,0 Z"/><line x1="699" y1="795" x2="699" y2="799"/></g><g class="fade" style="--d:3.06s;--o:1;--dur:0.22s"><path d="M639,797 l-6,11 l12,0 Z"/><line x1="639" y1="808" x2="639" y2="812"/></g></g>
+<g stroke="#3F5A2C" stroke-width="1.3" fill="#8FA06A"><g class="fade" style="--d:2.88s;--o:1;--dur:0.22s"><path d="M1142,790 l-6,11 l12,0 Z"/><line x1="1142" y1="801" x2="1142" y2="805"/></g><g class="fade" style="--d:2.91s;--o:1;--dur:0.22s"><path d="M1184,797 l-6,11 l12,0 Z"/><line x1="1184" y1="808" x2="1184" y2="812"/></g><g class="fade" style="--d:2.94s;--o:1;--dur:0.22s"><path d="M1186,788 l-6,11 l12,0 Z"/><line x1="1186" y1="799" x2="1186" y2="803"/></g><g class="fade" style="--d:2.97s;--o:1;--dur:0.22s"><path d="M1145,793 l-6,11 l12,0 Z"/><line x1="1145" y1="804" x2="1145" y2="808"/></g><g class="fade" style="--d:3.00s;--o:1;--dur:0.22s"><path d="M1216,781 l-6,11 l12,0 Z"/><line x1="1216" y1="792" x2="1216" y2="796"/></g><g class="fade" style="--d:3.03s;--o:1;--dur:0.22s"><path d="M1222,783 l-6,11 l12,0 Z"/><line x1="1222" y1="794" x2="1222" y2="798"/></g><g class="fade" style="--d:3.06s;--o:1;--dur:0.22s"><path d="M1179,777 l-6,11 l12,0 Z"/><line x1="1179" y1="788" x2="1179" y2="792"/></g><g class="fade" style="--d:3.09s;--o:1;--dur:0.22s"><path d="M1175,785 l-6,11 l12,0 Z"/><line x1="1175" y1="796" x2="1175" y2="800"/></g></g>
+<g stroke="#3F5A2C" stroke-width="1.3" fill="#8FA06A"><g class="fade" style="--d:2.94s;--o:1;--dur:0.22s"><path d="M121,819 l-6,11 l12,0 Z"/><line x1="121" y1="830" x2="121" y2="834"/></g><g class="fade" style="--d:2.97s;--o:1;--dur:0.22s"><path d="M135,810 l-6,11 l12,0 Z"/><line x1="135" y1="821" x2="135" y2="825"/></g><g class="fade" style="--d:3.00s;--o:1;--dur:0.22s"><path d="M151,828 l-6,11 l12,0 Z"/><line x1="151" y1="839" x2="151" y2="843"/></g><g class="fade" style="--d:3.03s;--o:1;--dur:0.22s"><path d="M132,806 l-6,11 l12,0 Z"/><line x1="132" y1="817" x2="132" y2="821"/></g><g class="fade" style="--d:3.06s;--o:1;--dur:0.22s"><path d="M127,820 l-6,11 l12,0 Z"/><line x1="127" y1="831" x2="127" y2="835"/></g><g class="fade" style="--d:3.09s;--o:1;--dur:0.22s"><path d="M182,811 l-6,11 l12,0 Z"/><line x1="182" y1="822" x2="182" y2="826"/></g><g class="fade" style="--d:3.12s;--o:1;--dur:0.22s"><path d="M191,812 l-6,11 l12,0 Z"/><line x1="191" y1="823" x2="191" y2="827"/></g></g>
+<g stroke="#3F5A2C" stroke-width="1.3" fill="#8FA06A"><g class="fade" style="--d:3.00s;--o:1;--dur:0.22s"><path d="M1441,230 l-6,11 l12,0 Z"/><line x1="1441" y1="241" x2="1441" y2="245"/></g><g class="fade" style="--d:3.03s;--o:1;--dur:0.22s"><path d="M1408,237 l-6,11 l12,0 Z"/><line x1="1408" y1="248" x2="1408" y2="252"/></g><g class="fade" style="--d:3.06s;--o:1;--dur:0.22s"><path d="M1400,227 l-6,11 l12,0 Z"/><line x1="1400" y1="238" x2="1400" y2="242"/></g><g class="fade" style="--d:3.09s;--o:1;--dur:0.22s"><path d="M1433,217 l-6,11 l12,0 Z"/><line x1="1433" y1="228" x2="1433" y2="232"/></g><g class="fade" style="--d:3.12s;--o:1;--dur:0.22s"><path d="M1434,227 l-6,11 l12,0 Z"/><line x1="1434" y1="238" x2="1434" y2="242"/></g><g class="fade" style="--d:3.15s;--o:1;--dur:0.22s"><path d="M1411,214 l-6,11 l12,0 Z"/><line x1="1411" y1="225" x2="1411" y2="229"/></g></g>
+<g fill="none" stroke="#3E6070" stroke-width="2.6" opacity=".8">
+<path d="M392,900 C400,856 368,838 380,802 C390,772 372,756 386,736" class="draw" pathLength="1" style="--d:2.58s;--dur:0.54s"/>
+<path d="M1046,900 C1052,858 1028,838 1040,806 C1050,780 1036,758 1048,726" class="draw" pathLength="1" style="--d:2.65s;--dur:0.54s"/>
+<path d="M740,900 C742,866 720,850 728,822 C734,800 722,784 734,762" class="draw" pathLength="1" style="--d:2.72s;--dur:0.54s"/>
+</g>
+<text x="240" y="380" font-family="Georgia, serif" font-size="15" fill="#35555F" opacity=".55" class="sound" class="fade" style="--d:3.06s;--o:0.55;--dur:0.24s">12</text>
+<text x="520" y="300" font-family="Georgia, serif" font-size="15" fill="#35555F" opacity=".55" class="sound" class="fade" style="--d:3.09s;--o:0.55;--dur:0.24s">27</text>
+<text x="820" y="250" font-family="Georgia, serif" font-size="15" fill="#35555F" opacity=".55" class="sound" class="fade" style="--d:3.12s;--o:0.55;--dur:0.24s">43</text>
+<text x="960" y="470" font-family="Georgia, serif" font-size="15" fill="#35555F" opacity=".55" class="sound" class="fade" style="--d:3.15s;--o:0.55;--dur:0.24s">35</text>
+<text x="1240" y="540" font-family="Georgia, serif" font-size="15" fill="#35555F" opacity=".55" class="sound" class="fade" style="--d:3.18s;--o:0.55;--dur:0.24s">18</text>
+<text x="420" y="560" font-family="Georgia, serif" font-size="15" fill="#35555F" opacity=".55" class="sound" class="fade" style="--d:3.21s;--o:0.55;--dur:0.24s">9</text>
+<text x="1380" y="640" font-family="Georgia, serif" font-size="15" fill="#35555F" opacity=".55" class="sound" class="fade" style="--d:3.24s;--o:0.55;--dur:0.24s">24</text>
+<text x="700" y="380" font-family="Georgia, serif" font-size="15" fill="#35555F" opacity=".55" class="sound" class="fade" style="--d:3.27s;--o:0.55;--dur:0.24s">31</text>
+<g class="town" class="fade" style="--d:3.18s;--o:1;--dur:0.27s"><circle cx="398" cy="736" r="7" fill="#F6E9C6" stroke="#7E2113" stroke-width="2.2"/><circle cx="398" cy="736" r="2.6" fill="#7E2113"/><text x="412" y="742" text-anchor="start" font-family="Georgia, serif" font-style="italic" font-size="20" fill="#3E2A12">王都</text></g>
+<g class="town" class="fade" style="--d:3.27s;--o:1;--dur:0.27s"><circle cx="740" cy="724" r="5" fill="#F6E9C6" stroke="#7E2113" stroke-width="2.2"/><text x="754" y="730" text-anchor="start" font-family="Georgia, serif" font-style="italic" font-size="20" fill="#3E2A12">港町</text></g>
+<g class="town" class="fade" style="--d:3.36s;--o:1;--dur:0.27s"><circle cx="1050" cy="726" r="7" fill="#F6E9C6" stroke="#7E2113" stroke-width="2.2"/><circle cx="1050" cy="726" r="2.6" fill="#7E2113"/><text x="1064" y="732" text-anchor="start" font-family="Georgia, serif" font-style="italic" font-size="20" fill="#3E2A12">東ノ市</text></g>
+<g class="town" class="fade" style="--d:3.45s;--o:1;--dur:0.27s"><circle cx="208" cy="702" r="5" fill="#F6E9C6" stroke="#7E2113" stroke-width="2.2"/><text x="194" y="708" text-anchor="end" font-family="Georgia, serif" font-style="italic" font-size="20" fill="#3E2A12">灯台岬</text></g>
+<g class="town" class="fade" style="--d:3.54s;--o:1;--dur:0.27s"><circle cx="674" cy="520" r="5" fill="#F6E9C6" stroke="#7E2113" stroke-width="2.2"/><text x="660" y="526" text-anchor="end" font-family="Georgia, serif" font-style="italic" font-size="20" fill="#3E2A12">孤島</text></g>
+<g class="town" class="fade" style="--d:3.60s;--o:1;--dur:0.27s"><circle cx="1340" cy="200" r="5" fill="#F6E9C6" stroke="#7E2113" stroke-width="2.2"/><text x="1354" y="206" text-anchor="start" font-family="Georgia, serif" font-style="italic" font-size="20" fill="#3E2A12">北ノ砦</text></g>
+<g class="town" class="fade" style="--d:3.66s;--o:1;--dur:0.27s"><circle cx="330" cy="500" r="5" fill="#F6E9C6" stroke="#7E2113" stroke-width="2.2"/><text x="318" y="506" text-anchor="end" font-family="Georgia, serif" font-style="italic" font-size="20" fill="#3E2A12">双子島</text></g>
+<path id="seaCurve" d="M300,330 C520,290 760,292 980,336" fill="none"/>
+<text font-family="Georgia, serif" font-style="italic" font-size="34" fill="#35555F" letter-spacing="12" class="fade" style="--d:3.72s;--o:0.55;--dur:0.60s"><textPath href="#seaCurve" startOffset="4%">MARE  INCOGNITVM</textPath></text>
+<text x="520" y="870" font-family="Georgia, serif" font-style="italic" font-size="26" fill="#3E2A12" letter-spacing="8" class="fade" style="--d:3.81s;--o:0.62;--dur:0.60s">TERRA  NOVA</text>
+<path id="route" d="M300,600 C520,520 760,470 1000,420" fill="none" stroke="#8E2E1C" stroke-width="2.6" stroke-dasharray="2 10" stroke-linecap="round" opacity=".55" class="draw" pathLength="1" style="--d:3.60s;--dur:0.96s"/>
+<g class="ship" class="fade" style="--d:3.78s;--o:1;--dur:0.30s">
+<g class="ship-inner"><g transform="scale(1.35)" fill="none" stroke="#3E2A12" stroke-width="2">
+<path d="M-26,10 L26,10 L18,22 L-18,22 Z" fill="#C29C57"/>
+<line x1="0" y1="10" x2="0" y2="-28"/>
+<path d="M0,-26 C17,-19 19,-6 0,-2 Z" fill="#F2E3BC"/>
+<path d="M0,-19 C-15,-13 -16,-4 0,-2 Z" fill="#F2E3BC"/>
+<path d="M-22,12 l-8,-6 M22,12 l8,-6" stroke-width="1.4"/>
+</g></g>
+<animateMotion dur="26s" repeatCount="indefinite" rotate="auto" begin="6.3s">
+  <mpath href="#route"/></animateMotion>
+</g>
+<g transform="translate(700,600) scale(1.15)" fill="none" stroke="#35555F" stroke-width="2.4" class="fade" style="--d:3.90s;--o:0.7;--dur:0.36s">
+<path d="M-46,0 C-28,-24 6,-24 22,-3 C31,9 46,7 54,-3"/>
+<path d="M-46,0 C-34,12 -14,15 0,8"/>
+<path d="M22,-3 C12,7 0,10 -8,7"/>
+<circle cx="-34" cy="-8" r="2.4" fill="#35555F"/>
+<path d="M-40,-14 l-6,-8 M-30,-18 l-2,-10" stroke-width="1.6"/>
+</g>
+<g class="rose" transform="translate(1150,250)">
+<circle r="102" fill="#F2E3BC" opacity=".18" class="fade" style="--d:2.94s;--o:0.18;--dur:0.30s"/>
+<circle r="102" fill="none" stroke="#3E2A12" stroke-width="2" class="draw" pathLength="1" style="--d:2.82s;--dur:0.54s"/>
+<circle r="84" fill="none" stroke="#3E2A12" stroke-width="1" class="draw" pathLength="1" style="--d:2.91s;--dur:0.48s"/>
+<circle r="30" fill="none" stroke="#3E2A12" stroke-width="1" class="draw" pathLength="1" style="--d:3.00s;--dur:0.36s"/>
+<g class="rose-star">
+<path d="M0.0,-84.0 L2.5,-12.8 L0,0 Z" fill="#8E2E1C" class="fade" style="--d:3.03s;--o:1;--dur:0.18s"/>
+<path d="M0.0,-84.0 L-2.5,-12.8 L0,0 Z" fill="#8E2E1C" class="fade" style="--d:3.04s;--o:0.5;--dur:0.18s"/>
+<path d="M23.0,-55.4 L7.2,-10.8 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.05s;--o:1;--dur:0.18s"/>
+<path d="M23.0,-55.4 L2.5,-12.8 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.05s;--o:0.5;--dur:0.18s"/>
+<path d="M59.4,-59.4 L10.8,-7.2 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.07s;--o:1;--dur:0.18s"/>
+<path d="M59.4,-59.4 L7.2,-10.8 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.07s;--o:0.5;--dur:0.18s"/>
+<path d="M55.4,-23.0 L12.8,-2.5 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.08s;--o:1;--dur:0.18s"/>
+<path d="M55.4,-23.0 L10.8,-7.2 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.09s;--o:0.5;--dur:0.18s"/>
+<path d="M84.0,0.0 L12.8,2.5 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.10s;--o:1;--dur:0.18s"/>
+<path d="M84.0,0.0 L12.8,-2.5 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.11s;--o:0.5;--dur:0.18s"/>
+<path d="M55.4,23.0 L10.8,7.2 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.12s;--o:1;--dur:0.18s"/>
+<path d="M55.4,23.0 L12.8,2.5 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.13s;--o:0.5;--dur:0.18s"/>
+<path d="M59.4,59.4 L7.2,10.8 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.14s;--o:1;--dur:0.18s"/>
+<path d="M59.4,59.4 L10.8,7.2 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.14s;--o:0.5;--dur:0.18s"/>
+<path d="M23.0,55.4 L2.5,12.8 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.16s;--o:1;--dur:0.18s"/>
+<path d="M23.0,55.4 L7.2,10.8 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.16s;--o:0.5;--dur:0.18s"/>
+<path d="M0.0,84.0 L-2.5,12.8 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.17s;--o:1;--dur:0.18s"/>
+<path d="M0.0,84.0 L2.5,12.8 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.18s;--o:0.5;--dur:0.18s"/>
+<path d="M-23.0,55.4 L-7.2,10.8 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.19s;--o:1;--dur:0.18s"/>
+<path d="M-23.0,55.4 L-2.5,12.8 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.20s;--o:0.5;--dur:0.18s"/>
+<path d="M-59.4,59.4 L-10.8,7.2 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.21s;--o:1;--dur:0.18s"/>
+<path d="M-59.4,59.4 L-7.2,10.8 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.22s;--o:0.5;--dur:0.18s"/>
+<path d="M-55.4,23.0 L-12.8,2.5 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.23s;--o:1;--dur:0.18s"/>
+<path d="M-55.4,23.0 L-10.8,7.2 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.23s;--o:0.5;--dur:0.18s"/>
+<path d="M-84.0,0.0 L-12.8,-2.5 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.25s;--o:1;--dur:0.18s"/>
+<path d="M-84.0,0.0 L-12.8,2.5 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.25s;--o:0.5;--dur:0.18s"/>
+<path d="M-55.4,-23.0 L-10.8,-7.2 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.26s;--o:1;--dur:0.18s"/>
+<path d="M-55.4,-23.0 L-12.8,-2.5 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.27s;--o:0.5;--dur:0.18s"/>
+<path d="M-59.4,-59.4 L-7.2,-10.8 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.28s;--o:1;--dur:0.18s"/>
+<path d="M-59.4,-59.4 L-10.8,-7.2 L0,0 Z" fill="#3B2A14" class="fade" style="--d:3.29s;--o:0.5;--dur:0.18s"/>
+<path d="M-23.0,-55.4 L-2.5,-12.8 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.30s;--o:1;--dur:0.18s"/>
+<path d="M-23.0,-55.4 L-7.2,-10.8 L0,0 Z" fill="#7E6142" class="fade" style="--d:3.31s;--o:0.5;--dur:0.18s"/>
+</g>
+<text x="0" y="-116" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#3B2A14" class="fade" style="--d:3.36s;--o:1;--dur:0.24s">N</text>
+<text x="124" y="8" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#3B2A14" class="fade" style="--d:3.40s;--o:1;--dur:0.24s">E</text>
+<text x="0" y="132" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#3B2A14" class="fade" style="--d:3.43s;--o:1;--dur:0.24s">S</text>
+<text x="-124" y="8" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#3B2A14" class="fade" style="--d:3.47s;--o:1;--dur:0.24s">W</text>
+</g>
+<g class="fade" style="--d:3.54s;--o:1;--dur:0.30s" transform="translate(150,610)">
+<text x="0" y="-12" font-family="Georgia, serif" font-style="italic" font-size="16" fill="#3E2A12">Scala Miliarium</text>
+<rect x="0" y="0" width="34" height="11" fill="#3B2A14" stroke="#3B2A14" stroke-width="1"/>
+<rect x="34" y="0" width="34" height="11" fill="#F2E3BC" stroke="#3B2A14" stroke-width="1"/>
+<rect x="68" y="0" width="34" height="11" fill="#3B2A14" stroke="#3B2A14" stroke-width="1"/>
+<rect x="102" y="0" width="34" height="11" fill="#F2E3BC" stroke="#3B2A14" stroke-width="1"/>
+<rect x="136" y="0" width="34" height="11" fill="#3B2A14" stroke="#3B2A14" stroke-width="1"/>
+<rect x="170" y="0" width="34" height="11" fill="#F2E3BC" stroke="#3B2A14" stroke-width="1"/>
+<text x="0" y="30" font-family="Georgia, serif" font-size="14" fill="#3E2A12">0</text>
+<text x="190" y="30" font-family="Georgia, serif" font-size="14" fill="#3E2A12">500</text>
+</g>
+<g filter="url(#blr)" class="fade" style="--d:3.96s;--o:1;--dur:0.84s">
+<ellipse cx="612" cy="666" rx="78" ry="86" fill="#7A5A2C" opacity="0.052"/>
+<ellipse cx="443" cy="463" rx="117" ry="71" fill="#7A5A2C" opacity="0.096"/>
+<ellipse cx="146" cy="209" rx="67" ry="58" fill="#7A5A2C" opacity="0.071"/>
+<ellipse cx="1309" cy="396" rx="77" ry="54" fill="#7A5A2C" opacity="0.056"/>
+<ellipse cx="244" cy="273" rx="114" ry="70" fill="#7A5A2C" opacity="0.069"/>
+<ellipse cx="1291" cy="437" rx="87" ry="69" fill="#7A5A2C" opacity="0.086"/>
+<ellipse cx="1262" cy="555" rx="113" ry="38" fill="#7A5A2C" opacity="0.119"/>
+<ellipse cx="434" cy="702" rx="59" ry="49" fill="#7A5A2C" opacity="0.123"/>
+<ellipse cx="1310" cy="315" rx="64" ry="40" fill="#7A5A2C" opacity="0.109"/>
+<ellipse cx="1194" cy="261" rx="127" ry="90" fill="#7A5A2C" opacity="0.081"/>
+<ellipse cx="1048" cy="678" rx="50" ry="56" fill="#7A5A2C" opacity="0.054"/>
+<ellipse cx="283" cy="99" rx="105" ry="46" fill="#7A5A2C" opacity="0.069"/>
+<ellipse cx="1502" cy="461" rx="72" ry="56" fill="#7A5A2C" opacity="0.116"/>
+<ellipse cx="1281" cy="562" rx="77" ry="63" fill="#7A5A2C" opacity="0.064"/>
+</g>
+<g class="fade" style="--d:4.08s;--o:0.5;--dur:0.60s">
+<line x1="533" y1="0" x2="533" y2="900" stroke="#6B4A22" stroke-width="1.6" opacity=".22"/>
+<line x1="535" y1="0" x2="535" y2="900" stroke="#FFF6DC" stroke-width="1.6" opacity=".30"/>
+<line x1="1067" y1="0" x2="1067" y2="900" stroke="#6B4A22" stroke-width="1.6" opacity=".22"/>
+<line x1="1069" y1="0" x2="1069" y2="900" stroke="#FFF6DC" stroke-width="1.6" opacity=".30"/>
+<line x1="0" y1="450" x2="1600" y2="450" stroke="#6B4A22" stroke-width="1.6" opacity=".18"/>
+<line x1="0" y1="452" x2="1600" y2="452" stroke="#FFF6DC" stroke-width="1.6" opacity=".26"/>
+</g>
+<rect width="1600" height="900" filter="url(#parch)" opacity=".13" style="mix-blend-mode:multiply"/>
+<rect width="1600" height="900" fill="url(#vig)"/>
+</svg>
+      <div class="overlay"></div>
+      <section class="opening">
+        <div class="wrap grid">
+          <div class="cartouche">
+            <span class="cnr c1"></span><span class="cnr c2"></span><span class="cnr c3"></span><span class="cnr c4"></span>
+            <div class="eyebrow">NATION BUILDING SIMULATION</div>
+            <h1 class="disp">広大な世界に、<br><em>君だけの国家</em>を。</h1>
+            <div class="sub">Terra incognita &mdash; 未だ描かれざる大地へ</div>
+            <p class="lead">憲法をつくり、経済を回し、時に戦い、時に手を結ぶ。すべてがプレイヤーの手で動く、国家運営マインクラフトサーバー。あなたの国を、この地図に書き加えてください。</p>
+            <div class="cta">
+              <a class="btn fill" href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>はじめかたを見る</a>
+              <button type="button" class="btn plain" data-copy="viva-mc.net"><i class="fa-regular fa-copy" aria-hidden="true"></i>IPをコピー</button>
+            </div>
           </div>
-          <dl class="facts">
-            <div><dt>無料</dt><dd>課金なしで遊べる</dd></div>
-            <div><dt>クロスプレイ</dt><dd>Java版・統合版</dd></div>
-            <div><dt>Switch・スマホ</dt><dd>iPad・PCもOK</dd></div>
-            <div><dt>日本語</dt><dd>初心者も歓迎</dd></div>
-          </dl>
+          <div class="logbook">
+            <div class="ttl"><span>Logbook &mdash; 航海日誌</span><span>No. 01</span></div>
+            <div class="shot"><img src="Minecraft-sheader.png" alt="山と川に囲まれた開拓地の風景" width="480" height="360" decoding="async"></div>
+            <button type="button" class="ip-row" data-copy="viva-mc.net">
+              <span><span class="lab">SERVER IP</span><span class="val">viva-mc.net</span></span>
+              <span class="go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+            </button>
+            <div class="status-row"><span class="dot-live" id="liveDot"></span><span id="liveMsg">状況を確認中...</span></div>
+          </div>
         </div>
-        <div class="hero-card">
-          <div class="shot"><img src="Minecraft-sheader.png" alt="山と川に囲まれた開拓地の風景" width="480" height="300" decoding="async"></div>
-          <button type="button" class="ip-row" data-copy="viva-mc.net" style="width:100%;border:none;font-family:inherit;cursor:pointer;text-align:left">
-            <span><span class="lab dot">SERVER IP</span><span class="val">viva-mc.net</span></span>
-            <span class="go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
-          </button>
-          <div class="status-row"><span class="dot-live" id="liveDot"></span><span id="liveMsg">状況を確認中...</span></div>
-        </div>
-      </div>
-    </section>
+      </section>
+      <div class="scroll-cue">SCROLL<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></div>
+    </div>
 
     <div class="strip" aria-label="サーバーの風景">
       <div class="track">
@@ -126,9 +633,9 @@
 
     <div class="wrap">
       <section id="news">
-        <h2 class="sec disp">お知らせ</h2>
+        <h2 class="sec disp sec-underline" data-rv>お知らせ</h2>
         <p class="sec-note">最新の変更やイベントはここに載せています。タイトルをクリックすると詳しく見られます。</p>
-        <ul class="news">
+        <ul class="news" data-rv>
           <li>
             <div class="when dot">2026.09.17</div>
             <div>
@@ -158,9 +665,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">この国でできること</h2>
+        <h2 class="sec disp sec-underline" data-rv>この国でできること</h2>
         <p class="sec-note">ただ建てるだけでは終わらない、三つの柱。</p>
-        <div class="pillars">
+        <div class="pillars" data-rv>
           <div>
             <div class="k dot">01 / LAW</div>
             <h3>独自の法制度</h3>
@@ -180,9 +687,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">資源ワールドのリセット</h2>
+        <h2 class="sec disp sec-underline" data-rv>資源ワールドのリセット</h2>
         <p class="sec-note">毎月15日にリセットされます。</p>
-        <div class="reset">
+        <div class="reset" data-rv>
           <div class="lab">次のリセットまで</div>
           <div class="big disp"><span id="resetHours">--</span><span style="font-size:.9rem"> 時間</span></div>
           <div class="sub dot" id="resetSub">--分--秒</div>

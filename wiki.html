@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wiki | VIVA-MC</title>
 <meta name="description" content="VIVA-MCで使うプラグインの使い方。Jobs Rebornでの稼ぎ方、Landsによる土地保護、QuickShopのチェストショップ、村人ショップの開き方。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="Wiki | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -108,11 +117,11 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">記事一覧</h2>
+        <h2 class="sec disp sec-underline" data-rv>記事一覧</h2>
         <p class="sec-note">読みたいところから開いてください。左のメニューからも移動できます。</p>
 
         <div class="rows">
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-start.html">はじめかたガイド</a></h3>
@@ -120,7 +129,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-teleport.html">ホームとテレポート</a></h3>
@@ -128,7 +137,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-briefcase" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-jobs.html">仕事に就いて稼ぐ</a></h3>
@@ -136,7 +145,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-lands.html">土地を守る・国をつくる</a></h3>
@@ -144,7 +153,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-city" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-build.html">建築サーバーで作る</a></h3>
@@ -152,7 +161,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-diplomacy.html">外交・戦争のやり方</a></h3>
@@ -160,7 +169,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-coins" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-economy.html">経済・お金の稼ぎ方まとめ</a></h3>
@@ -168,7 +177,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-box-open" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-shop.html">チェストで店を開く</a></h3>
@@ -176,7 +185,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-villager.html">村人と取引する</a></h3>
@@ -184,7 +193,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-dice" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-casino.html">カジノで遊ぶ</a></h3>
@@ -192,7 +201,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-farmersdelight.html">料理と農業を楽しむ</a></h3>
@@ -200,7 +209,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-comments" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-discord.html">Discord連携</a></h3>
@@ -208,7 +217,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-terminal" aria-hidden="true"></i></div>
             <div>
               <h3><a href="wiki-commands.html">コマンド一覧</a></h3>
@@ -219,9 +228,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">ほかの案内</h2>
+        <h2 class="sec disp sec-underline" data-rv>ほかの案内</h2>
         <p class="sec-note">サーバーの規約や参加方法は、それぞれのページにまとめています。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><a href="join.html">参加する</a></th><td>接続先、参加の手順、国家運営システムの概要</td></tr>
@@ -235,8 +244,8 @@
       </section>
 
       <section>
-        <h2 class="sec disp">載っていないことは</h2>
-        <div class="callout" style="background:#FDF0DC;border-left-color:var(--ember)">
+        <h2 class="sec disp sec-underline" data-rv>載っていないことは</h2>
+        <div class="callout" data-rv style="background:#FDF0DC;border-left-color:var(--ember)">
           <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
           <div>ここに無いことは
           <a href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">Discord</a>

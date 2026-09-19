@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ホームとテレポート | VIVA-MC</title>
 <meta name="description" content="VIVA-MCのEcoTPの使い方。ホーム、スポーン、tpa/tphere、距離制の料金について。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="ホームとテレポート | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -108,9 +117,9 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">ホームを設定する</h2>
+        <h2 class="sec disp sec-underline" data-rv>ホームを設定する</h2>
         <p class="sec-note">拠点まで一瞬で戻れる、自分だけの帰還ポイントです。名前をつければ複数登録できます。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/sethome &lt;名前&gt;</code></th><td>いまいる場所をホームとして登録する</td></tr>
@@ -123,14 +132,14 @@
       </section>
 
       <section>
-        <h2 class="sec disp">スポーンに戻る</h2>
+        <h2 class="sec disp sec-underline" data-rv>スポーンに戻る</h2>
         <p class="sec-note"><code>/spawn</code> で、サーバーの初期地点まで戻れます。こちらもお金がかかります。</p>
       </section>
 
       <section>
-        <h2 class="sec disp">他プレイヤーのところへ行く</h2>
+        <h2 class="sec disp sec-underline" data-rv>他プレイヤーのところへ行く</h2>
         <p class="sec-note">2種類あります。<strong>どちらが移動するかで、お金を払う側が変わります。</strong></p>
-        <div class="duo">
+        <div class="duo" data-rv>
           <div class="col step-a">
             <h3><i class="fa-solid fa-arrow-up-from-bracket" aria-hidden="true"></i>/tpa ― 自分が行く</h3>
             <ul>
@@ -152,9 +161,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">料金について</h2>
+        <h2 class="sec disp sec-underline" data-rv>料金について</h2>
         <p class="sec-note"><code>/home</code>・<code>/spawn</code>・<code>/tpa</code>・<code>/tphere</code> はすべて、<strong>実際の距離が遠いほど高くなる</strong>料金制です。近い移動なら安く、最低料金も設定されています。</p>
-        <div class="callout">
+        <div class="callout" data-rv>
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
           <div><strong>テレポート開始後、少しの間その場でじっとする必要があります。</strong>
           視点を動かすだけなら大丈夫ですが、歩いたり、近くに敵対Mobがいたり、直前に他のプレイヤーと戦っていたりすると中断されます。中断された場合、料金は<strong>かかりません</strong>。</div>
@@ -162,13 +171,13 @@
       </section>
 
       <section>
-        <h2 class="sec disp">メニューから操作する</h2>
+        <h2 class="sec disp sec-underline" data-rv>メニューから操作する</h2>
         <p class="sec-note">コマンドを覚えなくても、<code>/menu</code> でクリック操作のメニューが開きます。</p>
       </section>
 
       <section>
-        <h2 class="sec disp">コマンド</h2>
-        <div class="table-wrap">
+        <h2 class="sec disp sec-underline" data-rv>コマンド</h2>
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/sethome &lt;名前&gt;</code></th><td>ホームを登録する</td></tr>

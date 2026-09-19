@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>資源ワールド | VIVA-MC</title>
 <meta name="description" content="資源ワールドのリセット周期と、採掘するときの注意点。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="資源ワールド | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -89,10 +98,10 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">行きかた</h2>
+        <h2 class="sec disp sec-underline" data-rv>行きかた</h2>
         <p class="sec-note">ロビーにいるNPCから入れます。</p>
         <div class="rows">
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-person-circle-question" aria-hidden="true"></i></div>
             <div>
               <h3>ロビーのNPCをクリック</h3>
@@ -104,7 +113,7 @@
       </section>
 
       <section>
-        <h2 class="sec disp">次のリセットまで</h2>
+        <h2 class="sec disp sec-underline" data-rv>次のリセットまで</h2>
         <p class="sec-note">資源ワールドは<strong>毎月15日の0時</strong>にリセットされます。地形が作り直され、掘り尽くした場所も元に戻ります。</p>
         <div class="reset spruce">
           <div class="lab">次のリセットまで</div>
@@ -115,9 +124,9 @@
       </section>
 
       <section>
-        <h2 class="sec disp">気をつけること</h2>
+        <h2 class="sec disp sec-underline" data-rv>気をつけること</h2>
         <p class="sec-note">リセットの前に、必ず確認してください。</p>
-        <div class="callout">
+        <div class="callout" data-rv>
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
           <div><strong>資源ワールドに置いたものは、リセットで全部消えます。</strong>
           チェストに入れた資材も、建てた拠点も残りません。持ち帰りたいものは、15日になる前に自分の町や国へ運んでください。</div>
@@ -126,7 +135,7 @@
       </section>
 
       <section>
-        <h2 class="sec disp">ルールは通常どおり</h2>
+        <h2 class="sec disp sec-underline" data-rv>ルールは通常どおり</h2>
         <p class="sec-note">資源ワールドでも、<a href="rules.html">サーバーのルール</a>はそのまま適用されます。X-Ray などの不正クライアントは一発BANの対象です。</p>
       </section>
     </div>

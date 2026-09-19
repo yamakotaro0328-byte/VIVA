@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>土地を守る | VIVA-MC</title>
 <meta name="description" content="VIVA-MCのLandsの使い方。チャンクの保護のしかた、メンバーの追加、コマンド。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="土地を守る | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -108,9 +117,9 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">土地を保護する</h2>
+        <h2 class="sec disp sec-underline" data-rv>土地を保護する</h2>
         <p class="sec-note">自分の土地を守り、町や国を発展させるための、いちばん大事なプラグインです。</p>
-        <ol class="steps">
+        <ol class="steps" data-rv>
           <li>
             <span class="n disp">1</span>
             <h3>チャンクを保護する</h3>
@@ -127,16 +136,16 @@
             <p><code>/land &lt;土地名&gt; member add &lt;プレイヤー名&gt;</code> で、他のプレイヤーを自分の土地のメンバーに追加できます。</p>
           </li>
         </ol>
-        <div class="callout" style="margin-top:22px">
+        <div class="callout" data-rv style="margin-top:22px">
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
           <div><strong>コマンドの形が前と変わりました。</strong>ほとんどのコマンドは <code>/land &lt;土地名&gt; ...</code> の形で、対象の土地名を毎回入力します。<code>&lt;土地名&gt;</code> は <code>/lands</code> のメニューや <code>/lands list</code> で確認できます。</div>
         </div>
       </section>
 
       <section>
-        <h2 class="sec disp">土地のチャット</h2>
+        <h2 class="sec disp sec-underline" data-rv>土地のチャット</h2>
         <p class="sec-note">土地のメンバーだけに届く、専用のチャットがあります。</p>
-        <div class="table-wrap">
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/land &lt;土地名&gt; chat</code></th><td>その土地のチャットモードをON/OFFにする（ONの間、通常の発言が全部そこに届く）</td></tr>
@@ -147,13 +156,13 @@
       </section>
 
       <section>
-        <h2 class="sec disp">国をつくる・戦争をする</h2>
+        <h2 class="sec disp sec-underline" data-rv>国をつくる・戦争をする</h2>
         <p class="sec-note">複数の土地をまとめて国にしたり、他の土地・国と同盟や戦争をすることもできます。くわしくは<a href="wiki-diplomacy.html">外交・戦争のやり方</a>にまとめました。</p>
       </section>
 
       <section>
-        <h2 class="sec disp">コマンド</h2>
-        <div class="table-wrap">
+        <h2 class="sec disp sec-underline" data-rv>コマンド</h2>
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><code>/lands</code></th><td>メインメニュー（UI画面）を開く。基本の操作はここから</td></tr>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>村人ショップ | VIVA-MC</title>
 <meta name="description" content="VIVA-MCの村人ショップの開き方。Shopkeepersでの物々交換と、Villager Marketでの出店。">
-<meta name="theme-color" content="#2E1B0C">
+<meta name="theme-color" content="#E7D2A4">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="村人ショップ | VIVA-MC">
@@ -16,11 +16,20 @@
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;800;900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Zen+Old+Mincho:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
 
 <a class="skip-link" href="#main">本文へスキップ</a>
 
@@ -108,16 +117,16 @@
 
     <div class="wrap">
       <section>
-        <h2 class="sec disp">2種類あります</h2>
+        <h2 class="sec disp sec-underline" data-rv>2種類あります</h2>
         <p class="sec-note">どちらも見た目が村人のお店です。作り方がすこし違います。</p>
 
-        <div class="callout">
+        <div class="callout" data-rv>
           <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
           <div>どちらも<strong>専用のアイテムが必要です。</strong>ロビーで販売しているので、先に買っておいてください。</div>
         </div>
 
         <div class="rows">
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-user-tie" aria-hidden="true"></i></div>
             <div>
               <h3>Shopkeepers ― 物々交換のお店</h3>
@@ -131,7 +140,7 @@
             </div>
           </div>
 
-          <div class="row-item">
+          <div class="row-item" data-rv>
             <div class="ico"><i class="fa-solid fa-store" aria-hidden="true"></i></div>
             <div>
               <h3>Villager Market ― 村人市場</h3>
@@ -147,8 +156,8 @@
       </section>
 
       <section>
-        <h2 class="sec disp">チェストショップとの違い</h2>
-        <div class="table-wrap">
+        <h2 class="sec disp sec-underline" data-rv>チェストショップとの違い</h2>
+        <div class="table-wrap" data-rv>
           <table class="spec">
             <tbody>
               <tr><th><a href="wiki-shop.html">チェストショップ</a></th><td>チェストだけで作れる。お金でのやり取り（販売・買取）</td></tr>
