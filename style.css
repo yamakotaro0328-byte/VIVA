@@ -628,7 +628,7 @@ h2.sec::before{content:'';align-self:center;width:9px;height:9px;flex:none;backg
     .page-head{padding:30px 0 24px}
     .page-head h1{font-size:var(--t-2xl)}
     .opening .grid{grid-template-columns:1fr;min-height:0}
-    .logbook{width:100%;margin:26px 0 0}
+    .logbook{width:100%;margin:26px 0 0;transform:rotate(-.6deg)}
     .chartzone{min-height:0}
     .duo,.pillars{grid-template-columns:1fr}
     .facts,.stats{grid-template-columns:1fr 1fr;gap:16px}
@@ -679,10 +679,27 @@ h2.sec::before{content:'';align-self:center;width:9px;height:9px;flex:none;backg
     .opening h1{font-size:var(--t-2xl);line-height:1.5}
     .opening .lead{font-size:var(--t-sm);line-height:1.85}
     .opening .eyebrow{font-size:var(--t-3xs);letter-spacing:.14em}
-    .logbook{margin:16px 0 0}
+    /* 航海日誌：斜めにしない・少し詰める */
+    .logbook{margin:18px 0 0;transform:none;padding:14px;
+        box-shadow:0 10px 22px -12px rgba(47,32,16,.5)}
+    .logbook:hover{transform:none}
+    .logbook .shot{aspect-ratio:16/10;margin-bottom:12px}
+    .logbook .ttl{margin-bottom:10px}
     .opening .cta{display:grid;gap:10px}
     .opening .cta>*{width:100%;justify-content:center;text-align:center}
     .rail{display:none}
+
+    /* スクロール案内は重ねずに、いちばん下へ置く */
+    .scroll-cue{position:static;transform:none;display:block;text-align:center;
+        margin:4px 0 22px;font-size:var(--t-2xs);letter-spacing:.2em}
+    .scroll-cue i{margin-top:2px}
+
+    /* 文字を少し詰めて1行に入る量を増やす */
+    body{line-height:1.85}
+    h2.sec{font-size:var(--t-xl)}
+    .sec-note,.news p,.row-item p,.steps p,.duo li,.faq .ans p,.callout,.pillars p{font-size:var(--t-sm)}
+    .row-item h3,.steps h3,.pillars h3,.news h3{font-size:1rem}
+    section{padding:30px 0}
 
     .page-head .wrap{gap:13px}
     .page-head .num{width:42px;height:42px;margin-top:2px}
