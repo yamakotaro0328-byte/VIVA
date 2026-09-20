@@ -69,27 +69,58 @@
     el.addEventListener('click', function () { window.copyIP(el.dataset.copy); });
   });
 
-  /* ---------- サーバーの稼働状況 ---------- */
+  /* ---------- サーバーの稼働状況 ----------
+     1つの窓口だけだと、そこが名前を引けないときに
+     動いているのに「オフライン」と出てしまうので複数に問い合わせる。
+     どれか1つでも「動いている」と答えたらオンライン扱い。         */
   var dot = document.getElementById('liveDot');
   var msg = document.getElementById('liveMsg');
+
+  var STATUS_SOURCES = [
+    {
+      url: 'https://api.mcstatus.io/v2/status/java/' + SERVER_IP,
+      read: function (d) {
+        if (!d || typeof d.online !== 'boolean') return null;
+        return { on: d.online, n: (d.players && d.players.online) || 0 };
+      }
+    },
+    {
+      url: 'https://api.mcsrvstat.us/3/' + SERVER_IP,
+      read: function (d) {
+        if (!d || typeof d.online !== 'boolean') return null;
+        // 名前が引けていないときの「オフライン」は当てにならないので無視する
+        if (!d.online && d.debug && d.debug.error && d.debug.error.ip) return null;
+        return { on: d.online, n: (d.players && d.players.online) || 0 };
+      }
+    }
+  ];
+
+  function ask(src) {
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 7000);
+    return fetch(src.url, ctrl ? { signal: ctrl.signal } : undefined)
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { return d ? src.read(d) : null; })
+      .catch(function () { return null; })
+      .then(function (v) { clearTimeout(timer); return v; });
+  }
+
   function fetchStatus() {
     if (!dot || !msg) return;
-    fetch('https://api.mcsrvstat.us/2/' + SERVER_IP)
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        if (data && data.online) {
-          dot.classList.add('on');
-          var n = (data.players && data.players.online) || 0;
-          msg.textContent = 'オンライン ・ ' + n + '人が接続中';
-        } else {
-          dot.classList.remove('on');
-          msg.textContent = 'オフライン';
-        }
-      })
-      .catch(function () {
+    Promise.all(STATUS_SOURCES.map(ask)).then(function (res) {
+      var answers = res.filter(function (v) { return v; });
+      var up = answers.filter(function (v) { return v.on; })[0];
+      if (up) {
+        dot.classList.add('on');
+        msg.textContent = 'オンライン ・ ' + up.n + '人が接続中';
+      } else if (answers.length) {
+        dot.classList.remove('on');
+        msg.textContent = 'オフライン';
+      } else {
         dot.classList.remove('on');
         msg.textContent = '状況を取得できませんでした';
-      });
+      }
+    });
   }
   fetchStatus();
   if (dot) setInterval(fetchStatus, 60000);
