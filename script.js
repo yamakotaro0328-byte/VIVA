@@ -256,7 +256,7 @@
           })(t0);
         });
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
     document.querySelectorAll('[data-rv]').forEach(function (el, i) {
       el.style.setProperty('--i', i % 4);
       io.observe(el);
