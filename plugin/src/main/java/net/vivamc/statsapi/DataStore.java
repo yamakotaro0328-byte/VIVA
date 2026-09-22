@@ -48,6 +48,11 @@ public class DataStore {
                 r.playerKillsTotal = yaml.getLong(uuid + ".playerKills", 0);
                 r.mobKillsTotal = yaml.getLong(uuid + ".mobKills", 0);
                 r.deathsTotal = yaml.getLong(uuid + ".deaths", 0);
+                r.blocksPlacedTotal = yaml.getLong(uuid + ".blocksPlaced", 0);
+                r.blocksBrokenTotal = yaml.getLong(uuid + ".blocksBroken", 0);
+                r.loginCount = yaml.getLong(uuid + ".loginCount", 0);
+                r.firstSeenMs = yaml.getLong(uuid + ".firstSeenMs", 0);
+                r.lastSeenMs = yaml.getLong(uuid + ".lastSeenMs", 0);
                 r.totalPlaytimeMs = yaml.getLong(uuid + ".playtimeMs", 0);
                 records.put(uuid, r);
             }
@@ -80,6 +85,11 @@ public class DataStore {
                 yaml.set(uuid + ".playerKills", r.playerKillsTotal);
                 yaml.set(uuid + ".mobKills", r.mobKillsTotal);
                 yaml.set(uuid + ".deaths", r.deathsTotal);
+                yaml.set(uuid + ".blocksPlaced", r.blocksPlacedTotal);
+                yaml.set(uuid + ".blocksBroken", r.blocksBrokenTotal);
+                yaml.set(uuid + ".loginCount", r.loginCount);
+                yaml.set(uuid + ".firstSeenMs", r.firstSeenMs);
+                yaml.set(uuid + ".lastSeenMs", r.lastSeenMs);
                 // ログイン中でも、直近保存時点までの合計を保存しておく（急な終了対策）
                 yaml.set(uuid + ".playtimeMs", r.currentTotalPlaytimeMs());
             }
@@ -114,21 +124,29 @@ public class DataStore {
 
     public synchronized void onJoin(UUID uuid, String name) {
         PlayerRecord r = getOrCreate(uuid, name);
-        r.sessionStartMs = System.currentTimeMillis();
-        history.addLast(new HistoryEvent(name, "join", System.currentTimeMillis()));
+        long now = System.currentTimeMillis();
+        r.sessionStartMs = now;
+        r.loginCount++;
+        if (r.firstSeenMs <= 0) {
+            r.firstSeenMs = now;
+        }
+        r.lastSeenMs = now;
+        history.addLast(new HistoryEvent(name, "join", now));
         trimHistory();
     }
 
     public synchronized void onQuit(UUID uuid, String name) {
         PlayerRecord r = getOrCreate(uuid, name);
+        long now = System.currentTimeMillis();
         if (r.sessionStartMs > 0) {
-            long sessionMs = System.currentTimeMillis() - r.sessionStartMs;
+            long sessionMs = now - r.sessionStartMs;
             if (sessionMs > 0) {
                 r.totalPlaytimeMs += sessionMs;
             }
             r.sessionStartMs = 0;
         }
-        history.addLast(new HistoryEvent(name, "quit", System.currentTimeMillis()));
+        r.lastSeenMs = now;
+        history.addLast(new HistoryEvent(name, "quit", now));
         trimHistory();
     }
 
@@ -144,6 +162,14 @@ public class DataStore {
         getOrCreate(uuid, name).deathsTotal++;
     }
 
+    public synchronized void onBlockPlace(UUID uuid, String name) {
+        getOrCreate(uuid, name).blocksPlacedTotal++;
+    }
+
+    public synchronized void onBlockBreak(UUID uuid, String name) {
+        getOrCreate(uuid, name).blocksBrokenTotal++;
+    }
+
     private void trimHistory() {
         while (history.size() > historyLimit) {
             history.removeFirst();
@@ -155,15 +181,23 @@ public class DataStore {
         for (PlayerRecord r : records.values()) {
             if (r.name != null && r.name.equalsIgnoreCase(name)) {
                 // 呼び出し側で安全に使えるよう、コピーを返す
-                PlayerRecord copy = new PlayerRecord(r.name);
-                copy.playerKillsTotal = r.playerKillsTotal;
-                copy.mobKillsTotal = r.mobKillsTotal;
-                copy.deathsTotal = r.deathsTotal;
-                copy.totalPlaytimeMs = r.currentTotalPlaytimeMs();
-                return copy;
+                return r.copy();
             }
         }
         return null;
+    }
+
+    /**
+     * 全員分のコピーを返す（内部のMapをそのまま外に渡さないため）。
+     * ランキングや一覧のAPIは、これを受け取ってからロックの外で
+     * 並び替え・絞り込みを行う。
+     */
+    public synchronized List<PlayerRecord> copyAll() {
+        List<PlayerRecord> out = new ArrayList<>(records.size());
+        for (PlayerRecord r : records.values()) {
+            out.add(r.copy());
+        }
+        return out;
     }
 
     /** 新しい順の一覧を返す（コピー） */
