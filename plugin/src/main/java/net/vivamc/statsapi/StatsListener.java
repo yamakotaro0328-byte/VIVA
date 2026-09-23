@@ -3,18 +3,22 @@ package net.vivamc.statsapi;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-/** キル数・死亡数・プレイ時間・入退場を記録するリスナー。 */
+/** キル数・死亡数・プレイ時間・入退場・設置/破壊ブロック数を記録するリスナー。 */
 public class StatsListener implements Listener {
 
     private final DataStore store;
+    private final boolean trackBlocks;
 
-    public StatsListener(DataStore store) {
+    public StatsListener(DataStore store, boolean trackBlocks) {
         this.store = store;
+        this.trackBlocks = trackBlocks;
     }
 
     @EventHandler
@@ -50,5 +54,23 @@ public class StatsListener implements Listener {
         if (killer != null) {
             store.onMobKill(killer.getUniqueId(), killer.getName());
         }
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onBlockPlace(BlockPlaceEvent event) {
+        if (!trackBlocks) {
+            return;
+        }
+        Player p = event.getPlayer();
+        store.onBlockPlace(p.getUniqueId(), p.getName());
+    }
+
+    @EventHandler(ignoreCancelled = true)
+    public void onBlockBreak(BlockBreakEvent event) {
+        if (!trackBlocks) {
+            return;
+        }
+        Player p = event.getPlayer();
+        store.onBlockBreak(p.getUniqueId(), p.getName());
     }
 }

@@ -22,3 +22,8 @@ history-limit: 50
 
 # 何秒おきにディスクへ保存するか
 save-interval-seconds: 300
+
+# 設置・破壊したブロック数を記録するか。
+# WorldEditなどで大量に一気に置いたり壊したりするサーバーで、
+# カウント自体を止めたい場合は false にしてください。
+track-blocks: true
