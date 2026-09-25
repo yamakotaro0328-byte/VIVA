@@ -272,10 +272,40 @@
   }
 
   /* ---------- 並んだものに順番（--k）を振る：CSSで一つずつ時間差で出す ---------- */
-  document.querySelectorAll('.news, .pillars, .steps, .faq, .addr, .duo, .spec tbody, .wiki-subnav .wrap')
+  document.querySelectorAll('.news, .pillars, .steps, .faq, .addr, .duo, .spec tbody, .wiki-subnav .wrap, .news-article, .pager, .mobile-nav ul')
     .forEach(function (list) {
       Array.prototype.forEach.call(list.children, function (c, i) { c.style.setProperty('--k', i); });
     });
+
+  /* ---------- 上のバーに影（スクロールしたら） ---------- */
+  var topbar = document.querySelector('.topbar');
+  if (topbar) {
+    var barShadow = false;
+    window.addEventListener('scroll', function () {
+      var on = window.scrollY > 8;
+      if (on !== barShadow) { barShadow = on; topbar.classList.toggle('scrolled', on); }
+    }, { passive: true });
+  }
+
+  /* ---------- ページを移るとき、ふっと消えてから移動 ---------- */
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!calm) {
+    document.addEventListener('click', function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest('a[href]');
+      if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+      var href = a.getAttribute('href');
+      if (!href || href.charAt(0) === '#' || /^(mailto|tel|javascript):/i.test(href)) return;
+      var url = new URL(a.href, location.href);
+      if (url.origin !== location.origin) return;
+      if (url.pathname === location.pathname && url.hash) return; // 同じページ内の移動
+      e.preventDefault();
+      document.body.classList.add('leaving');
+      setTimeout(function () { location.href = a.href; }, 200);
+    });
+    // 戻るボタンで戻ってきたときに消えたままにならないように
+    window.addEventListener('pageshow', function () { document.body.classList.remove('leaving'); });
+  }
 
   /* ---------- スクロールで出す / 数字のカウントアップ ---------- */
   if ('IntersectionObserver' in window) {
