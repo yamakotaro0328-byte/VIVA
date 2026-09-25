@@ -271,6 +271,12 @@
       });
   }
 
+  /* ---------- 並んだものに順番（--k）を振る：CSSで一つずつ時間差で出す ---------- */
+  document.querySelectorAll('.news, .pillars, .steps, .faq, .addr, .duo, .spec tbody, .wiki-subnav .wrap')
+    .forEach(function (list) {
+      Array.prototype.forEach.call(list.children, function (c, i) { c.style.setProperty('--k', i); });
+    });
+
   /* ---------- スクロールで出す / 数字のカウントアップ ---------- */
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {

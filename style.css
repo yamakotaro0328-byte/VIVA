@@ -619,6 +619,91 @@ h2.sec::before{content:'';align-self:center;width:9px;height:9px;flex:none;backg
 .in .svg-draw path,.in .svg-draw circle{animation-play-state:running}
 
 /* =========================================================
+   投票（MinePortal）
+   ========================================================= */
+.vote-card{display:flex;align-items:center;gap:22px;padding:22px 26px;text-decoration:none;color:var(--ink);
+    background:linear-gradient(180deg,var(--paper-hi),var(--paper-2));border:1px solid var(--rule);
+    box-shadow:var(--sh-2),var(--sh-1);position:relative;overflow:hidden;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.vote-card::after{content:'';position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(105deg,transparent 35%,rgba(255,250,238,.65) 50%,transparent 65%);
+    transform:translateX(-120%);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.vote-card:hover{transform:translateY(-4px);box-shadow:var(--sh-3),var(--sh-1);color:var(--ink);background-image:linear-gradient(180deg,var(--paper-hi),var(--paper-2))}
+.vote-card:hover::after{transform:translateX(120%)}
+/* 封蝋 */
+.vote-seal{flex:none;width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    color:#FBF4E4;font-size:1.5rem;position:relative;
+    background:radial-gradient(circle at 35% 30%,#C0563E,var(--ember) 55%,var(--ember-dk));
+    box-shadow:0 0 0 4px rgba(147,48,28,.18),inset 0 -3px 6px rgba(0,0,0,.25),inset 0 2px 4px rgba(255,255,255,.2);
+    transition:transform .5s cubic-bezier(.3,1.5,.4,1)}
+.vote-seal::before{content:'';position:absolute;inset:-7px;border-radius:50%;border:1.5px dashed rgba(147,48,28,.45);
+    animation:sealTurn 14s linear infinite}
+.vote-card:hover .vote-seal{transform:rotate(-14deg) scale(1.08)}
+.vote-body{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.vote-k{font-family:var(--f-caps);font-weight:600;text-transform:uppercase;letter-spacing:var(--ls-caps);
+    font-size:var(--t-2xs);color:var(--ember-dk)}
+.vote-t{font-size:var(--t-xl);font-weight:800;letter-spacing:var(--ls-ttl);line-height:1.4}
+.vote-s{font-size:var(--t-xs);color:var(--ink-3)}
+.vote-go{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--rule);color:var(--ember-dk);transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .3s,color .3s}
+.vote-card:hover .vote-go{transform:translateX(6px);background:var(--ember);color:#FBF4E4;border-color:var(--ember-dk)}
+.vote-card.in .vote-seal{animation:stampIn .75s cubic-bezier(.2,1.4,.3,1) .15s backwards}
+@keyframes stampIn{from{transform:scale(2.2) rotate(-30deg);opacity:0}60%{opacity:1}}
+@keyframes sealTurn{to{transform:rotate(360deg)}}
+
+/* =========================================================
+   アニメーション追加
+   （transform / opacity だけを動かす。終わったら元のスタイルに戻る
+     backwards 指定にして、ホバー時の動きを邪魔しない）
+   ========================================================= */
+@keyframes rise{from{opacity:0;transform:translateY(22px)}}
+@keyframes slideR{from{opacity:0;transform:translateX(-26px)}}
+@keyframes popIn{from{opacity:0;transform:scale(.4) rotate(-20deg)}}
+@keyframes inkIn{from{clip-path:inset(0 100% 0 0);opacity:.3}to{clip-path:inset(0 0 0 0);opacity:1}}
+@keyframes stamp{from{opacity:0;transform:scale(1.7) rotate(-14deg)}70%{opacity:1;transform:scale(.94) rotate(2deg)}}
+@keyframes diaSpin{from{transform:rotate(-315deg) scale(0)}}
+@keyframes pinDrop{from{opacity:0;transform:translateY(-26px) rotate(45deg)}70%{opacity:1;transform:translateY(3px) rotate(45deg)}}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes barFlow{to{background-position:32px 0}}
+
+/* ページ見出し：墨で書くように左から現れる／番号札は判を押すように */
+.page-head h1{animation:inkIn 1s cubic-bezier(.2,.8,.2,1) .15s backwards}
+.page-head .num{animation:stamp .7s cubic-bezier(.2,.8,.2,1) .05s backwards}
+.page-head p{animation:rise .7s cubic-bezier(.2,.8,.2,1) .45s backwards}
+.page-head .kicker{animation:rise .6s cubic-bezier(.2,.8,.2,1) .05s backwards}
+
+/* セクション見出しの菱形がくるっと回って止まる */
+.sec-underline.in::before{animation:diaSpin .9s cubic-bezier(.2,.8,.2,1) backwards}
+
+/* 並んだものは一つずつ順番に */
+.news.in>li{animation:slideR .6s cubic-bezier(.2,.8,.2,1) calc(min(var(--k,0),10)*70ms) backwards}
+.news.in>li::before{animation:pinDrop .6s cubic-bezier(.2,.8,.2,1) calc(min(var(--k,0),10)*70ms + .2s) backwards}
+.pillars.in>div{animation:rise .7s cubic-bezier(.2,.8,.2,1) calc(var(--k,0)*110ms) backwards}
+.steps.in>li{animation:rise .6s cubic-bezier(.2,.8,.2,1) calc(var(--k,0)*110ms) backwards}
+.faq.in>div{animation:rise .5s cubic-bezier(.2,.8,.2,1) calc(min(var(--k,0),10)*55ms) backwards}
+.addr.in>li{animation:slideR .55s cubic-bezier(.2,.8,.2,1) calc(var(--k,0)*80ms) backwards}
+.duo.in>.col{animation:rise .7s cubic-bezier(.2,.8,.2,1) calc(var(--k,0)*130ms) backwards}
+.table-wrap.in tbody tr{animation:slideR .5s cubic-bezier(.2,.8,.2,1) calc(min(var(--k,0),12)*45ms + .1s) backwards}
+.row-item.in .ico{animation:popIn .6s cubic-bezier(.3,1.5,.4,1) .1s backwards}
+.callout.in>i{animation:popIn .6s cubic-bezier(.3,1.5,.4,1) .15s backwards}
+.wiki-subnav .wrap>a{animation:navDown .45s ease-out calc(min(var(--k,0),14)*35ms + .1s) backwards}
+
+/* ちょっとした動き */
+.tag{transition:transform .2s}
+.news li:hover .tag,.tag:hover{animation:wiggle .45s ease-in-out}
+.row-item:hover .ico{animation:floaty 1.4s ease-in-out infinite}
+.reset .bar i{background-size:32px 100%;animation:barFlow 1.2s linear infinite}
+.news-all a i,.news .more{transition:transform .25s}
+.news-all a:hover i{transform:translateX(5px)}
+.news .more:hover{transform:translateX(4px)}
+
+/* 最初のボタンに、波紋がゆっくり広がる（輪郭線だけを動かす） */
+@keyframes ctaRing{from{outline:1.5px solid rgba(55,86,99,.6);outline-offset:0}
+    to{outline:1.5px solid rgba(55,86,99,0);outline-offset:12px}}
+.opening .cta .btn.fill{animation:ctaRing 2.4s ease-out 6.5s infinite}
+
+/* =========================================================
    画面が狭いとき
    ========================================================= */
 @media (max-width:980px){
@@ -701,6 +786,13 @@ h2.sec::before{content:'';align-self:center;width:9px;height:9px;flex:none;backg
     .row-item h3,.steps h3,.pillars h3,.news h3{font-size:1rem}
     section{padding:30px 0}
 
+    .closing h2{font-size:var(--t-2xl);word-break:auto-phrase}
+    .vote-card{gap:14px;padding:16px}
+    .vote-seal{width:52px;height:52px;font-size:1.15rem}
+    .vote-t{font-size:var(--t-lg)}
+    .vote-go{display:none}
+    .opening .cta .btn.fill{animation-delay:1.6s}
+
     .page-head .wrap{gap:13px}
     .page-head .num{width:42px;height:42px;margin-top:2px}
     .spec{font-size:var(--t-sm)}
@@ -719,4 +811,5 @@ h2.sec::before{content:'';align-self:center;width:9px;height:9px;flex:none;backg
     .has-chart .opening h1 em{background-size:100% 2px}
     .strip .track,.closing::before{animation:none!important}
     .svg-draw path,.svg-draw circle{stroke-dashoffset:0}
+    .vote-seal::before,.reset .bar i,.opening .cta .btn.fill{animation:none!important}
 }
