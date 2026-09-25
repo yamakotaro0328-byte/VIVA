@@ -703,6 +703,48 @@ h2.sec::before{content:'';align-self:center;width:9px;height:9px;flex:none;backg
     to{outline:1.5px solid rgba(55,86,99,0);outline-offset:12px}}
 .opening .cta .btn.fill{animation:ctaRing 2.4s ease-out 6.5s infinite}
 
+/* ---------- サイト全体の動き（第2弾） ---------- */
+@keyframes menuDown{from{opacity:0;transform:translateY(-14px)}}
+@keyframes pageOut{to{opacity:0;transform:translateY(-10px)}}
+
+/* ページを移るとき、ふっと消えてから次へ */
+body.leaving .main{animation:pageOut .22s ease-in forwards}
+
+/* 上のバー：少しスクロールすると影が落ちる */
+.topbar{transition:box-shadow .3s ease}
+.topbar.scrolled{box-shadow:0 10px 22px -14px rgba(47,32,16,.55)}
+
+/* スマホのメニュー：下りてきて、項目が順に並ぶ */
+.mobile-nav.open{animation:menuDown .32s cubic-bezier(.2,.8,.2,1)}
+.mobile-nav.open ul>li{animation:slideR .4s cubic-bezier(.2,.8,.2,1) calc(var(--k,0)*40ms + .05s) backwards}
+.mobile-nav.open .m-server{animation:rise .45s cubic-bezier(.2,.8,.2,1) .35s backwards}
+.menu-btn i{transition:transform .35s cubic-bezier(.3,1.4,.4,1)}
+.menu-btn[aria-expanded="true"] i{transform:rotate(90deg)}
+
+/* お知らせの記事は段落ごとに */
+.news-article.in>*{animation:rise .6s cubic-bezier(.2,.8,.2,1) calc(min(var(--k,0),8)*90ms) backwards}
+
+/* 前後のページ送り */
+.pager.in>a{animation:rise .6s cubic-bezier(.2,.8,.2,1) calc(var(--k,0)*120ms) backwards}
+.pager .lab i{display:inline-block;transition:transform .25s}
+.pager .prev:hover .lab i{transform:translateX(-5px)}
+.pager .next:hover .lab i{transform:translateX(5px)}
+
+/* ページ見出しのラベル横の線が伸びる */
+.page-head .kicker::after{transform-origin:left;animation:lineGrow .9s cubic-bezier(.2,.8,.2,1) .35s backwards}
+
+/* 写真は近づくと少し寄る */
+.logbook .shot img{transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .6s}
+.logbook:hover .shot img{transform:scale(1.07);filter:sepia(.2) contrast(1.04) saturate(.95)}
+
+/* 戻るリンクの矢印 */
+.news-back a i{transition:transform .25s}
+.news-back a:hover i{transform:translateX(-5px)}
+
+/* 表の行は乗せると色がつく */
+.spec tbody tr{transition:background-color .2s}
+.spec tbody tr:hover{background:rgba(147,48,28,.06)}
+
 /* =========================================================
    画面が狭いとき
    ========================================================= */
