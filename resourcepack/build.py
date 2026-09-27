@@ -23,6 +23,7 @@ from PIL import Image, ImageDraw
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from painterly import paint  # noqa: E402
+from blockstyle import stylize  # noqa: E402
 
 BASE_VERSION = '26.2'
 EXTRA_ITEM_VERSIONS = ['26.3']      # pack.mcmeta の max_format と合わせる
@@ -301,9 +302,38 @@ save(im, 'textures/gui/sprites/tooltip/frame.png')
 for i in range(6):
     copy_orig(f'textures/gui/title/background/panorama_{i}.png')
 
-# ================================================================ 6. ブロック（元の手描き48種）
+# ================================================================ 6. ブロック（元の手描き48種＋残り全部を同じタッチで）
+orig_blocks = set()
 for f in sorted(glob.glob(ORIG + 'textures/block/*.png')):
     copy_orig(os.path.relpath(f, ORIG))
+    orig_blocks.add(os.path.basename(f))
+block_drawn = 0
+for f in sorted(glob.glob(V + 'textures/block/*.png')):
+    if os.path.basename(f) in orig_blocks:
+        continue
+    rel = os.path.relpath(f, V)
+    animated = False
+    if os.path.exists(f + '.mcmeta'):
+        animated = 'animation' in json.load(open(f + '.mcmeta'))
+    save(stylize(Image.open(f), animated=animated, name=os.path.basename(f)), rel)
+    block_drawn += 1
+for extra in EXTRA_ITEM_VERSIONS:  # 26.3 で増えたブロックも
+    with zipfile.ZipFile(client_jar(extra)) as z:
+        names = set(z.namelist())
+        for n in sorted(names):
+            if n.startswith('assets/minecraft/textures/block/') and n.endswith('.png') \
+                    and not os.path.exists(V + n[len('assets/minecraft/'):]):
+                rel = n[len('assets/minecraft/'):]
+                meta = n + '.mcmeta'
+                animated = meta in names and 'animation' in json.loads(z.read(meta))
+                p = out_path(rel)
+                os.makedirs(os.path.dirname(p), exist_ok=True)
+                stylize(Image.open(io.BytesIO(z.read(n))), animated=animated, name=os.path.basename(n)).save(p, optimize=True)
+                if meta in names:
+                    open(p + '.mcmeta', 'wb').write(z.read(meta))
+                written.append(rel)
+                block_drawn += 1
+print('blocks: original', len(orig_blocks), '+ drawn', block_drawn)
 
 # ================================================================ 7. アイテム
 tinted = set()   # ゲームが色を乗せる素材（革の防具など）は灰色で描く
@@ -413,7 +443,7 @@ open(p, 'w', encoding='utf-8').write('\n'.join(splashes) + '\n')
 # ================================================================ 9. アイコン・pack.mcmeta
 shutil.copy(os.path.join(HERE, 'original', 'pack.png'), os.path.join(OUT, 'pack.png'))
 meta = {"pack": {
-    "description": "VIVA-MC 公式リソースパック\n§6全アイテム手描き風・木目のGUI（26.2対応）",
+    "description": "VIVA-MC 公式リソースパック\n§6全アイテム・全ブロック手描き風（26.2対応）",
     "min_format": MIN_FORMAT,
     "max_format": MAX_FORMAT,
 }}
