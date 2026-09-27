@@ -10,10 +10,14 @@
 - スプライトの .mcmeta（九分割・伸縮の指定）はバニラのものを必ず同梱する
 - 必要なもの: Python 3 と Pillow（pip install pillow）
 """
-import glob, hashlib, json, os, shutil, sys, tempfile, urllib.request, zipfile
+import glob, hashlib, io, json, os, shutil, sys, tempfile, urllib.request, zipfile
 from PIL import Image, ImageDraw
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from item_style import restyle  # noqa: E402
+
 BASE_VERSION = '26.2'
+EXTRA_ITEM_VERSIONS = ['26.3']  # pack.mcmeta の max_format と合わせる
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WORK = os.path.join(tempfile.gettempdir(), 'viva-pack-build')
 JAR = os.path.join(WORK, f'client-{BASE_VERSION}.jar')
@@ -27,10 +31,11 @@ if not os.path.exists(JAR):
     ver = json.load(urllib.request.urlopen(entry['url']))
     print('downloading client', BASE_VERSION)
     urllib.request.urlretrieve(ver['downloads']['client']['url'], JAR)
-if not os.path.isdir(V):
+if not os.path.isdir(V + 'textures/item'):
     with zipfile.ZipFile(JAR) as z:
         for n in z.namelist():
-            if n.startswith(('assets/minecraft/textures/gui/', 'assets/minecraft/textures/block/')):
+            if n.startswith(('assets/minecraft/textures/gui/', 'assets/minecraft/textures/block/',
+                             'assets/minecraft/textures/item/')):
                 z.extract(n, os.path.join(WORK, 'vanilla'))
 
 shutil.rmtree(OUT, ignore_errors=True)
@@ -196,6 +201,31 @@ for o in ores:
 enhance_ore('textures/block/nether_gold_ore.png', 'textures/block/netherrack.png')
 enhance_ore('textures/block/nether_quartz_ore.png', 'textures/block/netherrack.png')
 
+# ---------------------------------------------------------------- アイテム：全部を同じタッチで描き直す
+item_files = sorted(glob.glob(V + 'textures/item/**/*.png', recursive=True))
+for f in item_files:
+    save(restyle(Image.open(f)), os.path.relpath(f, V))
+print('items restyled:', len(item_files))
+
+# 対応範囲の上限（26.3）で増えたアイテムも描き直しておく
+for extra in EXTRA_ITEM_VERSIONS:
+    jar = os.path.join(WORK, f'client-{extra}.jar')
+    if not os.path.exists(jar):
+        manifest = json.load(urllib.request.urlopen('https://piston-meta.mojang.com/mc/game/version_manifest_v2.json'))
+        entry = next(v for v in manifest['versions'] if v['id'] == extra)
+        ver = json.load(urllib.request.urlopen(entry['url']))
+        print('downloading client', extra)
+        urllib.request.urlretrieve(ver['downloads']['client']['url'], jar)
+    added = 0
+    with zipfile.ZipFile(jar) as z:
+        for n in z.namelist():
+            if n.startswith('assets/minecraft/textures/item/') and n.endswith('.png'):
+                rel = n[len('assets/minecraft/'):]
+                if not os.path.exists(V + rel):
+                    save(restyle(Image.open(io.BytesIO(z.read(n)))), rel)
+                    added += 1
+    print(f'items added from {extra}:', added)
+
 # ---------------------------------------------------------------- タイトル画面の一言
 splashes = """VIVA-MCへようこそ！
 君だけの国家を！
@@ -249,7 +279,7 @@ icon.convert('RGB').save(os.path.join(OUT, 'pack.png'), optimize=True)
 # ---------------------------------------------------------------- pack.mcmeta（26.2 = 88.0 〜 26.3 = 97.1）
 meta = {
     "pack": {
-        "description": "VIVA-MC 公式リソースパック\n§6古地図風GUI・見やすい鉱石（26.2対応）",
+        "description": "VIVA-MC 公式リソースパック\n§6全アイテム描き直し・古地図風GUI（26.2対応）",
         "min_format": 88,
         "max_format": 97
     }
