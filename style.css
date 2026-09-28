@@ -745,6 +745,14 @@ body.leaving .main{animation:pageOut .22s ease-in forwards}
 .spec tbody tr{transition:background-color .2s}
 .spec tbody tr:hover{background:rgba(147,48,28,.06)}
 
+/* フッター：規約へのリンクと、Minecraft非公式の表記 */
+.foot p+p{margin-top:8px}
+.foot-links{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 18px}
+.foot-links a{color:var(--ink-2);letter-spacing:.14em}
+.foot-links a:hover{color:var(--ember)}
+.foot-note{font-family:var(--f-body);text-transform:none;font-weight:400;letter-spacing:.04em;
+    font-size:var(--t-3xs);color:var(--ink-3);line-height:1.8;max-width:46em;margin-left:auto;margin-right:auto}
+
 /* =========================================================
    画面が狭いとき
    ========================================================= */
