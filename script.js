@@ -378,4 +378,138 @@
     }, { passive: true });
     onScroll();
   }
+
+  /* ---------- 質問AI（右下のボタン） ---------- */
+  (function () {
+    if (document.querySelector('.lost')) return; // 404ページには出さない
+    var SUGGEST = ['サーバーへの入り方は？', '土地を守るには？', '資源ワールドのリセットはいつ？'];
+
+    var fab = document.createElement('button');
+    fab.type = 'button';
+    fab.className = 'ai-fab';
+    fab.setAttribute('aria-expanded', 'false');
+    fab.setAttribute('aria-controls', 'aiPanel');
+    fab.innerHTML = '<i class="fa-solid fa-compass" aria-hidden="true"></i><span>質問する</span>';
+
+    var panel = document.createElement('section');
+    panel.className = 'ai-panel';
+    panel.id = 'aiPanel';
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-label', 'VIVA-MCの質問AI');
+    panel.hidden = true;
+    panel.innerHTML =
+      '<header class="ai-head">' +
+        '<div><span class="ai-k">ASK THE GUIDE</span><strong>VIVA-MC 案内係</strong></div>' +
+        '<button type="button" class="ai-close" aria-label="閉じる"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>' +
+      '</header>' +
+      '<div class="ai-log" aria-live="polite"></div>' +
+      '<form class="ai-form">' +
+        '<label class="sr-only" for="aiInput">質問</label>' +
+        '<textarea id="aiInput" rows="1" maxlength="300" placeholder="ルールや遊び方について質問できます"></textarea>' +
+        '<button type="submit" class="ai-send" aria-label="送信"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>' +
+      '</form>' +
+      '<p class="ai-note">AIが答えるので、まちがえることもあります。正式な内容は<a href="rules.html">ルール</a>・<a href="terms.html">利用規約</a>が優先です。個人情報は入力しないでください。</p>';
+
+    document.body.appendChild(panel);
+    document.body.appendChild(fab);
+
+    var log = panel.querySelector('.ai-log');
+    var form = panel.querySelector('.ai-form');
+    var input = panel.querySelector('#aiInput');
+    var history = [];
+    var busy = false;
+
+    function esc(t) {
+      return t.replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+    // AIの返事を安全に表示（サイト内のページへのリンクと太字だけを有効にする）
+    function render(t) {
+      var h = esc(t);
+      h = h.replace(/\[([^\]]{1,40})\]\(([a-z0-9\-]+\.html(?:#[\w\-]+)?)\)/g, '<a href="$2">$1</a>');
+      h = h.replace(/(https:\/\/discord\.gg\/[A-Za-z0-9]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+      h = h.replace(/\*\*([^*]{1,80})\*\*/g, '<strong>$1</strong>');
+      return h.replace(/\n/g, '<br>');
+    }
+    function bubble(who, html) {
+      var d = document.createElement('div');
+      d.className = 'ai-msg ' + who;
+      d.innerHTML = html;
+      log.appendChild(d);
+      log.scrollTop = log.scrollHeight;
+      return d;
+    }
+    function greet() {
+      bubble('bot', 'こんにちは！VIVA-MCの案内係です。ルールや遊び方、Wikiに載っていることを答えます。');
+      var chips = document.createElement('div');
+      chips.className = 'ai-chips';
+      SUGGEST.forEach(function (q) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = q;
+        b.addEventListener('click', function () { ask(q); });
+        chips.appendChild(b);
+      });
+      log.appendChild(chips);
+    }
+
+    function setOpen(open) {
+      panel.hidden = !open;
+      fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+      fab.classList.toggle('open', open);
+      if (open) {
+        if (!log.childElementCount) greet();
+        setTimeout(function () { input.focus(); }, 50);
+      } else {
+        fab.focus();
+      }
+    }
+    fab.addEventListener('click', function () { setOpen(panel.hidden); });
+    panel.querySelector('.ai-close').addEventListener('click', function () { setOpen(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !panel.hidden) setOpen(false);
+    });
+
+    function ask(q) {
+      q = (q || '').trim();
+      if (!q || busy) return;
+      busy = true;
+      var chips = log.querySelector('.ai-chips');
+      if (chips) chips.remove();
+      bubble('me', esc(q));
+      var wait = bubble('bot wait', '<span class="ai-dots"><i></i><i></i><i></i></span>');
+      input.value = '';
+      fetch('/api/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: q, history: history.slice(-6) })
+      })
+        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
+        .then(function (res) {
+          wait.classList.remove('wait');
+          if (res.ok && res.d.answer) {
+            wait.innerHTML = render(res.d.answer);
+            history.push({ role: 'user', content: q }, { role: 'assistant', content: res.d.answer });
+          } else {
+            wait.classList.add('err');
+            wait.textContent = (res.d && res.d.error) || 'うまく答えられませんでした。';
+          }
+        })
+        .catch(function () {
+          wait.classList.remove('wait');
+          wait.classList.add('err');
+          wait.textContent = '通信できませんでした。時間をおいて試してください。';
+        })
+        .then(function () {
+          busy = false;
+          log.scrollTop = log.scrollHeight;
+        });
+    }
+
+    form.addEventListener('submit', function (e) { e.preventDefault(); ask(input.value); });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); ask(input.value); }
+    });
+  })();
 })();
