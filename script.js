@@ -485,26 +485,60 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: q, history: history.slice(-6) })
       })
-        .then(function (r) { return r.json().then(function (d) { return { ok: r.ok, d: d }; }); })
-        .then(function (res) {
-          wait.classList.remove('wait');
-          if (res.ok && res.d.answer) {
-            wait.innerHTML = render(res.d.answer);
-            history.push({ role: 'user', content: q }, { role: 'assistant', content: res.d.answer });
-          } else {
-            wait.classList.add('err');
-            wait.textContent = (res.d && res.d.error) || 'うまく答えられませんでした。';
+        .then(function (r) {
+          var type = r.headers.get('Content-Type') || '';
+          if (type.indexOf('application/json') >= 0 || !r.body) {
+            // 準備中・混雑・入力ミスなどは、まとめて返ってくる
+            return r.json().then(function (d) { fail((d && d.error) || 'うまく答えられませんでした。'); });
           }
+          return stream(r.body.getReader());
         })
-        .catch(function () {
-          wait.classList.remove('wait');
-          wait.classList.add('err');
-          wait.textContent = '通信できませんでした。時間をおいて試してください。';
-        })
+        .catch(function () { fail('通信できませんでした。時間をおいて試してください。'); })
         .then(function () {
           busy = false;
           log.scrollTop = log.scrollHeight;
         });
+
+      function fail(msg) {
+        wait.classList.remove('wait');
+        wait.classList.add('err');
+        wait.textContent = msg;
+      }
+
+      // 届いた文字をため、画面には1文字ずつなめらかに出していく
+      function stream(reader) {
+        var decoder = new TextDecoder();
+        var got = '', shown = 0, done = false;
+        return new Promise(function (resolve) {
+          function tick() {
+            if (shown < got.length) {
+              if (wait.classList.contains('wait')) { wait.classList.remove('wait'); wait.innerHTML = ''; }
+              var rest = got.length - shown;
+              shown += Math.min(4, Math.max(1, Math.round(rest / 40)));  // 1秒に60〜240文字ほど。たまっているほど少し速く
+              var near = log.scrollHeight - log.scrollTop - log.clientHeight < 40;
+              wait.innerHTML = render(got.slice(0, shown)) + (done && shown >= got.length ? '' : '<span class="ai-caret"></span>');
+              if (near) log.scrollTop = log.scrollHeight;
+            }
+            if (done && shown >= got.length) {
+              if (!got) { fail('うまく答えられませんでした。'); } else {
+                wait.innerHTML = render(got);
+                history.push({ role: 'user', content: q }, { role: 'assistant', content: got });
+              }
+              resolve();
+              return;
+            }
+            requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+          (function pump() {
+            reader.read().then(function (x) {
+              if (x.done) { got += decoder.decode(); done = true; return; }
+              got += decoder.decode(x.value, { stream: true });
+              pump();
+            }).catch(function () { done = true; });
+          })();
+        });
+      }
     }
 
     form.addEventListener('submit', function (e) { e.preventDefault(); ask(input.value); });

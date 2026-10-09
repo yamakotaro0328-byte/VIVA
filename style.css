@@ -765,7 +765,7 @@ body.leaving .main{animation:pageOut .22s ease-in forwards}
 .ai-fab i{font-size:1.15rem;transition:transform .6s cubic-bezier(.3,1.4,.4,1)}
 .ai-fab:hover{transform:translateY(-3px)}
 .ai-fab:hover i,.ai-fab.open i{transform:rotate(200deg)}
-.ai-panel{position:fixed;right:22px;bottom:84px;z-index:449;width:min(380px,calc(100vw - 32px));
+.ai-panel{position:fixed;right:22px;bottom:84px;z-index:449;padding:0;width:min(380px,calc(100vw - 32px));
     height:min(560px,calc(100vh - 140px));display:flex;flex-direction:column;
     background:linear-gradient(180deg,var(--paper-hi),var(--paper-2));border:1px solid var(--rule);
     box-shadow:var(--sh-3),0 24px 60px -24px rgba(47,32,16,.55);animation:menuDown .3s cubic-bezier(.2,.8,.2,1)}
@@ -776,12 +776,16 @@ body.leaving .main{animation:pageOut .22s ease-in forwards}
 .ai-k{display:block;font-family:var(--f-caps);font-weight:600;font-size:var(--t-3xs);letter-spacing:.22em;color:rgba(251,244,228,.75)}
 .ai-close{background:none;border:none;color:#FBF4E4;font-size:1.1rem;cursor:pointer;width:34px;height:34px}
 .ai-log{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
-.ai-msg{max-width:88%;padding:9px 12px;font-size:var(--t-sm);line-height:1.8;word-break:break-word;
-    animation:rise .35s cubic-bezier(.2,.8,.2,1)}
-.ai-msg.bot{align-self:flex-start;background:var(--paper-3);border:1px solid var(--line);color:var(--ink)}
-.ai-msg.me{align-self:flex-end;background:var(--sea);color:#FBF4E4}
-.ai-msg.err{border-color:rgba(147,48,28,.5);background:rgba(147,48,28,.08);color:var(--ember-dk)}
+.ai-msg{max-width:90%;font-size:var(--t-sm);line-height:1.85;word-break:break-word;animation:fadeIn .25s ease-out}
+/* AIの返事は吹き出しにせず、そのまま文章で */
+.ai-msg.bot{align-self:flex-start;color:var(--ink);padding:2px 2px}
+/* 自分の質問だけ、うすい色の角丸で */
+.ai-msg.me{align-self:flex-end;background:rgba(55,86,99,.12);color:var(--ink);padding:7px 13px;border-radius:16px}
+.ai-msg.err{color:var(--ember-dk)}
 .ai-msg a{color:var(--ember-dk)}
+.ai-caret{display:inline-block;width:2px;height:1em;margin-left:2px;vertical-align:-.15em;background:var(--ink-3);
+    animation:caretBlink 1s steps(1) infinite}
+@keyframes caretBlink{50%{opacity:0}}
 .ai-chips{display:flex;flex-wrap:wrap;gap:6px}
 .ai-chips button{border:1px solid var(--rule);background:var(--paper-hi);color:var(--ink-2);font-family:inherit;
     font-size:var(--t-xs);padding:6px 10px;cursor:pointer;border-radius:999px;transition:background-color .2s,color .2s}
@@ -910,5 +914,5 @@ body.leaving .main{animation:pageOut .22s ease-in forwards}
     .strip .track,.closing::before{animation:none!important}
     .svg-draw path,.svg-draw circle{stroke-dashoffset:0}
     .vote-seal::before,.reset .bar i,.opening .cta .btn.fill{animation:none!important}
-    .ai-dots i{animation:none!important;opacity:.6}
+    .ai-dots i,.ai-caret{animation:none!important;opacity:.6}
 }

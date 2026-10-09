@@ -199,6 +199,7 @@ export default async function handler(req, res) {
       ],
       temperature: 0.3,
       max_tokens: 700,
+      stream: true,
     };
     if (MODEL.startsWith("openai/gpt-oss")) payload.reasoning_effort = "low";
 
@@ -214,12 +215,47 @@ export default async function handler(req, res) {
       console.error("groq error", r.status, (await r.text()).slice(0, 500));
       return res.status(502).json({ error: "うまく答えられませんでした。時間をおいて試してください。" });
     }
-    const data = await r.json();
-    const answer = String(data?.choices?.[0]?.message?.content || "").trim();
-    if (!answer) return res.status(502).json({ error: "うまく答えられませんでした。言い方を変えて試してください。" });
-    return res.status(200).json({ answer, sources: picked.map((s) => s.page) });
+    // 返事は届いた分から少しずつブラウザへ流す（Groq の SSE を、ふつうの文字列にして書き出す）
+    res.status(200);
+    res.setHeader("Content-Type", "text/plain; charset=utf-8");
+    res.setHeader("Cache-Control", "no-cache, no-transform");
+    res.setHeader("X-Accel-Buffering", "no");
+    res.flushHeaders?.();
+
+    const reader = r.body.getReader();
+    const decoder = new TextDecoder();
+    let buf = "";
+    let wrote = false;
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+      let nl;
+      while ((nl = buf.indexOf("\n")) >= 0) {
+        const line = buf.slice(0, nl).trim();
+        buf = buf.slice(nl + 1);
+        if (!line.startsWith("data:")) continue;
+        const data = line.slice(5).trim();
+        if (data === "[DONE]") continue;
+        try {
+          const piece = JSON.parse(data)?.choices?.[0]?.delta?.content;  // 考え中の文（reasoning）は流さない
+          if (piece) {
+            res.write(piece);
+            wrote = true;
+          }
+        } catch {
+          // 途中で切れた行は次の読み込みでつながるので無視
+        }
+      }
+    }
+    if (!wrote) res.write("うまく答えられませんでした。言い方を変えて試してください。");
+    return res.end();
   } catch (e) {
     console.error("ask failed", e);
+    if (res.headersSent) {
+      res.write("\n（通信が途中で切れました。もう一度聞いてください）");
+      return res.end();
+    }
     return res.status(500).json({ error: "うまく答えられませんでした。時間をおいて試してください。" });
   }
 }
