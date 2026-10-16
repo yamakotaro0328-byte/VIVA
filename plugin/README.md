@@ -213,3 +213,13 @@ Lands が入っていない場合は `{"available":false,...}` を返す。
 
 - `config.yml` の `token` を合言葉に使う（空だと通知は送らない）。サイトの環境変数 `VIVA_STATS_API_TOKEN` と同じ値にする
 - 送り先は `site-url`（既定: https://www.viva-mc.net）
+
+## 1.4.0：投票の数え上げ
+
+Votifier（NuVotifier）が入っていれば、投票サイトからの投票を名前ごとに数える（`votes.yml`）。
+
+- `GET /v1/ranking?type=votes_month` … 今月の投票ランキング（月が変わると0から）
+- `GET /v1/ranking?type=votes` … 累計の投票ランキング
+- `GET /v1/player` に `votes_month` と `votes_total` を追加
+
+Votifier が無いサーバーでは何もしない（ランキングは空のまま）。

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+<title>Protecting land | VIVA-MC</title>
+<meta name="description" content="How to use Lands on VIVA-MC: claiming chunks, adding members, and commands.">
+<meta name="theme-color" content="#E9D8B0">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="VIVA-MC">
+<meta property="og:title" content="Protecting land | VIVA-MC">
+<meta property="og:description" content="How to use Lands on VIVA-MC: claiming chunks, adding members, and commands.">
+<meta property="og:image" content="https://www.viva-mc.net/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ja" href="https://www.viva-mc.net/wiki-lands.html">
+<link rel="alternate" hreflang="en" href="https://www.viva-mc.net/en/wiki-lands.html">
+<link rel="icon" href="/server-icon.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest-en.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VIVA Portal">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+SC:wght@600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="/server-icon.png" alt="">
+    <span class="brand-name disp">VIVA-MC</span>
+  </a>
+  <nav class="site-nav" aria-label="Site">
+    <ul>
+        <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>Home</a></li>
+        <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>Join</a></li>
+        <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>Rules</a></li>
+        <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>Play</a></li>
+        <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>Nations</a></li>
+        <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>Rankings</a></li>
+        <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>FAQ</a></li>
+        <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>Resource World</a></li>
+        <li><a href="wiki.html" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+        <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>Temp Address</a></li>
+    </ul>
+  </nav>
+  <div class="topbar-cta">
+    <a class="lang-switch" href="/wiki-lands.html" lang="ja" hreflang="ja" title="日本語">JA</a>
+    <button type="button" class="ip-copy" data-copy="viva-mc.net">
+      <i class="fa-regular fa-copy" aria-hidden="true"></i>viva-mc.net
+    </button>
+    <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-discord" aria-hidden="true"></i>Discord
+    </a>
+  </div>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobileNav">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>Menu
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Site (mobile)">
+  <a class="m-portal plain" href="portal.html"><img src="/icons/icon-192.png" alt="">VIVA Portal<small>App &amp; alerts</small></a>
+  <ul>
+    <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>Home</a></li>
+    <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>Join</a></li>
+    <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>Rules</a></li>
+    <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>Play</a></li>
+    <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>Nations</a></li>
+    <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>Rankings</a></li>
+    <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>FAQ</a></li>
+    <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>Resource World</a></li>
+    <li><a href="wiki.html" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+    <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>Temp Address</a></li>
+  </ul>
+  <div class="m-server">
+    <a class="m-lang" href="/wiki-lands.html" lang="ja" hreflang="ja"><i class="fa-solid fa-language" aria-hidden="true"></i>日本語</a>
+    <button type="button" class="ip-copy" data-copy="viva-mc.net">
+      <span><span class="lab dot">SERVER ADDRESS</span><span class="val">viva-mc.net</span></span>
+      <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+    </button>
+    <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-discord" aria-hidden="true"></i>Join our Discord </a>
+  </div>
+</nav>
+
+<nav class="wiki-subnav" aria-label="Wiki articles">
+  <div class="wrap">
+    <a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki home</a> <a href="wiki-start.html"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>Getting started</a> <a href="wiki-teleport.html"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i>Homes &amp; teleport</a> <a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>Earning with jobs</a> <a href="wiki-lands.html" aria-current="page"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>Protecting land</a> <a href="wiki-build.html"><i class="fa-solid fa-city" aria-hidden="true"></i>Build server</a> <a href="wiki-diplomacy.html"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>Diplomacy &amp; war</a> <a href="wiki-economy.html"><i class="fa-solid fa-coins" aria-hidden="true"></i>Economy &amp; money</a> <a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>Chest shops</a> <a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>Villager shops</a> <a href="wiki-casino.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>Casino</a> <a href="wiki-farmersdelight.html"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i>Cooking &amp; farming</a> <a href="wiki-discord.html"><i class="fa-solid fa-comments" aria-hidden="true"></i>Discord link</a> <a href="wiki-commands.html"><i class="fa-solid fa-terminal" aria-hidden="true"></i>Commands</a>
+  </div>
+</nav>
+
+  <main class="main" id="main" tabindex="-1">
+    <header class="page-head">
+      <div class="wrap">
+        <div class="num disp"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></div>
+        <div>
+          <span class="kicker dot">LANDS</span><h1 class="disp">Protecting land &amp; founding nations</h1>
+          <p>Claim chunks with /claim, invite friends, and grow your nation bit by bit.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>Claiming land</h2>
+        <p class="sec-note" data-rv>The most important plugin for protecting your land and growing your town or nation.</p>
+        <ol class="steps" data-rv>
+          <li>
+            <span class="n disp">1</span>
+            <h3>Claim a chunk</h3>
+            <p>Run <code>/claim</code> to create a land in your name and protect the <strong>chunk (16×16 blocks)</strong> you're standing in. To choose a name, use <code>/lands create &lt;name&gt;</code> and then <code>/land &lt;land&gt; claim</code>.</p>
+          </li>
+          <li>
+            <span class="n disp">2</span>
+            <h3>Grow bit by bit</h3>
+            <p>Use <code>/land &lt;land&gt; claim radius &lt;radius&gt;</code> to claim the area around you at once, or turn on <code>/land &lt;land&gt; claim auto</code> to claim as you walk.</p>
+          </li>
+          <li>
+            <span class="n disp">3</span>
+            <h3>Invite friends</h3>
+            <p>Use <code>/land &lt;land&gt; member add &lt;player&gt;</code> to add other players as members of your land.</p>
+          </li>
+        </ol>
+        <div class="callout" data-rv style="margin-top:22px">
+          <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+          <div><strong>The command format has changed.</strong> Most commands now take the form <code>/land &lt;land&gt; ...</code>, where you type the land's name every time. Find <code>&lt;land&gt;</code> in the <code>/lands</code> menu or with <code>/lands list</code>.</div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>Land chat</h2>
+        <p class="sec-note" data-rv>There's a private chat that only your land's members can see.</p>
+        <div class="table-wrap" data-rv>
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/land &lt;land&gt; chat</code></th><td>Toggle that land's chat mode (while on, everything you say goes there)</td></tr>
+              <tr><th><code>/land &lt;land&gt; chat &lt;message&gt;</code></th><td>Send a single message to land chat without switching modes</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>Founding nations and going to war</h2>
+        <p class="sec-note" data-rv>You can unite several lands into a nation and make alliances or war with other lands and nations. See <a href="wiki-diplomacy.html">Diplomacy &amp; war</a> for details.</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>Commands</h2>
+        <div class="table-wrap" data-rv>
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/lands</code></th><td>Open the main menu (UI). Basic actions start here</td></tr>
+              <tr><th><code>/claim</code></th><td>Create a land in your name and claim the chunk you're standing in</td></tr>
+              <tr><th><code>/land &lt;land&gt; unclaim</code></th><td>Unclaim the chunk you're standing in</td></tr>
+              <tr><th><code>/land &lt;land&gt; unclaim all</code></th><td>Unclaim all of that land (asks for confirmation)</td></tr>
+              <tr><th><code>/land &lt;land&gt; member add &lt;player&gt;</code></th><td>Add a player as a member</td></tr>
+              <tr><th><code>/land &lt;land&gt; member remove &lt;player&gt;</code></th><td>Remove a player from members</td></tr>
+              <tr><th><code>/land &lt;land&gt; member setrole &lt;player&gt; &lt;role&gt;</code></th><td>Set a member's role (permissions)</td></tr>
+              <tr><th><code>/lands map</code></th><td>Open a map of claimed areas</td></tr>
+              <tr><th><code>/lands view</code></th><td>Show nearby land borders with particles</td></tr>
+              <tr><th><code>/lands unstuck</code></th><td>If you're stuck inside a claimed area, move to nearby unclaimed land</td></tr>
+              <tr><th><code>/lands list</code></th><td>List all lands on the server</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sec-note" style="margin-top:14px">Depending on the server version, you may be able to select the land first with <code>/lands edit &lt;land&gt;</code> and then leave out <code>&lt;land&gt;</code>. If a command doesn't work, ask on Discord.</p>
+      </section>
+
+      <nav class="pager" data-rv aria-label="Article navigation">
+        <a class="prev" href="wiki-jobs.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Previous</span><span class="ttl disp">Earning with jobs</span></a>
+        <a class="next" href="wiki-build.html"><span class="lab dot">Next <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">Build server</span></a>
+      </nav>
+    </div>
+
+    <footer class="foot" data-rv>
+      <p>&copy; 2026 VIVA-MC Official. Admin: kot0328</p>
+      <p class="foot-links"><a href="rules.html">Rules</a><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="portal.html">VIVA Portal</a><a href="/wiki-lands.html" lang="ja" hreflang="ja">日本語</a></p>
+      <p class="foot-note">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.<br>VIVA-MC is not an official Minecraft service and is not affiliated with Mojang or Microsoft.</p>
+    </footer>
+  </main>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
+
+<script src="/script.js"></script>
+</body>
+</html>

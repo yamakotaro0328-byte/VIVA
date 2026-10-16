@@ -45,7 +45,7 @@ public class ApiServer {
 
     private static final Set<String> RANKING_TYPES = new HashSet<>(Arrays.asList(
             "player_kills", "mob_kills", "deaths", "playtime",
-            "blocks_placed", "blocks_broken", "balance", "login_count"));
+            "blocks_placed", "blocks_broken", "balance", "login_count", "votes", "votes_month"));
 
     private final DataStore store;
     private final Logger logger;
@@ -57,12 +57,14 @@ public class ApiServer {
     private final OnlineTracker online;
     private final ChronicleStore chronicle;
     private final Supplier<String> landsSnapshot;
+    private final VoteStore votes;
 
     private HttpServer server;
 
     public ApiServer(DataStore store, Logger logger, String token, int historyLimit,
                       Plugin plugin, EconomyHook economyHook, LandsHook landsHook,
-                      OnlineTracker online, ChronicleStore chronicle, Supplier<String> landsSnapshot) {
+                      OnlineTracker online, ChronicleStore chronicle, Supplier<String> landsSnapshot,
+                      VoteStore votes) {
         this.store = store;
         this.logger = logger;
         this.token = token == null ? "" : token.trim();
@@ -73,6 +75,7 @@ public class ApiServer {
         this.online = online;
         this.chronicle = chronicle;
         this.landsSnapshot = landsSnapshot;
+        this.votes = votes;
     }
 
     public void start(String bindAddress, int port) throws IOException {
@@ -145,6 +148,9 @@ public class ApiServer {
             json.append("\"login_count\":").append(r.loginCount).append(",");
             json.append("\"first_join\":").append(r.firstSeenMs).append(",");
             json.append("\"last_seen\":").append(r.lastSeenMs).append(",");
+            VoteStore.Votes v = votes == null ? null : votes.get(r.name);
+            json.append("\"votes_total\":").append(v == null ? 0 : v.total).append(",");
+            json.append("\"votes_month\":").append(v == null ? 0 : v.month).append(",");
             // 「name":"balance"」「tableName":"lands"」というキーの形は
             // サイト側(script.js)が文字列検索で拾っているので、そのままにしておくこと。
             json.append("\"stats\":[");
@@ -213,6 +219,11 @@ public class ApiServer {
             }
             int limit = parseIntParam(ex, "limit", 10, 1, 100);
             boolean asc = "asc".equalsIgnoreCase(queryParam(ex.getRequestURI(), "order"));
+
+            if (type.startsWith("votes")) {
+                sendJson(ex, 200, voteRanking(type, limit, asc));
+                return;
+            }
 
             List<PlayerRecord> all = store.copyAll();
             all.removeIf(r -> r.name == null || r.name.isEmpty());
@@ -326,6 +337,28 @@ public class ApiServer {
             logger.log(Level.WARNING, "[VivaStatsAPI] /v1/players の処理中にエラー", e);
             sendJson(ex, 500, "{\"error\":\"internal error\"}");
         }
+    }
+
+    /** 投票のランキング（今月 votes_month ／ 累計 votes）。 */
+    private String voteRanking(String type, int limit, boolean asc) {
+        List<VoteStore.Votes> all = votes == null ? new ArrayList<>() : votes.all();
+        boolean month = "votes_month".equals(type);
+        all.removeIf(v -> (month ? v.month : v.total) <= 0);
+        Comparator<VoteStore.Votes> cmp = Comparator.comparingLong(v -> month ? v.month : v.total);
+        cmp = cmp.thenComparingLong(v -> -v.lastMs);
+        all.sort(asc ? cmp : cmp.reversed());
+        StringBuilder json = new StringBuilder("{\"type\":").append(jsonString(type)).append(",\"ranking\":[");
+        for (int i = 0; i < Math.min(limit, all.size()); i++) {
+            VoteStore.Votes v = all.get(i);
+            if (i > 0) {
+                json.append(",");
+            }
+            json.append("{\"rank\":").append(i + 1)
+                    .append(",\"player\":").append(jsonString(v.name))
+                    .append(",\"value\":").append(month ? v.month : v.total)
+                    .append(",\"last\":").append(v.lastMs).append("}");
+        }
+        return json.append("]}").toString();
     }
 
     // ---------------------------------------------------------------

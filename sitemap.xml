@@ -49,8 +49,63 @@
   <url><loc>https://www.viva-mc.net/wiki-teleport.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
   <url><loc>https://www.viva-mc.net/wiki-villager.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
   <url><loc>https://www.viva-mc.net/wiki.html</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority></url>
-  <url><loc>https://www.viva-mc.net/en.html</loc><lastmod>2026-10-16</lastmod><priority>0.7</priority></url>
   <url><loc>https://www.viva-mc.net/news-site-update-1016.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
   <url><loc>https://www.viva-mc.net/portal.html</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority></url>
   <url><loc>https://www.viva-mc.net/news-portal-1016.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/calendar.html</loc><lastmod>2026-10-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://www.viva-mc.net/en/address.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/calendar.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/chronicle.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/event-servercrash.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/faq.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/join.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/map.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/nations.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-address-change.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-address-restored-0923.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-address-restored.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-build-server.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-ecotp.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-event-servercrash.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-farmersdelight-live.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-farmersdelight-removed.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-farmersdelight.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-maintenance-0713.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-osaka-rain.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-outage-resolved.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-portal-1016.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-rules-update-0927.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-rules-update.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-site-update-1016.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-tps-outage.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-travel-ip.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-vehicles.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-velocity.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/play.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/player.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/portal.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/privacy.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/ranking.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/resource.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/rules.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/status.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/terms.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-build.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-casino.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-commands.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-diplomacy.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-discord.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-economy.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-farmersdelight.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-jobs.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-lands.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-shop.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-start.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-teleport.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki-villager.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/wiki.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/news-update-votes-1016.html</loc><lastmod>2026-10-16</lastmod><priority>0.5</priority></url>
+  <url><loc>https://www.viva-mc.net/en/news-update-votes-1016.html</loc><lastmod>2026-10-16</lastmod><priority>0.4</priority></url>
 </urlset>

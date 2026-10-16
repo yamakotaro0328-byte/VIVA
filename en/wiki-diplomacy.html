@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+<title>Diplomacy &amp; war | VIVA-MC</title>
+<meta name="description" content="How diplomacy and war work on VIVA-MC: Lands alliances, enemies, declarations of war, war modes and goals.">
+<meta name="theme-color" content="#E9D8B0">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="VIVA-MC">
+<meta property="og:title" content="Diplomacy &amp; war | VIVA-MC">
+<meta property="og:description" content="How diplomacy and war work on VIVA-MC: Lands alliances, enemies, declarations of war, war modes and goals.">
+<meta property="og:image" content="https://www.viva-mc.net/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ja" href="https://www.viva-mc.net/wiki-diplomacy.html">
+<link rel="alternate" hreflang="en" href="https://www.viva-mc.net/en/wiki-diplomacy.html">
+<link rel="icon" href="/server-icon.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest-en.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VIVA Portal">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+SC:wght@600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="/server-icon.png" alt="">
+    <span class="brand-name disp">VIVA-MC</span>
+  </a>
+  <nav class="site-nav" aria-label="Site">
+    <ul>
+        <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>Home</a></li>
+        <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>Join</a></li>
+        <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>Rules</a></li>
+        <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>Play</a></li>
+        <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>Nations</a></li>
+        <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>Rankings</a></li>
+        <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>FAQ</a></li>
+        <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>Resource World</a></li>
+        <li><a href="wiki.html" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+        <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>Temp Address</a></li>
+    </ul>
+  </nav>
+  <div class="topbar-cta">
+    <a class="lang-switch" href="/wiki-diplomacy.html" lang="ja" hreflang="ja" title="日本語">JA</a>
+    <button type="button" class="ip-copy" data-copy="viva-mc.net">
+      <i class="fa-regular fa-copy" aria-hidden="true"></i>viva-mc.net
+    </button>
+    <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-discord" aria-hidden="true"></i>Discord
+    </a>
+  </div>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobileNav">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>Menu
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Site (mobile)">
+  <a class="m-portal plain" href="portal.html"><img src="/icons/icon-192.png" alt="">VIVA Portal<small>App &amp; alerts</small></a>
+  <ul>
+    <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>Home</a></li>
+    <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>Join</a></li>
+    <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>Rules</a></li>
+    <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>Play</a></li>
+    <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>Nations</a></li>
+    <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>Rankings</a></li>
+    <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>FAQ</a></li>
+    <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>Resource World</a></li>
+    <li><a href="wiki.html" aria-current="page"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+    <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>Temp Address</a></li>
+  </ul>
+  <div class="m-server">
+    <a class="m-lang" href="/wiki-diplomacy.html" lang="ja" hreflang="ja"><i class="fa-solid fa-language" aria-hidden="true"></i>日本語</a>
+    <button type="button" class="ip-copy" data-copy="viva-mc.net">
+      <span><span class="lab dot">SERVER ADDRESS</span><span class="val">viva-mc.net</span></span>
+      <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+    </button>
+    <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-discord" aria-hidden="true"></i>Join our Discord </a>
+  </div>
+</nav>
+
+<nav class="wiki-subnav" aria-label="Wiki articles">
+  <div class="wrap">
+    <a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki home</a> <a href="wiki-start.html"><i class="fa-solid fa-flag-checkered" aria-hidden="true"></i>Getting started</a> <a href="wiki-teleport.html"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i>Homes &amp; teleport</a> <a href="wiki-jobs.html"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>Earning with jobs</a> <a href="wiki-lands.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>Protecting land</a> <a href="wiki-build.html"><i class="fa-solid fa-city" aria-hidden="true"></i>Build server</a> <a href="wiki-diplomacy.html" aria-current="page"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i>Diplomacy &amp; war</a> <a href="wiki-economy.html"><i class="fa-solid fa-coins" aria-hidden="true"></i>Economy &amp; money</a> <a href="wiki-shop.html"><i class="fa-solid fa-box-open" aria-hidden="true"></i>Chest shops</a> <a href="wiki-villager.html"><i class="fa-solid fa-user-tie" aria-hidden="true"></i>Villager shops</a> <a href="wiki-casino.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>Casino</a> <a href="wiki-farmersdelight.html"><i class="fa-solid fa-kitchen-set" aria-hidden="true"></i>Cooking &amp; farming</a> <a href="wiki-discord.html"><i class="fa-solid fa-comments" aria-hidden="true"></i>Discord link</a> <a href="wiki-commands.html"><i class="fa-solid fa-terminal" aria-hidden="true"></i>Commands</a>
+  </div>
+</nav>
+
+  <main class="main" id="main" tabindex="-1">
+    <header class="page-head">
+      <div class="wrap">
+        <div class="num disp"><i class="fa-solid fa-handshake-angle" aria-hidden="true"></i></div>
+        <div>
+          <span class="kicker dot">RELATIONS & WARS</span><h1 class="disp">Diplomacy &amp; war</h1>
+          <p>From forming alliances and enemies to declaring war, how wars play out, and wars of independence.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>Found a nation</h2>
+        <p class="sec-note" data-rv>You can unite several lands into one nation. See <a href="wiki-lands.html">Protecting land &amp; founding nations</a> first for how to claim land.</p>
+        <div class="table-wrap" data-rv>
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/nations create &lt;capital land&gt; [nation name]</code></th><td>Found a nation. The land you name becomes the capital (you must own that land)</td></tr>
+              <tr><th><code>/nation &lt;nation&gt; members add &lt;land&gt;</code></th><td>Invite that land to the nation</td></tr>
+              <tr><th><code>/land &lt;land&gt; nation accept &lt;nation&gt;</code></th><td>Accept an invitation your land received from a nation</td></tr>
+              <tr><th><code>/land &lt;land&gt; nation decline &lt;nation&gt;</code></th><td>Decline an invitation to a nation</td></tr>
+              <tr><th><code>/nation &lt;nation&gt; chat</code></th><td>Toggle nation chat on/off</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>Allies &amp; enemies (Relations)</h2>
+        <p class="sec-note" data-rv>You can set other lands or nations as "ally" or "enemy". To start a war, you first have to mark the other side as an enemy.</p>
+        <div class="table-wrap" data-rv>
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/land &lt;land&gt; relation ally add &lt;target&gt;</code></th><td>Request an alliance (the other side must accept)</td></tr>
+              <tr><th><code>/land &lt;land&gt; relation ally remove &lt;target&gt;</code></th><td>End an alliance</td></tr>
+              <tr><th><code>/land &lt;land&gt; relation enemy add &lt;target&gt;</code></th><td>Mark as an enemy</td></tr>
+              <tr><th><code>/land &lt;land&gt; relation enemy remove &lt;target&gt;</code></th><td>Remove enemy status (offer a ceasefire)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sec-note" style="margin-top:14px">To do this as a nation, just replace <code>/land</code> with <code>/nation &lt;nation&gt;</code>.</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>How a war goes</h2>
+        <p class="sec-note" data-rv>From declaration to the end of the war, things roughly go in this order.</p>
+        <ol class="steps" data-rv>
+          <li>
+            <span class="n disp">1</span>
+            <h3>Mark them as an enemy, then declare war</h3>
+            <p><code>/land &lt;land&gt; war declare &lt;target land or nation&gt;</code>. Choose how to fight (mode) and what happens if you win (goal) in the menu. Depending on the server settings, the other side may have to accept.</p>
+          </li>
+          <li>
+            <span class="n disp">2</span>
+            <h3>Preparation</h3>
+            <p>Fighting doesn't start right away. Check the start time and required points with <code>/land &lt;land&gt; war info</code>.</p>
+          </li>
+          <li>
+            <span class="n disp">3</span>
+            <h3>The war begins</h3>
+            <p>When preparation ends, the fighting begins. Earn points with kills, by capturing flags and so on. Check the status with <code>/land &lt;land&gt; war menu</code>.</p>
+          </li>
+          <li>
+            <span class="n disp">4</span>
+            <h3>The outcome</h3>
+            <p>Whoever reaches the required points first wins; if time runs out, the side with more points wins. If it's very close, it's a draw and nobody gains anything.</p>
+          </li>
+        </ol>
+        <p class="sec-note" data-rv>If things go badly, you can surrender from <code>/land &lt;land&gt; war menu</code>. It ends on slightly better terms than a lost war.</p>
+      </section>
+
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>How to fight (modes)</h2>
+        <div class="table-wrap" data-rv>
+          <table class="spec">
+            <tbody>
+              <tr><th>Skirmish</th><td>The standard mode: earn points from kills and by capturing land with capture flags</td></tr>
+              <tr><th>King of the Hill (server arena)</th><td>Fight over a neutral arena set up by the team. Kills don't matter; it's decided by how long you hold the point</td></tr>
+              <tr><th>King of the Hill (own territory)</th><td>Each side places capture points on its own land and tries to take the other's</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>What happens if you win (goals)</h2>
+        <div class="table-wrap" data-rv>
+          <table class="spec">
+            <tbody>
+              <tr><th>Skirmish (plunder)</th><td>Money is taken from the loser's bank. No land is lost; the lightest goal</td></tr>
+              <tr><th>Annexation</th><td>The loser's targeted land is unclaimed (not transferred; it goes back to unclaimed land)</td></tr>
+              <tr><th>Vassalization</th><td>The losing nation becomes a vassal of the winner. Only available in wars between nations</td></tr>
+              <tr><th>Raid</th><td>The winner gets the right to open chests and break walls on the loser's land for a limited time</td></tr>
+              <tr><th>Independence</th><td>A special goal for a vassal to win independence from its overlord</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>Independence from vassalage</h2>
+        <p class="sec-note" data-rv>A land that has been made a vassal can fight to win its freedom.</p>
+        <div class="table-wrap" data-rv>
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/land &lt;land&gt; war independence</code></th><td>Start a war of independence against your overlord. Win and you're free; lose (including a draw) and you can't try again for a while</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>Commands</h2>
+        <div class="table-wrap" data-rv>
+          <table class="spec">
+            <tbody>
+              <tr><th><code>/land &lt;land&gt; war menu</code></th><td>Open the war menu (status and surrender are here too)</td></tr>
+              <tr><th><code>/land &lt;land&gt; war info</code></th><td>See info on the current or upcoming war</td></tr>
+              <tr><th><code>/land &lt;land&gt; war declare &lt;target&gt;</code></th><td>Declare war (or accept, if they declared on you)</td></tr>
+              <tr><th><code>/land &lt;land&gt; war decline</code></th><td>Decline a declaration of war</td></tr>
+              <tr><th><code>/land &lt;land&gt; war spawn</code></th><td>During a war, move near the enemy's territory (or your own arena)</td></tr>
+              <tr><th><code>/land &lt;land&gt; war independence</code></th><td>A vassal starts a war of independence</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="sec-note" style="margin-top:14px">To fight as a nation, just replace <code>/land &lt;land&gt;</code> in the commands above with <code>/nation &lt;nation&gt;</code>.</p>
+      </section>
+
+      <nav class="pager" data-rv aria-label="Article navigation">
+        <a class="prev" href="wiki-build.html"><span class="lab dot"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Previous</span><span class="ttl disp">Build server</span></a>
+        <a class="next" href="wiki-economy.html"><span class="lab dot">Next <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span class="ttl disp">Economy &amp; money</span></a>
+      </nav>
+    </div>
+
+    <footer class="foot" data-rv>
+      <p>&copy; 2026 VIVA-MC Official. Admin: kot0328</p>
+      <p class="foot-links"><a href="rules.html">Rules</a><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="portal.html">VIVA Portal</a><a href="/wiki-diplomacy.html" lang="ja" hreflang="ja">日本語</a></p>
+      <p class="foot-note">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.<br>VIVA-MC is not an official Minecraft service and is not affiliated with Mojang or Microsoft.</p>
+    </footer>
+  </main>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
+
+<script src="/script.js"></script>
+</body>
+</html>

@@ -1,6 +1,47 @@
 {
+  "redirects": [
+    {
+      "source": "/en.html",
+      "destination": "/en/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/map", "destination": "http://viva-mc.net/" },
-    { "source": "/map/:path*", "destination": "http://viva-mc.net/:path*" }
+    {
+      "source": "/api/get-stats",
+      "destination": "/api/stats?kind=stats"
+    },
+    {
+      "source": "/api/get-ranking",
+      "destination": "/api/stats?kind=ranking"
+    },
+    {
+      "source": "/api/get-players",
+      "destination": "/api/stats?kind=players"
+    },
+    {
+      "source": "/api/get-history",
+      "destination": "/api/stats?kind=history"
+    },
+    {
+      "source": "/api/get-online",
+      "destination": "/api/stats?kind=online"
+    },
+    {
+      "source": "/api/get-lands",
+      "destination": "/api/stats?kind=lands"
+    },
+    {
+      "source": "/api/get-events",
+      "destination": "/api/stats?kind=events"
+    },
+    {
+      "source": "/map",
+      "destination": "http://viva-mc.net/"
+    },
+    {
+      "source": "/map/:path*",
+      "destination": "http://viva-mc.net/:path*"
+    }
   ]
 }

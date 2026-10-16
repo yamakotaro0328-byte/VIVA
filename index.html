@@ -15,6 +15,8 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ja" href="https://www.viva-mc.net/">
+<link rel="alternate" hreflang="en" href="https://www.viva-mc.net/en/">
 <link rel="icon" href="server-icon.png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest">
@@ -61,6 +63,7 @@
     </ul>
   </nav>
   <div class="topbar-cta">
+    <a class="lang-switch" href="en/" lang="en" hreflang="en" title="English">EN</a>
     <button type="button" class="ip-copy" data-copy="viva-mc.net">
       <i class="fa-regular fa-copy" aria-hidden="true"></i>viva-mc.net
     </button>
@@ -88,6 +91,7 @@
     <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>臨時アドレス</a></li>
   </ul>
   <div class="m-server">
+    <a class="m-lang" href="en/" lang="en" hreflang="en"><i class="fa-solid fa-language" aria-hidden="true"></i>English</a>
     <button type="button" class="ip-copy" data-copy="viva-mc.net">
       <span><span class="lab dot">SERVER ADDRESS</span><span class="val">viva-mc.net</span></span>
       <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
@@ -547,6 +551,14 @@
           <li>
             <div class="when dot">2026.10.16</div>
             <div>
+              <h3><a href="news-update-votes-1016.html">投票ランキング・イベントカレンダー・英語版を追加しました</a> <span class="tag moss">新機能</span></h3>
+              <p>MinePortalの投票ランキング、イベントカレンダー、サイト全体の英語版を追加しました。</p>
+              <a class="more" href="news-update-votes-1016.html">続きを読む &rarr;</a>
+            </div>
+          </li>
+          <li>
+            <div class="when dot">2026.10.16</div>
+            <div>
               <h3><a href="news-portal-1016.html">VIVA Portal（アプリ）ができました</a> <span class="tag moss">新機能</span></h3>
               <p>ホーム画面に追加して、アプリのように使えます。サーバーが開いたときや戦争が始まったときに通知が届きます。</p>
               <a class="more" href="news-portal-1016.html">続きを読む &rarr;</a>
@@ -558,14 +570,6 @@
               <h3><a href="news-site-update-1016.html">公式サイトを大きく更新しました</a> <span class="tag honey">告知</span></h3>
               <p>ランキング、プロフィール、国家図鑑、年表、ワールドマップ、サーバーの様子などを追加しました。</p>
               <a class="more" href="news-site-update-1016.html">続きを読む &rarr;</a>
-            </div>
-          </li>
-          <li>
-            <div class="when dot">2026.09.27</div>
-            <div>
-              <h3><a href="news-rules-update-0927.html">ルールを改訂しました（荒らし・サポート）</a> <span class="tag brick">ルール</span></h3>
-              <p>荒らしの禁止を領土内に限定し、荒らし被害などのサポートはDiscordのチケット必須にしました。</p>
-              <a class="more" href="news-rules-update-0927.html">続きを読む &rarr;</a>
             </div>
           </li>
         </ul>
@@ -585,6 +589,11 @@
             <h3><i class="fa-solid fa-trophy" aria-hidden="true"></i>プレイ時間 TOP3</h3>
             <div id="homeRank"><p class="live-sub">読み込み中...</p></div>
             <a class="go" href="ranking.html">ランキングを見る &rarr;</a>
+          </div>
+          <div class="live-card">
+            <h3><i class="fa-solid fa-calendar-days" aria-hidden="true"></i>次のイベント</h3>
+            <div id="homeCal"><p class="live-sub">読み込み中...</p></div>
+            <a class="go" href="calendar.html">カレンダーを見る &rarr;</a>
           </div>
           <div class="live-card">
             <h3><i class="fa-solid fa-scroll" aria-hidden="true"></i>最近の出来事</h3>
@@ -649,6 +658,11 @@
           </span>
           <span class="vote-go" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
         </a>
+        <div class="voters" id="topVoters" hidden>
+          <h3><i class="fa-solid fa-medal" aria-hidden="true"></i>今月たくさん投票してくれた人</h3>
+          <ol class="mini-rank" id="topVotersList"></ol>
+          <a class="go" href="ranking.html#votes_month">投票ランキングを見る &rarr;</a>
+        </div>
       </section>
     </div>
 
@@ -666,7 +680,7 @@
 
     <footer class="foot" data-rv>
       <p>&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
-      <p class="foot-links"><a href="rules.html">ルール</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="portal.html">VIVA Portal</a><a href="en.html" lang="en">English</a></p>
+      <p class="foot-links"><a href="rules.html">ルール</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="portal.html">VIVA Portal</a><a href="en/" lang="en" hreflang="en">English</a></p>
       <p class="foot-note">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.<br>VIVA-MCはMinecraft公式のサービスではなく、Mojang・Microsoftとは関係ありません。</p>
     </footer>
   </main>

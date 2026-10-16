@@ -1,0 +1,5 @@
+# サイトとして公開しないもの（GitHub には残る）
+backup/
+plugin/
+resourcepack/
+tools/
