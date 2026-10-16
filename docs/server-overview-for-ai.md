@@ -154,6 +154,7 @@
   - `GET /v1/online` … いま接続している人と、直近7日の人数（1.2.0〜）
   - `GET /v1/lands` … Lands の土地・国・いまの戦争（1.2.0〜）
   - `GET /v1/events` … 宣戦布告・同盟・建国などの年表（1.2.0〜）
+  - `GET /v1/ranking?type=votes_month` / `type=votes` … 投票ランキング（1.4.0〜。Votifier が必要）
 - Vault（所持金）と Lands（所属・国家図鑑・年表）は `softdepend`。国家図鑑・年表は LandsAPI（jitpack）に直接つなぎ、Lands が無ければその機能だけ止まる
 - Bukkit API は `callSyncMethod` でメインスレッドから呼んでいる
 - GitHub Actions（`.github/workflows/build-plugin.yml`）で `mvn -B package` → `VivaStatsAPI.jar` を作成

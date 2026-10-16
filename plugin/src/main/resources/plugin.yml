@@ -1,5 +1,5 @@
 name: VivaStatsAPI
-version: '1.3.0'
+version: '1.4.0'
 main: net.vivamc.statsapi.VivaStatsAPI
 api-version: '1.21'
 author: VIVA-MC
@@ -7,4 +7,4 @@ description: VIVA-MC公式サイト向けに、プレイヤー統計と接続履
 website: https://viva-mc.net
 # 入っていれば自動で連携する（無くても普通に起動する）。
 # VaultとLandsが後から読み込まれるように、先に有効化してもらう。
-softdepend: [Vault, Lands]
+softdepend: [Vault, Lands, Votifier, NuVotifier]

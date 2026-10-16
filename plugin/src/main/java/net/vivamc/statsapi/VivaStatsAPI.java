@@ -12,6 +12,7 @@ public class VivaStatsAPI extends JavaPlugin {
     private DataStore store;
     private OnlineTracker online;
     private ChronicleStore chronicle;
+    private VoteStore votes;
     private ApiServer apiServer;
 
     @Override
@@ -35,6 +36,11 @@ public class VivaStatsAPI extends JavaPlugin {
         // 国と土地の年表（戦争・外交）
         chronicle = new ChronicleStore(getDataFolder(), getLogger(), getConfig().getInt("chronicle-limit", 300));
         chronicle.load();
+
+        // 投票（Votifier があれば数える）
+        votes = new VoteStore(getDataFolder(), getLogger());
+        votes.load();
+        VoteHook.install(this, votes, getLogger());
 
         // VIVA Portal の通知（サーバーが開いた・戦争が始まった）
         PushNotifier notifier = new PushNotifier(getConfig().getString("site-url", "https://www.viva-mc.net"),
@@ -73,7 +79,7 @@ public class VivaStatsAPI extends JavaPlugin {
         String token = getConfig().getString("token", "");
 
         apiServer = new ApiServer(store, getLogger(), token, historyLimit, this, economyHook, landsHook,
-                online, chronicle, landsSnapshot);
+                online, chronicle, landsSnapshot, votes);
         try {
             apiServer.start(bindAddress, port);
         } catch (IOException e) {
@@ -98,6 +104,9 @@ public class VivaStatsAPI extends JavaPlugin {
         }
         if (chronicle != null) {
             chronicle.save();
+        }
+        if (votes != null) {
+            votes.save();
         }
     }
 

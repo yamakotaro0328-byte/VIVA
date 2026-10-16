@@ -3,6 +3,9 @@
    ページごとに必要なものだけ動く（要素が無ければ何もしない）
    ========================================================= */
 (function () {
+  // 英語のページ（/en/）では、ここで出す文言も英語にする
+  var EN = document.documentElement.lang === 'en';
+  function L(ja, en) { return EN ? en : ja; }
   'use strict';
 
   var SERVER_IP = 'viva-mc.net';
@@ -54,7 +57,7 @@
 
   window.copyIP = function (value) {
     var text = value || SERVER_IP;
-    var done = function () { toast('「' + text + '」をコピーしました'); };
+    var done = function () { toast(EN ? 'Copied "' + text + '"' : L('「', '"') + text + '」をコピーしました'); };
     // https でないと navigator.clipboard は使えないので保険をつける
     if (navigator.clipboard && window.isSecureContext) {
       navigator.clipboard.writeText(text).then(done, function () {
@@ -112,13 +115,13 @@
       var up = answers.filter(function (v) { return v.on; })[0];
       if (up) {
         dot.classList.add('on');
-        msg.textContent = 'オンライン ・ ' + up.n + '人が接続中';
+        msg.textContent = EN ? 'Online · ' + up.n + ' playing' : 'オンライン ・ ' + up.n + '人が接続中';
       } else if (answers.length) {
         dot.classList.remove('on');
-        msg.textContent = 'オフライン';
+        msg.textContent = L('オフライン', 'Offline');
       } else {
         dot.classList.remove('on');
-        msg.textContent = '状況を取得できませんでした';
+        msg.textContent = L('状況を取得できませんでした', 'Couldn\'t get the status');
       }
     });
   }
@@ -156,7 +159,7 @@
       var s = Math.floor((left % 60000) / 1000);
 
       hoursEl.textContent = Math.floor(left / 3600000).toLocaleString();
-      subEl.textContent = String(m).padStart(2, '0') + '分' + String(s).padStart(2, '0') + '秒';
+      subEl.textContent = String(m).padStart(2, '0') + L('分', 'm ') + String(s).padStart(2, '0') + L('秒', 's');
       barEl.style.width = Math.min(100, Math.max(0, ((now - prev) / cycle) * 100)) + '%';
     };
     tick();
@@ -302,33 +305,34 @@
   /* ---------- 質問AI（右下のボタン） ---------- */
   (function () {
     if (document.querySelector('.lost')) return; // 404ページには出さない
-    var SUGGEST = ['サーバーへの入り方は？', '土地を守るには？', '資源ワールドのリセットはいつ？'];
+    var SUGGEST = EN ? ['How do I join the server?', 'How do I protect my land?', 'When does the resource world reset?']
+                     : ['サーバーへの入り方は？', '土地を守るには？', '資源ワールドのリセットはいつ？'];
 
     var fab = document.createElement('button');
     fab.type = 'button';
     fab.className = 'ai-fab';
     fab.setAttribute('aria-expanded', 'false');
     fab.setAttribute('aria-controls', 'aiPanel');
-    fab.innerHTML = '<i class="fa-solid fa-compass" aria-hidden="true"></i><span>質問する</span>';
+    fab.innerHTML = L('<i class="fa-solid fa-compass" aria-hidden="true"></i><span>質問する</span>', '<i class="fa-solid fa-compass" aria-hidden="true"></i><span>Ask</span>');
 
     var panel = document.createElement('section');
     panel.className = 'ai-panel';
     panel.id = 'aiPanel';
     panel.setAttribute('role', 'dialog');
-    panel.setAttribute('aria-label', 'VIVA-MCの質問AI');
+    panel.setAttribute('aria-label', L('VIVA-MCの質問AI', 'VIVA-MC Q&A assistant'));
     panel.hidden = true;
     panel.innerHTML =
       '<header class="ai-head">' +
-        '<div><span class="ai-k">ASK THE GUIDE</span><strong>VIVA-MC 案内係</strong></div>' +
-        '<button type="button" class="ai-close" aria-label="閉じる"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>' +
+        L('<div><span class="ai-k">ASK THE GUIDE</span><strong>VIVA-MC 案内係</strong></div>', '<div><span class="ai-k">ASK THE GUIDE</span><strong>VIVA-MC Guide</strong></div>') +
+        L('<button type="button" class="ai-close" aria-label="閉じる"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>', '<button type="button" class="ai-close" aria-label="Close"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>') +
       '</header>' +
       '<div class="ai-log" aria-live="polite"></div>' +
       '<form class="ai-form">' +
-        '<label class="sr-only" for="aiInput">質問</label>' +
-        '<textarea id="aiInput" rows="1" maxlength="300" placeholder="ルールや遊び方について質問できます"></textarea>' +
-        '<button type="submit" class="ai-send" aria-label="送信"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>' +
+        L('<label class="sr-only" for="aiInput">質問</label>', '<label class="sr-only" for="aiInput">Question</label>') +
+        L('<textarea id="aiInput" rows="1" maxlength="300" placeholder="ルールや遊び方について質問できます"></textarea>', '<textarea id="aiInput" rows="1" maxlength="300" placeholder="Ask about the rules or how to play"></textarea>') +
+        L('<button type="submit" class="ai-send" aria-label="送信"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>', '<button type="submit" class="ai-send" aria-label="Send"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>') +
       '</form>' +
-      '<p class="ai-note">AIが答えるので、まちがえることもあります。正式な内容は<a href="rules.html">ルール</a>・<a href="terms.html">利用規約</a>が優先です。個人情報は入力しないでください。</p>';
+      L('<p class="ai-note">AIが答えるので、まちがえることもあります。正式な内容は<a href="rules.html">ルール</a>・<a href="terms.html">利用規約</a>が優先です。個人情報は入力しないでください。</p>', '<p class="ai-note">Answers come from an AI and may be wrong. The <a href="rules.html">Rules</a> and <a href="terms.html">Terms</a> always take priority. Don\'t enter personal information.</p>');
 
     document.body.appendChild(panel);
     document.body.appendChild(fab);
@@ -361,7 +365,7 @@
       return d;
     }
     function greet() {
-      bubble('bot', 'こんにちは！VIVA-MCの案内係です。ルールや遊び方、Wikiに載っていることを答えます。');
+      bubble('bot', L('こんにちは！VIVA-MCの案内係です。ルールや遊び方、Wikiに載っていることを答えます。', 'Hi! I\'m the VIVA-MC guide. Ask me about the rules, how to play, or anything in the Wiki.'));
       var chips = document.createElement('div');
       chips.className = 'ai-chips';
       SUGGEST.forEach(function (q) {
@@ -409,11 +413,11 @@
           var type = r.headers.get('Content-Type') || '';
           if (type.indexOf('application/json') >= 0 || !r.body) {
             // 準備中・混雑・入力ミスなどは、まとめて返ってくる
-            return r.json().then(function (d) { fail((d && d.error) || 'うまく答えられませんでした。'); });
+            return r.json().then(function (d) { fail(EN ? 'Sorry, I couldn\'t answer that. Please try again later.' : ((d && d.error) || L('うまく答えられませんでした。', 'Sorry, I couldn\'t answer that.'))); });
           }
           return stream(r.body.getReader());
         })
-        .catch(function () { fail('通信できませんでした。時間をおいて試してください。'); })
+        .catch(function () { fail(L('通信できませんでした。時間をおいて試してください。', 'Couldn\'t connect. Please try again later.')); })
         .then(function () {
           busy = false;
           log.scrollTop = log.scrollHeight;
@@ -440,7 +444,7 @@
               if (near) log.scrollTop = log.scrollHeight;
             }
             if (done && shown >= got.length) {
-              if (!got) { fail('うまく答えられませんでした。'); } else {
+              if (!got) { fail(L('うまく答えられませんでした。', 'Sorry, I couldn\'t answer that.')); } else {
                 wait.innerHTML = render(got);
                 history.push({ role: 'user', content: q }, { role: 'assistant', content: got });
               }

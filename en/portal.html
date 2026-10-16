@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+<title>VIVA Portal | VIVA-MC</title>
+<meta name="description" content="The official VIVA-MC app: server status, your stats, the nation directory, the chronicle and alerts in one place. Add it to your home screen.">
+<meta name="theme-color" content="#E9D8B0">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VIVA-MC">
+<meta property="og:title" content="VIVA Portal | VIVA-MC">
+<meta property="og:description" content="The official VIVA-MC app: server status, your stats, the nation directory, the chronicle and alerts in one place. Add it to your home screen.">
+<meta property="og:image" content="https://www.viva-mc.net/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ja" href="https://www.viva-mc.net/portal.html">
+<link rel="alternate" hreflang="en" href="https://www.viva-mc.net/en/portal.html">
+<link rel="icon" href="/server-icon.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest-en.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VIVA Portal">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+SC:wght@600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body data-page="portal">
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="/server-icon.png" alt="">
+    <span class="brand-name disp">VIVA-MC</span>
+  </a>
+  <nav class="site-nav" aria-label="Site">
+    <ul>
+        <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>Home</a></li>
+        <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>Join</a></li>
+        <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>Rules</a></li>
+        <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>Play</a></li>
+        <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>Nations</a></li>
+        <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>Rankings</a></li>
+        <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>FAQ</a></li>
+        <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>Resource World</a></li>
+        <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+        <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>Temp Address</a></li>
+    </ul>
+  </nav>
+  <div class="topbar-cta">
+    <a class="lang-switch" href="/portal.html" lang="ja" hreflang="ja" title="日本語">JA</a>
+    <button type="button" class="ip-copy" data-copy="viva-mc.net">
+      <i class="fa-regular fa-copy" aria-hidden="true"></i>viva-mc.net
+    </button>
+    <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-discord" aria-hidden="true"></i>Discord
+    </a>
+  </div>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobileNav">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>Menu
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="Site (mobile)">
+  <a class="m-portal plain" href="portal.html"><img src="/icons/icon-192.png" alt="">VIVA Portal<small>App &amp; alerts</small></a>
+  <ul>
+    <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>Home</a></li>
+    <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>Join</a></li>
+    <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>Rules</a></li>
+    <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>Play</a></li>
+    <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>Nations</a></li>
+    <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>Rankings</a></li>
+    <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>FAQ</a></li>
+    <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>Resource World</a></li>
+    <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+    <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>Temp Address</a></li>
+  </ul>
+  <div class="m-server">
+    <a class="m-lang" href="/portal.html" lang="ja" hreflang="ja"><i class="fa-solid fa-language" aria-hidden="true"></i>日本語</a>
+    <button type="button" class="ip-copy" data-copy="viva-mc.net">
+      <span><span class="lab dot">SERVER ADDRESS</span><span class="val">viva-mc.net</span></span>
+      <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+    </button>
+    <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-discord" aria-hidden="true"></i>Join our Discord </a>
+  </div>
+</nav>
+
+  <main class="main" id="main" tabindex="-1">
+    <header class="page-head portal-head">
+      <div class="wrap">
+        <div class="num disp"><img src="/icons/icon-192.png" alt="" width="52" height="52"></div>
+        <div>
+          <span class="kicker dot">VIVA PORTAL</span><h1 class="disp">VIVA Portal</h1>
+          <p>Everything happening on VIVA-MC at a glance. Add it to your home screen to use it like an app and get alerts when the server opens.</p>
+        </div>
+      </div>
+    </header>
+    <div class="wrap">
+      <section class="portal">
+        <div class="pgrid">
+          <div class="pcard p-status" id="pStatus" data-rv>
+            <h2><i class="fa-solid fa-signal" aria-hidden="true"></i>Server</h2>
+            <div class="ps-state"><span class="dot-live" id="psDot"></span><span id="psText">Checking...</span></div>
+            <div class="ps-num dot" id="psNum">—</div>
+            <button type="button" class="btn fill ps-copy" data-copy="viva-mc.net"><i class="fa-regular fa-copy" aria-hidden="true"></i>Copy viva-mc.net</button>
+            <p class="ps-sub">Java 25565 / Bedrock 19132</p>
+            <ul class="faces mini" id="psFaces"></ul>
+          </div>
+
+          <div class="pcard p-me" id="pMe" data-rv>
+            <h2><i class="fa-solid fa-user" aria-hidden="true"></i>You</h2>
+            <div id="meBody"><p class="live-sub">Loading...</p></div>
+          </div>
+
+          <div class="pcard p-notify" id="pNotify" data-rv>
+            <h2><i class="fa-solid fa-bell" aria-hidden="true"></i>Alerts</h2>
+            <div id="notifyBody"><p class="live-sub">Checking...</p></div>
+          </div>
+
+          <div class="pcard p-install" id="pInstall" data-rv>
+            <h2><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>Add to home screen</h2>
+            <div id="installBody"><p class="live-sub">Checking...</p></div>
+          </div>
+
+          <div class="pcard p-links" data-rv>
+            <h2><i class="fa-solid fa-compass" aria-hidden="true"></i>Open</h2>
+            <ul class="tiles">
+              <li><a class="plain" href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>Nations</a></li>
+              <li><a class="plain" href="chronicle.html"><i class="fa-solid fa-scroll" aria-hidden="true"></i>Chronicle</a></li>
+              <li><a class="plain" href="map.html"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>Map</a></li>
+              <li><a class="plain" href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>Rankings</a></li>
+              <li><a class="plain" href="status.html"><i class="fa-solid fa-chart-area" aria-hidden="true"></i>Server status</a></li>
+              <li><a class="plain" href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+              <li><a class="plain" href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>Rules</a></li>
+              <li><a class="plain" href="news.html"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i>News</a></li>
+              <li><a class="plain" href="calendar.html"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i>Calendar</a></li>
+              <li><a class="plain" href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>Join</a></li>
+              <li><a class="plain" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" aria-hidden="true"></i>Discord</a></li>
+              <li><a class="plain" href="https://mineportal.jp/servers/cmp2fhkzu0000125xdvf15hjv" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-check-to-slot" aria-hidden="true"></i>Vote</a></li>
+            </ul>
+          </div>
+
+          <div class="pcard p-world" data-rv>
+            <h2><i class="fa-solid fa-khanda" aria-hidden="true"></i>Nations &amp; wars</h2>
+            <div id="pWars"></div>
+            <div id="homeChron"><p class="live-sub">Loading...</p></div>
+            <a class="go" href="chronicle.html">Open the chronicle &rarr;</a>
+          </div>
+
+          <div class="pcard p-reset" data-rv>
+            <h2><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>Until the resource world reset</h2>
+            <div class="reset-mini"><span class="big dot" id="resetHours">--</span><span class="u">hours</span> <span class="sub dot" id="resetSub">--m --s</span></div>
+            <div class="bar"><i id="resetBar"></i></div>
+            <a class="go" href="resource.html">About the resource world &rarr;</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="foot" data-rv>
+      <p>&copy; 2026 VIVA-MC Official. Admin: kot0328</p>
+      <p class="foot-links"><a href="rules.html">Rules</a><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="portal.html">VIVA Portal</a><a href="/portal.html" lang="ja" hreflang="ja">日本語</a></p>
+      <p class="foot-note">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.<br>VIVA-MC is not an official Minecraft service and is not affiliated with Mojang or Microsoft.</p>
+    </footer>
+  </main>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
+
+<script src="/script.js"></script>
+<script src="/live.js"></script>
+</body>
+</html>
