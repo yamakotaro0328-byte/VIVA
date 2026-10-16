@@ -1,0 +1,25 @@
+{
+  "name": "VIVA Portal",
+  "short_name": "VIVA Portal",
+  "description": "VIVA-MCの公式アプリ。サーバーの様子、国家図鑑、年表、ランキング、通知。",
+  "lang": "ja",
+  "id": "/portal.html",
+  "start_url": "/portal.html?from=app",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#E9D8B0",
+  "theme_color": "#E9D8B0",
+  "categories": ["games", "social"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "サーバーの様子", "url": "/status.html", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "国家図鑑", "url": "/nations.html", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "年表", "url": "/chronicle.html", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "ランキング", "url": "/ranking.html", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

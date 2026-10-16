@@ -24,6 +24,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 import java.util.function.ToDoubleFunction;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,12 +37,15 @@ import java.util.logging.Logger;
  *   GET /v1/history?limit=<件数>
  *   GET /v1/ranking?type=<種類>&limit=<件数>&order=desc|asc
  *   GET /v1/players?query=<部分一致>&limit=<件数>&offset=<開始位置>
+ *   GET /v1/online                 … いま接続している人と、直近7日の人数の移り変わり
+ *   GET /v1/lands                  … 土地・国・いまの戦争（Lands）
+ *   GET /v1/events?limit=<件数>     … 戦争・外交・建国などの年表（Lands）
  */
 public class ApiServer {
 
     private static final Set<String> RANKING_TYPES = new HashSet<>(Arrays.asList(
             "player_kills", "mob_kills", "deaths", "playtime",
-            "blocks_placed", "blocks_broken", "balance"));
+            "blocks_placed", "blocks_broken", "balance", "login_count"));
 
     private final DataStore store;
     private final Logger logger;
@@ -50,11 +54,15 @@ public class ApiServer {
     private final Plugin plugin;
     private final EconomyHook economyHook;
     private final LandsHook landsHook;
+    private final OnlineTracker online;
+    private final ChronicleStore chronicle;
+    private final Supplier<String> landsSnapshot;
 
     private HttpServer server;
 
     public ApiServer(DataStore store, Logger logger, String token, int historyLimit,
-                      Plugin plugin, EconomyHook economyHook, LandsHook landsHook) {
+                      Plugin plugin, EconomyHook economyHook, LandsHook landsHook,
+                      OnlineTracker online, ChronicleStore chronicle, Supplier<String> landsSnapshot) {
         this.store = store;
         this.logger = logger;
         this.token = token == null ? "" : token.trim();
@@ -62,6 +70,9 @@ public class ApiServer {
         this.plugin = plugin;
         this.economyHook = economyHook;
         this.landsHook = landsHook;
+        this.online = online;
+        this.chronicle = chronicle;
+        this.landsSnapshot = landsSnapshot;
     }
 
     public void start(String bindAddress, int port) throws IOException {
@@ -70,6 +81,9 @@ public class ApiServer {
         server.createContext("/v1/history", this::handleHistory);
         server.createContext("/v1/ranking", this::handleRanking);
         server.createContext("/v1/players", this::handlePlayers);
+        server.createContext("/v1/online", this::handleOnline);
+        server.createContext("/v1/lands", this::handleLands);
+        server.createContext("/v1/events", this::handleEvents);
         // 専用のスレッドプールで動かし、Bukkitのメインスレッドは一切ブロックしない
         server.setExecutor(Executors.newFixedThreadPool(4));
         server.start();
@@ -222,6 +236,7 @@ public class ApiServer {
                     case "playtime": return r.totalPlaytimeMs;
                     case "blocks_placed": return r.blocksPlacedTotal;
                     case "blocks_broken": return r.blocksBrokenTotal;
+                    case "login_count": return r.loginCount;
                     case "balance": {
                         Double v = balancesFinal.get(r.name);
                         return v == null ? 0 : v;
@@ -299,6 +314,8 @@ public class ApiServer {
                 json.append("\"blocks_placed_total\":").append(r.blocksPlacedTotal).append(",");
                 json.append("\"blocks_broken_total\":").append(r.blocksBrokenTotal).append(",");
                 json.append("\"active_playtime\":").append(r.totalPlaytimeMs).append(",");
+                json.append("\"login_count\":").append(r.loginCount).append(",");
+                json.append("\"first_join\":").append(r.firstSeenMs).append(",");
                 json.append("\"last_seen\":").append(r.lastSeenMs);
                 json.append("}");
             }
@@ -307,6 +324,102 @@ public class ApiServer {
             sendJson(ex, 200, json.toString());
         } catch (Exception e) {
             logger.log(Level.WARNING, "[VivaStatsAPI] /v1/players の処理中にエラー", e);
+            sendJson(ex, 500, "{\"error\":\"internal error\"}");
+        }
+    }
+
+    // ---------------------------------------------------------------
+    // /v1/online
+    // ---------------------------------------------------------------
+    private void handleOnline(HttpExchange ex) throws IOException {
+        try {
+            if (!checkAuth(ex)) {
+                sendJson(ex, 401, "{\"error\":\"unauthorized\"}");
+                return;
+            }
+            // 接続中の名前はメインスレッドで取る
+            List<String> names = runSync(() -> {
+                List<String> out = new ArrayList<>();
+                for (org.bukkit.entity.Player p : Bukkit.getOnlinePlayers()) {
+                    out.add(p.getName());
+                }
+                return out;
+            }, Collections.emptyList(), 1500);
+            int max = runSync(Bukkit::getMaxPlayers, 0, 1500);
+            List<String> sorted = new ArrayList<>(names);
+            sorted.sort(String.CASE_INSENSITIVE_ORDER);
+
+            StringBuilder json = new StringBuilder();
+            json.append("{\"online\":").append(sorted.size());
+            json.append(",\"max\":").append(max);
+            json.append(",\"players\":").append(Json.strArray(sorted));
+            if (online != null) {
+                json.append(",\"peak\":").append(online.getPeak());
+                json.append(",\"peak_at\":").append(online.getPeakAt());
+                json.append(",\"samples\":[");
+                List<long[]> samples = online.copySamples();
+                for (int i = 0; i < samples.size(); i++) {
+                    if (i > 0) {
+                        json.append(",");
+                    }
+                    json.append("[").append(samples.get(i)[0]).append(",").append(samples.get(i)[1]).append("]");
+                }
+                json.append("]");
+            }
+            json.append("}");
+            sendJson(ex, 200, json.toString());
+        } catch (Exception e) {
+            logger.log(Level.WARNING, "[VivaStatsAPI] /v1/online の処理中にエラー", e);
+            sendJson(ex, 500, "{\"error\":\"internal error\"}");
+        }
+    }
+
+    // ---------------------------------------------------------------
+    // /v1/lands
+    // ---------------------------------------------------------------
+    private void handleLands(HttpExchange ex) throws IOException {
+        try {
+            if (!checkAuth(ex)) {
+                sendJson(ex, 401, "{\"error\":\"unauthorized\"}");
+                return;
+            }
+            String snap = landsSnapshot == null ? null : landsSnapshot.get();
+            if (snap == null) {
+                // Landsが入っていない／まだ一覧ができていない
+                sendJson(ex, 200, "{\"available\":false,\"lands\":[],\"nations\":[],\"wars\":[]}");
+                return;
+            }
+            sendJson(ex, 200, snap);
+        } catch (Exception e) {
+            logger.log(Level.WARNING, "[VivaStatsAPI] /v1/lands の処理中にエラー", e);
+            sendJson(ex, 500, "{\"error\":\"internal error\"}");
+        }
+    }
+
+    // ---------------------------------------------------------------
+    // /v1/events?limit=<件数>
+    // ---------------------------------------------------------------
+    private void handleEvents(HttpExchange ex) throws IOException {
+        try {
+            if (!checkAuth(ex)) {
+                sendJson(ex, 401, "{\"error\":\"unauthorized\"}");
+                return;
+            }
+            int limit = parseIntParam(ex, "limit", 50, 1, 300);
+            StringBuilder json = new StringBuilder("{\"events\":[");
+            if (chronicle != null) {
+                List<ChronicleStore.Entry> list = chronicle.recent(limit);
+                for (int i = 0; i < list.size(); i++) {
+                    if (i > 0) {
+                        json.append(",");
+                    }
+                    json.append(list.get(i).toJson());
+                }
+            }
+            json.append("]}");
+            sendJson(ex, 200, json.toString());
+        } catch (Exception e) {
+            logger.log(Level.WARNING, "[VivaStatsAPI] /v1/events の処理中にエラー", e);
             sendJson(ex, 500, "{\"error\":\"internal error\"}");
         }
     }

@@ -27,3 +27,24 @@ save-interval-seconds: 300
 # WorldEditなどで大量に一気に置いたり壊したりするサーバーで、
 # カウント自体を止めたい場合は false にしてください。
 track-blocks: true
+
+# 何分おきに「いま何人いるか」を記録するか（サイトの人数グラフ用。直近7日分を保存）
+online-sample-minutes: 5
+
+# Lands の土地・国の一覧（サイトの国家図鑑）を、何秒おきに作り直すか
+lands-refresh-seconds: 60
+
+# 年表（宣戦布告・終戦・同盟・建国など）を何件まで残すか
+chronicle-limit: 300
+
+# ----------------------------------------------------------
+# VIVA Portal の通知（公式サイトをアプリとして入れた人に届く）
+# token（上の設定）が空だと送りません。サイトの環境変数 VIVA_STATS_API_TOKEN と同じ値にしてください。
+# ----------------------------------------------------------
+site-url: "https://www.viva-mc.net"
+
+# サーバーが起動したら「VIVA-MCが開きました」と通知する
+notify-server-open: true
+
+# 宣戦布告・開戦を通知する（Lands が必要）
+notify-war: true

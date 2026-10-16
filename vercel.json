@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/map", "destination": "http://viva-mc.net/" },
+    { "source": "/map/:path*", "destination": "http://viva-mc.net/:path*" }
+  ]
+}

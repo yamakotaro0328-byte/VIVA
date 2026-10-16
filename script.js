@@ -163,116 +163,36 @@
     setInterval(tick, 1000);
   }
 
-  /* ---------- プレイヤー統計 ---------- */
-  var statBtn = document.getElementById('statBtn');
-  if (statBtn) {
-    statBtn.addEventListener('click', function () {
-      var name = document.getElementById('statName').value.trim();
-      var out  = document.getElementById('statOut');
-      var err  = document.getElementById('statErr');
+  /* ---------- 参加方法の診断（機種をえらぶと、その手順だけを出す） ---------- */
+  document.querySelectorAll('[data-wizard]').forEach(function (wiz) {
+    var btns = wiz.querySelectorAll('[data-dev]');
+    var after = wiz.querySelector('.wiz-after');
+    function pick(dev, save) {
+      btns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.dev === dev ? 'true' : 'false'); });
+      wiz.querySelectorAll('[data-panel]').forEach(function (p) { p.hidden = p.dataset.panel !== dev; });
+      if (after) after.hidden = false;
+      if (save) { try { localStorage.setItem('viva-device', dev); } catch (e) {} }
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { pick(b.dataset.dev, true); }); });
+    var saved = null;
+    try { saved = localStorage.getItem('viva-device'); } catch (e) {}
+    if (!saved) {
+      var ua = navigator.userAgent || '';
+      if (/iPhone|iPad|Android/i.test(ua)) saved = 'mobile';
+      else if (/Nintendo|PlayStation|Xbox/i.test(ua)) saved = 'console';
+    }
+    if (saved && wiz.querySelector('[data-panel="' + saved + '"]')) pick(saved, false);
+  });
 
-      var fail = function (m) { err.textContent = m; err.style.display = 'block'; };
-
-      err.style.display = 'none';
-      out.style.display = 'none';
-      if (!name) { fail('ゲーマーIDを入力してください。'); return; }
-
-      statBtn.disabled = true;
-      statBtn.textContent = '照会中...';
-
-      fetch('/api/get-stats?player=' + encodeURIComponent(name))
-        .then(function (r) {
-          if (r.status === 404) throw new Error('NOT_FOUND');
-          if (!r.ok) throw new Error('SERVER');
-          return r.text();
-        })
-        .then(function (raw) {
-          var data = JSON.parse(raw);
-          var kd = data.kill_data || {};
-          document.getElementById('statWho').textContent = name;
-          document.getElementById('statPk').textContent = (kd.player_kills_total || 0).toLocaleString();
-          document.getElementById('statMk').textContent = (kd.mob_kills_total || 0).toLocaleString();
-          document.getElementById('statDe').textContent = (kd.deaths_total || 0).toLocaleString();
-
-          var bi = raw.indexOf('"name":"balance"');
-          if (bi !== -1) {
-            var v = raw.substring(bi, bi + 250).match(/"value"\s*:\s*([^,}]+)/);
-            document.getElementById('statMoney').textContent =
-              v ? '$' + parseFloat(v[1].replace(/"/g, '')).toLocaleString() : '$0';
-          }
-          var li = raw.indexOf('"tableName":"lands"');
-          if (li !== -1) {
-            var t = raw.substring(li, li + 400).match(/"value"\s*:\s*"([^"]+)"/);
-            document.getElementById('statTown').textContent = t ? t[1] : '未所属';
-          }
-          var tm = raw.match(/"active_playtime"\s*:\s*([0-9.]+)/);
-          if (tm) {
-            var mins = Math.floor(parseInt(tm[1], 10) / 60000);
-            document.getElementById('statTime').textContent =
-              Math.floor(mins / 60) + '時間 ' + (mins % 60) + '分';
-          }
-          out.style.display = 'block';
-        })
-        .catch(function (e) {
-          if (e.message === 'NOT_FOUND') fail('「' + name + '」の記録が見つかりませんでした。IDのつづりを確認してください。');
-          else if (e instanceof SyntaxError) fail('データを読み取れませんでした。時間をおいて試してください。');
-          else fail('サーバーに接続できませんでした。通信環境を確認してください。');
-        })
-        .finally(function () {
-          statBtn.disabled = false;
-          statBtn.textContent = '統計を取得';
-        });
+  /* ---------- VIVA Portal（アプリとして使えるように：サービスワーカーを登録） ---------- */
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
     });
   }
 
-  /* ---------- 接続履歴 ---------- */
-  var historyList = document.getElementById('historyList');
-  var historyMsg = document.getElementById('historyMsg');
-  if (historyList && historyMsg) {
-    var relTime = function (ms) {
-      var diff = Math.max(0, Date.now() - ms);
-      var min = Math.floor(diff / 60000);
-      if (min < 1) return 'たった今';
-      if (min < 60) return min + '分前';
-      var hr = Math.floor(min / 60);
-      if (hr < 24) return hr + '時間前';
-      return Math.floor(hr / 24) + '日前';
-    };
-
-    fetch('/api/get-history')
-      .then(function (r) {
-        if (!r.ok) throw new Error('SERVER');
-        return r.json();
-      })
-      .then(function (data) {
-        var events = data.events || [];
-        if (!events.length) {
-          historyMsg.textContent = 'まだ記録がありません。';
-          return;
-        }
-        events.forEach(function (ev) {
-          var li = document.createElement('li');
-          if (ev.type === 'join') li.className = 'on';
-          var who = document.createElement('span');
-          who.className = 'who';
-          who.textContent = ev.player;
-          var at = document.createElement('span');
-          at.className = 'at';
-          at.textContent = (ev.type === 'join' ? ' が参加 · ' : ' が退出 · ') + relTime(ev.time);
-          li.appendChild(who);
-          li.appendChild(at);
-          historyList.appendChild(li);
-        });
-        historyMsg.hidden = true;
-        historyList.hidden = false;
-      })
-      .catch(function () {
-        historyMsg.textContent = '接続履歴を取得できませんでした。時間をおいて試してください。';
-      });
-  }
-
   /* ---------- 並んだものに順番（--k）を振る：CSSで一つずつ時間差で出す ---------- */
-  document.querySelectorAll('.news, .pillars, .steps, .faq, .addr, .duo, .spec tbody, .wiki-subnav .wrap, .news-article, .pager, .mobile-nav ul')
+  document.querySelectorAll('.news, .pillars, .steps, .faq, .addr, .duo, .spec tbody, .wiki-subnav .wrap, .news-article, .pager, .mobile-nav ul, .live-grid')
     .forEach(function (list) {
       Array.prototype.forEach.call(list.children, function (c, i) { c.style.setProperty('--k', i); });
     });

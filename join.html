@@ -11,10 +11,17 @@
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="参加する | VIVA-MC">
 <meta property="og:description" content="VIVA-MCへの参加手順と接続情報。Java版・統合版のどちらからでも参加できます。">
-<meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://www.viva-mc.net/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="server-icon.png">
-<link rel="apple-touch-icon" href="server-icon-512.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VIVA Portal">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+SC:wght@600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho:wght@400;500;700;800&display=swap">
@@ -45,6 +52,8 @@
         <li><a href="join.html" aria-current="page"><i class="fa-solid fa-play" aria-hidden="true"></i>参加する</a></li>
         <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
         <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
+        <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>国家</a></li>
+        <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>ランキング</a></li>
         <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
         <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>資源ワールド</a></li>
         <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
@@ -65,11 +74,14 @@
 </header>
 
 <nav class="mobile-nav" id="mobileNav" aria-label="サイト内（モバイル）">
+  <a class="m-portal plain" href="portal.html"><img src="/icons/icon-192.png" alt="">VIVA Portal<small>アプリ・通知</small></a>
   <ul>
     <li><a href="index.html"><i class="fa-solid fa-house" aria-hidden="true"></i>ホーム</a></li>
     <li><a href="join.html" aria-current="page"><i class="fa-solid fa-play" aria-hidden="true"></i>参加する</a></li>
     <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
     <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
+    <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>国家</a></li>
+    <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>ランキング</a></li>
     <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
     <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>資源ワールド</a></li>
     <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
@@ -98,6 +110,61 @@
     </header>
 
     <div class="wrap">
+      <section>
+        <h2 class="sec disp sec-underline" data-rv>あなたに合った入り方</h2>
+        <p class="sec-note" data-rv>遊ぶ機種をえらぶと、その機種での入り方だけを表示します。</p>
+        <div class="wizard" data-wizard>
+          <div class="wiz-pick" role="group" aria-label="遊ぶ機種" data-rv>
+            <button type="button" data-dev="java" aria-pressed="false"><i class="fa-solid fa-desktop" aria-hidden="true"></i><b>パソコン</b><small>Java版</small></button>
+            <button type="button" data-dev="mobile" aria-pressed="false"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i><b>スマホ・タブレット</b><small>統合版</small></button>
+            <button type="button" data-dev="win" aria-pressed="false"><i class="fa-brands fa-windows" aria-hidden="true"></i><b>Windows</b><small>統合版</small></button>
+            <button type="button" data-dev="console" aria-pressed="false"><i class="fa-solid fa-gamepad" aria-hidden="true"></i><b>Switch・PS・Xbox</b><small>統合版</small></button>
+          </div>
+
+          <div class="wiz-panel" data-panel="java" hidden>
+            <h3><i class="fa-solid fa-desktop" aria-hidden="true"></i>パソコン（Java版）での入り方</h3>
+            <ol class="wiz-steps">
+              <li>Minecraft Java Edition を <b>26.2</b> で起動します。</li>
+              <li>タイトル画面で「<b>マルチプレイ</b>」→「<b>サーバーを追加</b>」を選びます。</li>
+              <li>「サーバーアドレス」に <button type="button" class="chip-copy" data-copy="viva-mc.net">viva-mc.net <i class="fa-regular fa-copy" aria-hidden="true"></i></button> を入れます（ポートの入力はいりません）。</li>
+              <li>「完了」を押し、一覧に出た VIVA-MC を選んで「<b>サーバーに接続</b>」。</li>
+            </ol>
+            <p class="wiz-tip"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i>「サーバーリソースパック」は <b>有効</b> にしておくと、乗り物などがきれいに表示されます。</p>
+          </div>
+
+          <div class="wiz-panel" data-panel="mobile" hidden>
+            <h3><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i>スマホ・タブレット（統合版）での入り方</h3>
+            <ol class="wiz-steps">
+              <li>Minecraft を最新版に更新して起動し、「<b>遊ぶ</b>」を押します。</li>
+              <li>上のタブから「<b>サーバー</b>」を開き、いちばん下の「<b>サーバーを追加</b>」を押します。</li>
+              <li>サーバー名に <b>VIVA-MC</b>、アドレスに <button type="button" class="chip-copy" data-copy="viva-mc.net">viva-mc.net <i class="fa-regular fa-copy" aria-hidden="true"></i></button>、ポートに <b class="dot">19132</b> を入れます。</li>
+              <li>「保存」を押し、一覧の VIVA-MC から接続します。</li>
+            </ol>
+            <p class="wiz-tip"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i>アドレスは長押しで貼り付けられます。上のボタンを押すとコピーできます。</p>
+          </div>
+
+          <div class="wiz-panel" data-panel="win" hidden>
+            <h3><i class="fa-brands fa-windows" aria-hidden="true"></i>Windows（統合版）での入り方</h3>
+            <ol class="wiz-steps">
+              <li>Minecraft（統合版）を最新版に更新して起動し、「<b>遊ぶ</b>」を押します。</li>
+              <li>「<b>サーバー</b>」タブを開き、「<b>サーバーを追加</b>」を押します。</li>
+              <li>サーバー名に <b>VIVA-MC</b>、アドレスに <button type="button" class="chip-copy" data-copy="viva-mc.net">viva-mc.net <i class="fa-regular fa-copy" aria-hidden="true"></i></button>、ポートに <b class="dot">19132</b> を入れます。</li>
+              <li>「保存」を押し、一覧の VIVA-MC から接続します。</li>
+            </ol>
+            <p class="wiz-tip"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i>「Java Edition」のアイコンの方を使っている人は、パソコン（Java版）の手順を見てください。</p>
+          </div>
+
+          <div class="wiz-panel" data-panel="console" hidden>
+            <h3><i class="fa-solid fa-gamepad" aria-hidden="true"></i>Switch・PS・Xbox での入り方</h3>
+            <p>ゲーム機版の Minecraft は、メニューから外部のサーバーを追加できないようになっています。入るには、ゲーム機のネット設定を変えるなど、ひと手間かかります。</p>
+            <p>手順は機種によって違い、ときどき変わるので、<b>Discordで機種名を伝えてください</b>。いま使える方法を案内します。</p>
+            <p style="margin-top:14px"><a class="btn fill" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord" aria-hidden="true"></i>Discordで入り方を聞く</a></p>
+          </div>
+
+          <p class="wiz-after" hidden>入れなかったときは、<a href="status.html">サーバーの様子</a>で開いているかを確かめるか、<a href="address.html">臨時アドレス</a>が出ていないか見てください。</p>
+        </div>
+      </section>
+
       <section>
         <h2 class="sec disp sec-underline" data-rv>接続までの手順</h2>
         <p class="sec-note" data-rv>上から順に進めれば入れます。</p>
@@ -137,7 +204,7 @@
               <tr><th>統合版（BE）ポート</th><td>19132</td></tr>
               <tr><th>対応機種</th><td>PC・Switch・スマホ・iPad</td></tr>
               <tr><th>参加費</th><td>無料</td></tr>
-              <tr><th>Webマップ</th><td><a href="http://viva-mc.net:80" target="_blank" rel="noopener noreferrer">viva-mc.net:80</a></td></tr>
+              <tr><th>ワールドマップ</th><td><a href="map.html">サイトで見る</a></td></tr>
             </tbody>
           </table>
         </div>
@@ -170,7 +237,7 @@
 
     <footer class="foot" data-rv>
       <p>&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
-      <p class="foot-links"><a href="rules.html">ルール</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a></p>
+      <p class="foot-links"><a href="rules.html">ルール</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="portal.html">VIVA Portal</a><a href="en.html" lang="en">English</a></p>
       <p class="foot-note">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.<br>VIVA-MCはMinecraft公式のサービスではなく、Mojang・Microsoftとは関係ありません。</p>
     </footer>
   </main>

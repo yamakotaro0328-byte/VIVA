@@ -163,3 +163,53 @@ curl "http://localhost:45678/v1/players?query=あ"
 このAPIは認証なしだと誰でも読める状態になります（今のサイトの「プレイヤー統計」
 「接続履歴」がもともと公開情報として設計されているためです）。より厳しくしたい
 場合は `token` を設定してください。
+
+## 1.2.0 で増えたAPI
+
+### `GET /v1/online`
+
+いま接続している人の名前と、直近7日の接続人数（`online-sample-minutes` ごとに記録）。
+
+```json
+{ "online": 3, "max": 100, "players": ["Alex", "Steve", "kot0328"],
+  "peak": 18, "peak_at": 1791900000000, "samples": [[1791900000000, 12], ...] }
+```
+
+### `GET /v1/lands`
+
+Lands の土地・国・いま起きている戦争（`lands-refresh-seconds` ごとに作り直したもの）。
+Lands が入っていない場合は `{"available":false,...}` を返す。
+
+```json
+{ "available": true, "updated": 1791900000000,
+  "lands": [{ "name": "Aurora", "members": 4, "chunks": 120, "balance": 52000, "created": 1790000000000,
+              "in_war": false, "level": "", "color": "#93301C", "allies": [], "enemies": [],
+              "member_names": ["Alex"], "war_stats": {"won":1,"lost":0,"kills":10,"deaths":4,"captures":1},
+              "nation": "Empire", "owner": "Alex" }],
+  "nations": [{ "name": "Empire", "capital": "Aurora", "lands": ["Aurora"], "leader": "Alex", ... }],
+  "wars": [{ "attacker": "Empire", "attacker_kind": "nation", "defender": "Kingdom", "defender_kind": "nation",
+             "state": "FIGHT", "started": 1791900000000, "time_left": 3600000, "points_to_win": 100,
+             "attacker_points": 40, "defender_points": 25, "attacker_kills": 6, "defender_kills": 3 }] }
+```
+
+### `GET /v1/events?limit=<件数>`
+
+宣戦布告・開戦・終戦・同盟・敵対・建国・国への加入/離脱・土地の作成/解体・改名の年表（新しい順）。
+`type` は `war_declare` `war_start` `war_end` `ally` `ally_end` `enemy` `enemy_end`
+`nation_create` `nation_delete` `nation_join` `nation_leave` `land_create` `land_delete` `rename`。
+
+```json
+{ "events": [{ "type": "war_declare", "time": 1791900000000, "a": "Empire", "a_kind": "nation",
+               "b": "Kingdom", "b_kind": "nation", "detail": "" }] }
+```
+
+ビルドには LandsAPI（jitpack.io）を使う。Lands が入っていないサーバーでも、
+国家図鑑・年表なしで今まで通り動く。
+
+## 1.3.0：VIVA Portal の通知
+
+サーバーが起動したとき（`notify-server-open`）と、宣戦布告・開戦のとき（`notify-war`）に、
+公式サイトの `/api/push?action=notify` へ「通知を送って」と頼む。サイトが、通知をオンにしている人の端末へまとめて送る。
+
+- `config.yml` の `token` を合言葉に使う（空だと通知は送らない）。サイトの環境変数 `VIVA_STATS_API_TOKEN` と同じ値にする
+- 送り先は `site-url`（既定: https://www.viva-mc.net）

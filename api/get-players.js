@@ -1,26 +1,7 @@
-// api/get-players.js
-export default async function handler(req, res) {
+// api/get-players.js — プレイヤーの名前検索・一覧
+import { relay } from "./_viva.js";
+
+export default function handler(req, res) {
   const { query, limit, offset } = req.query;
-
-  try {
-    const headers = {};
-    if (process.env.VIVA_STATS_API_TOKEN) {
-      headers.Authorization = `Bearer ${process.env.VIVA_STATS_API_TOKEN}`;
-    }
-
-    const params = new URLSearchParams();
-    if (query) params.set("query", query);
-    if (limit) params.set("limit", limit);
-    if (offset) params.set("offset", offset);
-
-    const response = await fetch(
-      `http://viva-mc.net:45678/v1/players?${params.toString()}`,
-      { headers }
-    );
-    const data = await response.json();
-
-    res.status(response.status).json(data);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch data" });
-  }
+  return relay(res, "/v1/players", { query, limit, offset }, { cache: 60 });
 }

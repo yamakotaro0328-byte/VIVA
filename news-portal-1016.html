@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no">
+<title>VIVA Portal（アプリ）ができました | お知らせ | VIVA-MC</title>
+<meta name="description" content="公式サイトをホーム画面に追加して、アプリのように使えるようになりました。サーバーが開いたときや戦争が始まったときに通知が届きます。">
+<meta name="theme-color" content="#E9D8B0">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="VIVA-MC">
+<meta property="og:title" content="VIVA Portal（アプリ）ができました | VIVA-MC">
+<meta property="og:description" content="公式サイトをホーム画面に追加して、アプリのように使えるようになりました。サーバーが開いたときや戦争が始まったときに通知が届きます。">
+<meta property="og:image" content="https://www.viva-mc.net/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="server-icon.png">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VIVA Portal">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Cormorant+SC:wght@600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="inkbar" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true">
+  <svg viewBox="0 0 40 1000" preserveAspectRatio="none">
+    <path class="rail-line" d="M20,0 C6,150 34,320 18,470 C4,620 34,790 20,1000" fill="none"
+          stroke="#8E2E1C" stroke-width="2.4" stroke-dasharray="3 12" stroke-linecap="round" pathLength="1"/>
+  </svg>
+  <div class="rail-ship"><i class="fa-solid fa-sailboat"></i></div>
+</div>
+
+<a class="skip-link" href="#main">本文へスキップ</a>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <img src="server-icon.png" alt="">
+    <span class="brand-name disp">VIVA-MC</span>
+  </a>
+  <nav class="site-nav" aria-label="サイト内">
+    <ul>
+        <li><a href="index.html" aria-current="page"><i class="fa-solid fa-house" aria-hidden="true"></i>ホーム</a></li>
+        <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>参加する</a></li>
+        <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
+        <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
+        <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>国家</a></li>
+        <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>ランキング</a></li>
+        <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
+        <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>資源ワールド</a></li>
+        <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+        <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>臨時アドレス</a></li>
+    </ul>
+  </nav>
+  <div class="topbar-cta">
+    <button type="button" class="ip-copy" data-copy="viva-mc.net">
+      <i class="fa-regular fa-copy" aria-hidden="true"></i>viva-mc.net
+    </button>
+    <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-discord" aria-hidden="true"></i>Discord
+    </a>
+  </div>
+  <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mobileNav">
+    <i class="fa-solid fa-bars" aria-hidden="true"></i>メニュー
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-label="サイト内（モバイル）">
+  <a class="m-portal plain" href="portal.html"><img src="/icons/icon-192.png" alt="">VIVA Portal<small>アプリ・通知</small></a>
+  <ul>
+    <li><a href="index.html" aria-current="page"><i class="fa-solid fa-house" aria-hidden="true"></i>ホーム</a></li>
+    <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>参加する</a></li>
+    <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
+    <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
+    <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>国家</a></li>
+    <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>ランキング</a></li>
+    <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
+    <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>資源ワールド</a></li>
+    <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
+    <li><a href="address.html"><i class="fa-solid fa-tower-broadcast" aria-hidden="true"></i>臨時アドレス</a></li>
+  </ul>
+  <div class="m-server">
+    <button type="button" class="ip-copy" data-copy="viva-mc.net">
+      <span><span class="lab dot">SERVER ADDRESS</span><span class="val">viva-mc.net</span></span>
+      <span class="btn" aria-hidden="true"><i class="fa-regular fa-copy"></i></span>
+    </button>
+    <a class="side-discord" href="https://discord.gg/ECUTZeTZZV" target="_blank" rel="noopener noreferrer">
+      <i class="fa-brands fa-discord" aria-hidden="true"></i>Discordに参加
+    </a>
+  </div>
+</nav>
+
+  <main class="main" id="main" tabindex="-1">
+    <header class="page-head">
+      <div class="wrap">
+        <div class="num disp"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></div>
+        <div>
+          <span class="kicker dot">2026.10.16</span><h1 class="disp">VIVA Portal（アプリ）ができました <span class="tag moss">新機能</span></h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <article class="news-article" data-rv>
+        <p>公式サイトを、スマホやパソコンに<strong>アプリとして入れられる</strong>ようになりました。名前は <strong>VIVA Portal</strong> です。</p>
+        <p><strong>ひと目でわかる</strong>……サーバーが開いているか、いま誰がいるか、自分の記録と国、いま起きている戦争、資源ワールドのリセットまでの時間を、1つの画面にまとめました。</p>
+        <p><strong>通知が届く</strong>……「サーバーが開いたとき」「宣戦布告・開戦のとき」に通知を受け取れます。どちらを受け取るかは自分で選べます。</p>
+        <p><strong>入れ方</strong>……<a href="portal.html">VIVA Portal</a> を開いて「ホーム画面に追加」を押してください。iPhone・iPad は Safari の共有ボタンから「ホーム画面に追加」を選び、追加したアイコンから開くと通知を使えます（iOS 16.4以降）。</p>
+        <p>通知は、サーバー側の準備が整いしだい使えるようになります。あわせて<a href="privacy.html">プライバシーポリシー</a>に通知の扱いを追記しました。</p>
+      </article>
+
+      <p class="news-back" data-rv><a href="news.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> お知らせ一覧に戻る</a></p>
+    </div>
+
+    <footer class="foot" data-rv>
+      <p>&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
+      <p class="foot-links"><a href="rules.html">ルール</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="portal.html">VIVA Portal</a><a href="en.html" lang="en">English</a></p>
+      <p class="foot-note">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.<br>VIVA-MCはMinecraft公式のサービスではなく、Mojang・Microsoftとは関係ありません。</p>
+    </footer>
+  </main>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
+
+<script src="script.js"></script>
+</body>
+</html>
