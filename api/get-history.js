@@ -1,16 +1,6 @@
-// api/get-history.js
-export default async function handler(req, res) {
-  try {
-    const headers = {};
-    if (process.env.VIVA_STATS_API_TOKEN) {
-      headers.Authorization = `Bearer ${process.env.VIVA_STATS_API_TOKEN}`;
-    }
+// api/get-history.js — 直近の入退室
+import { relay } from "./_viva.js";
 
-    const response = await fetch("http://viva-mc.net:45678/v1/history?limit=20", { headers });
-    const data = await response.json();
-
-    res.status(response.status).json(data);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch data" });
-  }
+export default function handler(req, res) {
+  return relay(res, "/v1/history", { limit: 20 }, { cache: 20 });
 }

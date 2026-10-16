@@ -11,8 +11,10 @@
 <meta property="og:site_name" content="VIVA-MC">
 <meta property="og:title" content="VIVA-MC 公式サイト | 国家運営マインクラフトサーバー">
 <meta property="og:description" content="憲法を定め、経済を回し、外交と戦争まで。すべてがプレイヤーの手で動く国家運営マインクラフトサーバー。Java版・統合版クロスプレイ対応、参加は無料。">
-<meta property="og:image" content="https://viva-mc.net/server-icon-512.png">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://www.viva-mc.net/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="server-icon.png">
 <link rel="apple-touch-icon" href="server-icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +23,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
-<body class="has-chart">
+<body class="has-chart" data-page="home">
 
 <div class="inkbar" aria-hidden="true"></div>
 <div class="rail" aria-hidden="true">
@@ -45,6 +47,8 @@
         <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>参加する</a></li>
         <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
         <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
+        <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>国家</a></li>
+        <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>ランキング</a></li>
         <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
         <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>資源ワールド</a></li>
         <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
@@ -70,6 +74,8 @@
     <li><a href="join.html"><i class="fa-solid fa-play" aria-hidden="true"></i>参加する</a></li>
     <li><a href="rules.html"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>ルール</a></li>
     <li><a href="play.html"><i class="fa-solid fa-dice" aria-hidden="true"></i>あそぶ</a></li>
+    <li><a href="nations.html"><i class="fa-solid fa-flag" aria-hidden="true"></i>国家</a></li>
+    <li><a href="ranking.html"><i class="fa-solid fa-trophy" aria-hidden="true"></i>ランキング</a></li>
     <li><a href="faq.html"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>よくある質問</a></li>
     <li><a href="resource.html"><i class="fa-solid fa-mountain-sun" aria-hidden="true"></i>資源ワールド</a></li>
     <li><a href="wiki.html"><i class="fa-solid fa-book" aria-hidden="true"></i>Wiki</a></li>
@@ -533,6 +539,14 @@
         <p class="sec-note" data-rv>最新の変更やイベントはここに載せています。タイトルをクリックすると詳しく見られます。</p>
         <ul class="news" data-rv>
           <li>
+            <div class="when dot">2026.10.16</div>
+            <div>
+              <h3><a href="news-site-update-1016.html">公式サイトを大きく更新しました</a> <span class="tag honey">告知</span></h3>
+              <p>ランキング、プロフィール、国家図鑑、年表、ワールドマップ、サーバーの様子などを追加しました。</p>
+              <a class="more" href="news-site-update-1016.html">続きを読む &rarr;</a>
+            </div>
+          </li>
+          <li>
             <div class="when dot">2026.09.27</div>
             <div>
               <h3><a href="news-rules-update-0927.html">ルールを改訂しました（荒らし・サポート）</a> <span class="tag brick">ルール</span></h3>
@@ -548,16 +562,31 @@
               <a class="more" href="news-address-restored-0923.html">続きを読む &rarr;</a>
             </div>
           </li>
-          <li>
-            <div class="when dot">2026.09.23</div>
-            <div>
-              <h3><a href="news-address-change.html">接続先を一時的に変更します</a> <span class="tag honey">告知</span></h3>
-              <p>Java版・Bedrock版とも臨時アドレスに変更しました。viva-mc.netでは接続できません。</p>
-              <a class="more" href="news-address-change.html">続きを読む &rarr;</a>
-            </div>
-          </li>
         </ul>
         <p class="news-all"><a href="news.html">すべてのお知らせを見る <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+      </section>
+
+      <section id="live">
+        <h2 class="sec disp sec-underline" data-rv>いまのVIVA-MC</h2>
+        <p class="sec-note" data-rv>サーバーの中の様子を、そのままお届けします。</p>
+        <div class="live-grid" data-rv>
+          <div class="live-card">
+            <h3><i class="fa-solid fa-signal" aria-hidden="true"></i>いま遊んでいる人</h3>
+            <div id="homeOnline"><p class="live-sub">読み込み中...</p></div>
+            <a class="go" href="status.html">サーバーの様子を見る &rarr;</a>
+          </div>
+          <div class="live-card">
+            <h3><i class="fa-solid fa-trophy" aria-hidden="true"></i>プレイ時間 TOP3</h3>
+            <div id="homeRank"><p class="live-sub">読み込み中...</p></div>
+            <a class="go" href="ranking.html">ランキングを見る &rarr;</a>
+          </div>
+          <div class="live-card">
+            <h3><i class="fa-solid fa-scroll" aria-hidden="true"></i>最近の出来事</h3>
+            <div id="homeChron"><p class="live-sub">読み込み中...</p></div>
+            <a class="go" href="chronicle.html">年表を見る &rarr;</a>
+          </div>
+        </div>
+        <p class="news-all" data-rv><a href="nations.html">国家図鑑を開く <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>　<a href="map.html">ワールドマップ <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
       </section>
 
       <section>
@@ -622,7 +651,7 @@
 
     <footer class="foot" data-rv>
       <p>&copy; 2026 VIVA-MC Official.　管理者 kot0328</p>
-      <p class="foot-links"><a href="rules.html">ルール</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a></p>
+      <p class="foot-links"><a href="rules.html">ルール</a><a href="terms.html">利用規約</a><a href="privacy.html">プライバシーポリシー</a><a href="en.html" lang="en">English</a></p>
       <p class="foot-note">NOT AN OFFICIAL MINECRAFT PRODUCT. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.<br>VIVA-MCはMinecraft公式のサービスではなく、Mojang・Microsoftとは関係ありません。</p>
     </footer>
   </main>
@@ -630,5 +659,6 @@
 <div class="toast" id="toast"><i class="fa-solid fa-circle-check" aria-hidden="true"></i><span></span></div>
 
 <script src="script.js"></script>
+<script src="live.js"></script>
 </body>
 </html>

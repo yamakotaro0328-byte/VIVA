@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /backup/
+
+Sitemap: https://www.viva-mc.net/sitemap.xml
