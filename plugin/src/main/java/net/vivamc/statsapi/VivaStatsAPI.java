@@ -36,6 +36,22 @@ public class VivaStatsAPI extends JavaPlugin {
         chronicle = new ChronicleStore(getDataFolder(), getLogger(), getConfig().getInt("chronicle-limit", 300));
         chronicle.load();
 
+        // VIVA Portal の通知（サーバーが開いた・戦争が始まった）
+        PushNotifier notifier = new PushNotifier(getConfig().getString("site-url", "https://www.viva-mc.net"),
+                getConfig().getString("token", ""), getLogger());
+        if (notifier.isEnabled()) {
+            if (getConfig().getBoolean("notify-war", true)) {
+                chronicle.setListener(notifier::onChronicle);
+            }
+            if (getConfig().getBoolean("notify-server-open", true)) {
+                // プレイヤーが入れるようになるまで少し待ってから知らせる
+                Bukkit.getScheduler().runTaskLaterAsynchronously(this, () -> notifier.send("open",
+                        "VIVA-MCが開きました", "いまなら入れます。viva-mc.net で待っています。", "/portal.html"), 20L * 45);
+            }
+        } else {
+            getLogger().info("[VivaStatsAPI] token が空なので、VIVA Portal の通知は送りません。");
+        }
+
         // Vault（所持金）・Lands（所属タウン・国家図鑑・年表）は、入っていれば自動で連携する。
         // どちらも入っていなくても、このプラグイン自体は普通に動く。
         EconomyHook economyHook = new EconomyHook(getLogger());

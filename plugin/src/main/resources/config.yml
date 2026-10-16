@@ -36,3 +36,15 @@ lands-refresh-seconds: 60
 
 # 年表（宣戦布告・終戦・同盟・建国など）を何件まで残すか
 chronicle-limit: 300
+
+# ----------------------------------------------------------
+# VIVA Portal の通知（公式サイトをアプリとして入れた人に届く）
+# token（上の設定）が空だと送りません。サイトの環境変数 VIVA_STATS_API_TOKEN と同じ値にしてください。
+# ----------------------------------------------------------
+site-url: "https://www.viva-mc.net"
+
+# サーバーが起動したら「VIVA-MCが開きました」と通知する
+notify-server-open: true
+
+# 宣戦布告・開戦を通知する（Lands が必要）
+notify-war: true

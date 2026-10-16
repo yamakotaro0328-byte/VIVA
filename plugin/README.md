@@ -205,3 +205,11 @@ Lands が入っていない場合は `{"available":false,...}` を返す。
 
 ビルドには LandsAPI（jitpack.io）を使う。Lands が入っていないサーバーでも、
 国家図鑑・年表なしで今まで通り動く。
+
+## 1.3.0：VIVA Portal の通知
+
+サーバーが起動したとき（`notify-server-open`）と、宣戦布告・開戦のとき（`notify-war`）に、
+公式サイトの `/api/push?action=notify` へ「通知を送って」と頼む。サイトが、通知をオンにしている人の端末へまとめて送る。
+
+- `config.yml` の `token` を合言葉に使う（空だと通知は送らない）。サイトの環境変数 `VIVA_STATS_API_TOKEN` と同じ値にする
+- 送り先は `site-url`（既定: https://www.viva-mc.net）

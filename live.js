@@ -802,7 +802,217 @@
     }).catch(function () {});
   }
 
+
+  /* ================================================================ VIVA Portal */
+  var UA = navigator.userAgent || '';
+  var IS_IOS = /iPad|iPhone|iPod/.test(UA) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  function isStandalone() {
+    return (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  }
+  function store(k, v) {
+    try { if (v === undefined) return localStorage.getItem(k); if (v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); } catch (e) {}
+    return null;
+  }
+  function postJSON(url, body) {
+    return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok) throw new Error(d.error || 'HTTP_' + r.status); return d; }); });
+  }
+  function b64ToBytes(b64) {
+    var s = (b64 + '='.repeat((4 - b64.length % 4) % 4)).replace(/-/g, '+').replace(/_/g, '/');
+    var raw = atob(s), out = new Uint8Array(raw.length);
+    for (var i = 0; i < raw.length; i++) out[i] = raw.charCodeAt(i);
+    return out;
+  }
+  function loadChron(el, n) {
+    if (!el) return;
+    api('/api/get-events?limit=' + n).then(function (d) {
+      var ev = d.events || [];
+      if (!ev.length) { el.innerHTML = '<p class="live-sub">まだ記録がありません。最初の歴史をつくりましょう。</p>'; return; }
+      el.innerHTML = '<ul class="chron mini">' + ev.map(function (e) { return eventRow(e, true); }).join('') + '</ul>';
+    }).catch(function () { el.innerHTML = '<p class="live-sub">いまは取得できません</p>'; });
+  }
+
+  function initPortal() {
+    /* --- サーバー --- */
+    var dot = $('#psDot'), txt = $('#psText'), numEl = $('#psNum'), faces = $('#psFaces');
+    function refreshStatus() {
+      mcstatus('java').then(function (d) {
+        var on = d && d.online;
+        dot.classList.toggle('on', !!on);
+        txt.textContent = d ? (on ? 'オンライン' : 'オフライン') : '確認できません';
+        numEl.innerHTML = on && d.players ? num(d.players.online) + '<small> / ' + num(d.players.max) + '人</small>' : '—';
+        $('#pStatus').classList.toggle('is-on', !!on);
+      });
+      api('/api/get-online').then(function (d) {
+        var names = d.players || [];
+        faces.innerHTML = names.slice(0, 16).map(function (n) {
+          return '<li><a href="' + playerHref(n) + '" class="plain" title="' + esc(n) + '">' + headImg(n, 30) + '<span class="sr-only">' + esc(n) + '</span></a></li>';
+        }).join('') + (names.length > 16 ? '<li class="more dot">+' + (names.length - 16) + '</li>' : '');
+      }).catch(function () { faces.innerHTML = ''; });
+    }
+    refreshStatus();
+    setInterval(refreshStatus, 60000);
+
+    /* --- あなた --- */
+    var meBody = $('#meBody');
+    function renderMe() {
+      var me = store('viva-me');
+      if (!me) {
+        meBody.innerHTML = '<p class="live-sub">ゲーマーIDを登録すると、自分の記録と国がここに出ます（この端末の中にだけ保存します）。</p>' +
+          '<form class="me-form"><label class="sr-only" for="meName">ゲーマーID</label><input id="meName" maxlength="32" placeholder="ゲーマーID" autocomplete="off" required>' +
+          '<button class="btn fill" type="submit">登録</button></form>';
+        $('.me-form', meBody).addEventListener('submit', function (e) {
+          e.preventDefault();
+          var v = $('#meName').value.trim();
+          if (v) { store('viva-me', v); renderMe(); }
+        });
+        return;
+      }
+      meBody.innerHTML = '<p class="live-sub">読み込み中...</p>';
+      Promise.all([api('/api/get-stats?player=' + encodeURIComponent(me)), api('/api/get-lands').then(remember).catch(function () { return null; })])
+        .then(function (r) {
+          var d = r[0], lands = r[1], bal = 0;
+          (d.stats || []).forEach(function (s) { if (s.name === 'balance') bal = Number(s.value) || 0; });
+          var land = null;
+          if (lands && lands.lands) land = lands.lands.filter(function (l) { return (l.member_names || []).some(function (m) { return m.toLowerCase() === me.toLowerCase(); }); })[0];
+          meBody.innerHTML = '<a class="me-card plain" href="' + playerHref(d.player || me) + '">' + headImg(d.player || me, 48) +
+            '<span><b>' + esc(d.player || me) + '</b><small>最後に見かけたのは ' + rel(d.last_seen) + '</small></span></a>' +
+            '<dl class="me-stats"><div><dt>プレイ時間</dt><dd class="dot">' + hours(d.active_playtime) + '</dd></div>' +
+            '<div><dt>所持金</dt><dd class="dot">' + money(bal) + '</dd></div>' +
+            '<div><dt>所属</dt><dd>' + (land ? (land.nation ? holderLink(land.nation, 'nation') : holderLink(land.name, 'land')) : 'なし') + '</dd></div></dl>' +
+            '<button type="button" class="linkish" id="meChange">名前を変える</button>';
+          $('#meChange').addEventListener('click', function () { store('viva-me', null); renderMe(); });
+        })
+        .catch(function (e) {
+          meBody.innerHTML = '<p class="live-sub">' + (e && e.code === 404 ? '「' + esc(me) + '」の記録が見つかりませんでした。' : 'いまは記録を取得できません。') + '</p>' +
+            '<button type="button" class="linkish" id="meChange">名前を変える</button>';
+          $('#meChange').addEventListener('click', function () { store('viva-me', null); renderMe(); });
+        });
+    }
+    renderMe();
+
+    /* --- 通知 --- */
+    var nb = $('#notifyBody');
+    var TOPIC_LABEL = { open: 'サーバーが開いたとき', war: '宣戦布告・開戦のとき' };
+    var pushKey = null;
+    function topicsSaved() {
+      var t = store('viva-push-topics');
+      return t ? t.split(',').filter(Boolean) : ['open', 'war'];
+    }
+    function swReady() {
+      return Promise.race([navigator.serviceWorker.ready, new Promise(function (_, rej) { setTimeout(function () { rej(new Error('SW_TIMEOUT')); }, 8000); })]);
+    }
+    function renderNotify(msg) {
+      var supported = 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
+      if (!supported) {
+        nb.innerHTML = IS_IOS && !isStandalone()
+          ? '<p class="live-sub">iPhone・iPad では、このページを<b>ホーム画面に追加</b>して、追加したアプリから開くと通知を使えます（iOS 16.4以降）。</p>'
+          : '<p class="live-sub">このブラウザでは通知を使えません。Chrome・Edge・Safari（ホーム画面に追加したもの）などで開いてください。</p>';
+        return;
+      }
+      if (!pushKey) { nb.innerHTML = '<p class="live-sub">通知は準備中です。使えるようになったらお知らせします。</p>'; return; }
+      if (Notification.permission === 'denied') {
+        nb.innerHTML = '<p class="live-sub">通知がブロックされています。ブラウザ（またはスマホ）の設定で、このサイトの通知を「許可」にしてください。</p>';
+        return;
+      }
+      swReady().then(function (reg) { return reg.pushManager.getSubscription().then(function (sub) { return [reg, sub]; }); })
+        .then(function (r) {
+          var reg = r[0], sub = r[1], topics = topicsSaved();
+          nb.innerHTML = (sub ? '<p class="nt-on"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>この端末に通知が届きます</p>' : '<p class="live-sub">オンにすると、アプリを閉じていても知らせが届きます。</p>') +
+            '<ul class="switches">' + ['open', 'war'].map(function (t) {
+              return '<li><label><input type="checkbox" data-topic="' + t + '"' + (topics.indexOf(t) >= 0 ? ' checked' : '') + '><span class="sw" aria-hidden="true"></span>' + TOPIC_LABEL[t] + '</label></li>';
+            }).join('') + '</ul>' +
+            (sub ? '<div class="nt-actions"><button type="button" class="btn plain" id="ntTest">試しに送る</button><button type="button" class="linkish" id="ntOff">通知をやめる</button></div>'
+                 : '<button type="button" class="btn fill" id="ntOn"><i class="fa-solid fa-bell" aria-hidden="true"></i>通知をオンにする</button>') +
+            (msg ? '<p class="nt-msg" role="status">' + esc(msg) + '</p>' : '');
+
+          function chosen() {
+            return Array.prototype.filter.call(nb.querySelectorAll('[data-topic]'), function (c) { return c.checked; }).map(function (c) { return c.getAttribute('data-topic'); });
+          }
+          Array.prototype.forEach.call(nb.querySelectorAll('[data-topic]'), function (c) {
+            c.addEventListener('change', function () {
+              var t = chosen();
+              store('viva-push-topics', t.join(','));
+              if (!sub) return;
+              if (!t.length) { off(reg, sub, 'どちらもオフにしたので、通知をやめました。'); return; }
+              postJSON('/api/push?action=subscribe', { subscription: sub.toJSON(), topics: t })
+                .then(function () { renderNotify('保存しました。'); })
+                .catch(function (e) { renderNotify(e.message); });
+            });
+          });
+          var on = $('#ntOn', nb);
+          if (on) on.addEventListener('click', function () {
+            var t = chosen();
+            if (!t.length) { renderNotify('通知を受け取りたいものを選んでください。'); return; }
+            on.disabled = true;
+            Notification.requestPermission().then(function (p) {
+              if (p !== 'granted') throw new Error('通知が許可されませんでした。');
+              var opts = { userVisibleOnly: true, applicationServerKey: b64ToBytes(pushKey) };
+              return reg.pushManager.subscribe(opts).catch(function () {
+                // 前に別の鍵で登録していたときは、いったん外してから登録し直す
+                return reg.pushManager.getSubscription().then(function (old) { return old ? old.unsubscribe() : null; })
+                  .then(function () { return reg.pushManager.subscribe(opts); });
+              });
+            }).then(function (s) {
+              store('viva-push-topics', t.join(','));
+              return postJSON('/api/push?action=subscribe', { subscription: s.toJSON(), topics: t });
+            }).then(function () { renderNotify('通知をオンにしました。'); })
+              .catch(function (e) { renderNotify(e.message || '通知をオンにできませんでした。'); });
+          });
+          var test = $('#ntTest', nb);
+          if (test) test.addEventListener('click', function () {
+            test.disabled = true;
+            postJSON('/api/push?action=test', { endpoint: sub.endpoint })
+              .then(function () { renderNotify('試しの通知を送りました。数秒で届きます。'); })
+              .catch(function (e) { renderNotify(e.message); });
+          });
+          var offBtn = $('#ntOff', nb);
+          if (offBtn) offBtn.addEventListener('click', function () { off(reg, sub, '通知をやめました。'); });
+        })
+        .catch(function () { nb.innerHTML = '<p class="live-sub">通知の準備ができませんでした。ページを開き直してください。</p>'; });
+    }
+    function off(reg, sub, msg) {
+      postJSON('/api/push?action=unsubscribe', { endpoint: sub.endpoint }).catch(function () {})
+        .then(function () { return sub.unsubscribe(); })
+        .then(function () { renderNotify(msg); });
+    }
+    api('/api/push?action=key', 6000).then(function (d) { pushKey = d && d.available ? d.publicKey : null; })
+      .catch(function () { pushKey = null; })
+      .then(function () { renderNotify(); });
+
+    /* --- ホーム画面に追加 --- */
+    var ib = $('#installBody'), deferred = null;
+    function renderInstall(justNow) {
+      if (isStandalone() || justNow) {
+        ib.innerHTML = '<p class="nt-on"><i class="fa-solid fa-circle-check" aria-hidden="true"></i>' + (justNow ? '追加しました。ホーム画面から開けます。' : 'アプリとして開いています。') + '</p>';
+        $('#pInstall').classList.add('done');
+        return;
+      }
+      if (deferred) {
+        ib.innerHTML = '<p class="live-sub">ホーム画面のアイコンから、アプリのようにすぐ開けます。</p><button type="button" class="btn fill" id="doInstall"><i class="fa-solid fa-download" aria-hidden="true"></i>ホーム画面に追加</button>';
+        $('#doInstall').addEventListener('click', function () {
+          deferred.prompt();
+          deferred.userChoice.then(function (c) { deferred = null; renderInstall(c && c.outcome === 'accepted'); });
+        });
+        return;
+      }
+      if (IS_IOS) {
+        ib.innerHTML = '<ol class="wiz-steps small"><li>Safari でこのページを開きます。</li><li>下の <i class="fa-solid fa-arrow-up-from-bracket" aria-label="共有"></i> 共有ボタンを押します。</li><li>「<b>ホーム画面に追加</b>」を選びます。</li></ol>';
+        return;
+      }
+      ib.innerHTML = '<p class="live-sub">ブラウザのメニュー（<i class="fa-solid fa-ellipsis-vertical" aria-label="メニュー"></i>）から「<b>アプリをインストール</b>」か「<b>ホーム画面に追加</b>」を選んでください。</p>';
+    }
+    window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferred = e; renderInstall(); });
+    window.addEventListener('appinstalled', function () { deferred = null; renderInstall(true); });
+    renderInstall();
+
+    /* --- 国と戦争 --- */
+    api('/api/get-lands').then(remember).then(function (d) {
+      if (d.wars && d.wars.length) $('#pWars').innerHTML = '<div class="wars">' + warCards(d.wars.slice(0, 2)) + '</div>';
+    }).catch(function () {}).then(function () { loadChron($('#homeChron'), 4); });
+  }
+
   /* ---------------------------------------------------------------- 起動 */
-  var INIT = { ranking: initRanking, player: initPlayer, status: initStatus, nations: initNations, nation: initNation, chronicle: initChronicle, map: initMap, home: initHome, news: initNews };
+  var INIT = { ranking: initRanking, player: initPlayer, status: initStatus, nations: initNations, nation: initNation, chronicle: initChronicle, map: initMap, home: initHome, news: initNews, portal: initPortal };
   if (INIT[PAGE]) INIT[PAGE]();
 })();

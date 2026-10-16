@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -57,6 +58,7 @@ public class ChronicleStore {
     private final int limit;
     private final Deque<Entry> entries = new ArrayDeque<>();
     private boolean dirty;
+    private volatile Consumer<Entry> listener;
 
     public ChronicleStore(File dataFolder, Logger logger, int limit) {
         this.file = new File(dataFolder, "chronicle.yml");
@@ -64,19 +66,38 @@ public class ChronicleStore {
         this.limit = Math.max(10, limit);
     }
 
-    public synchronized void add(String type, String a, String aKind, String b, String bKind, String detail) {
+    /** 出来事が書き足されたときに呼ぶ処理（通知など）。 */
+    public void setListener(Consumer<Entry> listener) {
+        this.listener = listener;
+    }
+
+    public void add(String type, String a, String aKind, String b, String bKind, String detail) {
+        Entry added = append(type, a, aKind, b, bKind, detail);
+        Consumer<Entry> l = listener;
+        if (added != null && l != null) {
+            try {
+                l.accept(added);
+            } catch (RuntimeException ignored) {
+                // 通知の失敗で年表の記録を止めない
+            }
+        }
+    }
+
+    private synchronized Entry append(String type, String a, String aKind, String b, String bKind, String detail) {
         Entry last = entries.peekLast();
         long now = System.currentTimeMillis();
         // 同じ出来事が短い間に二重に届いたときは1件にまとめる
         if (last != null && last.type.equals(type) && last.a.equals(a == null ? "" : a)
                 && last.b.equals(b == null ? "" : b) && now - last.timeMs < 5000) {
-            return;
+            return null;
         }
-        entries.addLast(new Entry(type, now, a, aKind, b, bKind, detail));
+        Entry e = new Entry(type, now, a, aKind, b, bKind, detail);
+        entries.addLast(e);
         while (entries.size() > limit) {
             entries.pollFirst();
         }
         dirty = true;
+        return e;
     }
 
     /** 新しい順に最大 n 件。 */

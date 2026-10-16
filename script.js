@@ -184,6 +184,13 @@
     if (saved && wiz.querySelector('[data-panel="' + saved + '"]')) pick(saved, false);
   });
 
+  /* ---------- VIVA Portal（アプリとして使えるように：サービスワーカーを登録） ---------- */
+  if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    });
+  }
+
   /* ---------- 並んだものに順番（--k）を振る：CSSで一つずつ時間差で出す ---------- */
   document.querySelectorAll('.news, .pillars, .steps, .faq, .addr, .duo, .spec tbody, .wiki-subnav .wrap, .news-article, .pager, .mobile-nav ul, .live-grid')
     .forEach(function (list) {
