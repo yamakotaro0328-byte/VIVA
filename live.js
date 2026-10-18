@@ -791,12 +791,12 @@
     var hc = $('#homeCal');
     if (hc) api('/api/calendar', 9000).catch(function () { return { events: [] }; }).then(function (d) {
       var from = Date.now() - 3 * 3600000;
-      var up = (d.events || []).concat(resetEvents(from, from + 62 * 86400000, d.resetDay || 15))
-        .filter(function (e) { return Date.parse(e.start) >= from; })
+      var up = localDays(d.events).concat(resetEvents(from, from + 62 * 86400000, d.resetDay || 15))
+        .filter(function (e) { return evEnd(e) >= from; })
         .sort(function (a, b) { return Date.parse(a.start) - Date.parse(b.start); }).slice(0, 3);
       hc.innerHTML = '<ul class="mini-cal">' + up.map(function (e) {
         var s = new Date(e.start);
-        return '<li><span class="mc-d dot">' + (s.getMonth() + 1) + '/' + s.getDate() + '<small>' + WD[s.getDay()] + '</small></span><span class="mc-t">' + esc(e.title) +
+        return '<li><span class="mc-d dot">' + (s.getMonth() + 1) + '/' + s.getDate() + '<small>' + WD[s.getDay()] + '</small></span><span class="mc-t">' + esc(evTitle(e)) +
           '<small>' + evTime(e) + '</small></span></li>';
       }).join('') + '</ul>';
     });
@@ -1087,8 +1087,31 @@
   }
   function sameDay(a, b) { return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate(); }
   function evHref(e) { return e.url ? (/^https:/.test(e.url) ? e.url : e.url) : ''; }
+  function evTitle(e) { return EN && e.title_en ? e.title_en : e.title; }
+  function evDesc(e) { return EN && e.description_en ? e.description_en : (e.description || ''); }
+  function dayKey(d) { return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate(); }
+  function evEnd(e) { return e.end ? Date.parse(e.end) : Date.parse(e.start); }
+  // 終日の予定は、見ている人の時間帯に関係なくその日付で出す（サーバーは日本時間）
+  function localDays(list) {
+    return (list || []).map(function (e) {
+      if (!e.allDay || !e.dateStart) return e;
+      var a = e.dateStart.split('-'), b = (e.dateEnd || e.dateStart).split('-'), o = {};
+      for (var k in e) o[k] = e[k];
+      o.start = new Date(+a[0], a[1] - 1, +a[2]).toISOString();
+      o.end = new Date(+b[0], b[1] - 1, +b[2], 23, 59, 59).toISOString();
+      return o;
+    });
+  }
+  function multiDay(e) { return e.end && dayKey(new Date(e.start)) !== dayKey(new Date(e.end)); }
+  function md(ms) { var d = new Date(ms); return (d.getMonth() + 1) + '/' + d.getDate() + L('（' + WD[d.getDay()] + '）', ' (' + WD[d.getDay()] + ')'); }
+  function evStyle(e) {
+    if (!e.color) return '';
+    var n = parseInt(e.color.slice(1), 16);
+    return ' style="--ec:' + e.color + ';--ecbg:rgba(' + (n >> 16) + ',' + ((n >> 8) & 255) + ',' + (n & 255) + ',.16)"';
+  }
   function evTime(e) {
-    if (e.allDay) return L('終日（0時）', 'All day (from 00:00)');
+    if (e.allDay && multiDay(e)) return md(Date.parse(e.start)) + L(' 〜 ', ' – ') + md(evEnd(e));
+    if (e.allDay) return e.source === 'reset' ? L('終日（0時）', 'All day (from 00:00)') : L('終日', 'All day');
     var s = new Date(e.start), t = hmTime(e.start);
     if (e.end) t += L(' 〜 ', ' – ') + (sameDay(s, new Date(e.end)) ? hmTime(e.end) : ymd(Date.parse(e.end)) + ' ' + hmTime(e.end));
     return t;
@@ -1100,10 +1123,13 @@
     var now = new Date(), view = new Date(now.getFullYear(), now.getMonth(), 1);
     var events = [], resetDay = 15;
 
+    // その期間に少しでもかかる予定（複数日の予定は、始まった後も終わるまで入る）
     function all(fromMs, toMs) {
       return events.concat(resetEvents(fromMs, toMs, resetDay)).filter(function (e) {
-        var s = Date.parse(e.start); return s >= fromMs && s < toMs;
-      }).sort(function (a, b) { return Date.parse(a.start) - Date.parse(b.start); });
+        return Date.parse(e.start) < toMs && evEnd(e) >= fromMs;
+      }).sort(function (a, b) {
+        return (multiDay(b) ? 1 : 0) - (multiDay(a) ? 1 : 0) || Date.parse(a.start) - Date.parse(b.start);
+      });
     }
 
     function render() {
@@ -1115,12 +1141,14 @@
       var html = '<div class="cal-head">' + WD.map(function (w, i) { return '<span class="' + (i === 0 ? 'sun' : i === 6 ? 'sat' : '') + '">' + w + '</span>'; }).join('') + '</div><div class="cal-days">';
       for (var i = 0; i < 42; i++) {
         var d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i);
-        var mine = evs.filter(function (e) { return sameDay(new Date(e.start), d); });
+        var dk = dayKey(d);
+        var mine = evs.filter(function (e) { return dayKey(new Date(e.start)) <= dk && dk <= dayKey(new Date(evEnd(e))); });
         var cls = 'cday' + (d.getMonth() !== m ? ' out' : '') + (sameDay(d, now) ? ' today' : '') + (d.getDay() === 0 ? ' sun' : d.getDay() === 6 ? ' sat' : '') + (mine.length ? ' has' : '');
         html += '<div class="' + cls + '"><span class="dnum dot">' + d.getDate() + '</span>' + mine.slice(0, 3).map(function (e) {
           var h = evHref(e);
-          return (h ? '<a class="cev k-' + e.source + '" href="' + esc(h) + '"' + (/^https:/.test(h) ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' : '<span class="cev k-' + e.source + '">') +
-            '<span class="cev-t">' + (e.allDay ? '' : hmTime(e.start) + ' ') + esc(e.title) + '</span>' + (h ? '</a>' : '</span>');
+          var cls = 'cev k-' + e.source + (e.color ? ' has-color' : '') + (multiDay(e) ? ' span' : '') + (multiDay(e) && dayKey(new Date(e.start)) !== dk ? ' cont' : '');
+          return (h ? '<a class="' + cls + '"' + evStyle(e) + ' href="' + esc(h) + '"' + (/^https:/.test(h) ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' : '<span class="' + cls + '"' + evStyle(e) + ' title="' + esc(evTitle(e)) + '">') +
+            '<span class="cev-t">' + (e.allDay ? '' : hmTime(e.start) + ' ') + esc(evTitle(e)) + '</span>' + (h ? '</a>' : '</span>');
         }).join('') + (mine.length > 3 ? '<span class="cev more">+' + (mine.length - 3) + '</span>' : '') + '</div>';
       }
       grid.innerHTML = html + '</div>';
@@ -1134,17 +1162,18 @@
         if (seenReset) return false;
         seenReset = true;
         return true;
-      }).slice(0, 12);
+      }).sort(function (a, b) { return Date.parse(a.start) - Date.parse(b.start); }).slice(0, 16);
       if (!up.length) { emptyBox(list, L('いまのところ予定はありません。', 'Nothing scheduled right now.'), 'fa-calendar'); return; }
       list.innerHTML = '<ul class="cal-up">' + up.map(function (e) {
         var s = new Date(e.start), h = evHref(e), ext = /^https:/.test(h);
-        return '<li class="k-' + e.source + (e.live ? ' live' : '') + '">' +
+        var nowMs = Date.now(), live = e.live || (multiDay(e) && Date.parse(e.start) <= nowMs && nowMs <= evEnd(e));
+        return '<li class="k-' + e.source + (live ? ' live' : '') + (e.color ? ' has-color' : '') + '"' + evStyle(e) + '>' +
           '<div class="cu-date"><span class="m dot">' + (EN ? MON[s.getMonth()] : (s.getMonth() + 1) + '月') + '</span><span class="d dot">' + s.getDate() + '</span><span class="w">' + WD[s.getDay()] + '</span></div>' +
           '<div class="cu-body">' + (e.image ? '<img src="' + esc(e.image) + '" alt="" loading="lazy">' : '') +
-          '<h3>' + (e.live ? L('<span class="tag brick">開催中</span> ', '<span class="tag brick">Live</span> ') : '') + esc(e.title) + '</h3>' +
+          '<h3>' + (live ? L('<span class="tag brick">開催中</span> ', '<span class="tag brick">Live</span> ') : '') + esc(evTitle(e)) + '</h3>' +
           '<p class="cu-meta"><i class="fa-regular fa-clock" aria-hidden="true"></i>' + evTime(e) + (e.place ? '　<i class="fa-solid fa-location-dot" aria-hidden="true"></i>' + esc(e.place) : '') +
           (e.interested ? L('　<i class="fa-solid fa-star" aria-hidden="true"></i>興味あり ', '　<i class="fa-solid fa-star" aria-hidden="true"></i>Interested: ') + num(e.interested) + L('人', '') : '') + '</p>' +
-          (e.description ? '<p class="cu-desc">' + esc(e.description).replace(/\n/g, '<br>') + '</p>' : '') +
+          (evDesc(e) ? '<p class="cu-desc">' + esc(evDesc(e)).replace(/\n/g, '<br>') + '</p>' : '') +
           (h ? '<a class="cu-go" href="' + esc(h) + '"' + (ext ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + (e.source === 'discord' ? L('Discordで見る', 'View on Discord') : L('くわしく見る', 'Details')) + ' &rarr;</a>' : '') +
           '</div></li>';
       }).join('') + '</ul>';
@@ -1156,7 +1185,7 @@
     $('#calToday').addEventListener('click', function () { view = new Date(now.getFullYear(), now.getMonth(), 1); render(); });
     render();
     api('/api/calendar', 9000).then(function (d) {
-      events = (d.events || []);
+      events = localDays(d.events);
       resetDay = d.resetDay || 15;
     }).catch(function () {}).then(function () { render(); renderList(); });
   }

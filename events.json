@@ -1,4 +1,27 @@
 {
-  "_説明": "サイトのカレンダーに載せるイベント。Discordのイベント機能に登録したものは自動で載るので、ここにはDiscordに出さないものだけを書く。start/end は日本時間で、例のように +09:00 を付ける。url はサイト内のページか https のアドレス。",
-  "events": []
+  "_説明": "サイトのカレンダーに載せるイベント。Discordのイベント機能に登録したものは自動で載るので、ここにはそれ以外を書く。日付だけ（例 2026-10-24）なら終日、時刻つき（例 2026-10-24T20:00:00+09:00）ならその時刻。end は最終日（終日なら最終日の日付）。title_en / description_en は英語のページで使う。color は #RRGGBB。資源ワールドのリセット（毎月15日）は自動で入るので書かない。",
+  "events": [
+    { "title": "収穫祭 告知", "title_en": "Harvest Festival announced", "start": "2026-10-17", "description": "Discord・サイトで予告", "description_en": "Preview on Discord and the site", "color": "#7D7488" },
+    { "title": "収穫祭 テスト", "title_en": "Harvest Festival testing", "start": "2026-10-19", "end": "2026-10-22", "description": "テストサーバーで動作確認", "description_en": "Testing on the test server", "color": "#9A94A6" },
+    { "title": "バックアップ・導入", "title_en": "Backup & rollout", "start": "2026-10-23", "description": "プラグイン／リソースパックを本番に導入", "description_en": "Plugins and resource pack go live", "color": "#7D7488" },
+    { "title": "🎃 お菓子の国 大収穫祭", "title_en": "🎃 Candy Kingdom Harvest Festival", "start": "2026-10-24", "end": "2026-11-01", "description": "材料集め・お菓子工房・国庫納品・注文票・お菓子ポスト／お菓子の家コンテスト", "description_en": "Gather ingredients, candy workshops, deliveries to your national treasury, order slips, the candy post and a candy house contest", "color": "#E06A1B" },
+    { "title": "開幕式", "title_en": "Opening ceremony", "start": "2026-10-24T20:00:00+09:00", "description": "お菓子の国 大収穫祭", "description_en": "Candy Kingdom Harvest Festival", "color": "#E06A1B" },
+    { "title": "お菓子の家 締切", "title_en": "Candy house contest deadline", "start": "2026-10-30", "color": "#E06A1B" },
+    { "title": "かぼちゃ大王", "title_en": "The Great Pumpkin King", "start": "2026-10-31T21:00:00+09:00", "description": "全国家で討伐", "description_en": "Every nation fights it together", "color": "#E06A1B" },
+    { "title": "投票・表彰", "title_en": "Voting & awards", "start": "2026-11-01T20:00:00+09:00", "description": "お菓子の国 大収穫祭", "description_en": "Candy Kingdom Harvest Festival", "color": "#E06A1B" },
+    { "title": "お菓子 換金締切", "title_en": "Last day to exchange candy", "start": "2026-11-08", "description": "任意換金はこの日まで", "description_en": "Optional exchanges close on this day", "color": "#E06A1B" },
+    { "title": "運動会 告知・エントリー開始", "title_en": "Sports Day announced, entries open", "start": "2026-11-08", "description": "各国の代表選手を募集", "description_en": "Each nation picks its representatives", "color": "#7D7488" },
+    { "title": "エントリー締切", "title_en": "Sports Day entry deadline", "start": "2026-11-18", "color": "#2E9D5A" },
+    { "title": "🏅 VIVA運動会", "title_en": "🏅 VIVA Sports Day", "start": "2026-11-21", "end": "2026-11-23", "description": "3連休の国対抗。ボートレース・建築早作り・エリトラレース・スプリーフ・PvPトーナメント", "description_en": "A three-day national contest: boat race, speed building, elytra race, spleef and a PvP tournament", "color": "#2E9D5A" },
+    { "title": "開会式／ボートレース・建築早作り", "title_en": "Opening / boat race & speed building", "start": "2026-11-21T20:00:00+09:00", "color": "#2E9D5A" },
+    { "title": "エリトラレース・スプリーフ", "title_en": "Elytra race & spleef", "start": "2026-11-22T20:00:00+09:00", "color": "#2E9D5A" },
+    { "title": "PvPトーナメント・閉会式", "title_en": "PvP tournament & closing", "start": "2026-11-23T20:00:00+09:00", "description": "祝日", "description_en": "National holiday", "color": "#2E9D5A" },
+    { "title": "交易祭 告知・屋台募集", "title_en": "Trade Fair announced, stalls wanted", "start": "2026-12-05", "color": "#7D7488" },
+    { "title": "屋台出展 締切", "title_en": "Stall application deadline", "start": "2026-12-12", "color": "#2F6FC4" },
+    { "title": "🎄 冬の交易祭", "title_en": "🎄 Winter Trade Fair", "start": "2026-12-19", "end": "2026-12-25", "description": "雪原マーケットに各国が屋台出展・サンタ配達クエスト（他国へ配達）", "description_en": "Every nation runs a stall at the snowfield market, plus a Santa delivery quest to other nations", "color": "#2F6FC4" },
+    { "title": "年次表彰 投票期間", "title_en": "Annual awards voting", "start": "2026-12-20", "end": "2026-12-26", "color": "#B8860B" },
+    { "title": "プレゼント交換会", "title_en": "Gift exchange", "start": "2026-12-24T21:00:00+09:00", "color": "#2F6FC4" },
+    { "title": "🏆 国家年次表彰", "title_en": "🏆 Annual Nation Awards", "start": "2026-12-27", "description": "最大領土・最多貿易・ベスト建築 ほか", "description_en": "Largest territory, most trade, best build and more", "color": "#B8860B" },
+    { "title": "カウントダウン花火", "title_en": "Countdown fireworks", "start": "2026-12-31T23:00:00+09:00", "description": "年越し集合写真", "description_en": "New Year's group photo", "color": "#B8860B" }
+  ]
 }
