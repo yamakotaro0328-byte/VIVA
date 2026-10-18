@@ -1455,3 +1455,14 @@ a.cev:hover{transform:translateX(2px);color:var(--ink)}
     background:var(--paper);color:var(--ink);font-weight:700}
 .mobile-nav .m-lang i{color:var(--ember)}
 @media (max-width:980px){.topbar-cta .lang-switch{display:none}}
+
+/* カレンダー：色つきの予定、何日も続く予定 */
+.cev.has-color{border-left-color:var(--ec);background:var(--ecbg)}
+.cev.span{border-left-width:4px}
+.cev.cont{border-left-style:dotted;opacity:.85}
+.cal-up>li.has-color{border-left-color:var(--ec)}
+.cal-up>li.has-color .cu-date .m{color:var(--ec)}
+@media (max-width:700px){
+    .cev.has-color{background:var(--ec)}
+    .cev.cont{opacity:.6}
+}

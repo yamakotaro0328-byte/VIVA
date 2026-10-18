@@ -58,23 +58,40 @@ async function discordEvents() {
   };
 }
 
+// 日付だけ（2026-10-24）なら終日。日本時間の1日として扱う
+const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
+function toIso(v, endOfDay) {
+  const s = String(v || "");
+  if (DATE_ONLY.test(s)) return new Date(`${s}T${endOfDay ? "23:59:59" : "00:00:00"}+09:00`).toISOString();
+  return Number.isNaN(Date.parse(s)) ? null : new Date(s).toISOString();
+}
+
 async function siteEvents(origin) {
   try {
     const r = await fetch(`${origin}/events.json`, { signal: AbortSignal.timeout(4000) });
     if (!r.ok) return [];
     const d = await r.json();
     return (Array.isArray(d.events) ? d.events : [])
-      .filter((e) => e && e.title && !Number.isNaN(Date.parse(e.start)))
-      .map((e, i) => ({
-        id: `site-${i}`,
-        source: "site",
-        title: clean(e.title, 100),
-        description: clean(e.description, 600),
-        start: new Date(e.start).toISOString(),
-        end: e.end && !Number.isNaN(Date.parse(e.end)) ? new Date(e.end).toISOString() : null,
-        place: clean(e.place, 100),
-        url: /^(https:\/\/|\/|[\w-]+\.html)/.test(String(e.url || "")) ? e.url : "",
-      }));
+      .filter((e) => e && e.title && toIso(e.start))
+      .map((e, i) => {
+        const allDay = DATE_ONLY.test(String(e.start));
+        return {
+          id: `site-${i}`,
+          source: "site",
+          title: clean(e.title, 100),
+          title_en: clean(e.title_en, 100),
+          description: clean(e.description, 600),
+          description_en: clean(e.description_en, 600),
+          start: toIso(e.start, false),
+          end: e.end ? toIso(e.end, true) : allDay ? toIso(e.start, true) : null,
+          allDay,
+          dateStart: allDay ? String(e.start) : "",
+          dateEnd: allDay ? String(e.end || e.start) : "",
+          place: clean(e.place, 100),
+          color: /^#[0-9a-fA-F]{6}$/.test(String(e.color || "")) ? e.color : "",
+          url: /^(https:\/\/|\/|[\w-]+\.html)/.test(String(e.url || "")) ? e.url : "",
+        };
+      });
   } catch {
     return [];
   }
@@ -82,7 +99,7 @@ async function siteEvents(origin) {
 
 // ---------------------------------------------------------------- iCalendar
 function icsText(s) {
-  return String(s || "").replace(/\\/g, "\\\\").replace(/;/g, "\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
+  return String(s || "").replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\r?\n/g, "\\n");
 }
 function icsTime(iso) {
   return new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
@@ -110,11 +127,21 @@ function ics(events, origin) {
     "SUMMARY:資源ワールドのリセット（0時）", `URL:${origin}/resource.html`,
     "DESCRIPTION:資源ワールドが作り直されます。置いたものは消えるので、前日までに持ち帰ってください。", "END:VEVENT",
   ];
+  const dayAfter = (ymd) => {
+    const d = new Date(`${ymd}T00:00:00Z`);
+    d.setUTCDate(d.getUTCDate() + 1);
+    return d.toISOString().slice(0, 10).replace(/-/g, "");
+  };
   for (const e of events) {
-    const end = e.end || new Date(Date.parse(e.start) + 2 * 3600000).toISOString();
     const url = !e.url ? "" : /^https:/.test(e.url) ? e.url : `${origin}/${String(e.url).replace(/^\//, "")}`;
-    lines.push("BEGIN:VEVENT", `UID:${e.id}@viva-mc.net`, `DTSTAMP:${now}`, `DTSTART:${icsTime(e.start)}`, `DTEND:${icsTime(end)}`,
-      `SUMMARY:${icsText(e.title)}`);
+    lines.push("BEGIN:VEVENT", `UID:${e.id}@viva-mc.net`, `DTSTAMP:${now}`);
+    if (e.allDay && e.dateStart) {
+      lines.push(`DTSTART;VALUE=DATE:${e.dateStart.replace(/-/g, "")}`, `DTEND;VALUE=DATE:${dayAfter(e.dateEnd || e.dateStart)}`);
+    } else {
+      const end = e.end || new Date(Date.parse(e.start) + 2 * 3600000).toISOString();
+      lines.push(`DTSTART:${icsTime(e.start)}`, `DTEND:${icsTime(end)}`);
+    }
+    lines.push(`SUMMARY:${icsText(e.title)}`);
     if (e.description) lines.push(`DESCRIPTION:${icsText(e.description)}`);
     if (e.place) lines.push(`LOCATION:${icsText(e.place)}`);
     if (url) lines.push(`URL:${url}`);
