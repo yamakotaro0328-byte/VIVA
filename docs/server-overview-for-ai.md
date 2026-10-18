@@ -127,7 +127,7 @@
 | **DiscordSRV** | Discordとチャット連携・アカウントリンク | `/discord link` `/discord status` `/discord unlink` |
 | **InfiniteVehicles** | 乗り物（専用リソースパックあり） | `/iv` |
 | **WorldGuard / WorldEdit** | 建築サーバーの保護 | `//wand` `/rg define` `/rg addmember` など |
-| **VivaStatsAPI**（自作） | 公式サイト用に統計をHTTPで公開 | ポート45678。下の「5」を参照 |
+| **VivaStatsAPI**（自作） | 公式サイト用に統計をHTTPで公開 | ポート19135。下の「5」を参照 |
 | /report の投票追放プラグイン | 荒らしをみんなの投票で追放 | `/report`（`/r`） 【要確認: プラグイン名】 |
 | Vault | 経済の共通窓口 | 【要確認: 入っているか】 |
 | 権限管理 | — | 【要確認: LuckPerms など】 |
@@ -146,7 +146,7 @@
 公式サイトの「プレイヤー統計」「接続履歴」用。ソースはこのリポジトリの `plugin/`。
 
 - パッケージ: `net.vivamc.statsapi`、メインクラス `VivaStatsAPI`
-- HTTPサーバー（ポート `45678`）で JSON を返す
+- HTTPサーバー（ポート `19135`）で JSON を返す
   - `GET /v1/player?player=<名前>` … キル数・死亡数・設置/破壊ブロック数・プレイ時間・所持金・所属タウンなど
   - `GET /v1/history` … 直近の入退室
   - `GET /v1/ranking?type=<種類>` … ランキング

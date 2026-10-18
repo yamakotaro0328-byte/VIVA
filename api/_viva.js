@@ -2,10 +2,10 @@
 // （ファイル名が _ で始まるので、これ自体はAPIとして公開されない）
 //
 // Vercel の環境変数:
-//   VIVA_STATS_API_URL   … 任意。プラグインのアドレス（既定: http://viva-mc.net:45678）
+//   VIVA_STATS_API_URL   … 任意。プラグインのアドレス（既定: http://viva-mc.net:19135）
 //   VIVA_STATS_API_TOKEN … 任意。プラグインの config.yml の token と同じ値
 
-const BASE = (process.env.VIVA_STATS_API_URL || "http://viva-mc.net:45678").replace(/\/+$/, "");
+const BASE = (process.env.VIVA_STATS_API_URL || "http://viva-mc.net:19135").replace(/\/+$/, "");
 
 /**
  * プラグインの path を呼んで、その答えをそのままブラウザへ返す。

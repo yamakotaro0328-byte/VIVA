@@ -2,7 +2,7 @@
 
 VIVA-MC公式サイトの「プレイヤー統計」「接続履歴」を、実際に動くようにするための
 Paperプラグインです。サイト側のコード（`api/get-*.js`）は、このプラグインが
-`viva-mc.net:45678` でHTTP APIを公開している前提で書かれています。
+`viva-mc.net:19135` でHTTP APIを公開している前提で書かれています。
 
 ## できること
 
@@ -126,7 +126,7 @@ Paperプラグインです。サイト側のコード（`api/get-*.js`）は、�
 3. （所持金・所属タウンも取りたい場合は、Vault・Landsを先に入れておく）
 4. サーバーを再起動（またはプラグインをリロード）する
 5. 初回起動時に `plugins/VivaStatsAPI/config.yml` が自動生成されます
-6. ポート `45678` への接続が、外部（Vercel）から届くことを確認してください
+6. ポート `19135` への接続が、外部（Vercel）から届くことを確認してください
    （ファイアウォール・ルーターのポート開放が必要な場合があります）
 
 ### 動作確認
@@ -134,10 +134,10 @@ Paperプラグインです。サイト側のコード（`api/get-*.js`）は、�
 サーバーと同じマシン、または外部から次のように叩いて、JSONが返ってくれば成功です。
 
 ```
-curl "http://localhost:45678/v1/player?player=あなたのゲーマーID"
-curl "http://localhost:45678/v1/history"
-curl "http://localhost:45678/v1/ranking?type=player_kills&limit=5"
-curl "http://localhost:45678/v1/players?query=あ"
+curl "http://localhost:19135/v1/player?player=あなたのゲーマーID"
+curl "http://localhost:19135/v1/history"
+curl "http://localhost:19135/v1/ranking?type=player_kills&limit=5"
+curl "http://localhost:19135/v1/players?query=あ"
 ```
 
 起動時のログに次のように出ていれば、Vault・Landsとの連携も成功しています。
