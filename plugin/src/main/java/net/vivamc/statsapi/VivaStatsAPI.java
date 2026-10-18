@@ -75,7 +75,7 @@ public class VivaStatsAPI extends JavaPlugin {
         }
 
         String bindAddress = getConfig().getString("bind-address", "0.0.0.0");
-        int port = getConfig().getInt("port", 45678);
+        int port = getConfig().getInt("port", 19135);
         String token = getConfig().getString("token", "");
 
         apiServer = new ApiServer(store, getLogger(), token, historyLimit, this, economyHook, landsHook,
