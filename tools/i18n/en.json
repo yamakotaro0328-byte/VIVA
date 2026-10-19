@@ -1237,5 +1237,14 @@
  "🥇 1位": "🥇 1st place",
  "🥈 2位": "🥈 2nd place",
  "🥉 3位": "🥉 3rd place",
- "🪓 木こり（Woodcutter）": "🪓 Woodcutter"
+ "🪓 木こり（Woodcutter）": "🪓 Woodcutter",
+ "<a href=\"news-outage-1019.html\">サーバーが停止しています（復旧まで時間がかかります）</a>": "<a href=\"news-outage-1019.html\">The server is down (recovery will take a while)</a>",
+ "サーバーが落ちてしまいました。復旧までしばらく時間がかかります。": "The server has gone down. It will take a while to bring it back.",
+ "<a class=\"more\" href=\"news-outage-1019.html\">続きを読む &rarr;</a>": "<a class=\"more\" href=\"news-outage-1019.html\">Read more &rarr;</a>",
+ "サーバーが停止しています（復旧まで時間がかかります） | VIVA-MC": "The server is down (recovery will take a while) | VIVA-MC",
+ "サーバーが停止しています（復旧まで時間がかかります） | お知らせ | VIVA-MC": "The server is down (recovery will take a while) | News | VIVA-MC",
+ "サーバーが停止しています（復旧まで時間がかかります）": "The server is down (recovery will take a while)",
+ "<strong>現在サーバーが停止しています。</strong>サーバーが落ちてしまい、いまは接続できません。": "<strong>The server is currently down.</strong> It went down and you can't connect right now.",
+ "復旧までしばらく時間がかかります。ご迷惑をおかけしますが、もうしばらくお待ちください。": "It will take a while to recover. Sorry for the trouble, and thanks for your patience.",
+ "復旧したら、このお知らせとDiscordでお伝えします。イベントの予定に変更があるときも、あわせてお知らせします。": "We'll post here and on Discord once it's back. If the event schedule changes, we'll let you know there too."
 }
