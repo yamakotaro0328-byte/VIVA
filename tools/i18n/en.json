@@ -1246,5 +1246,13 @@
  "サーバーが停止しています（復旧まで時間がかかります）": "The server is down (recovery will take a while)",
  "<strong>現在サーバーが停止しています。</strong>サーバーが落ちてしまい、いまは接続できません。": "<strong>The server is currently down.</strong> It went down and you can't connect right now.",
  "復旧までしばらく時間がかかります。ご迷惑をおかけしますが、もうしばらくお待ちください。": "It will take a while to recover. Sorry for the trouble, and thanks for your patience.",
- "復旧したら、このお知らせとDiscordでお伝えします。イベントの予定に変更があるときも、あわせてお知らせします。": "We'll post here and on Discord once it's back. If the event schedule changes, we'll let you know there too."
+ "復旧したら、このお知らせとDiscordでお伝えします。イベントの予定に変更があるときも、あわせてお知らせします。": "We'll post here and on Discord once it's back. If the event schedule changes, we'll let you know there too.",
+ "<a href=\"news-restored-1019.html\">サーバーが復旧しました</a>": "<a href=\"news-restored-1019.html\">The server is back</a>",
+ "10月19日のサーバー停止から復旧し、通常どおり遊べるようになりました。": "The server has recovered from the October 19 outage and is running normally again.",
+ "<a class=\"more\" href=\"news-restored-1019.html\">続きを読む &rarr;</a>": "<a class=\"more\" href=\"news-restored-1019.html\">Read more &rarr;</a>",
+ "<strong>サーバーは復旧しました。</strong><a href=\"news-restored-1019.html\">復旧のお知らせ</a>をご覧ください。": "<strong>The server is back up.</strong> See the <a href=\"news-restored-1019.html\">recovery notice</a>.",
+ "以下は停止中にお伝えしていた内容です。": "Below is what we posted while the server was down.",
+ "サーバーが落ちてしまい、接続できない状態になっていました。": "The server went down and you couldn't connect.",
+ "10月19日に落ちていたサーバーが復旧し、通常どおり遊べるようになりました。": "The server that went down on October 19 is back, and you can play as usual.",
+ "お待たせしてすみませんでした。おかしなところや、なくなった物などがあればDiscordでお知らせください。": "Sorry for the wait. If anything seems off or you lost any items, let us know on Discord."
 }
