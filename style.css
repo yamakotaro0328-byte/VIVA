@@ -1466,3 +1466,5 @@ a.cev:hover{transform:translateX(2px);color:var(--ink)}
     .cev.has-color{background:var(--ec)}
     .cev.cont{opacity:.6}
 }
+.badge.b-admin{border-color:#8A6212;background:linear-gradient(135deg,#D9AE45,#A97A16);color:#FFF8E6;text-shadow:0 1px 0 rgba(90,60,8,.45);box-shadow:0 2px 8px rgba(138,98,18,.35)}
+.badge.b-admin i{color:#FFF3C8}
