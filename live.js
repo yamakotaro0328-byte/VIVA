@@ -282,7 +282,11 @@
   }
 
   /* ================================================================ プレイヤー */
+  // 運営メンバー（名前は小文字で）
+  var STAFF = { kot0328: 'admin' };
+  function isAdmin(n) { return STAFF[String(n || '').toLowerCase()] === 'admin'; }
   var BADGES = [
+    { id: 'admin', icon: 'fa-crown', label: L('管理者', 'Admin'), why: L('VIVA-MCの管理者', 'VIVA-MC server admin'), test: function (p) { return isAdmin(p.name); } },
     { id: 'new', icon: 'fa-seedling', label: L('新入り', 'Newcomer'), why: L('初参加から14日以内', 'First joined within the last 14 days'), test: function (p) { return p.first_join && days(p.first_join) <= 14; } },
     { id: 'old', icon: 'fa-scroll', label: L('古参', 'Veteran'), why: L('初参加から180日以上', 'First joined 180+ days ago'), test: function (p) { return p.first_join && days(p.first_join) >= 180; } },
     { id: 'regular', icon: 'fa-mug-hot', label: L('常連', 'Regular'), why: L('ログイン100回以上', '100+ logins'), test: function (p) { return p.login_count >= 100; } },
@@ -376,7 +380,7 @@
 
       out.innerHTML =
         '<div class="profile">' +
-          '<div class="portrait">' + bodyImg(p.name, 260) + '<span class="portrait-cap dot">VIVA-MC CITIZEN</span></div>' +
+          '<div class="portrait">' + bodyImg(p.name, 260) + '<span class="portrait-cap dot">' + (isAdmin(p.name) ? 'VIVA-MC ADMIN' : 'VIVA-MC CITIZEN') + '</span></div>' +
           '<div class="pinfo">' +
             '<h2 class="pname disp">' + headImg(p.name, 34) + esc(p.name) + '</h2>' +
             L('<p class="pmeta">初参加 <b class="dot">', '<p class="pmeta">First joined <b class="dot">') + ymd(p.first_join) + L('</b>　・　最後に見かけたのは <b>', '</b> · Last seen <b>') + rel(p.last_seen) + '</b></p>' +
