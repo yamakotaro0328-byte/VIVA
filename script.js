@@ -31,6 +31,22 @@
     setMenu(false);
   });
 
+  /* ---------- サブナビ：いまのページを見える位置に出し、続きがある側の端をぼかす ---------- */
+  document.querySelectorAll('.wiki-subnav .wrap').forEach(function (bar) {
+    function edges() {
+      var max = bar.scrollWidth - bar.clientWidth;
+      bar.classList.toggle('more-l', bar.scrollLeft > 4);
+      bar.classList.toggle('more-r', bar.scrollLeft < max - 4);
+    }
+    var cur = bar.querySelector('[aria-current="page"]');
+    if (cur && bar.scrollWidth > bar.clientWidth) {
+      bar.scrollLeft = Math.max(0, cur.offsetLeft - (bar.clientWidth - cur.offsetWidth) / 2);
+    }
+    edges();
+    bar.addEventListener('scroll', edges, { passive: true });
+    window.addEventListener('resize', edges);
+  });
+
   /* ---------- IPをコピー ---------- */
   function toast(msg) {
     var el = document.getElementById('toast');
