@@ -488,13 +488,13 @@
       emptyBox(box, L('グラフはまだ準備中です。記録が貯まると、ここに直近7日の人数が出ます。', 'The graph isn\'t ready yet. Once enough data is recorded, player counts for the last 7 days will show here.'), 'fa-chart-area');
       return;
     }
-    var W = 760, H = 240, L = 34, R = 12, T = 14, B = 30;
+    var W = 760, H = 240, PL = 34, R = 12, T = 14, B = 30;
     var now = Date.now(), t0 = now - 7 * 86400000;
     var maxN = 0;
     samples.forEach(function (s) { if (s[1] > maxN) maxN = s[1]; });
     var step = maxN <= 5 ? 1 : maxN <= 10 ? 2 : maxN <= 25 ? 5 : maxN <= 50 ? 10 : 20;
     var top = Math.max(step * 2, Math.ceil(maxN / step) * step);
-    var x = function (t) { return L + (t - t0) / (now - t0) * (W - L - R); };
+    var x = function (t) { return PL + (t - t0) / (now - t0) * (W - PL - R); };
     var y = function (n) { return T + (1 - n / top) * (H - T - B); };
 
     // 記録の間が30分以上あいたら（サーバー停止など）線を切る
@@ -508,8 +508,8 @@
 
     var grid = '', labels = '';
     for (var v = 0; v <= top; v += step) {
-      grid += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y(v) + '" y2="' + y(v) + '" class="g' + (v === 0 ? ' base' : '') + '"/>';
-      labels += '<text x="' + (L - 7) + '" y="' + (y(v) + 4) + '" text-anchor="end">' + v + '</text>';
+      grid += '<line x1="' + PL + '" x2="' + (W - R) + '" y1="' + y(v) + '" y2="' + y(v) + '" class="g' + (v === 0 ? ' base' : '') + '"/>';
+      labels += '<text x="' + (PL - 7) + '" y="' + (y(v) + 4) + '" text-anchor="end">' + v + '</text>';
     }
     var d0 = new Date(t0); d0.setHours(24, 0, 0, 0);
     for (var t = d0.getTime(); t < now; t += 86400000) {
@@ -527,7 +527,7 @@
     box.innerHTML = '<div class="chart-wrap"><svg viewBox="0 0 ' + W + ' ' + H + L('" class="ochart" role="img" aria-label="直近7日の接続人数のグラフ">', '" class="ochart" role="img" aria-label="Graph of players online over the last 7 days">') +
       grid + area + line + labels +
       '<line class="xh off" y1="' + T + '" y2="' + (H - B) + '" x1="0" x2="0"/><circle class="xd off" r="4.5" cx="0" cy="0"/>' +
-      '<rect class="hit" x="' + L + '" y="0" width="' + (W - L - R) + '" height="' + H + L('" tabindex="0" aria-label="グラフを左右の矢印キーでたどれます"/></svg>', '" tabindex="0" aria-label="Use the left and right arrow keys to move through the graph"/></svg>') +
+      '<rect class="hit" x="' + PL + '" y="0" width="' + (W - PL - R) + '" height="' + H + L('" tabindex="0" aria-label="グラフを左右の矢印キーでたどれます"/></svg>', '" tabindex="0" aria-label="Use the left and right arrow keys to move through the graph"/></svg>') +
       '<div class="tip" hidden></div></div>' +
       L('<p class="chart-note">最高記録 <b class="dot">', '<p class="chart-note">Record: <b class="dot">') + num(peak || maxN) + L('人</b>', ' players</b>') + (peakAt ? L('（', ' (') + ymd(peakAt) + ' ' + hmTime(peakAt) + '）' : '') +
       L('　・　メインサーバーの人数を5分ごとに記録しています</p>', ' · Main server players, recorded every 5 minutes</p>') +
@@ -555,7 +555,7 @@
     }
     function nearest(clientX) {
       var r = svg.getBoundingClientRect();
-      var t = t0 + ((clientX - r.left) / r.width * W - L) / (W - L - R) * (now - t0);
+      var t = t0 + ((clientX - r.left) / r.width * W - PL) / (W - PL - R) * (now - t0);
       var best = 0, bd = Infinity;
       pts.forEach(function (s, i) { var dd = Math.abs(s[0] - t); if (dd < bd) { bd = dd; best = i; } });
       return best;

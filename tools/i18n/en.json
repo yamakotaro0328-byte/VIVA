@@ -1143,7 +1143,6 @@
  "記録": "Records",
  "記録はメインサーバーのものです。名前を押すと、その人のプロフィールが開きます。": "Records are from the main server. Click a name to open that player's profile.",
  "記録を見る": "Your records",
- "読みたいところから開いてください。左のメニューからも移動できます。": "Open whichever you want to read. You can also move around with the menu on the left.",
  "読み込み中...": "Loading...",
  "誰かがサーバーに入った・抜けた、何で死んだか、といったメッセージがDiscordに自動で投稿されます。": "Messages like who joined or left and how someone died are posted to Discord automatically.",
  "警告": "Warning",
@@ -1254,5 +1253,6 @@
  "以下は停止中にお伝えしていた内容です。": "Below is what we posted while the server was down.",
  "サーバーが落ちてしまい、接続できない状態になっていました。": "The server went down and you couldn't connect.",
  "10月19日に落ちていたサーバーが復旧し、通常どおり遊べるようになりました。": "The server that went down on October 19 is back, and you can play as usual.",
- "お待たせしてすみませんでした。おかしなところや、なくなった物などがあればDiscordでお知らせください。": "Sorry for the wait. If anything seems off or you lost any items, let us know on Discord."
+ "お待たせしてすみませんでした。おかしなところや、なくなった物などがあればDiscordでお知らせください。": "Sorry for the wait. If anything seems off or you lost any items, let us know on Discord.",
+ "読みたいところから開いてください。上のメニューからも移動できます。": "Open whichever you want to read. You can also move around with the menu at the top."
 }
